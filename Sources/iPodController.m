@@ -313,8 +313,7 @@
 	return mProgress < 0;
 }
 
--(BOOL)keepOnSendingToiPod
-{
+-(BOOL)keepOnSendingToiPod{
 	return mKeepOn;
 }
 
