@@ -308,8 +308,7 @@
 	return mProgress;
 }
 
--(BOOL)indeterminateProgress
-{
+-(BOOL)indeterminateProgress{
 	return mProgress < 0;
 }
 
