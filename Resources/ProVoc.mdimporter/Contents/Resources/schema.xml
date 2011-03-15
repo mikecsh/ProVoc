@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<schema version="1.0" xmlns="http://www.apple.com/metadata"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://www.apple.com/metadata file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Resources/MetadataSchema.xsd">
+
+    <note>
+        ProVoc files.
+    </note>
+
+    <attributes>
+        <attribute name="ch_arizonasoftware_provoc_languages" multivalued="true" type="CFString"/>
+        <attribute name="ch_arizonasoftware_provoc_numberofwords" multivalued="false" type="CFNumber"/>
+    </attributes>
+	
+    <types>
+        <type name="ch.arizona-software.provoc.vocabulary">
+            <allattrs>
+		ch_arizonasoftware_provoc_languages
+		ch_arizonasoftware_provoc_numberofwords
+            </allattrs>
+            <displayattrs>
+		ch_arizonasoftware_provoc_languages
+		ch_arizonasoftware_provoc_numberofwords
+            </displayattrs>
+        </type>
+    </types>
+</schema>

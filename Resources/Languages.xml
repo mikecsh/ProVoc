@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DefaultSource</key>
+	<string>Français</string>
+	<key>DefaultTarget</key>
+	<string>English</string>
+	<key>Languages</key>
+	<array>
+		<dict>
+			<key>AccentSensitive</key>
+			<true/>
+			<key>CaseSensitive</key>
+			<false/>
+			<key>FacultativeDeterminents</key>
+			<string>le, la, les, un, une, l'</string>
+			<key>Name</key>
+			<string>Français</string>
+			<key>PunctuationSensitive</key>
+			<false/>
+			<key>SpaceSensitive</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>AccentSensitive</key>
+			<true/>
+			<key>CaseSensitive</key>
+			<false/>
+			<key>FacultativeDeterminents</key>
+			<string>the, a, to</string>
+			<key>Name</key>
+			<string>English</string>
+			<key>PunctuationSensitive</key>
+			<false/>
+			<key>SpaceSensitive</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>AccentSensitive</key>
+			<true/>
+			<key>CaseSensitive</key>
+			<true/>
+			<key>FacultativeDeterminents</key>
+			<string>der, die, das, ein, eine</string>
+			<key>Equivalences</key>
+			<string>ä=ae,ö=oe,ü=ue,ß=ss,Ä=Ae,Ö=Oe,Ü=Ue</string>
+			<key>Name</key>
+			<string>Deutsch</string>
+			<key>PunctuationSensitive</key>
+			<true/>
+			<key>SpaceSensitive</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>AccentSensitive</key>
+			<true/>
+			<key>CaseSensitive</key>
+			<false/>
+			<key>FacultativeDeterminents</key>
+			<string>el, la, un, una</string>
+			<key>Name</key>
+			<string>Español</string>
+			<key>PunctuationSensitive</key>
+			<false/>
+			<key>SpaceSensitive</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>AccentSensitive</key>
+			<false/>
+			<key>CaseSensitive</key>
+			<false/>
+			<key>FacultativeDeterminents</key>
+			<string></string>
+			<key>Name</key>
+			<string>日本語</string>
+			<key>PunctuationSensitive</key>
+			<false/>
+			<key>SpaceSensitive</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>

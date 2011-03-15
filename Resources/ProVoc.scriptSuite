@@ -1,0 +1,84 @@
+// ProVoc.scriptSuite
+//
+
+{
+    "Name" = "ProVoc";
+    "AppleEventCode" = "PrVc";
+
+	"Commands" = {
+		"ImportFile" = {
+			"AppleEventClassCode" = "PVAE";
+			"AppleEventCode" = "ImFi";
+			"CommandClass" = "ProVocImportFileCommand";
+			"UnnamedArgument" = {
+				"AppleEventCode" = "file";
+				"Optional" = "No";
+				"Type" = "NSString";
+			};
+			"Arguments" = {
+				"NewDocument" = {
+					"AppleEventCode" = "newD";
+					"Optional" = "Yes";
+					"Type" = "NSNumber<Bool>";
+				};
+			};
+		};
+
+		"ImportText" = {
+			"AppleEventClassCode" = "PVAE";
+			"AppleEventCode" = "ImTx";
+			"CommandClass" = "ProVocImportTextCommand";
+			"UnnamedArgument" = {
+				"AppleEventCode" = "text";
+				"Optional" = "No";
+				"Type" = "NSString";
+			};
+			"Arguments" = {
+				"NewDocument" = {
+					"AppleEventCode" = "newD";
+					"Optional" = "Yes";
+					"Type" = "NSNumber<Bool>";
+				};
+			};
+		};
+
+		"ExportFile" = {
+			"AppleEventClassCode" = "PVAE";
+			"AppleEventCode" = "ExFi";
+			"CommandClass" = "ProVocExportFileCommand";
+			"UnnamedArgument" = {
+				"AppleEventCode" = "file";
+				"Optional" = "No";
+				"Type" = "NSString";
+			};
+			"Arguments" = {
+				"SelectionOnly" = {
+					"AppleEventCode" = "selO";
+					"Optional" = "Yes";
+					"Type" = "NSNumber<Bool>";
+				};
+				"IncludeNames" = {
+					"AppleEventCode" = "wNam";
+					"Optional" = "Yes";
+					"Type" = "NSNumber<Bool>";
+				};
+				"IncludeComments" = {
+					"AppleEventCode" = "wCom";
+					"Optional" = "Yes";
+					"Type" = "NSNumber<Bool>";
+				};
+			};
+			"ResultAppleEventCode" = "utxt";
+			"Type" = "NSString";
+		};
+	};
+	    
+    "Classes" = {
+        "NSApplication" = {
+            "Superclass" = "NSCoreSuite.NSApplication";
+            "AppleEventCode" = "capp";
+        };
+	};
+	
+	"UsedFeatures" = ("UnnamedArguments");
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>A</key>
+	<string>ÀÂÄÃ</string>
+	<key>E</key>
+	<string>ÉÈÊË</string>
+	<key>I</key>
+	<string>ÌÎÏ</string>
+	<key>N</key>
+	<string>Ñ</string>
+	<key>O</key>
+	<string>ÒÔÖÕ</string>
+	<key>U</key>
+	<string>ÙÛÜ</string>
+	<key>Y</key>
+	<string>Ÿ</string>
+	<key>a</key>
+	<string>áàâäã</string>
+	<key>e</key>
+	<string>éèêë</string>
+	<key>i</key>
+	<string>íìîï</string>
+	<key>n</key>
+	<string>ñ</string>
+	<key>o</key>
+	<string>óòôöõ</string>
+	<key>u</key>
+	<string>úùûü</string>
+	<key>y</key>
+	<string>ÿ</string>
+	<key>Α</key>
+	<string>ΆᾺἈἉἌἍἊἋἎἏᾹᾸᾼᾈᾉᾌᾍᾊᾋᾎᾏ</string>
+	<key>Ε</key>
+	<string>ΈῈἘἙἜἝἚἛ</string>
+	<key>Η</key>
+	<string>ΉῊἨἩἬἭἪἫἮἯῌᾘᾙᾜᾝᾚᾛᾞᾟ</string>
+	<key>Ι</key>
+	<string>ΊῚἸἹἼἽἺἻἾἿῘῙΪ</string>
+	<key>Ο</key>
+	<string>ΌῸὈὉὌὍὊὋ</string>
+	<key>Υ</key>
+	<string>ΎῪὙὝὛὟΫῨῩ</string>
+	<key>Ω</key>
+	<string>ΏῺὨὩὬὭὪὫὮὯῼᾨᾩᾬᾭᾪᾫᾮᾯ</string>
+	<key>α</key>
+	<string>άὰᾶἀἁἄἅἂἃἆἇᾳᾴᾲᾷᾀᾁᾄᾅᾂᾃᾆᾇᾰᾱ</string>
+	<key>ε</key>
+	<string>έὲἐἑἔἕἒἓ</string>
+	<key>η</key>
+	<string>ήὴῆἠἡἤἥἢἣἦἧῄῂῇᾐᾑᾔᾕᾒᾓᾖᾗῃ</string>
+	<key>ι</key>
+	<string>ίὶῖἰἱἴἵἲἳἶἷϊΐῒῐῑ</string>
+	<key>ο</key>
+	<string>όὸὀὁὄὅὂὃ</string>
+	<key>υ</key>
+	<string>ύὺῦὐὑὔὕὒὓὖὗϋΰῢῠῡ</string>
+	<key>ω</key>
+	<string>ώὼῶὠὡὤὥὢὣὦὧῳῴῲῷᾠᾡᾤᾥᾢᾣᾦᾧ</string>
+</dict>
+</plist>

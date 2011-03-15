@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Classes</key>
+	<dict>
+		<key>NSApplication</key>
+		<dict>
+			<key>Description</key>
+			<string>ProVoc's top level scripting object.</string>
+			<key>Name</key>
+			<string>application</string>
+			<key>PluralName</key>
+			<string>applications</string>
+		</dict>
+	</dict>
+	<key>Commands</key>
+	<dict>
+		<key>ImportFile</key>
+		<dict>
+			<key>UnnamedArgument</key>
+			<dict>
+				<key>Description</key>
+				<string>Path(s) of the file(s) to import</string>
+			</dict>
+			<key>Arguments</key>
+			<dict>
+				<key>NewDocument</key>
+				<dict>
+					<key>Description</key>
+					<string>Import in a new document.</string>
+					<key>Name</key>
+					<string>new document</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Import file(s) in the frontmost document.</string>
+			<key>Name</key>
+			<string>import</string>
+		</dict>
+		<key>ImportText</key>
+		<dict>
+			<key>UnnamedArgument</key>
+			<dict>
+				<key>Description</key>
+				<string>Text to import.</string>
+			</dict>
+			<key>Arguments</key>
+			<dict>
+				<key>NewDocument</key>
+				<dict>
+					<key>Description</key>
+					<string>Import in a new document.</string>
+					<key>Name</key>
+					<string>new document</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Import text in the frontmost document.</string>
+			<key>Name</key>
+			<string>import text</string>
+		</dict>
+		<key>ExportFile</key>
+		<dict>
+			<key>UnnamedArgument</key>
+			<dict>
+				<key>Description</key>
+				<string>Path of the destination file. Ignore to only export the text.</string>
+			</dict>
+			<key>Arguments</key>
+			<dict>
+				<key>SelectionOnly</key>
+				<dict>
+					<key>Description</key>
+					<string>Export only the selected lessons.</string>
+					<key>Name</key>
+					<string>only selection</string>
+				</dict>
+				<key>IncludeNames</key>
+				<dict>
+					<key>Description</key>
+					<string>Include the names of the lessons.</string>
+					<key>Name</key>
+					<string>include names</string>
+				</dict>
+				<key>IncludeComments</key>
+				<dict>
+					<key>Description</key>
+					<string>Include the comments of the words.</string>
+					<key>Name</key>
+					<string>include comments</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Export the contents of the frontmost document as a text file, returning the exported text.</string>
+			<key>Name</key>
+			<string>export</string>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>ProVoc specific classes.</string>
+	<key>Name</key>
+	<string>ProVoc suite</string>
+</dict>
+</plist>

@@ -1,0 +1,118 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {"" = id; showPreferences = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = NSObject; LANGUAGE = ObjC; }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
+        {CLASS = ParameterBox; LANGUAGE = ObjC; SUPERCLASS = NSBox; }, 
+        {CLASS = PresetCell; LANGUAGE = ObjC; SUPERCLASS = NSCell; }, 
+        {
+            CLASS = ProVocActionPopUpButton; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSPopUpButton; 
+        }, 
+        {CLASS = ProVocDeletableTableView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {
+            CLASS = ProVocDifficultyTableColumn; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTableColumn; 
+        }, 
+        {
+            ACTIONS = {
+                addNewWord = id; 
+                cancelInputPanel = id; 
+                clearHistory = id; 
+                deletePage = id; 
+                displayiPodPreferences = id; 
+                duplicatePreset = id; 
+                editPreset = id; 
+                ejectiPod = id; 
+                export = id; 
+                import = id; 
+                newChapter = id; 
+                newPage = id; 
+                newPreset = id; 
+                okInputPanel = id; 
+                printCards = id; 
+                printDocument = id; 
+                removePreset = id; 
+                search = id; 
+                selectView = id; 
+                sendToiPod = id; 
+                setSearchCategory = id; 
+                showGeneralPreferences = id; 
+                sourcePopUpAction = id; 
+                startSlideshow = id; 
+                startTest = id; 
+                submitDocument = id; 
+                targetPopUpAction = id; 
+                toggleInspector = id; 
+            }; 
+            CLASS = ProVocDocument; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                mAboveInputView = NSView; 
+                mCommentInputView = NSView; 
+                mCommentTextField = NSTextField; 
+                mExportAccessoryView = NSView; 
+                mHistoryView = ProVocHistoryView; 
+                mImportAccessoryView = NSView; 
+                mInputPanel = NSPanel; 
+                mInputPromptTextField = NSTextField; 
+                mInputTextField = NSTextField; 
+                mLabelTableView = NSTableView; 
+                mMainSplitView = NSSplitView; 
+                mMainWindow = NSWindow; 
+                mPageOutlineView = NSOutlineView; 
+                mPresetEditView = NSView; 
+                mPresetSettingsView = NSView; 
+                mPresetTableView = NSTableView; 
+                mPresetView = NSView; 
+                mPrintAccessoryView = NSView; 
+                mSearchField = NSSearchField; 
+                mSearchMenu = NSMenu; 
+                mSourceInputView = NSView; 
+                mSourceLanguagePopUp = NSPopUpButton; 
+                mSourceTextField = NSTextField; 
+                mTargetInputView = NSView; 
+                mTargetLanguagePopUp = NSPopUpButton; 
+                mTargetTextField = NSTextField; 
+                mTestDirectionPopUp = NSPopUpButton; 
+                mWordTableView = NSTableView; 
+            }; 
+            SUPERCLASS = NSDocument; 
+        }, 
+        {
+            CLASS = ProVocFlaggedTableColumn; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTableColumn; 
+        }, 
+        {
+            CLASS = ProVocHistoryView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mDataSource = id; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {CLASS = ProVocOutlineView; LANGUAGE = ObjC; SUPERCLASS = NSOutlineView; }, 
+        {
+            CLASS = ProVocPresetTableColumn; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTableColumn; 
+        }, 
+        {CLASS = ProVocResultView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = ProVocTableView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {
+            CLASS = ProVocTextField; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mNextField = id; mPreviousField = id; }; 
+            SUPERCLASS = NSTextField; 
+        }, 
+        {CLASS = ProVocWordTableColumn; LANGUAGE = ObjC; SUPERCLASS = NSTableColumn; }, 
+        {CLASS = ProVocWordsView; LANGUAGE = ObjC; SUPERCLASS = NSView; }
+    ); 
+    IBVersion = 1; 
+}

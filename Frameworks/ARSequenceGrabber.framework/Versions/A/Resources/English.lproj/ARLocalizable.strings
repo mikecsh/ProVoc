@@ -1,0 +1,7 @@
+"Camera Error Title" = "No recording device found.";
+"Camera Error Message" = "Make sure the recording device is plugged in and not in use by another application.";
+
+"Delete Menu Item Title" = "Delete";
+"Trim To Selection Menu Item Title" = "Trim to Selection";
+"Set Beginning Menu Item Title" = "Set Beginning";
+"Set End Menu Item Title" = "Set End";

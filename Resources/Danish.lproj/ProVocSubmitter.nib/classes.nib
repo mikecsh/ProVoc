@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {abort = id; cancel = id; close = id; submit = id; }; 
+            CLASS = ProVocSubmitter; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mTabView = NSTabView; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

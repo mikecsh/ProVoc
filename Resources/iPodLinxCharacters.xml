@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>...</key>
+	<string>…</string>
+	<key>Α</key>
+	<string>ἈἉἌἍἊἋἎἏᾼᾈᾉᾌᾍᾊᾋᾎᾏ</string>
+	<key>Ε</key>
+	<string>ἘἙἜἝἚἛ</string>
+	<key>Η</key>
+	<string>ἨἩἬἭἪἫἮἯῌᾘᾙᾜᾝᾚᾛᾞᾟ</string>
+	<key>Ι</key>
+	<string>ἸἹἼἽἺἻἾἿ</string>
+	<key>Ο</key>
+	<string>ὈὉὌὍὊὋ</string>
+	<key>Υ</key>
+	<string>ὙὝὛὟ</string>
+	<key>Ω</key>
+	<string>ὨὩὬὭὪὫὮὯῼᾨᾩᾬᾭᾪᾫᾮᾯ</string>
+	<key>α</key>
+	<string>ᾶἀἁἄἅἂἃἆἇᾳᾴᾲᾷᾀᾁᾄᾅᾂᾃᾆᾇ</string>
+	<key>ε</key>
+	<string>ἐἑἔἕἒἓ</string>
+	<key>η</key>
+	<string>ῆἠἡἤἥἢἣἦἧῄῂῇᾐᾑᾔᾕᾒᾓᾖᾗῃ</string>
+	<key>ι</key>
+	<string>ῖἰἱἴἵἲἳἶἷ</string>
+	<key>ο</key>
+	<string>ὀὁὄὅὂὃ</string>
+	<key>υ</key>
+	<string>ῦὐὑὔὕὒὓὖὗ</string>
+	<key>ω</key>
+	<string>ῶὠὡὤὥὢὣὦὧῳῴῲῷᾠᾡᾤᾥᾢᾣᾦᾧ</string>
+</dict>
+</plist>

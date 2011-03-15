@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ProVoc' target in the 'ProVoc' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

@@ -1,0 +1,100 @@
+{
+    IBClasses = (
+        {CLASS = DebugView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSImage; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = ProVocBackTranslationPanel; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }, 
+        {CLASS = ProVocColoredWindowView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {
+            ACTIONS = {displayFullImage = id; }; 
+            CLASS = ProVocImageView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mDelegate = id; }; 
+            SUPERCLASS = NSImageView; 
+        }, 
+        {
+            CLASS = ProVocMCQView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mDelegate = id; mTarget = id; }; 
+            SUPERCLASS = NSControl; 
+        }, 
+        {
+            ACTIONS = {fullScreen = id; }; 
+            CLASS = ProVocMovieView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = QTMovieView; 
+        }, 
+        {
+            ACTIONS = {fullScreen = id; play = id; }; 
+            CLASS = ProVocMovieViewContainer; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mMovieView = id; mTester = id; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {CLASS = ProVocResultView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {
+            CLASS = ProVocSolutionWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mDelegate = id; }; 
+            SUPERCLASS = NSWindow; 
+        }, 
+        {
+            CLASS = ProVocTestPanel; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mTester = ProVocTester; }; 
+            SUPERCLASS = NSPanel; 
+        }, 
+        {CLASS = ProVocTestWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {
+            ACTIONS = {
+                acceptAnswer = id; 
+                cancelTestPanel = id; 
+                giveAnswerTestPanel = id; 
+                pauseTestPanel = id; 
+                playAnswerAudio = id; 
+                playQuestionAudio = id; 
+                retryResultPanel = id; 
+                terminateResultPanel = id; 
+                verifyTestPanel = id; 
+            }; 
+            CLASS = ProVocTester; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                mAnswerTextField = NSTextField; 
+                mLabelPopUp1 = NSPopUpButton; 
+                mLabelPopUp2 = NSPopUpButton; 
+                mLabelPopUp3 = NSPopUpButton; 
+                mLastMovie = id; 
+                mMCQSplitView = NSSplitView; 
+                mMCQTestPanel = NSPanel; 
+                mMCQView = ProVocMCQView; 
+                mMoreResultParameters = NSView; 
+                mNotePanel = NSPanel; 
+                mResultPanel = NSPanel; 
+                mResultView = ProVocResultView; 
+                mRetryButton = NSButton; 
+                mSplitView = NSSplitView; 
+                mTerminateButton = NSButton; 
+                mTestPanel = NSPanel; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            CLASS = ProVocTesterImageView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = ProVocImageView; 
+        }, 
+        {
+            CLASS = ProVocTesterMediaView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mLeftView = NSView; mRightView = NSView; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {
+            CLASS = ProVocTesterMovieView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = ProVocMovieView; 
+        }
+    ); 
+    IBVersion = 1; 
+}

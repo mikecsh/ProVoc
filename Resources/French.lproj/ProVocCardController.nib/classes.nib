@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {confirm = id; formatDidChange = id; sizeUnitDidChange = id; }; 
+            CLASS = ProVocCardController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mPreview = ProVocCardPreview; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {update = id; }; 
+            CLASS = ProVocCardPreview; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSView; 
+        }
+    ); 
+    IBVersion = 1; 
+}

@@ -1,0 +1,4 @@
+NSHumanReadableCopyright = "Copyright 2006 Arizona Software.";
+AMName = "Get Contents of ProVoc Document";
+AMDSummary = "This action retrieves the text from the frontmost ProVoc document and passes it to the next action.";
+AMDRequires = "ProVoc running and a vocabulary document open.";

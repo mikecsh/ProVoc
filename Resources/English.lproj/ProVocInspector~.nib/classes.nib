@@ -1,0 +1,73 @@
+{
+    IBClasses = (
+        {CLASS = ARInspector; LANGUAGE = ObjC; SUPERCLASS = NSWindowController; }, 
+        {CLASS = ARInspectorPanel; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSApplication; LANGUAGE = ObjC; SUPERCLASS = NSResponder; }, 
+        {
+            CLASS = ProVocActionPopUpButton; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSPopUpButton; 
+        }, 
+        {
+            CLASS = ProVocDropView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mInspector = ProVocInspector; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {CLASS = ProVocImageDropView; LANGUAGE = ObjC; SUPERCLASS = ProVocDropView; }, 
+        {
+            CLASS = ProVocImageView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mDelegate = id; }; 
+            SUPERCLASS = NSImageView; 
+        }, 
+        {
+            ACTIONS = {
+                exportImage = id; 
+                exportMovie = id; 
+                exportSourceAudio = id; 
+                exportTargetAudio = id; 
+                importImage = id; 
+                importMovie = id; 
+                importSourceAudio = id; 
+                importTargetAudio = id; 
+                playSourceAudio = id; 
+                playTargetAudio = id; 
+                recordImage = id; 
+                recordMovie = id; 
+                recordSourceAudio = id; 
+                recordTargetAudio = id; 
+                removeImage = id; 
+                removeMovie = id; 
+                removeSourceAudio = id; 
+                removeTargetAudio = id; 
+            }; 
+            CLASS = ProVocInspector; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                mAudioView = NSView; 
+                mImageView = NSView; 
+                mMovieView = NSView; 
+                mTextView = NSView; 
+                mWordImageView = ProVocImageView; 
+                mWordMovieView = ProVocMovieView; 
+            }; 
+            SUPERCLASS = ARInspector; 
+        }, 
+        {
+            CLASS = ProVocInspectorPanel; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = ARInspectorPanel; 
+        }, 
+        {CLASS = ProVocMovieDropView; LANGUAGE = ObjC; SUPERCLASS = ProVocDropView; }, 
+        {CLASS = ProVocMovieView; LANGUAGE = ObjC; SUPERCLASS = QTMovieView; }, 
+        {
+            CLASS = ProVocSoundDropView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mInspector = ProVocInspector; }; 
+            SUPERCLASS = NSView; 
+        }
+    ); 
+    IBVersion = 1; 
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Primer Contacto</string>
+		<key>Parameters</key>
+		<dict>
+			<key>initialSlideshow</key>
+			<true/>
+			<key>numberOfRetries</key>
+			<integer>1</integer>
+			<key>showBacktranslation</key>
+			<false/>
+			<key>testDirection</key>
+			<integer>0</integer>
+			<key>testMCQ</key>
+			<true/>
+		</dict>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Prueba Escrita</string>
+		<key>Parameters</key>
+		<dict>
+			<key>initialSlideshow</key>
+			<false/>
+			<key>numberOfRetries</key>
+			<integer>2</integer>
+			<key>showBacktranslation</key>
+			<true/>
+			<key>testDirection</key>
+			<integer>1</integer>
+			<key>testMCQ</key>
+			<false/>
+		</dict>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Prueba Rápida</string>
+		<key>Parameters</key>
+		<dict>
+			<key>initialSlideshow</key>
+			<false/>
+			<key>lateComments</key>
+			<integer>1</integer>
+			<key>numberOfRetries</key>
+			<integer>1</integer>
+			<key>showBacktranslation</key>
+			<false/>
+			<key>testDirection</key>
+			<integer>2</integer>
+			<key>testKind</key>
+			<integer>1</integer>
+			<key>testMCQ</key>
+			<true/>
+			<key>testMCQNumber</key>
+			<integer>3</integer>
+			<key>timer</key>
+			<integer>2</integer>
+			<key>timerDuration</key>
+			<integer>120</integer>
+		</dict>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Revisión</string>
+		<key>Parameters</key>
+		<dict>
+			<key>initialSlideshow</key>
+			<false/>
+			<key>numberOfRetries</key>
+			<integer>2</integer>
+			<key>showBacktranslation</key>
+			<false/>
+			<key>testDirection</key>
+			<integer>3</integer>
+			<key>testMCQ</key>
+			<true/>
+			<key>testMCQNumber</key>
+			<integer>3</integer>
+			<key>testWordsToReview</key>
+			<true/>
+		</dict>
+	</dict>
+</array>
+</plist>

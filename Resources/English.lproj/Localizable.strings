@@ -1,0 +1,323 @@
+"No word" = "No word";
+"%i word" = "%i word";
+"%i words" = "%i words";
+"%i of %@" = "%i of %@";
+"Cancel" = "Cancel";
+"Enter the name of the new page:" = "Enter the name of the new lesson:";
+"Enter the name of the new chapter:" = "Enter the name of the new chapter:";
+"Remove Page Title (Page Name: %@)" = "Remove Lesson “%@”?";
+"Remove Chapter Title (Chapter Name: %@)" = "Remove whole “%@”?";
+"Remove Multiple Pages Title" = "Remove Selected Lessons?";
+"New language" = "New language";
+"More Language Item" = "More…";
+"Page Name %i" = "Lesson %i";
+"Chapter Name %i" = "Chapter %i";
+"Imported Lesson Default Name" = "Imported Words";
+"%i page selected" = "%i lesson selected";
+"%i pages selected" = "%i lessons selected";
+"%i word to test" = "%i word to train";
+"%i of %i word to test" = "%i of %i word to train";
+"%i words to test" = "%i words to train";
+"%i of %i words to test" = "%i of %i words to train";
+"pages: %@ and words: %@" = "%@, %@";
+"Language PopUp Item Format (%@)" = "%@:";
+"Submit Document" = "Submit Document…";
+"Submit %@" = "Submit “%@”…";
+"Submit Modified Title" = "Modified Document";
+"Submit Modified Message" = "You should save your document before submitting it.";
+"Submit Unsaved Title" = "Unsaved Document";
+"Submit Unsaved Message" = "You should first save your document before submitting it.";
+"Submit Resaved Title" = "Old Document Format";
+"Submit Resaved Message" = "The document needs first to be re-saved in the new format before being submitted.";
+"Submit Save Button" = "Save";
+"Submit Cancel Button" = "Cancel";
+"Questions in Language %@. Answers in Language %@." = "Questions in %@.
+Answers in %@.";
+
+
+
+"Display with %@" = "Display with %@";
+"Translation Caption" = "What is the translation of:";
+
+"Lowercase language in sentence" = "0";
+"Questions %i%% in Language %@, %i%% in Language %@." = "Questions %i%% in %@, %i%% in %@.";
+"Questions both in Language %@ and in Language %@." = "Questions and answers both in %@ and in %@.";
+"No Word To Submit Title" = "Empty Document";
+"No Word To Submit Message" = "This document contains no word. Enter some words or sentences with their respective translation in the “Editing” section.";
+"No Word To Test Empty Document Alert Title" = "Empty Document";
+"No Word To Test Empty Document Alert Message" = "This document contains no word. Enter some words or sentences with their respective translation in the “Editing” section. Alternatively, you can download existing vocabulary.";
+"No Word To Test Empty Document OK Button" = "OK";
+"No Word To Test Empty Document Download Button" = "Download…";
+"No Word To Test Empty Document Help Button" = "Help";
+"No Word To Test Alert Title" = "No word to train";
+"No Word To Test Alert Message" = "There is no word to train. Select another lesson, or modify the option “Train only”.";
+"No Word For Slideshow Alert Title" = "No word to display";
+"No Word For Slideshow Alert Message" = "There is no word to display in the selected lesson(s). Select another lesson containing some words and try again.";
+"Print Page Format %i of %i" = "%i / %i";
+"Verify Button Title" = "Verify";
+"Confirm Button Title" = "OK";
+"Show Question Button Title" = "Display";
+"Show Answers Button Title" = "Display";
+"Start Test Button Title" = "Start Training";
+"Resume Test Button Title" = "Resume Training";
+"Default String Encoding Menu Title" = "Automatic";
+"Synonym Separator Comment String (%@)" = "Use “%@” to separate synonyms.";
+"Comment String Separator" = " ";
+"Comment Separator Comment String (%@)" = "Use “%@” to append comments to a word.";
+"No Doubles Found Title" = "No Doubles";
+"No Doubles Found Message" = "There are no double entries in the selected lessons.";
+"Finding Doubles Action Title" = "Finding Double Entries…";
+"None Label Title" = "No Label";
+"Flagged Words Title" = "Marked";
+"Flagged Word Title" = "Marked";
+"General Preference Pane Label" = "General";
+"Training Preference Pane Label" = "Training";
+"Language Preference Pane Label" = "Languages";
+"Font Preference Pane Label" = "Fonts";
+"Label Preference Pane Label" = "Labels";
+"iPod Preference Pane Label" = "iPod";
+"Update Preference Pane Label" = "Updates";
+
+"Label 1 Default Title" = "Important";
+"Label 2 Default Title" = "Uncertain";
+"Label 3 Default Title" = "Ambiguous";
+"Label 4 Default Title" = "Noun";
+"Label 5 Default Title" = "Adjective";
+"Label 6 Default Title" = "Verb";
+"Label 7 Default Title" = "Adverb";
+"Label 8 Default Title" = "Expression";
+"Label 9 Default Title" = "Other";
+"Flag Selected Words" = "Mark Selected Words";
+"Unflag Selected Words" = "Unmark Selected Words";
+
+"Default Preset Name" = "Default";
+"New Preset Name %i" = "Custom %i";
+
+"Copy of %@" = "%@ Copy";
+"Copy of %@ #%i" = "%@ Copy %i";
+
+"Reveal Words in Pages Menu Item Title" = "Reveal Selected Words in Lessons";
+"Swap %@ and %@" = "Swap %@ and %@";
+"Comment Column Identifier" = "Comments";
+"Abort Button Title" = "Abort";
+"Finish Button Title" = "Finish";
+"Pause Button Title" = "Pause";
+"Edit Button Title" = "Edit";
+"Give Answer Button Title" = "Give Answer";
+"Give Hint Button Title" = "Give Hint";
+
+"No iPod Alert Title" = "No iPod Detected";
+"No iPod Alert Message" = "Connect your iPod to the computer and try again.
+
+Note: The iPod must be usable as a disk. If no iPod icon appears on the desktop when the iPod is conntected, open iTunes, select Preferences > iPod > Music and select the “Enable disk use” checkbox.";
+"Invalid iPod Alert Title" = "Unsupported iPod";
+"Invalid iPod Alert Message (%@)" = "This feature requires the note reader which is not available on this iPod.";
+"iPod Pages Sent with Success Title" = "Lessons successfully sent to iPod";
+"iPod Pages Sent with Success Message" = "To start repeating your vocabulary with your iPod, select Extras > Notes.";
+"iPod Pages Sent Error Title" = "Could not send lessons to iPod";
+"iPod Pages Sent Error Message (%@)" = "An error (%@) occurred while sending the lessons to iPod.";
+"Too Many iPod Notes Title" = "Maximum number of notes on iPod exceeded";
+"Too Many iPod Notes Message (%i)" = "The number of notes on the connected iPod (%i) exceeds the maximum number of notes supported by the iPod Note Reader (1000). Some vocabulary will not be displayed correctly on the iPod.
+
+Try deleting some lessons from the Preferences dialog, or uncheck the option “Create separate notes for solutions”.";
+
+
+
+
+
+"Too Many iPod Notes Default Button" = "Discard";
+"Too Many iPod Notes Alternate Button" = "Open Preferences";
+"iPod Page Content Suffix (%i)" = " (%i)";
+"Delete Selected iPod Content Title" = "Delete selected lessons from iPod?";
+"Delete Selected iPod Content Message" = "Do you really want to remove the selected lessons from the connected iPod? This action cannot be undone.";
+"Delete Selected iPod Content Delete Button" = "Delete";
+"Delete Selected iPod Content Cancel Button" = "Cancel";
+"Delete All iPod Notes Title" = "Delete all notes from iPod?";
+"Delete All iPod Notes Message" = "Do you really want to remove all the notes from the connected iPod? This action cannot be undone.";
+"Delete All iPod Notes Delete Button" = "Delete All";
+"Delete All iPod Notes Cancel Button" = "Cancel";
+"iPod Eject Impossible Title" = "The iPod is in use and could not be ejected.";
+"iPod Eject Impossible Message" = "Try quitting applications and try again.";
+
+"iPod Question %@ of %@" = "%@ of %@";
+"iPod Link Next" = "Next";
+"iPod Title Correct" = "Correct!";
+"iPod Title Wrong" = "Wrong";
+"iPod Link Try Again" = "Try again";
+"iPod Link Show Answer" = "Show answer";
+"iPod Title Finished" = "Finished";
+"iPod Link Resume ProVoc" = "Back to ProVoc vocabulary list";
+"iPod Text Finished (<=3G)" = "To return to the iPod main menu, keep Menu and Play/Pause pressed.";
+"iPod Text Finished (<5G)" = "To return to the iPod main menu, keep Menu and Select pressed.";
+"iPod Text Finished (5G 1.0)" = "To return to the iPod main menu, keep Menu and Select pressed (see ProVoc Help for more information).";
+"iPod Text Finished (>5G 1.1)" = "To return to the iPod main menu, keep Menu pressed.";
+"iPod Link Questions" = "Questions";
+"iPod Link Audio Listen" = "Listen";
+
+"iPod ProVoc Copy Playlist Title" = "Audio not copied onto iPod";
+"iPod ProVoc Copy Playlist Message" = "The audio files could not be copied onto the iPod. Make sure that the iTunes playlist “ProVoc” is synchronized with your iPod.";
+
+"Start Speaking" = "Start Speaking";
+"Stop Speaking" = "Stop Speaking";
+
+"Preset Default Name %i" = "Untitled %i";
+
+"Result Correct Title" = "Correct";
+"Result Wrong Title" = "Wrong";
+"Result Wrong Once Title" = "Wrong Once";
+"Result Wrong Twice Title" = "Wrong Twice";
+"Result Wrong 3+ Title" = "Wrong More
+Than Twice";
+
+
+"Result Ignored Title" = "Not Tested";
+
+
+"Correct Legend" = "Correct";
+"Wrong Once Legend" = "Wrong Once";
+"Wrong Twice Legend" = "Wrong Twice";
+"Wrong 3+ Legend" = "Wrong More Than Twice";
+
+"%i choices. " = "%i choices. ";
+"%i delayed choices. " = "%i delayed choices. ";
+"%i choices with images. " = "%i choices with images. ";
+"%i delayed choices with images. " = "%i delayed choices with images. ";
+"Normal mode. " = "";
+"Continuous mode. " = "Continuous. ";
+"Until learned. " = "Until learned. ";
+"%i attempts. " = "%i attempts. ";
+"%i attempt. " = "%i attempt. ";
+"Comments displayed with question. " = "Comments always displayed. ";
+"Comments displayed after answer. " = "Comments displayed with solution. ";
+"Comments displayed with %@. " = "Comments displayed with %@. ";
+"Comments not displayed. " = "Comments never displayed. ";
+"Timer duration: %@. " = "Duration: %@. ";
+"Test only:" = "Train only:";
+"No Word To Send Alert Title" = "No word to send";
+"No Word To Send Alert Message" = "There is no word to send. Select another lesson, or modify the option “Train only”.";
+
+"Today Test Label Format" = "Today, %H:%M";
+"Yesterday Test Label Format" = "Yesterday, %H:%M";
+"%i Days Ago Test Label Format" = "%%A %%b %%e, %%H:%%M";
+"Today Day Label Format" = "Today";
+"Yesterday Day Label Format" = "Yesterday";
+"%i Days Ago Day Label Format" = "%%A %%b %%e";
+"This Week Week Label Format" = "This week";
+"Last Week Week Label Format" = "Last week";
+"%i Weeks Ago Week Label Format" = "%i weeks ago";
+"This Month Month Label Format" = "This month";
+"Last Month Month Label Format" = "Last month";
+"%i Months Ago Month Label Format" = "%%B %%Y";
+
+"Open Old Format Alert Title" = "Document in Old Format";
+"Open Old Format Alert Message" = "This document was created using an older version of ProVoc. To take advantage of the new features, the document will have to be saved as a different file, using a new file format. It is suggested to first save this document before modifying it.";
+"Save As New Format Alert Title" = "Save Document in New Format";
+"Save As New Format Alert Message" = "This document was created using an older version of ProVoc. To take advantage of the new features, the document has to be saved as a different file, using a new file format. The previous version of this document will be kept untouched.";
+
+"Text Inspector View" = "Text";
+"Image Inspector View" = "Image";
+"Audio Inspector View" = "Audio";
+"Movie Inspector View" = "Movie";
+
+"Export Audio Panel Title" = "Export Image";
+"Export Audio Panel Prompt" = "Export";
+"No Name Media Placeholder" = "(Untitled)";
+
+"Record Sound for Language %@" = "Record Audio for %@";
+"No Selection Record Audio Title" = "Select one word";
+"No Selection Record Audio Message" = "Select the word for which you want to record audio, and try again.";
+
+"Export Image Panel Title" = "Export Image";
+"Export Image Panel Prompt" = "Export";
+
+"Export Movie Panel Title" = "Export Movie";
+"Export Movie Panel Prompt" = "Export";
+
+"Transfer Error Title" = "Audio Not Transferred";
+"Transfer Error Format (%@, %@)" = "An error occurred while trying to transfer the audio files on the iPod. [%@ ; %@]";
+"Export Audio Panel Title" = "Export Audio";
+"Export Audio Panel Prompt" = "Export";
+
+"Image Drag Destination Placeholder" = "Drop or Paste Image Here";
+"Movie Drag Destination Placeholder" = "Drop Movie Here";
+"Movie Play Fullscreen Item Title" = "Play in Full Size";
+
+"Homepage URL" = "http://www.arizona-software.ch/";
+"Bug Report URL" = "http://www.arizona-software.ch/provoc/feedback";
+"Download Vocabulary URL (v=%@)" = "http://www.arizona-software.ch/provoc/vocabulary/?from=app&lang=en&version=%@";
+"Discover Features URL (v=%@)" = "http://www.arizona-software.ch/provoc/features/?from=app&lang=en&version=%@";
+
+"Source Language Caption" = "Source:";
+"Target Language Caption" = "Target:";
+
+"Compressing" = "Compressing document…";
+"Uploading" = "Uploading document…";
+"Confirming" = "Waiting for confirmation…";
+
+"Submission Connection Error Title" = "Cannot Submit Document";
+"Submission Connection Error Message" = "The submission server could not be found. Make sure you are connected to the Internet and your network is configured properly, then try again.";
+"Submission Error Title" = "Unexpected Error";
+"Submission Error Message (%@)" = "An unexpected error occured during the submission (%@).";
+
+"Translation Service Invalid Pasteboard Error" = "Could not translate";
+"Translation Service No Translation Error" = "No translation found";
+
+"Timer Did Elapse Title" = "Time is over!";
+"Timer Did Elapse Message" = "It's time now to finish your training.";
+"Timer Did Elapse Finish Button" = "Finish";
+"Timer Did Elapse 1' Button" = "Allow one more minute";
+"Timer Did Elapse Discard Button" = "Discard";
+
+"Default Voice" = "Default";
+
+"Install Widget Check URL" = "http://www.arizona-software.ch/provoc/widget/check.php?from=app&action=check";
+"Install Widget Title" = "Download ProVoc Dashboard Widget";
+"Install Widget Message" = "ProVoc now offers a companion Dashboard widget. Would you like to download it now?";
+"Install Widget Download Button" = "Download";
+"Install Widget Later Button" = "Remind me later";
+"Install Widget Ignore Button" = "Ignore";
+"Widget Download URL" = "http://www.arizona-software.ch/provoc/widget/?from=app&action=download";
+
+"Font Set Button Title" = "Set…";
+"Font Reset Button Title" = "Default";
+
+"Auto Size Column" = "Auto Size Column";
+"Auto Size All Columns" = "Auto Size All Columns";
+"Delete Column Contents" = "Delete Column Contents";
+
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+
+"Mark Column Name" = "Label";
+"%i Days" = "%i days";
+"%i Day" = "%i day";
+"%i Weeks" = "%i weeks";
+"%i Week" = "%i week";
+"%i Months" = "%i months";
+"%i Month" = "%i month";
+"Older Than %@ Format" = "older than %@";
+
+"only words needed to be reviewed" = "words to review";
+"%i random words" = "%i random words";
+"%i most difficult words" = "%i most difficult words";
+"Limit Both %@ and %@" = "%@, %@";
+
+"Choose Background" = "Choose…";
+"Custom Background Open Panel Title" = "Animated Background";
+"Custom Background Open Panel Message" = "Choose a Quartz composition to be used as background:";
+"Custom Background Open Panel Prompt" = "Select";
+
+"Now" = "Now";
+"In one min." = "In one min.";
+"In %i min." = "In %i min.";
+"In one hour" = "In one hour";
+"In %i hours" = "In %i hours";
+"In one day" = "In one day";
+"In %i days" = "In %i days";
+"In one week" = "In one week";
+"In %i weeks" = "In %i weeks";
+
+"Leopard Only Feature Title" = "This version of ProVoc does not offer sound recording on the current version of the system";
+"Leopard Only Feature Message" = "This version of ProVoc is optimized for Mac OS X 10.5 Leopard, and does not offer sound recording for earlier versions of the system.";
+"Leopard Only Feature Download Button" = "Download ProVoc for the current system";
+"Leopard Only Feature Download URL" = "http://www.arizona-software.ch/provoc/download/?target=tiger";

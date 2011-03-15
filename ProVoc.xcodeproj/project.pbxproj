@@ -1,0 +1,2209 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		A7B1292D0A1D6A0C003B68B0 /* Aggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A7B1294D0A1D6A42003B68B0 /* Build configuration list for PBXAggregateTarget "Aggregate" */;
+			buildPhases = (
+			);
+			dependencies = (
+				A7B129310A1D6A12003B68B0 /* PBXTargetDependency */,
+				A7B129330A1D6A13003B68B0 /* PBXTargetDependency */,
+				A7B129350A1D6A15003B68B0 /* PBXTargetDependency */,
+				A7B1292F0A1D6A0F003B68B0 /* PBXTargetDependency */,
+			);
+			name = Aggregate;
+			productName = Aggregate;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXAppleScriptBuildPhase section */
+		A73068410A1D940900B7A808 /* AppleScript */ = {
+			isa = PBXAppleScriptBuildPhase;
+			buildActionMask = 2147483647;
+			contextName = "";
+			files = (
+				A73068450A1D941000B7A808 /* main.applescript in AppleScript */,
+			);
+			isSharedContext = 0;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A73069070A1E114400B7A808 /* AppleScript */ = {
+			isa = PBXAppleScriptBuildPhase;
+			buildActionMask = 2147483647;
+			contextName = "";
+			files = (
+				A730690B0A1E114B00B7A808 /* main.applescript in AppleScript */,
+			);
+			isSharedContext = 0;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A73069310A1E11E200B7A808 /* AppleScript */ = {
+			isa = PBXAppleScriptBuildPhase;
+			buildActionMask = 2147483647;
+			contextName = "";
+			files = (
+				A73069330A1E11E600B7A808 /* main.applescript in AppleScript */,
+			);
+			isSharedContext = 0;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXAppleScriptBuildPhase section */
+
+/* Begin PBXBuildFile section */
+		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		A711DEB50A1E12D700EE7423 /* SpeechSynthesizerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A711DEB30A1E12D600EE7423 /* SpeechSynthesizerExtensions.m */; };
+		A719F74C0A1DD7880039859E /* Add Files to Vocabulary.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7B125A70A1D50BD003B68B0 /* Add Files to Vocabulary.action */; };
+		A719F74D0A1DD7880039859E /* Add Text to Vocabulary.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7B126650A1D5700003B68B0 /* Add Text to Vocabulary.action */; };
+		A719F74E0A1DD7880039859E /* Get Contents of ProVoc Document.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7B128530A1D6366003B68B0 /* Get Contents of ProVoc Document.action */; };
+		A7227D460AD56E8F00DF738C /* TrainingPreferences.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7227D450AD56E8F00DF738C /* TrainingPreferences.tif */; };
+		A7227D4C0AD56F9700DF738C /* LabelPreferences.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7227D4B0AD56F9700DF738C /* LabelPreferences.tif */; };
+		A72856D40A15FF7A0082642D /* StringExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856B90A15FF7A0082642D /* StringExtensions.m */; };
+		A72856D50A15FF7A0082642D /* ScannerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856BB0A15FF7A0082642D /* ScannerExtensions.m */; };
+		A72856D60A15FF7A0082642D /* TableViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856BD0A15FF7A0082642D /* TableViewExtensions.m */; };
+		A72856D70A15FF7A0082642D /* ArrayExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856BF0A15FF7A0082642D /* ArrayExtensions.m */; };
+		A72856D80A15FF7A0082642D /* BezierPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856C10A15FF7A0082642D /* BezierPathExtensions.m */; };
+		A72856D90A15FF7A0082642D /* TransformerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856C30A15FF7A0082642D /* TransformerExtensions.m */; };
+		A72856DA0A15FF7A0082642D /* WindowExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856C50A15FF7A0082642D /* WindowExtensions.m */; };
+		A72856DB0A15FF7A0082642D /* AppleScriptExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856C70A15FF7A0082642D /* AppleScriptExtensions.m */; };
+		A72856DC0A15FF7A0082642D /* ImageExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856C90A15FF7A0082642D /* ImageExtensions.m */; };
+		A72856DD0A15FF7A0082642D /* TextFieldExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856CB0A15FF7A0082642D /* TextFieldExtensions.m */; };
+		A72856DE0A15FF7A0082642D /* MenuExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856CD0A15FF7A0082642D /* MenuExtensions.m */; };
+		A72856DF0A15FF7A0082642D /* SplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856CF0A15FF7A0082642D /* SplitViewExtensions.m */; };
+		A72856E00A15FF7A0082642D /* DateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856D10A15FF7A0082642D /* DateExtensions.m */; };
+		A72856E10A15FF7A0082642D /* ArchiverExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856D30A15FF7A0082642D /* ArchiverExtensions.m */; };
+		A72856F20A15FF880082642D /* ProVocWord.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856E30A15FF880082642D /* ProVocWord.m */; };
+		A72856F30A15FF880082642D /* ProVocPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856E50A15FF880082642D /* ProVocPage.m */; };
+		A72856F40A15FF880082642D /* ProVocChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856E70A15FF880082642D /* ProVocChapter.m */; };
+		A72856F50A15FF880082642D /* ProVocData.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856E90A15FF880082642D /* ProVocData.m */; };
+		A72856F60A15FF880082642D /* ProVocData+Undo.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856EB0A15FF880082642D /* ProVocData+Undo.m */; };
+		A72856F70A15FF880082642D /* ProVocPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856ED0A15FF880082642D /* ProVocPreset.m */; };
+		A72856F80A15FF880082642D /* ProVocHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856EF0A15FF880082642D /* ProVocHistory.m */; };
+		A72856F90A15FF880082642D /* iPodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856F10A15FF880082642D /* iPodManager.m */; };
+		A728571A0A15FFA20082642D /* ProVocCardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856FD0A15FFA20082642D /* ProVocCardsView.m */; };
+		A728571B0A15FFA20082642D /* ProVocPrintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856FF0A15FFA20082642D /* ProVocPrintView.m */; };
+		A728571C0A15FFA20082642D /* ProVocTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857010A15FFA20082642D /* ProVocTableView.m */; };
+		A728571D0A15FFA20082642D /* ProVocTableColumns.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857030A15FFA20082642D /* ProVocTableColumns.m */; };
+		A728571E0A15FFA20082642D /* ExtendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857050A15FFA20082642D /* ExtendedCell.m */; };
+		A728571F0A15FFA20082642D /* ProVocTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857070A15FFA20082642D /* ProVocTextField.m */; };
+		A72857200A15FFA20082642D /* ProVocMCQView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857090A15FFA20082642D /* ProVocMCQView.m */; };
+		A72857210A15FFA20082642D /* ProVocFontNameField.m in Sources */ = {isa = PBXBuildFile; fileRef = A728570B0A15FFA20082642D /* ProVocFontNameField.m */; };
+		A72857220A15FFA20082642D /* ProVocActionPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A728570D0A15FFA20082642D /* ProVocActionPopUpButton.m */; };
+		A72857230A15FFA20082642D /* ProVocResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = A728570F0A15FFA20082642D /* ProVocResultView.m */; };
+		A72857240A15FFA20082642D /* ProVocHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857110A15FFA20082642D /* ProVocHistoryView.m */; };
+		A72857250A15FFA20082642D /* ProVocColoredWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857130A15FFA20082642D /* ProVocColoredWindowView.m */; };
+		A72857260A15FFA20082642D /* ParameterBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857150A15FFA20082642D /* ParameterBox.m */; };
+		A72857270A15FFA20082642D /* ProVocImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857170A15FFA20082642D /* ProVocImageView.m */; };
+		A72857280A15FFA20082642D /* ProVocMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857190A15FFA20082642D /* ProVocMovieView.m */; };
+		A72857570A15FFB50082642D /* ProVocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A728572A0A15FFB50082642D /* ProVocDocument.m */; };
+		A72857580A15FFB50082642D /* ProVocDocument+Lists.m in Sources */ = {isa = PBXBuildFile; fileRef = A728572C0A15FFB50082642D /* ProVocDocument+Lists.m */; };
+		A72857590A15FFB50082642D /* ProVocDocument+Export.m in Sources */ = {isa = PBXBuildFile; fileRef = A728572E0A15FFB50082642D /* ProVocDocument+Export.m */; };
+		A728575A0A15FFB50082642D /* ProVocDocument+Presets.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857300A15FFB50082642D /* ProVocDocument+Presets.m */; };
+		A728575B0A15FFB50082642D /* ProVocDocument+Slideshow.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857320A15FFB50082642D /* ProVocDocument+Slideshow.m */; };
+		A728575C0A15FFB50082642D /* ARInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857340A15FFB50082642D /* ARInspector.m */; };
+		A728575D0A15FFB50082642D /* ProVocInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857360A15FFB50082642D /* ProVocInspector.m */; };
+		A728575E0A15FFB50082642D /* ProVocApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857380A15FFB50082642D /* ProVocApplication.m */; };
+		A728575F0A15FFB50082642D /* ProVocAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A728573A0A15FFB50082642D /* ProVocAppDelegate.m */; };
+		A72857600A15FFB50082642D /* ProVocTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A728573C0A15FFB50082642D /* ProVocTester.m */; };
+		A72857610A15FFB50082642D /* ProVocMCQTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A728573E0A15FFB50082642D /* ProVocMCQTester.m */; };
+		A72857620A15FFB50082642D /* ProVocSilentTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857400A15FFB50082642D /* ProVocSilentTester.m */; };
+		A72857630A15FFB50082642D /* iPodController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857420A15FFB50082642D /* iPodController.m */; };
+		A72857640A15FFB50082642D /* ProVocPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857440A15FFB50082642D /* ProVocPreferences.m */; };
+		A72857650A15FFB50082642D /* ProVocActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857460A15FFB50082642D /* ProVocActionController.m */; };
+		A72857660A15FFB50082642D /* ARAboutDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857480A15FFB50082642D /* ARAboutDialog.m */; };
+		A72857670A15FFB50082642D /* ProVocBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A728574A0A15FFB50082642D /* ProVocBackground.m */; };
+		A72857680A15FFB50082642D /* ProVocStartingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A728574C0A15FFB50082642D /* ProVocStartingPoint.m */; };
+		A72857690A15FFB50082642D /* FTPUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = A728574E0A15FFB50082642D /* FTPUploader.m */; };
+		A728576A0A15FFB50082642D /* ZIPCompresser.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857500A15FFB50082642D /* ZIPCompresser.m */; };
+		A728576B0A15FFB50082642D /* ProVocSubmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857520A15FFB50082642D /* ProVocSubmitter.m */; };
+		A728576C0A15FFB50082642D /* ProVocCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857540A15FFB50082642D /* ProVocCardController.m */; };
+		A728576D0A15FFB50082642D /* ProVocServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857560A15FFB50082642D /* ProVocServiceProvider.m */; };
+		A72857D50A15FFF40082642D /* Languages.xml in Resources */ = {isa = PBXBuildFile; fileRef = A72857D10A15FFF40082642D /* Languages.xml */; };
+		A72857D60A15FFF40082642D /* Accents.xml in Resources */ = {isa = PBXBuildFile; fileRef = A72857D20A15FFF40082642D /* Accents.xml */; };
+		A72857D70A15FFF40082642D /* iPodLinxCharacters.xml in Resources */ = {isa = PBXBuildFile; fileRef = A72857D30A15FFF40082642D /* iPodLinxCharacters.xml */; };
+		A72857D80A15FFF40082642D /* iPodNoteCharacters.xml in Resources */ = {isa = PBXBuildFile; fileRef = A72857D40A15FFF40082642D /* iPodNoteCharacters.xml */; };
+		A72857FA0A1600670082642D /* ARAbout.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857DC0A1600670082642D /* ARAbout.nib */; };
+		A72857FB0A1600670082642D /* ARLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A72857DE0A1600670082642D /* ARLocalizable.strings */; };
+		A72857FC0A1600670082642D /* iPodController.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857E00A1600670082642D /* iPodController.nib */; };
+		A72857FD0A1600670082642D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A72857E20A1600670082642D /* Localizable.strings */; };
+		A72857FE0A1600670082642D /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857E40A1600670082642D /* Preferences.nib */; };
+		A72857FF0A1600670082642D /* ProVocAction.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857E60A1600670082642D /* ProVocAction.nib */; };
+		A72858010A1600670082642D /* ProVocBackground.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857EA0A1600670082642D /* ProVocBackground.nib */; };
+		A72858080A1600670082642D /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = A72857F80A1600670082642D /* ServicesMenu.strings */; };
+		A72859970A1600E30082642D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A72859870A1600E30082642D /* Credits.rtf */; };
+		A72859980A1600E30082642D /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72859890A1600E30082642D /* MainMenu.nib */; };
+		A72859990A1600E30082642D /* ProVocCardController.nib in Resources */ = {isa = PBXBuildFile; fileRef = A728598B0A1600E30082642D /* ProVocCardController.nib */; };
+		A728599A0A1600E30082642D /* ProVocDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = A728598D0A1600E30082642D /* ProVocDocument.nib */; };
+		A728599B0A1600E30082642D /* ProVocInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = A728598F0A1600E30082642D /* ProVocInspector.nib */; };
+		A728599C0A1600E30082642D /* ProVocStartingPoint.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72859910A1600E30082642D /* ProVocStartingPoint.nib */; };
+		A728599D0A1600E30082642D /* ProVocSubmitter.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72859930A1600E30082642D /* ProVocSubmitter.nib */; };
+		A728599E0A1600E30082642D /* ProVocTester.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72859950A1600E30082642D /* ProVocTester.nib */; };
+		A72859E40A16010A0082642D /* ProVoc Help in Resources */ = {isa = PBXBuildFile; fileRef = A72859A30A16010A0082642D /* ProVoc Help */; };
+		A7285B7C0A1601510082642D /* ARCheckForUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */; };
+		A7285B800A16017B0082642D /* ARSequenceGrabber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */; };
+		A7285B920A1601AB0082642D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B8D0A1601AB0082642D /* AddressBook.framework */; };
+		A7285B930A1601AB0082642D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B8E0A1601AB0082642D /* Carbon.framework */; };
+		A7285B940A1601AB0082642D /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B8F0A1601AB0082642D /* QTKit.framework */; };
+		A7285B950A1601AB0082642D /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B900A1601AB0082642D /* Quartz.framework */; };
+		A7285B960A1601AB0082642D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B910A1601AB0082642D /* QuickTime.framework */; };
+		A7285E230A1603D00082642D /* action.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285DF50A1603D00082642D /* action.tiff */; };
+		A7285E240A1603D00082642D /* add.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285DF60A1603D00082642D /* add.tiff */; };
+		A7285E250A1603D00082642D /* album.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285DF70A1603D00082642D /* album.tiff */; };
+		A7285E260A1603D00082642D /* ARDisclosureArrowDown.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285DF80A1603D00082642D /* ARDisclosureArrowDown.tif */; };
+		A7285E270A1603D00082642D /* ARDisclosureArrowRight.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285DF90A1603D00082642D /* ARDisclosureArrowRight.tif */; };
+		A7285E280A1603D00082642D /* Both.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285DFA0A1603D00082642D /* Both.tif */; };
+		A7285E290A1603D00082642D /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285DFB0A1603D00082642D /* Camera.png */; };
+		A7285E2A0A1603D00082642D /* CameraPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285DFC0A1603D00082642D /* CameraPressed.png */; };
+		A7285E2B0A1603D00082642D /* Continuous.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285DFD0A1603D00082642D /* Continuous.tif */; };
+		A7285E2C0A1603D00082642D /* DownloadDocument.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285DFE0A1603D00082642D /* DownloadDocument.png */; };
+		A7285E2D0A1603D00082642D /* ejectipod.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285DFF0A1603D00082642D /* ejectipod.tif */; };
+		A7285E2E0A1603D00082642D /* flagged.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E000A1603D00082642D /* flagged.tiff */; };
+		A7285E2F0A1603D00082642D /* FontPreferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E010A1603D00082642D /* FontPreferences.tiff */; };
+		A7285E300A1603D00082642D /* Inspector.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E020A1603D00082642D /* Inspector.tiff */; };
+		A7285E310A1603D00082642D /* iPodPreferences.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E030A1603D00082642D /* iPodPreferences.tif */; };
+		A7285E320A1603D00082642D /* ipodsettings.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E040A1603D00082642D /* ipodsettings.tif */; };
+		A7285E340A1603D00082642D /* LanguagePreferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E060A1603D00082642D /* LanguagePreferences.tiff */; };
+		A7285E350A1603D00082642D /* markAsFlagged.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E070A1603D00082642D /* markAsFlagged.tiff */; };
+		A7285E360A1603D00082642D /* MCQ.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E080A1603D00082642D /* MCQ.tif */; };
+		A7285E370A1603D00082642D /* Mic.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E090A1603D00082642D /* Mic.png */; };
+		A7285E380A1603D00082642D /* MicPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E0A0A1603D00082642D /* MicPressed.png */; };
+		A7285E390A1603D00082642D /* NewDocument.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E0B0A1603D00082642D /* NewDocument.png */; };
+		A7285E3A0A1603D00082642D /* OpenDocument.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E0C0A1603D00082642D /* OpenDocument.png */; };
+		A7285E3B0A1603D00082642D /* page.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E0D0A1603D00082642D /* page.tif */; };
+		A7285E3C0A1603D00082642D /* Play.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E0E0A1603D00082642D /* Play.tiff */; };
+		A7285E3D0A1603D00082642D /* PlayDown.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E0F0A1603D00082642D /* PlayDown.tiff */; };
+		A7285E3E0A1603D00082642D /* Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E100A1603D00082642D /* Preferences.tiff */; };
+		A7285E3F0A1603D00082642D /* Question.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E110A1603D00082642D /* Question.tif */; };
+		A7285E400A1603D00082642D /* remove.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E120A1603D00082642D /* remove.tiff */; };
+		A7285E410A1603D00082642D /* send.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E130A1603D00082642D /* send.tif */; };
+		A7285E420A1603D00082642D /* settings.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E140A1603D00082642D /* settings.tif */; };
+		A7285E430A1603D00082642D /* SmallBlank.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E150A1603D00082642D /* SmallBlank.tif */; };
+		A7285E440A1603D00082642D /* SmallImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E160A1603D00082642D /* SmallImage.tif */; };
+		A7285E450A1603D00082642D /* SmallMovie.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E170A1603D00082642D /* SmallMovie.tif */; };
+		A7285E460A1603D00082642D /* SmallSpeaker.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E180A1603D00082642D /* SmallSpeaker.tif */; };
+		A7285E470A1603D00082642D /* SpeakerOff.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E190A1603D00082642D /* SpeakerOff.png */; };
+		A7285E480A1603D00082642D /* SpeakerOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E1A0A1603D00082642D /* SpeakerOn.png */; };
+		A7285E490A1603D00082642D /* stripe.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E1B0A1603D00082642D /* stripe.tiff */; };
+		A7285E4A0A1603D00082642D /* Theme.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E1C0A1603D00082642D /* Theme.tif */; };
+		A7285E4B0A1603D00082642D /* unmarkAsFlagged.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E1D0A1603D00082642D /* unmarkAsFlagged.tiff */; };
+		A7285E4C0A1603D00082642D /* UpdatePreferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E1E0A1603D00082642D /* UpdatePreferences.tiff */; };
+		A7285E4D0A1603D00082642D /* Version.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7285E1F0A1603D00082642D /* Version.tif */; };
+		A7285E4E0A1603D00082642D /* Video.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E200A1603D00082642D /* Video.png */; };
+		A7285E4F0A1603D00082642D /* VideoPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A7285E210A1603D00082642D /* VideoPressed.png */; };
+		A7285E500A1603D00082642D /* Warning.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7285E220A1603D00082642D /* Warning.tiff */; };
+		A7285E530A1604190082642D /* iPod.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A72857D90A1600000082642D /* iPod.scpt */; };
+		A73068450A1D941000B7A808 /* main.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = A73068270A1D938300B7A808 /* main.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
+		A730684A0A1D943500B7A808 /* Automator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B125FC0A1D559F003B68B0 /* Automator.framework */; };
+		A730684B0A1D943500B7A808 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		A730690B0A1E114B00B7A808 /* main.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = A73069040A1E112700B7A808 /* main.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
+		A73069330A1E11E600B7A808 /* main.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = A730692E0A1E11D100B7A808 /* main.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
+		A737D5FB0ADDA1760008C421 /* ProVocSlideshowControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = A737D5F90ADDA1760008C421 /* ProVocSlideshowControlView.m */; };
+		A75018250DED23D400A83E3A /* ProVoc.mdimporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = A750180D0DED23CE00A83E3A /* ProVoc.mdimporter */; };
+		A7572B1A0A187FCB00E4912F /* ProVocSpotlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7572B180A187FCB00E4912F /* ProVocSpotlighter.m */; };
+		A7572B230A1880AC00E4912F /* ProVocSpotlighter.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7572B210A1880AC00E4912F /* ProVocSpotlighter.nib */; };
+		A7572E6D0A18CB5100E4912F /* ProVocTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7572E6B0A18CB5100E4912F /* ProVocTimerView.m */; };
+		A7572EB80A18CD7D00E4912F /* ProVocTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7572EB60A18CD7D00E4912F /* ProVocTimer.m */; };
+		A7572EC10A18CE2700E4912F /* ProVocTimer.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7572EBF0A18CE2700E4912F /* ProVocTimer.nib */; };
+		A75734030A19FA9800E4912F /* Hourglass.png in Resources */ = {isa = PBXBuildFile; fileRef = A75734010A19FA9800E4912F /* Hourglass.png */; };
+		A75734040A19FA9800E4912F /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A75734020A19FA9800E4912F /* Clock.png */; };
+		A75734E40A1A0D2600E4912F /* BackgroundPlugIn.icns in Resources */ = {isa = PBXBuildFile; fileRef = A75734E30A1A0D2600E4912F /* BackgroundPlugIn.icns */; };
+		A757569A0A1D2D3F00F8F569 /* ProVoc.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = A75756990A1D2D3F00F8F569 /* ProVoc.scriptSuite */; };
+		A757569D0A1D2D4700F8F569 /* ProVoc.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = A757569B0A1D2D4700F8F569 /* ProVoc.scriptTerminology */; };
+		A75756B80A1D30CE00F8F569 /* ProVocAppleScriptSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = A75756B60A1D30CE00F8F569 /* ProVocAppleScriptSupport.m */; };
+		A760E69C0A24B4BA00C6128B /* DefaultPresets.xml in Resources */ = {isa = PBXBuildFile; fileRef = A760E69B0A24B4BA00C6128B /* DefaultPresets.xml */; };
+		A760EFBD0A279D1D00C6128B /* ProVocDocument+Columns.m in Sources */ = {isa = PBXBuildFile; fileRef = A760EFBB0A279D1D00C6128B /* ProVocDocument+Columns.m */; };
+		A760F1C60A288B9B00C6128B /* ProVocViewOptions.nib in Resources */ = {isa = PBXBuildFile; fileRef = A760F1C40A288B9B00C6128B /* ProVocViewOptions.nib */; };
+		A76349B50A16054E00054021 /* ProVoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = A76349B30A16054E00054021 /* ProVoc.icns */; };
+		A76349B60A16054E00054021 /* ProVocFile.icns in Resources */ = {isa = PBXBuildFile; fileRef = A76349B40A16054E00054021 /* ProVocFile.icns */; };
+		A76349D30A1605DA00054021 /* ARCheckForUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */; };
+		A76349D50A1605DA00054021 /* ARSequenceGrabber.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */; };
+		A76349DC0A1605ED00054021 /* PlugIns in CopyFiles */ = {isa = PBXBuildFile; fileRef = A72859E60A1601170082642D /* PlugIns */; };
+		A78A62AC0A895A220091CE4C /* ProVocDocument+WidgetLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A78A62AA0A895A220091CE4C /* ProVocDocument+WidgetLog.m */; };
+		A7B126CF0A1D5A0F003B68B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7B126CD0A1D5A0F003B68B0 /* InfoPlist.strings */; };
+		A7B127120A1D5B9A003B68B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7B1270F0A1D5B9A003B68B0 /* InfoPlist.strings */; };
+		A7B127220A1D5C2C003B68B0 /* Automator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B125FC0A1D559F003B68B0 /* Automator.framework */; };
+		A7B127230A1D5C2C003B68B0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		A7B128700A1D6430003B68B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7B1286D0A1D6430003B68B0 /* InfoPlist.strings */; };
+		A7B128980A1D6596003B68B0 /* Automator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B125FC0A1D559F003B68B0 /* Automator.framework */; };
+		A7B128990A1D6596003B68B0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		A7B129AB0A1D6DF6003B68B0 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B129A80A1D6DF6003B68B0 /* main.nib */; };
+		A7B129AF0A1D6E4D003B68B0 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B129AC0A1D6E4D003B68B0 /* main.nib */; };
+		A7B129B30A1D6E69003B68B0 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B129B00A1D6E69003B68B0 /* main.nib */; };
+		A7F2CCED0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */; };
+		A7F2CD0D0CDDF4A6003892A7 /* ARLeopardSoundRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7B1292E0A1D6A0F003B68B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D15AC270486D014006FF6A4;
+			remoteInfo = ProVoc;
+		};
+		A7B129300A1D6A12003B68B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7B125A60A1D50BD003B68B0;
+			remoteInfo = ImportFileAction;
+		};
+		A7B129320A1D6A13003B68B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7B126640A1D5700003B68B0;
+			remoteInfo = ImportTextAction;
+		};
+		A7B129340A1D6A15003B68B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7B128520A1D6366003B68B0;
+			remoteInfo = GetVocabularyAction;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A75016E80DED237A00A83E3A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/Spotlight;
+			dstSubfolderSpec = 1;
+			files = (
+				A75018250DED23D400A83E3A /* ProVoc.mdimporter in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A76349BF0A1605C300054021 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A76349D30A1605DA00054021 /* ARCheckForUpdates.framework in CopyFiles */,
+				A7F2CCED0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework in CopyFiles */,
+				A76349D50A1605DA00054021 /* ARSequenceGrabber.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A76349C30A1605C900054021 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents;
+			dstSubfolderSpec = 1;
+			files = (
+				A76349DC0A1605ED00054021 /* PlugIns in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B128FA0A1D69F8003B68B0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/Automator;
+			dstSubfolderSpec = 1;
+			files = (
+				A719F74C0A1DD7880039859E /* Add Files to Vocabulary.action in CopyFiles */,
+				A719F74D0A1DD7880039859E /* Add Text to Vocabulary.action in CopyFiles */,
+				A719F74E0A1DD7880039859E /* Get Contents of ProVoc Document.action in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32DBCF750370BD2300C91783 /* ProVoc_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVoc_Prefix.pch; sourceTree = "<group>"; };
+		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* ProVoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProVoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A711DEB20A1E12D600EE7423 /* SpeechSynthesizerExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizerExtensions.h; sourceTree = "<group>"; };
+		A711DEB30A1E12D600EE7423 /* SpeechSynthesizerExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizerExtensions.m; sourceTree = "<group>"; };
+		A71D65E40A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ARAbout.nib; sourceTree = "<group>"; };
+		A71D65E50A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocBackground.nib; sourceTree = "<group>"; };
+		A71D65E60A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocCardController.nib; sourceTree = "<group>"; };
+		A71D65E70A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocSpotlighter.nib; sourceTree = "<group>"; };
+		A71D65E80A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocStartingPoint.nib; sourceTree = "<group>"; };
+		A71D65E90A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocSubmitter.nib; sourceTree = "<group>"; };
+		A71D65EA0A2104C00072B2CA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocTimer.nib; sourceTree = "<group>"; };
+		A71D67440A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ARAbout.nib; sourceTree = "<group>"; };
+		A71D67450A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocBackground.nib; sourceTree = "<group>"; };
+		A71D67460A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocCardController.nib; sourceTree = "<group>"; };
+		A71D67470A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocSpotlighter.nib; sourceTree = "<group>"; };
+		A71D67480A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocStartingPoint.nib; sourceTree = "<group>"; };
+		A71D67490A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocSubmitter.nib; sourceTree = "<group>"; };
+		A71D674A0A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocTimer.nib; sourceTree = "<group>"; };
+		A71D674B0A21CCA80072B2CA /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		A7227D450AD56E8F00DF738C /* TrainingPreferences.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TrainingPreferences.tif; sourceTree = "<group>"; };
+		A7227D4B0AD56F9700DF738C /* LabelPreferences.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = LabelPreferences.tif; sourceTree = "<group>"; };
+		A7227F710AD5E52700DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7227F720AD5E52700DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/main.nib; sourceTree = "<group>"; };
+		A7227F730AD5E55100DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7227F740AD5E55100DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/main.nib; sourceTree = "<group>"; };
+		A7227F750AD5E57E00DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7227F760AD5E57E00DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/main.nib; sourceTree = "<group>"; };
+		A7227FAE0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ARAbout.nib; sourceTree = "<group>"; };
+		A7227FAF0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
+		A7227FB00AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Italian; path = Italian.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A7227FB10AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Italian; path = Italian.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
+		A7227FB20AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7227FB30AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/iPodController.nib; sourceTree = "<group>"; };
+		A7227FB40AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A7227FB50AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		A7227FB60AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/Preferences.nib; sourceTree = "<group>"; };
+		A7227FB80AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocAction.nib; sourceTree = "<group>"; };
+		A7227FB90AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocBackground.nib; sourceTree = "<group>"; };
+		A7227FBA0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocCardController.nib; sourceTree = "<group>"; };
+		A7227FBB0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocDocument.nib; sourceTree = "<group>"; };
+		A7227FBC0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocInspector.nib; sourceTree = "<group>"; };
+		A7227FBD0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocSpotlighter.nib; sourceTree = "<group>"; };
+		A7227FBE0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocStartingPoint.nib; sourceTree = "<group>"; };
+		A7227FBF0AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocSubmitter.nib; sourceTree = "<group>"; };
+		A7227FC00AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocTester.nib; sourceTree = "<group>"; };
+		A7227FC10AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocTimer.nib; sourceTree = "<group>"; };
+		A7227FC20AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ProVocViewOptions.nib; sourceTree = "<group>"; };
+		A7227FC30AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		A7227FC40AD5E6F200DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Italian; path = "Italian.lproj/ProVoc Help"; sourceTree = "<group>"; };
+		A72856B80A15FF7A0082642D /* StringExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringExtensions.h; sourceTree = "<group>"; };
+		A72856B90A15FF7A0082642D /* StringExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringExtensions.m; sourceTree = "<group>"; };
+		A72856BA0A15FF7A0082642D /* ScannerExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerExtensions.h; sourceTree = "<group>"; };
+		A72856BB0A15FF7A0082642D /* ScannerExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerExtensions.m; sourceTree = "<group>"; };
+		A72856BC0A15FF7A0082642D /* TableViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewExtensions.h; sourceTree = "<group>"; };
+		A72856BD0A15FF7A0082642D /* TableViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewExtensions.m; sourceTree = "<group>"; };
+		A72856BE0A15FF7A0082642D /* ArrayExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayExtensions.h; sourceTree = "<group>"; };
+		A72856BF0A15FF7A0082642D /* ArrayExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayExtensions.m; sourceTree = "<group>"; };
+		A72856C00A15FF7A0082642D /* BezierPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPathExtensions.h; sourceTree = "<group>"; };
+		A72856C10A15FF7A0082642D /* BezierPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierPathExtensions.m; sourceTree = "<group>"; };
+		A72856C20A15FF7A0082642D /* TransformerExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformerExtensions.h; sourceTree = "<group>"; };
+		A72856C30A15FF7A0082642D /* TransformerExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformerExtensions.m; sourceTree = "<group>"; };
+		A72856C40A15FF7A0082642D /* WindowExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowExtensions.h; sourceTree = "<group>"; };
+		A72856C50A15FF7A0082642D /* WindowExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowExtensions.m; sourceTree = "<group>"; };
+		A72856C60A15FF7A0082642D /* AppleScriptExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptExtensions.h; sourceTree = "<group>"; };
+		A72856C70A15FF7A0082642D /* AppleScriptExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleScriptExtensions.m; sourceTree = "<group>"; };
+		A72856C80A15FF7A0082642D /* ImageExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageExtensions.h; sourceTree = "<group>"; };
+		A72856C90A15FF7A0082642D /* ImageExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageExtensions.m; sourceTree = "<group>"; };
+		A72856CA0A15FF7A0082642D /* TextFieldExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldExtensions.h; sourceTree = "<group>"; };
+		A72856CB0A15FF7A0082642D /* TextFieldExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldExtensions.m; sourceTree = "<group>"; };
+		A72856CC0A15FF7A0082642D /* MenuExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuExtensions.h; sourceTree = "<group>"; };
+		A72856CD0A15FF7A0082642D /* MenuExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuExtensions.m; sourceTree = "<group>"; };
+		A72856CE0A15FF7A0082642D /* SplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewExtensions.h; sourceTree = "<group>"; };
+		A72856CF0A15FF7A0082642D /* SplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewExtensions.m; sourceTree = "<group>"; };
+		A72856D00A15FF7A0082642D /* DateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateExtensions.h; sourceTree = "<group>"; };
+		A72856D10A15FF7A0082642D /* DateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateExtensions.m; sourceTree = "<group>"; };
+		A72856D20A15FF7A0082642D /* ArchiverExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiverExtensions.h; sourceTree = "<group>"; };
+		A72856D30A15FF7A0082642D /* ArchiverExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiverExtensions.m; sourceTree = "<group>"; };
+		A72856E20A15FF880082642D /* ProVocWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocWord.h; sourceTree = "<group>"; };
+		A72856E30A15FF880082642D /* ProVocWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocWord.m; sourceTree = "<group>"; };
+		A72856E40A15FF880082642D /* ProVocPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocPage.h; sourceTree = "<group>"; };
+		A72856E50A15FF880082642D /* ProVocPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocPage.m; sourceTree = "<group>"; };
+		A72856E60A15FF880082642D /* ProVocChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocChapter.h; sourceTree = "<group>"; };
+		A72856E70A15FF880082642D /* ProVocChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocChapter.m; sourceTree = "<group>"; };
+		A72856E80A15FF880082642D /* ProVocData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocData.h; sourceTree = "<group>"; };
+		A72856E90A15FF880082642D /* ProVocData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocData.m; sourceTree = "<group>"; };
+		A72856EA0A15FF880082642D /* ProVocData+Undo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocData+Undo.h"; sourceTree = "<group>"; };
+		A72856EB0A15FF880082642D /* ProVocData+Undo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocData+Undo.m"; sourceTree = "<group>"; };
+		A72856EC0A15FF880082642D /* ProVocPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocPreset.h; sourceTree = "<group>"; };
+		A72856ED0A15FF880082642D /* ProVocPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocPreset.m; sourceTree = "<group>"; };
+		A72856EE0A15FF880082642D /* ProVocHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocHistory.h; sourceTree = "<group>"; };
+		A72856EF0A15FF880082642D /* ProVocHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocHistory.m; sourceTree = "<group>"; };
+		A72856F00A15FF880082642D /* iPodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPodManager.h; sourceTree = "<group>"; };
+		A72856F10A15FF880082642D /* iPodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPodManager.m; sourceTree = "<group>"; };
+		A72856FC0A15FFA20082642D /* ProVocCardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocCardsView.h; sourceTree = "<group>"; };
+		A72856FD0A15FFA20082642D /* ProVocCardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocCardsView.m; sourceTree = "<group>"; };
+		A72856FE0A15FFA20082642D /* ProVocPrintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocPrintView.h; sourceTree = "<group>"; };
+		A72856FF0A15FFA20082642D /* ProVocPrintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocPrintView.m; sourceTree = "<group>"; };
+		A72857000A15FFA20082642D /* ProVocTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocTableView.h; sourceTree = "<group>"; };
+		A72857010A15FFA20082642D /* ProVocTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocTableView.m; sourceTree = "<group>"; };
+		A72857020A15FFA20082642D /* ProVocTableColumns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocTableColumns.h; sourceTree = "<group>"; };
+		A72857030A15FFA20082642D /* ProVocTableColumns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocTableColumns.m; sourceTree = "<group>"; };
+		A72857040A15FFA20082642D /* ExtendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedCell.h; sourceTree = "<group>"; };
+		A72857050A15FFA20082642D /* ExtendedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedCell.m; sourceTree = "<group>"; };
+		A72857060A15FFA20082642D /* ProVocTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocTextField.h; sourceTree = "<group>"; };
+		A72857070A15FFA20082642D /* ProVocTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocTextField.m; sourceTree = "<group>"; };
+		A72857080A15FFA20082642D /* ProVocMCQView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocMCQView.h; sourceTree = "<group>"; };
+		A72857090A15FFA20082642D /* ProVocMCQView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocMCQView.m; sourceTree = "<group>"; };
+		A728570A0A15FFA20082642D /* ProVocFontNameField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocFontNameField.h; sourceTree = "<group>"; };
+		A728570B0A15FFA20082642D /* ProVocFontNameField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocFontNameField.m; sourceTree = "<group>"; };
+		A728570C0A15FFA20082642D /* ProVocActionPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocActionPopUpButton.h; sourceTree = "<group>"; };
+		A728570D0A15FFA20082642D /* ProVocActionPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocActionPopUpButton.m; sourceTree = "<group>"; };
+		A728570E0A15FFA20082642D /* ProVocResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocResultView.h; sourceTree = "<group>"; };
+		A728570F0A15FFA20082642D /* ProVocResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocResultView.m; sourceTree = "<group>"; };
+		A72857100A15FFA20082642D /* ProVocHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocHistoryView.h; sourceTree = "<group>"; };
+		A72857110A15FFA20082642D /* ProVocHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocHistoryView.m; sourceTree = "<group>"; };
+		A72857120A15FFA20082642D /* ProVocColoredWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocColoredWindowView.h; sourceTree = "<group>"; };
+		A72857130A15FFA20082642D /* ProVocColoredWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocColoredWindowView.m; sourceTree = "<group>"; };
+		A72857140A15FFA20082642D /* ParameterBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterBox.h; sourceTree = "<group>"; };
+		A72857150A15FFA20082642D /* ParameterBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterBox.m; sourceTree = "<group>"; };
+		A72857160A15FFA20082642D /* ProVocImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocImageView.h; sourceTree = "<group>"; };
+		A72857170A15FFA20082642D /* ProVocImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocImageView.m; sourceTree = "<group>"; };
+		A72857180A15FFA20082642D /* ProVocMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocMovieView.h; sourceTree = "<group>"; };
+		A72857190A15FFA20082642D /* ProVocMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocMovieView.m; sourceTree = "<group>"; };
+		A72857290A15FFB50082642D /* ProVocDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocDocument.h; sourceTree = "<group>"; };
+		A728572A0A15FFB50082642D /* ProVocDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocDocument.m; sourceTree = "<group>"; };
+		A728572B0A15FFB50082642D /* ProVocDocument+Lists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocDocument+Lists.h"; sourceTree = "<group>"; };
+		A728572C0A15FFB50082642D /* ProVocDocument+Lists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocDocument+Lists.m"; sourceTree = "<group>"; };
+		A728572D0A15FFB50082642D /* ProVocDocument+Export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocDocument+Export.h"; sourceTree = "<group>"; };
+		A728572E0A15FFB50082642D /* ProVocDocument+Export.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocDocument+Export.m"; sourceTree = "<group>"; };
+		A728572F0A15FFB50082642D /* ProVocDocument+Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocDocument+Presets.h"; sourceTree = "<group>"; };
+		A72857300A15FFB50082642D /* ProVocDocument+Presets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocDocument+Presets.m"; sourceTree = "<group>"; };
+		A72857310A15FFB50082642D /* ProVocDocument+Slideshow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocDocument+Slideshow.h"; sourceTree = "<group>"; };
+		A72857320A15FFB50082642D /* ProVocDocument+Slideshow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocDocument+Slideshow.m"; sourceTree = "<group>"; };
+		A72857330A15FFB50082642D /* ARInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARInspector.h; sourceTree = "<group>"; };
+		A72857340A15FFB50082642D /* ARInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARInspector.m; sourceTree = "<group>"; };
+		A72857350A15FFB50082642D /* ProVocInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocInspector.h; sourceTree = "<group>"; };
+		A72857360A15FFB50082642D /* ProVocInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocInspector.m; sourceTree = "<group>"; };
+		A72857370A15FFB50082642D /* ProVocApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocApplication.h; sourceTree = "<group>"; };
+		A72857380A15FFB50082642D /* ProVocApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocApplication.m; sourceTree = "<group>"; };
+		A72857390A15FFB50082642D /* ProVocAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocAppDelegate.h; sourceTree = "<group>"; };
+		A728573A0A15FFB50082642D /* ProVocAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocAppDelegate.m; sourceTree = "<group>"; };
+		A728573B0A15FFB50082642D /* ProVocTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocTester.h; sourceTree = "<group>"; };
+		A728573C0A15FFB50082642D /* ProVocTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocTester.m; sourceTree = "<group>"; };
+		A728573D0A15FFB50082642D /* ProVocMCQTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocMCQTester.h; sourceTree = "<group>"; };
+		A728573E0A15FFB50082642D /* ProVocMCQTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocMCQTester.m; sourceTree = "<group>"; };
+		A728573F0A15FFB50082642D /* ProVocSilentTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocSilentTester.h; sourceTree = "<group>"; };
+		A72857400A15FFB50082642D /* ProVocSilentTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocSilentTester.m; sourceTree = "<group>"; };
+		A72857410A15FFB50082642D /* iPodController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPodController.h; sourceTree = "<group>"; };
+		A72857420A15FFB50082642D /* iPodController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPodController.m; sourceTree = "<group>"; };
+		A72857430A15FFB50082642D /* ProVocPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocPreferences.h; sourceTree = "<group>"; };
+		A72857440A15FFB50082642D /* ProVocPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocPreferences.m; sourceTree = "<group>"; };
+		A72857450A15FFB50082642D /* ProVocActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocActionController.h; sourceTree = "<group>"; };
+		A72857460A15FFB50082642D /* ProVocActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocActionController.m; sourceTree = "<group>"; };
+		A72857470A15FFB50082642D /* ARAboutDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAboutDialog.h; sourceTree = "<group>"; };
+		A72857480A15FFB50082642D /* ARAboutDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAboutDialog.m; sourceTree = "<group>"; };
+		A72857490A15FFB50082642D /* ProVocBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocBackground.h; sourceTree = "<group>"; };
+		A728574A0A15FFB50082642D /* ProVocBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocBackground.m; sourceTree = "<group>"; };
+		A728574B0A15FFB50082642D /* ProVocStartingPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocStartingPoint.h; sourceTree = "<group>"; };
+		A728574C0A15FFB50082642D /* ProVocStartingPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocStartingPoint.m; sourceTree = "<group>"; };
+		A728574D0A15FFB50082642D /* FTPUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPUploader.h; sourceTree = "<group>"; };
+		A728574E0A15FFB50082642D /* FTPUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPUploader.m; sourceTree = "<group>"; };
+		A728574F0A15FFB50082642D /* ZIPCompresser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIPCompresser.h; sourceTree = "<group>"; };
+		A72857500A15FFB50082642D /* ZIPCompresser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIPCompresser.m; sourceTree = "<group>"; };
+		A72857510A15FFB50082642D /* ProVocSubmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocSubmitter.h; sourceTree = "<group>"; };
+		A72857520A15FFB50082642D /* ProVocSubmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocSubmitter.m; sourceTree = "<group>"; };
+		A72857530A15FFB50082642D /* ProVocCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocCardController.h; sourceTree = "<group>"; };
+		A72857540A15FFB50082642D /* ProVocCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocCardController.m; sourceTree = "<group>"; };
+		A72857550A15FFB50082642D /* ProVocServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocServiceProvider.h; sourceTree = "<group>"; };
+		A72857560A15FFB50082642D /* ProVocServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocServiceProvider.m; sourceTree = "<group>"; };
+		A72857D10A15FFF40082642D /* Languages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Languages.xml; sourceTree = "<group>"; };
+		A72857D20A15FFF40082642D /* Accents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Accents.xml; sourceTree = "<group>"; };
+		A72857D30A15FFF40082642D /* iPodLinxCharacters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = iPodLinxCharacters.xml; sourceTree = "<group>"; };
+		A72857D40A15FFF40082642D /* iPodNoteCharacters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = iPodNoteCharacters.xml; sourceTree = "<group>"; };
+		A72857D90A1600000082642D /* iPod.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = iPod.scpt; sourceTree = "<group>"; };
+		A72857DD0A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ARAbout.nib; sourceTree = "<group>"; };
+		A72857DF0A1600670082642D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
+		A72857E10A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/iPodController.nib; sourceTree = "<group>"; };
+		A72857E30A1600670082642D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A72857E50A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Preferences.nib; sourceTree = "<group>"; };
+		A72857E70A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocAction.nib; sourceTree = "<group>"; };
+		A72857EB0A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocBackground.nib; sourceTree = "<group>"; };
+		A72857F90A1600670082642D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		A72859880A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A728598A0A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		A728598C0A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocCardController.nib; sourceTree = "<group>"; };
+		A728598E0A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocDocument.nib; sourceTree = "<group>"; };
+		A72859900A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocInspector.nib; sourceTree = "<group>"; };
+		A72859920A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocStartingPoint.nib; sourceTree = "<group>"; };
+		A72859940A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocSubmitter.nib; sourceTree = "<group>"; };
+		A72859960A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocTester.nib; sourceTree = "<group>"; };
+		A72859A40A16010A0082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/ProVoc Help"; sourceTree = "<group>"; };
+		A72859E60A1601170082642D /* PlugIns */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PlugIns; sourceTree = SOURCE_ROOT; };
+		A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARCheckForUpdates.framework; sourceTree = "<group>"; };
+		A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARSequenceGrabber.framework; sourceTree = "<group>"; };
+		A7285B8D0A1601AB0082642D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = /System/Library/Frameworks/AddressBook.framework; sourceTree = "<absolute>"; };
+		A7285B8E0A1601AB0082642D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		A7285B8F0A1601AB0082642D /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		A7285B900A1601AB0082642D /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
+		A7285B910A1601AB0082642D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		A7285DF50A1603D00082642D /* action.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = action.tiff; sourceTree = "<group>"; };
+		A7285DF60A1603D00082642D /* add.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = add.tiff; sourceTree = "<group>"; };
+		A7285DF70A1603D00082642D /* album.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = album.tiff; sourceTree = "<group>"; };
+		A7285DF80A1603D00082642D /* ARDisclosureArrowDown.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ARDisclosureArrowDown.tif; sourceTree = "<group>"; };
+		A7285DF90A1603D00082642D /* ARDisclosureArrowRight.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ARDisclosureArrowRight.tif; sourceTree = "<group>"; };
+		A7285DFA0A1603D00082642D /* Both.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Both.tif; sourceTree = "<group>"; };
+		A7285DFB0A1603D00082642D /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		A7285DFC0A1603D00082642D /* CameraPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraPressed.png; sourceTree = "<group>"; };
+		A7285DFD0A1603D00082642D /* Continuous.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Continuous.tif; sourceTree = "<group>"; };
+		A7285DFE0A1603D00082642D /* DownloadDocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownloadDocument.png; sourceTree = "<group>"; };
+		A7285DFF0A1603D00082642D /* ejectipod.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ejectipod.tif; sourceTree = "<group>"; };
+		A7285E000A1603D00082642D /* flagged.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = flagged.tiff; sourceTree = "<group>"; };
+		A7285E010A1603D00082642D /* FontPreferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FontPreferences.tiff; sourceTree = "<group>"; };
+		A7285E020A1603D00082642D /* Inspector.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Inspector.tiff; sourceTree = "<group>"; };
+		A7285E030A1603D00082642D /* iPodPreferences.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = iPodPreferences.tif; sourceTree = "<group>"; };
+		A7285E040A1603D00082642D /* ipodsettings.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ipodsettings.tif; sourceTree = "<group>"; };
+		A7285E060A1603D00082642D /* LanguagePreferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = LanguagePreferences.tiff; sourceTree = "<group>"; };
+		A7285E070A1603D00082642D /* markAsFlagged.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = markAsFlagged.tiff; sourceTree = "<group>"; };
+		A7285E080A1603D00082642D /* MCQ.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MCQ.tif; sourceTree = "<group>"; };
+		A7285E090A1603D00082642D /* Mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mic.png; sourceTree = "<group>"; };
+		A7285E0A0A1603D00082642D /* MicPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MicPressed.png; sourceTree = "<group>"; };
+		A7285E0B0A1603D00082642D /* NewDocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewDocument.png; sourceTree = "<group>"; };
+		A7285E0C0A1603D00082642D /* OpenDocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpenDocument.png; sourceTree = "<group>"; };
+		A7285E0D0A1603D00082642D /* page.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = page.tif; sourceTree = "<group>"; };
+		A7285E0E0A1603D00082642D /* Play.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play.tiff; sourceTree = "<group>"; };
+		A7285E0F0A1603D00082642D /* PlayDown.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PlayDown.tiff; sourceTree = "<group>"; };
+		A7285E100A1603D00082642D /* Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Preferences.tiff; sourceTree = "<group>"; };
+		A7285E110A1603D00082642D /* Question.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Question.tif; sourceTree = "<group>"; };
+		A7285E120A1603D00082642D /* remove.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = remove.tiff; sourceTree = "<group>"; };
+		A7285E130A1603D00082642D /* send.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = send.tif; sourceTree = "<group>"; };
+		A7285E140A1603D00082642D /* settings.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = settings.tif; sourceTree = "<group>"; };
+		A7285E150A1603D00082642D /* SmallBlank.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SmallBlank.tif; sourceTree = "<group>"; };
+		A7285E160A1603D00082642D /* SmallImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SmallImage.tif; sourceTree = "<group>"; };
+		A7285E170A1603D00082642D /* SmallMovie.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SmallMovie.tif; sourceTree = "<group>"; };
+		A7285E180A1603D00082642D /* SmallSpeaker.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SmallSpeaker.tif; sourceTree = "<group>"; };
+		A7285E190A1603D00082642D /* SpeakerOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpeakerOff.png; sourceTree = "<group>"; };
+		A7285E1A0A1603D00082642D /* SpeakerOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpeakerOn.png; sourceTree = "<group>"; };
+		A7285E1B0A1603D00082642D /* stripe.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = stripe.tiff; sourceTree = "<group>"; };
+		A7285E1C0A1603D00082642D /* Theme.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Theme.tif; sourceTree = "<group>"; };
+		A7285E1D0A1603D00082642D /* unmarkAsFlagged.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = unmarkAsFlagged.tiff; sourceTree = "<group>"; };
+		A7285E1E0A1603D00082642D /* UpdatePreferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = UpdatePreferences.tiff; sourceTree = "<group>"; };
+		A7285E1F0A1603D00082642D /* Version.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Version.tif; sourceTree = "<group>"; };
+		A7285E200A1603D00082642D /* Video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Video.png; sourceTree = "<group>"; };
+		A7285E210A1603D00082642D /* VideoPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VideoPressed.png; sourceTree = "<group>"; };
+		A7285E220A1603D00082642D /* Warning.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Warning.tiff; sourceTree = "<group>"; };
+		A73068270A1D938300B7A808 /* main.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = main.applescript; sourceTree = "<group>"; };
+		A73069040A1E112700B7A808 /* main.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = main.applescript; sourceTree = "<group>"; };
+		A730692E0A1E11D100B7A808 /* main.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = main.applescript; sourceTree = "<group>"; };
+		A737D5F80ADDA1760008C421 /* ProVocSlideshowControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocSlideshowControlView.h; sourceTree = "<group>"; };
+		A737D5F90ADDA1760008C421 /* ProVocSlideshowControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocSlideshowControlView.m; sourceTree = "<group>"; };
+		A750180D0DED23CE00A83E3A /* ProVoc.mdimporter */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ProVoc.mdimporter; sourceTree = "<group>"; };
+		A75501FE0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ARAbout.nib; sourceTree = "<group>"; };
+		A75501FF0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Danish; path = Danish.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
+		A75502000ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Danish; path = Danish.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A75502010ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Danish; path = Danish.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
+		A75502020ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Danish; path = Danish.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A75502030ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/iPodController.nib; sourceTree = "<group>"; };
+		A75502040ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Danish; path = Danish.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A75502050ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		A75502060ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/Preferences.nib; sourceTree = "<group>"; };
+		A75502070ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocAction.nib; sourceTree = "<group>"; };
+		A75502080ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocBackground.nib; sourceTree = "<group>"; };
+		A75502090ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocCardController.nib; sourceTree = "<group>"; };
+		A755020A0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocDocument.nib; sourceTree = "<group>"; };
+		A755020B0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocInspector.nib; sourceTree = "<group>"; };
+		A755020C0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocSpotlighter.nib; sourceTree = "<group>"; };
+		A755020D0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocStartingPoint.nib; sourceTree = "<group>"; };
+		A755020E0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocSubmitter.nib; sourceTree = "<group>"; };
+		A755020F0ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocTester.nib; sourceTree = "<group>"; };
+		A75502100ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocTimer.nib; sourceTree = "<group>"; };
+		A75502110ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/ProVocViewOptions.nib; sourceTree = "<group>"; };
+		A75502120ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Danish; path = Danish.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		A7572B170A187FCB00E4912F /* ProVocSpotlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocSpotlighter.h; sourceTree = "<group>"; };
+		A7572B180A187FCB00E4912F /* ProVocSpotlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocSpotlighter.m; sourceTree = "<group>"; };
+		A7572B220A1880AC00E4912F /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocSpotlighter.nib; sourceTree = "<group>"; };
+		A7572E6A0A18CB5100E4912F /* ProVocTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocTimerView.h; sourceTree = "<group>"; };
+		A7572E6B0A18CB5100E4912F /* ProVocTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocTimerView.m; sourceTree = "<group>"; };
+		A7572EB50A18CD7D00E4912F /* ProVocTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocTimer.h; sourceTree = "<group>"; };
+		A7572EB60A18CD7D00E4912F /* ProVocTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocTimer.m; sourceTree = "<group>"; };
+		A7572EC00A18CE2700E4912F /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocTimer.nib; sourceTree = "<group>"; };
+		A75734010A19FA9800E4912F /* Hourglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hourglass.png; sourceTree = "<group>"; };
+		A75734020A19FA9800E4912F /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock.png; sourceTree = "<group>"; };
+		A75734E30A1A0D2600E4912F /* BackgroundPlugIn.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BackgroundPlugIn.icns; sourceTree = "<group>"; };
+		A75756990A1D2D3F00F8F569 /* ProVoc.scriptSuite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.scriptSuite; path = ProVoc.scriptSuite; sourceTree = "<group>"; };
+		A757569C0A1D2D4700F8F569 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = English; path = English.lproj/ProVoc.scriptTerminology; sourceTree = "<group>"; };
+		A75756B50A1D30CE00F8F569 /* ProVocAppleScriptSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocAppleScriptSupport.h; sourceTree = "<group>"; };
+		A75756B60A1D30CE00F8F569 /* ProVocAppleScriptSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocAppleScriptSupport.m; sourceTree = "<group>"; };
+		A760E5BF0A24ABD700C6128B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = English; path = English.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
+		A760E69D0A24B4C100C6128B /* French */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = French; path = French.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
+		A760E6B20A24B51400C6128B /* German */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = German; path = German.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
+		A760EFBA0A279D1D00C6128B /* ProVocDocument+Columns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocDocument+Columns.h"; sourceTree = "<group>"; };
+		A760EFBB0A279D1D00C6128B /* ProVocDocument+Columns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocDocument+Columns.m"; sourceTree = "<group>"; };
+		A760F1C50A288B9B00C6128B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocViewOptions.nib; sourceTree = "<group>"; };
+		A760FBC80A2A4F2200C6128B /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocViewOptions.nib; sourceTree = "<group>"; };
+		A760FBEE0A2A4F2B00C6128B /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocViewOptions.nib; sourceTree = "<group>"; };
+		A76348CB0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
+		A76348CC0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = French; path = French.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A76348CD0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A76348CE0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/iPodController.nib; sourceTree = "<group>"; };
+		A76348CF0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A76348D00A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		A76348D10A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/Preferences.nib; sourceTree = "<group>"; };
+		A76348D20A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocAction.nib; sourceTree = "<group>"; };
+		A76348D40A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocDocument.nib; sourceTree = "<group>"; };
+		A76348D50A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocInspector.nib; sourceTree = "<group>"; };
+		A76348D60A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ProVocTester.nib; sourceTree = "<group>"; };
+		A76348D70A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		A76348F00A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
+		A76348F10A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = German; path = German.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A76348F20A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A76348F30A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/iPodController.nib; sourceTree = "<group>"; };
+		A76348F40A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A76348F50A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		A76348F60A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/Preferences.nib; sourceTree = "<group>"; };
+		A76348F70A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocAction.nib; sourceTree = "<group>"; };
+		A76348F80A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocDocument.nib; sourceTree = "<group>"; };
+		A76348F90A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocInspector.nib; sourceTree = "<group>"; };
+		A76348FA0A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/ProVocTester.nib; sourceTree = "<group>"; };
+		A76349B30A16054E00054021 /* ProVoc.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ProVoc.icns; sourceTree = "<group>"; };
+		A76349B40A16054E00054021 /* ProVocFile.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ProVocFile.icns; sourceTree = "<group>"; };
+		A78A62A90A895A220091CE4C /* ProVocDocument+WidgetLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProVocDocument+WidgetLog.h"; sourceTree = "<group>"; };
+		A78A62AA0A895A220091CE4C /* ProVocDocument+WidgetLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProVocDocument+WidgetLog.m"; sourceTree = "<group>"; };
+		A7A067CF0A17CCBA007C25C4 /* IMPORTANT README.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "IMPORTANT README.txt"; sourceTree = "<group>"; };
+		A7A266820ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ARAbout.nib; sourceTree = "<group>"; };
+		A7A266830ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
+		A7A266840ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Spanish; path = Spanish.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A7A266850ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Spanish; path = Spanish.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
+		A7A266860ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7A266870ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/iPodController.nib; sourceTree = "<group>"; };
+		A7A266880ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A7A266890ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		A7A2668A0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/Preferences.nib; sourceTree = "<group>"; };
+		A7A2668B0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocAction.nib; sourceTree = "<group>"; };
+		A7A2668C0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocBackground.nib; sourceTree = "<group>"; };
+		A7A2668D0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocCardController.nib; sourceTree = "<group>"; };
+		A7A2668E0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocDocument.nib; sourceTree = "<group>"; };
+		A7A2668F0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocInspector.nib; sourceTree = "<group>"; };
+		A7A266900ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocSpotlighter.nib; sourceTree = "<group>"; };
+		A7A266910ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocStartingPoint.nib; sourceTree = "<group>"; };
+		A7A266920ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocSubmitter.nib; sourceTree = "<group>"; };
+		A7A266930ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocTester.nib; sourceTree = "<group>"; };
+		A7A266940ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocTimer.nib; sourceTree = "<group>"; };
+		A7A266950ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/ProVocViewOptions.nib; sourceTree = "<group>"; };
+		A7A266960ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		A7B125A70A1D50BD003B68B0 /* Add Files to Vocabulary.action */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Add Files to Vocabulary.action"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B125A80A1D50BD003B68B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7B125FC0A1D559F003B68B0 /* Automator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Automator.framework; path = /System/Library/Frameworks/Automator.framework; sourceTree = "<absolute>"; };
+		A7B126650A1D5700003B68B0 /* Add Text to Vocabulary.action */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Add Text to Vocabulary.action"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B126660A1D5700003B68B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7B126CE0A1D5A0F003B68B0 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B126D30A1D5A4A003B68B0 /* French */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B127100A1D5B9A003B68B0 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B127110A1D5B9A003B68B0 /* French */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B128530A1D6366003B68B0 /* Get Contents of ProVoc Document.action */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Get Contents of ProVoc Document.action"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B128620A1D63C4003B68B0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7B1286E0A1D6430003B68B0 /* French */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B1286F0A1D6430003B68B0 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B129A90A1D6DF6003B68B0 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/main.nib; sourceTree = "<group>"; };
+		A7B129AA0A1D6DF6003B68B0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/main.nib; sourceTree = "<group>"; };
+		A7B129AD0A1D6E4D003B68B0 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/main.nib; sourceTree = "<group>"; };
+		A7B129AE0A1D6E4D003B68B0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/main.nib; sourceTree = "<group>"; };
+		A7B129B10A1D6E69003B68B0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/main.nib; sourceTree = "<group>"; };
+		A7B129B20A1D6E69003B68B0 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/main.nib; sourceTree = "<group>"; };
+		A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARLeopardSoundRecorder.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				A7285B7C0A1601510082642D /* ARCheckForUpdates.framework in Frameworks */,
+				A7F2CD0D0CDDF4A6003892A7 /* ARLeopardSoundRecorder.framework in Frameworks */,
+				A7285B800A16017B0082642D /* ARSequenceGrabber.framework in Frameworks */,
+				A7285B920A1601AB0082642D /* AddressBook.framework in Frameworks */,
+				A7285B930A1601AB0082642D /* Carbon.framework in Frameworks */,
+				A7285B940A1601AB0082642D /* QTKit.framework in Frameworks */,
+				A7285B950A1601AB0082642D /* Quartz.framework in Frameworks */,
+				A7285B960A1601AB0082642D /* QuickTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A73068460A1D942200B7A808 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A730684B0A1D943500B7A808 /* Cocoa.framework in Frameworks */,
+				A730684A0A1D943500B7A808 /* Automator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B126630A1D5700003B68B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B127220A1D5C2C003B68B0 /* Automator.framework in Frameworks */,
+				A7B127230A1D5C2C003B68B0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B128510A1D6366003B68B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B128980A1D6596003B68B0 /* Automator.framework in Frameworks */,
+				A7B128990A1D6596003B68B0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A6FEA54F5311CA2CBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */,
+				A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */,
+				A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7B125FC0A1D559F003B68B0 /* Automator.framework */,
+				A7285B8D0A1601AB0082642D /* AddressBook.framework */,
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				A7285B8E0A1601AB0082642D /* Carbon.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				A7285B900A1601AB0082642D /* Quartz.framework */,
+				A7285B910A1601AB0082642D /* QuickTime.framework */,
+				A7285B8F0A1601AB0082642D /* QTKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* ProVoc.app */,
+				A7B125A70A1D50BD003B68B0 /* Add Files to Vocabulary.action */,
+				A7B126650A1D5700003B68B0 /* Add Text to Vocabulary.action */,
+				A7B128530A1D6366003B68B0 /* Get Contents of ProVoc Document.action */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* ProVoc */ = {
+			isa = PBXGroup;
+			children = (
+				A7A067CF0A17CCBA007C25C4 /* IMPORTANT README.txt */,
+				2A37F4ABFDCFA73011CA2CEA /* Classes */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				A7B1259C0A1D5076003B68B0 /* Actions */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = ProVoc;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A72856B70A15FF660082642D /* Categories */,
+				A72856B40A15FF640082642D /* Model */,
+				A72856B10A15FF610082642D /* Views */,
+				A72856AE0A15FF5C0082642D /* Controllers */,
+			);
+			name = Classes;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF750370BD2300C91783 /* ProVoc_Prefix.pch */,
+				2A37F4B0FDCFA73011CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7285DF00A1603C10082642D /* Images */,
+				A72857E20A1600670082642D /* Localizable.strings */,
+				A72857DE0A1600670082642D /* ARLocalizable.strings */,
+				A72859890A1600E30082642D /* MainMenu.nib */,
+				A728598D0A1600E30082642D /* ProVocDocument.nib */,
+				A72859950A1600E30082642D /* ProVocTester.nib */,
+				A72857E40A1600670082642D /* Preferences.nib */,
+				A72857E00A1600670082642D /* iPodController.nib */,
+				A72857E60A1600670082642D /* ProVocAction.nib */,
+				A72857EA0A1600670082642D /* ProVocBackground.nib */,
+				A728598B0A1600E30082642D /* ProVocCardController.nib */,
+				A728598F0A1600E30082642D /* ProVocInspector.nib */,
+				A72859910A1600E30082642D /* ProVocStartingPoint.nib */,
+				A72859930A1600E30082642D /* ProVocSubmitter.nib */,
+				A7572B210A1880AC00E4912F /* ProVocSpotlighter.nib */,
+				A72857DC0A1600670082642D /* ARAbout.nib */,
+				A7572EBF0A18CE2700E4912F /* ProVocTimer.nib */,
+				A760F1C40A288B9B00C6128B /* ProVocViewOptions.nib */,
+				A72859870A1600E30082642D /* Credits.rtf */,
+				A72859A30A16010A0082642D /* ProVoc Help */,
+				A72859E60A1601170082642D /* PlugIns */,
+				A750180D0DED23CE00A83E3A /* ProVoc.mdimporter */,
+				A72857D10A15FFF40082642D /* Languages.xml */,
+				A72857D20A15FFF40082642D /* Accents.xml */,
+				A72857D30A15FFF40082642D /* iPodLinxCharacters.xml */,
+				A72857D40A15FFF40082642D /* iPodNoteCharacters.xml */,
+				A760E69B0A24B4BA00C6128B /* DefaultPresets.xml */,
+				A75756990A1D2D3F00F8F569 /* ProVoc.scriptSuite */,
+				A757569B0A1D2D4700F8F569 /* ProVoc.scriptTerminology */,
+				A72857D90A1600000082642D /* iPod.scpt */,
+				A76349B30A16054E00054021 /* ProVoc.icns */,
+				A76349B40A16054E00054021 /* ProVocFile.icns */,
+				A75734E30A1A0D2600E4912F /* BackgroundPlugIn.icns */,
+				8D15AC360486D014006FF6A4 /* Info.plist */,
+				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				A72857F80A1600670082642D /* ServicesMenu.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A6FEA54F5311CA2CBB /* Frameworks */,
+				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A72856AE0A15FF5C0082642D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A72857290A15FFB50082642D /* ProVocDocument.h */,
+				A728572A0A15FFB50082642D /* ProVocDocument.m */,
+				A728572B0A15FFB50082642D /* ProVocDocument+Lists.h */,
+				A728572C0A15FFB50082642D /* ProVocDocument+Lists.m */,
+				A728572D0A15FFB50082642D /* ProVocDocument+Export.h */,
+				A728572E0A15FFB50082642D /* ProVocDocument+Export.m */,
+				A728572F0A15FFB50082642D /* ProVocDocument+Presets.h */,
+				A72857300A15FFB50082642D /* ProVocDocument+Presets.m */,
+				A72857310A15FFB50082642D /* ProVocDocument+Slideshow.h */,
+				A72857320A15FFB50082642D /* ProVocDocument+Slideshow.m */,
+				A760EFBA0A279D1D00C6128B /* ProVocDocument+Columns.h */,
+				A760EFBB0A279D1D00C6128B /* ProVocDocument+Columns.m */,
+				A78A62A90A895A220091CE4C /* ProVocDocument+WidgetLog.h */,
+				A78A62AA0A895A220091CE4C /* ProVocDocument+WidgetLog.m */,
+				A72857330A15FFB50082642D /* ARInspector.h */,
+				A72857340A15FFB50082642D /* ARInspector.m */,
+				A72857350A15FFB50082642D /* ProVocInspector.h */,
+				A72857360A15FFB50082642D /* ProVocInspector.m */,
+				A72857370A15FFB50082642D /* ProVocApplication.h */,
+				A72857380A15FFB50082642D /* ProVocApplication.m */,
+				A72857390A15FFB50082642D /* ProVocAppDelegate.h */,
+				A728573A0A15FFB50082642D /* ProVocAppDelegate.m */,
+				A728573B0A15FFB50082642D /* ProVocTester.h */,
+				A728573C0A15FFB50082642D /* ProVocTester.m */,
+				A728573D0A15FFB50082642D /* ProVocMCQTester.h */,
+				A728573E0A15FFB50082642D /* ProVocMCQTester.m */,
+				A728573F0A15FFB50082642D /* ProVocSilentTester.h */,
+				A72857400A15FFB50082642D /* ProVocSilentTester.m */,
+				A72857410A15FFB50082642D /* iPodController.h */,
+				A72857420A15FFB50082642D /* iPodController.m */,
+				A72857430A15FFB50082642D /* ProVocPreferences.h */,
+				A72857440A15FFB50082642D /* ProVocPreferences.m */,
+				A72857450A15FFB50082642D /* ProVocActionController.h */,
+				A72857460A15FFB50082642D /* ProVocActionController.m */,
+				A72857470A15FFB50082642D /* ARAboutDialog.h */,
+				A72857480A15FFB50082642D /* ARAboutDialog.m */,
+				A72857490A15FFB50082642D /* ProVocBackground.h */,
+				A728574A0A15FFB50082642D /* ProVocBackground.m */,
+				A728574B0A15FFB50082642D /* ProVocStartingPoint.h */,
+				A728574C0A15FFB50082642D /* ProVocStartingPoint.m */,
+				A728574D0A15FFB50082642D /* FTPUploader.h */,
+				A728574E0A15FFB50082642D /* FTPUploader.m */,
+				A728574F0A15FFB50082642D /* ZIPCompresser.h */,
+				A72857500A15FFB50082642D /* ZIPCompresser.m */,
+				A72857510A15FFB50082642D /* ProVocSubmitter.h */,
+				A72857520A15FFB50082642D /* ProVocSubmitter.m */,
+				A72857530A15FFB50082642D /* ProVocCardController.h */,
+				A72857540A15FFB50082642D /* ProVocCardController.m */,
+				A72857550A15FFB50082642D /* ProVocServiceProvider.h */,
+				A72857560A15FFB50082642D /* ProVocServiceProvider.m */,
+				A7572B170A187FCB00E4912F /* ProVocSpotlighter.h */,
+				A7572B180A187FCB00E4912F /* ProVocSpotlighter.m */,
+				A7572EB50A18CD7D00E4912F /* ProVocTimer.h */,
+				A7572EB60A18CD7D00E4912F /* ProVocTimer.m */,
+				A75756B50A1D30CE00F8F569 /* ProVocAppleScriptSupport.h */,
+				A75756B60A1D30CE00F8F569 /* ProVocAppleScriptSupport.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A72856B10A15FF610082642D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A72856FC0A15FFA20082642D /* ProVocCardsView.h */,
+				A72856FD0A15FFA20082642D /* ProVocCardsView.m */,
+				A72856FE0A15FFA20082642D /* ProVocPrintView.h */,
+				A72856FF0A15FFA20082642D /* ProVocPrintView.m */,
+				A72857000A15FFA20082642D /* ProVocTableView.h */,
+				A72857010A15FFA20082642D /* ProVocTableView.m */,
+				A72857020A15FFA20082642D /* ProVocTableColumns.h */,
+				A72857030A15FFA20082642D /* ProVocTableColumns.m */,
+				A72857040A15FFA20082642D /* ExtendedCell.h */,
+				A72857050A15FFA20082642D /* ExtendedCell.m */,
+				A72857060A15FFA20082642D /* ProVocTextField.h */,
+				A72857070A15FFA20082642D /* ProVocTextField.m */,
+				A72857080A15FFA20082642D /* ProVocMCQView.h */,
+				A72857090A15FFA20082642D /* ProVocMCQView.m */,
+				A728570A0A15FFA20082642D /* ProVocFontNameField.h */,
+				A728570B0A15FFA20082642D /* ProVocFontNameField.m */,
+				A728570C0A15FFA20082642D /* ProVocActionPopUpButton.h */,
+				A728570D0A15FFA20082642D /* ProVocActionPopUpButton.m */,
+				A728570E0A15FFA20082642D /* ProVocResultView.h */,
+				A728570F0A15FFA20082642D /* ProVocResultView.m */,
+				A72857100A15FFA20082642D /* ProVocHistoryView.h */,
+				A72857110A15FFA20082642D /* ProVocHistoryView.m */,
+				A72857120A15FFA20082642D /* ProVocColoredWindowView.h */,
+				A72857130A15FFA20082642D /* ProVocColoredWindowView.m */,
+				A72857140A15FFA20082642D /* ParameterBox.h */,
+				A72857150A15FFA20082642D /* ParameterBox.m */,
+				A72857160A15FFA20082642D /* ProVocImageView.h */,
+				A72857170A15FFA20082642D /* ProVocImageView.m */,
+				A72857180A15FFA20082642D /* ProVocMovieView.h */,
+				A72857190A15FFA20082642D /* ProVocMovieView.m */,
+				A7572E6A0A18CB5100E4912F /* ProVocTimerView.h */,
+				A7572E6B0A18CB5100E4912F /* ProVocTimerView.m */,
+				A737D5F80ADDA1760008C421 /* ProVocSlideshowControlView.h */,
+				A737D5F90ADDA1760008C421 /* ProVocSlideshowControlView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A72856B40A15FF640082642D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A72856E20A15FF880082642D /* ProVocWord.h */,
+				A72856E30A15FF880082642D /* ProVocWord.m */,
+				A72856E40A15FF880082642D /* ProVocPage.h */,
+				A72856E50A15FF880082642D /* ProVocPage.m */,
+				A72856E60A15FF880082642D /* ProVocChapter.h */,
+				A72856E70A15FF880082642D /* ProVocChapter.m */,
+				A72856E80A15FF880082642D /* ProVocData.h */,
+				A72856E90A15FF880082642D /* ProVocData.m */,
+				A72856EA0A15FF880082642D /* ProVocData+Undo.h */,
+				A72856EB0A15FF880082642D /* ProVocData+Undo.m */,
+				A72856EC0A15FF880082642D /* ProVocPreset.h */,
+				A72856ED0A15FF880082642D /* ProVocPreset.m */,
+				A72856EE0A15FF880082642D /* ProVocHistory.h */,
+				A72856EF0A15FF880082642D /* ProVocHistory.m */,
+				A72856F00A15FF880082642D /* iPodManager.h */,
+				A72856F10A15FF880082642D /* iPodManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A72856B70A15FF660082642D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A72856B80A15FF7A0082642D /* StringExtensions.h */,
+				A72856B90A15FF7A0082642D /* StringExtensions.m */,
+				A72856BA0A15FF7A0082642D /* ScannerExtensions.h */,
+				A72856BB0A15FF7A0082642D /* ScannerExtensions.m */,
+				A72856BC0A15FF7A0082642D /* TableViewExtensions.h */,
+				A72856BD0A15FF7A0082642D /* TableViewExtensions.m */,
+				A72856BE0A15FF7A0082642D /* ArrayExtensions.h */,
+				A72856BF0A15FF7A0082642D /* ArrayExtensions.m */,
+				A72856C00A15FF7A0082642D /* BezierPathExtensions.h */,
+				A72856C10A15FF7A0082642D /* BezierPathExtensions.m */,
+				A72856C20A15FF7A0082642D /* TransformerExtensions.h */,
+				A72856C30A15FF7A0082642D /* TransformerExtensions.m */,
+				A72856C40A15FF7A0082642D /* WindowExtensions.h */,
+				A72856C50A15FF7A0082642D /* WindowExtensions.m */,
+				A72856C60A15FF7A0082642D /* AppleScriptExtensions.h */,
+				A72856C70A15FF7A0082642D /* AppleScriptExtensions.m */,
+				A72856C80A15FF7A0082642D /* ImageExtensions.h */,
+				A72856C90A15FF7A0082642D /* ImageExtensions.m */,
+				A72856CA0A15FF7A0082642D /* TextFieldExtensions.h */,
+				A72856CB0A15FF7A0082642D /* TextFieldExtensions.m */,
+				A72856CC0A15FF7A0082642D /* MenuExtensions.h */,
+				A72856CD0A15FF7A0082642D /* MenuExtensions.m */,
+				A72856CE0A15FF7A0082642D /* SplitViewExtensions.h */,
+				A72856CF0A15FF7A0082642D /* SplitViewExtensions.m */,
+				A72856D00A15FF7A0082642D /* DateExtensions.h */,
+				A72856D10A15FF7A0082642D /* DateExtensions.m */,
+				A72856D20A15FF7A0082642D /* ArchiverExtensions.h */,
+				A72856D30A15FF7A0082642D /* ArchiverExtensions.m */,
+				A711DEB20A1E12D600EE7423 /* SpeechSynthesizerExtensions.h */,
+				A711DEB30A1E12D600EE7423 /* SpeechSynthesizerExtensions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		A7285DF00A1603C10082642D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A7285DF50A1603D00082642D /* action.tiff */,
+				A7285DF60A1603D00082642D /* add.tiff */,
+				A7285DF70A1603D00082642D /* album.tiff */,
+				A7285DF80A1603D00082642D /* ARDisclosureArrowDown.tif */,
+				A7285DF90A1603D00082642D /* ARDisclosureArrowRight.tif */,
+				A7285DFA0A1603D00082642D /* Both.tif */,
+				A7285DFB0A1603D00082642D /* Camera.png */,
+				A7285DFC0A1603D00082642D /* CameraPressed.png */,
+				A7285DFD0A1603D00082642D /* Continuous.tif */,
+				A7285DFE0A1603D00082642D /* DownloadDocument.png */,
+				A7285DFF0A1603D00082642D /* ejectipod.tif */,
+				A7285E000A1603D00082642D /* flagged.tiff */,
+				A7285E010A1603D00082642D /* FontPreferences.tiff */,
+				A7285E020A1603D00082642D /* Inspector.tiff */,
+				A7285E030A1603D00082642D /* iPodPreferences.tif */,
+				A7285E040A1603D00082642D /* ipodsettings.tif */,
+				A7227D450AD56E8F00DF738C /* TrainingPreferences.tif */,
+				A7227D4B0AD56F9700DF738C /* LabelPreferences.tif */,
+				A7285E060A1603D00082642D /* LanguagePreferences.tiff */,
+				A7285E070A1603D00082642D /* markAsFlagged.tiff */,
+				A7285E080A1603D00082642D /* MCQ.tif */,
+				A7285E090A1603D00082642D /* Mic.png */,
+				A7285E0A0A1603D00082642D /* MicPressed.png */,
+				A7285E0B0A1603D00082642D /* NewDocument.png */,
+				A7285E0C0A1603D00082642D /* OpenDocument.png */,
+				A75734010A19FA9800E4912F /* Hourglass.png */,
+				A75734020A19FA9800E4912F /* Clock.png */,
+				A7285E0D0A1603D00082642D /* page.tif */,
+				A7285E0E0A1603D00082642D /* Play.tiff */,
+				A7285E0F0A1603D00082642D /* PlayDown.tiff */,
+				A7285E100A1603D00082642D /* Preferences.tiff */,
+				A7285E110A1603D00082642D /* Question.tif */,
+				A7285E120A1603D00082642D /* remove.tiff */,
+				A7285E130A1603D00082642D /* send.tif */,
+				A7285E140A1603D00082642D /* settings.tif */,
+				A7285E150A1603D00082642D /* SmallBlank.tif */,
+				A7285E160A1603D00082642D /* SmallImage.tif */,
+				A7285E170A1603D00082642D /* SmallMovie.tif */,
+				A7285E180A1603D00082642D /* SmallSpeaker.tif */,
+				A7285E190A1603D00082642D /* SpeakerOff.png */,
+				A7285E1A0A1603D00082642D /* SpeakerOn.png */,
+				A7285E1B0A1603D00082642D /* stripe.tiff */,
+				A7285E1C0A1603D00082642D /* Theme.tif */,
+				A7285E1D0A1603D00082642D /* unmarkAsFlagged.tiff */,
+				A7285E1E0A1603D00082642D /* UpdatePreferences.tiff */,
+				A7285E1F0A1603D00082642D /* Version.tif */,
+				A7285E200A1603D00082642D /* Video.png */,
+				A7285E210A1603D00082642D /* VideoPressed.png */,
+				A7285E220A1603D00082642D /* Warning.tiff */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		A7B1259C0A1D5076003B68B0 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				A7B125D50A1D536B003B68B0 /* Resources */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		A7B125D50A1D536B003B68B0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7B126C00A1D59B6003B68B0 /* ImportFileAction */,
+				A7B126F80A1D5AE5003B68B0 /* ImportTextAction */,
+				A7B1285E0A1D63A7003B68B0 /* GetVocabularyAction */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A7B126C00A1D59B6003B68B0 /* ImportFileAction */ = {
+			isa = PBXGroup;
+			children = (
+				A7B125A80A1D50BD003B68B0 /* Info.plist */,
+				A7B126CD0A1D5A0F003B68B0 /* InfoPlist.strings */,
+				A7B129AC0A1D6E4D003B68B0 /* main.nib */,
+				A73068270A1D938300B7A808 /* main.applescript */,
+			);
+			path = ImportFileAction;
+			sourceTree = "<group>";
+		};
+		A7B126F80A1D5AE5003B68B0 /* ImportTextAction */ = {
+			isa = PBXGroup;
+			children = (
+				A7B126660A1D5700003B68B0 /* Info.plist */,
+				A7B1270F0A1D5B9A003B68B0 /* InfoPlist.strings */,
+				A7B129B00A1D6E69003B68B0 /* main.nib */,
+				A73069040A1E112700B7A808 /* main.applescript */,
+			);
+			path = ImportTextAction;
+			sourceTree = "<group>";
+		};
+		A7B1285E0A1D63A7003B68B0 /* GetVocabularyAction */ = {
+			isa = PBXGroup;
+			children = (
+				A7B128620A1D63C4003B68B0 /* Info.plist */,
+				A7B1286D0A1D6430003B68B0 /* InfoPlist.strings */,
+				A7B129A80A1D6DF6003B68B0 /* main.nib */,
+				A730692E0A1E11D100B7A808 /* main.applescript */,
+			);
+			path = GetVocabularyAction;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D15AC270486D014006FF6A4 /* ProVoc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "ProVoc" */;
+			buildPhases = (
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+				A76349BF0A1605C300054021 /* CopyFiles */,
+				A76349C30A1605C900054021 /* CopyFiles */,
+				A75016E80DED237A00A83E3A /* CopyFiles */,
+				A7B128FA0A1D69F8003B68B0 /* CopyFiles */,
+				A7025D680A2DECB900AB2487 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProVoc;
+			productInstallPath = "$(HOME)/Applications";
+			productName = ProVoc;
+			productReference = 8D15AC370486D014006FF6A4 /* ProVoc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A7B125A60A1D50BD003B68B0 /* Add Files to Vocabulary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7B125A90A1D50BE003B68B0 /* Build configuration list for PBXNativeTarget "Add Files to Vocabulary" */;
+			buildPhases = (
+				A73068410A1D940900B7A808 /* AppleScript */,
+				A7B125A30A1D50BD003B68B0 /* Resources */,
+				A73068460A1D942200B7A808 /* Frameworks */,
+				A730684E0A1D944700B7A808 /* Rez */,
+				A7B126100A1D55BA003B68B0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Add Files to Vocabulary";
+			productName = ImportFileAction;
+			productReference = A7B125A70A1D50BD003B68B0 /* Add Files to Vocabulary.action */;
+			productType = "com.apple.product-type.bundle";
+		};
+		A7B126640A1D5700003B68B0 /* Add Text to Vocabulary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7B126670A1D5701003B68B0 /* Build configuration list for PBXNativeTarget "Add Text to Vocabulary" */;
+			buildPhases = (
+				A73069070A1E114400B7A808 /* AppleScript */,
+				A7B126610A1D5700003B68B0 /* Resources */,
+				A7B126630A1D5700003B68B0 /* Frameworks */,
+				A730690C0A1E115600B7A808 /* Rez */,
+				A7B127240A1D5C39003B68B0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Add Text to Vocabulary";
+			productName = ImportTextAction;
+			productReference = A7B126650A1D5700003B68B0 /* Add Text to Vocabulary.action */;
+			productType = "com.apple.product-type.bundle";
+		};
+		A7B128520A1D6366003B68B0 /* Get Contents of ProVoc Document */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7B128550A1D6367003B68B0 /* Build configuration list for PBXNativeTarget "Get Contents of ProVoc Document" */;
+			buildPhases = (
+				A73069310A1E11E200B7A808 /* AppleScript */,
+				A7B1284F0A1D6366003B68B0 /* Resources */,
+				A7B128510A1D6366003B68B0 /* Frameworks */,
+				A73069340A1E11F300B7A808 /* Rez */,
+				A7B1289C0A1D65A0003B68B0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Get Contents of ProVoc Document";
+			productName = GetVocabularyAction;
+			productReference = A7B128530A1D6366003B68B0 /* Get Contents of ProVoc Document.action */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "ProVoc" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				Italian,
+				Danish,
+				Spanish,
+			);
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* ProVoc */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7B1292D0A1D6A0C003B68B0 /* Aggregate */,
+				8D15AC270486D014006FF6A4 /* ProVoc */,
+				A7B125A60A1D50BD003B68B0 /* Add Files to Vocabulary */,
+				A7B126640A1D5700003B68B0 /* Add Text to Vocabulary */,
+				A7B128520A1D6366003B68B0 /* Get Contents of ProVoc Document */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7285E530A1604190082642D /* iPod.scpt in Resources */,
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				A72857D50A15FFF40082642D /* Languages.xml in Resources */,
+				A72857D60A15FFF40082642D /* Accents.xml in Resources */,
+				A72857D70A15FFF40082642D /* iPodLinxCharacters.xml in Resources */,
+				A72857D80A15FFF40082642D /* iPodNoteCharacters.xml in Resources */,
+				A72857FA0A1600670082642D /* ARAbout.nib in Resources */,
+				A72857FB0A1600670082642D /* ARLocalizable.strings in Resources */,
+				A72857FC0A1600670082642D /* iPodController.nib in Resources */,
+				A72857FD0A1600670082642D /* Localizable.strings in Resources */,
+				A72857FE0A1600670082642D /* Preferences.nib in Resources */,
+				A72857FF0A1600670082642D /* ProVocAction.nib in Resources */,
+				A72858010A1600670082642D /* ProVocBackground.nib in Resources */,
+				A72858080A1600670082642D /* ServicesMenu.strings in Resources */,
+				A72859970A1600E30082642D /* Credits.rtf in Resources */,
+				A72859980A1600E30082642D /* MainMenu.nib in Resources */,
+				A72859990A1600E30082642D /* ProVocCardController.nib in Resources */,
+				A728599A0A1600E30082642D /* ProVocDocument.nib in Resources */,
+				A728599B0A1600E30082642D /* ProVocInspector.nib in Resources */,
+				A728599C0A1600E30082642D /* ProVocStartingPoint.nib in Resources */,
+				A728599D0A1600E30082642D /* ProVocSubmitter.nib in Resources */,
+				A728599E0A1600E30082642D /* ProVocTester.nib in Resources */,
+				A72859E40A16010A0082642D /* ProVoc Help in Resources */,
+				A7285E230A1603D00082642D /* action.tiff in Resources */,
+				A7285E240A1603D00082642D /* add.tiff in Resources */,
+				A7285E250A1603D00082642D /* album.tiff in Resources */,
+				A7285E260A1603D00082642D /* ARDisclosureArrowDown.tif in Resources */,
+				A7285E270A1603D00082642D /* ARDisclosureArrowRight.tif in Resources */,
+				A7285E280A1603D00082642D /* Both.tif in Resources */,
+				A7285E290A1603D00082642D /* Camera.png in Resources */,
+				A7285E2A0A1603D00082642D /* CameraPressed.png in Resources */,
+				A7285E2B0A1603D00082642D /* Continuous.tif in Resources */,
+				A7285E2C0A1603D00082642D /* DownloadDocument.png in Resources */,
+				A7285E2D0A1603D00082642D /* ejectipod.tif in Resources */,
+				A7285E2E0A1603D00082642D /* flagged.tiff in Resources */,
+				A7285E2F0A1603D00082642D /* FontPreferences.tiff in Resources */,
+				A7285E300A1603D00082642D /* Inspector.tiff in Resources */,
+				A7285E310A1603D00082642D /* iPodPreferences.tif in Resources */,
+				A7285E320A1603D00082642D /* ipodsettings.tif in Resources */,
+				A7285E340A1603D00082642D /* LanguagePreferences.tiff in Resources */,
+				A7285E350A1603D00082642D /* markAsFlagged.tiff in Resources */,
+				A7285E360A1603D00082642D /* MCQ.tif in Resources */,
+				A7285E370A1603D00082642D /* Mic.png in Resources */,
+				A7285E380A1603D00082642D /* MicPressed.png in Resources */,
+				A7285E390A1603D00082642D /* NewDocument.png in Resources */,
+				A7285E3A0A1603D00082642D /* OpenDocument.png in Resources */,
+				A7285E3B0A1603D00082642D /* page.tif in Resources */,
+				A7285E3C0A1603D00082642D /* Play.tiff in Resources */,
+				A7285E3D0A1603D00082642D /* PlayDown.tiff in Resources */,
+				A7285E3E0A1603D00082642D /* Preferences.tiff in Resources */,
+				A7285E3F0A1603D00082642D /* Question.tif in Resources */,
+				A7285E400A1603D00082642D /* remove.tiff in Resources */,
+				A7285E410A1603D00082642D /* send.tif in Resources */,
+				A7285E420A1603D00082642D /* settings.tif in Resources */,
+				A7285E430A1603D00082642D /* SmallBlank.tif in Resources */,
+				A7285E440A1603D00082642D /* SmallImage.tif in Resources */,
+				A7285E450A1603D00082642D /* SmallMovie.tif in Resources */,
+				A7285E460A1603D00082642D /* SmallSpeaker.tif in Resources */,
+				A7285E470A1603D00082642D /* SpeakerOff.png in Resources */,
+				A7285E480A1603D00082642D /* SpeakerOn.png in Resources */,
+				A7285E490A1603D00082642D /* stripe.tiff in Resources */,
+				A7285E4A0A1603D00082642D /* Theme.tif in Resources */,
+				A7285E4B0A1603D00082642D /* unmarkAsFlagged.tiff in Resources */,
+				A7285E4C0A1603D00082642D /* UpdatePreferences.tiff in Resources */,
+				A7285E4D0A1603D00082642D /* Version.tif in Resources */,
+				A7285E4E0A1603D00082642D /* Video.png in Resources */,
+				A7285E4F0A1603D00082642D /* VideoPressed.png in Resources */,
+				A7285E500A1603D00082642D /* Warning.tiff in Resources */,
+				A76349B50A16054E00054021 /* ProVoc.icns in Resources */,
+				A76349B60A16054E00054021 /* ProVocFile.icns in Resources */,
+				A7572B230A1880AC00E4912F /* ProVocSpotlighter.nib in Resources */,
+				A7572EC10A18CE2700E4912F /* ProVocTimer.nib in Resources */,
+				A75734030A19FA9800E4912F /* Hourglass.png in Resources */,
+				A75734040A19FA9800E4912F /* Clock.png in Resources */,
+				A75734E40A1A0D2600E4912F /* BackgroundPlugIn.icns in Resources */,
+				A757569A0A1D2D3F00F8F569 /* ProVoc.scriptSuite in Resources */,
+				A757569D0A1D2D4700F8F569 /* ProVoc.scriptTerminology in Resources */,
+				A760E69C0A24B4BA00C6128B /* DefaultPresets.xml in Resources */,
+				A760F1C60A288B9B00C6128B /* ProVocViewOptions.nib in Resources */,
+				A7227D460AD56E8F00DF738C /* TrainingPreferences.tif in Resources */,
+				A7227D4C0AD56F9700DF738C /* LabelPreferences.tif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B125A30A1D50BD003B68B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B126CF0A1D5A0F003B68B0 /* InfoPlist.strings in Resources */,
+				A7B129AF0A1D6E4D003B68B0 /* main.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B126610A1D5700003B68B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B127120A1D5B9A003B68B0 /* InfoPlist.strings in Resources */,
+				A7B129B30A1D6E69003B68B0 /* main.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B1284F0A1D6366003B68B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B128700A1D6430003B68B0 /* InfoPlist.strings in Resources */,
+				A7B129AB0A1D6DF6003B68B0 /* main.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		A730684E0A1D944700B7A808 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A730690C0A1E115600B7A808 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A73069340A1E11F300B7A808 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A7025D680A2DECB900AB2487 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\ncd \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/Contents/\"\n\nrm -rf Frameworks/*.framework/Versions/*/Headers/*.h\nrm -rf Frameworks/*.framework/Versions/*/Resources/Polish.lproj\n";
+		};
+		A7B126100A1D55BA003B68B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/amlint \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"";
+		};
+		A7B127240A1D5C39003B68B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/amlint \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"";
+		};
+		A7B1289C0A1D65A0003B68B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/amlint \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+				A72856D40A15FF7A0082642D /* StringExtensions.m in Sources */,
+				A72856D50A15FF7A0082642D /* ScannerExtensions.m in Sources */,
+				A72856D60A15FF7A0082642D /* TableViewExtensions.m in Sources */,
+				A72856D70A15FF7A0082642D /* ArrayExtensions.m in Sources */,
+				A72856D80A15FF7A0082642D /* BezierPathExtensions.m in Sources */,
+				A72856D90A15FF7A0082642D /* TransformerExtensions.m in Sources */,
+				A72856DA0A15FF7A0082642D /* WindowExtensions.m in Sources */,
+				A72856DB0A15FF7A0082642D /* AppleScriptExtensions.m in Sources */,
+				A72856DC0A15FF7A0082642D /* ImageExtensions.m in Sources */,
+				A72856DD0A15FF7A0082642D /* TextFieldExtensions.m in Sources */,
+				A72856DE0A15FF7A0082642D /* MenuExtensions.m in Sources */,
+				A72856DF0A15FF7A0082642D /* SplitViewExtensions.m in Sources */,
+				A72856E00A15FF7A0082642D /* DateExtensions.m in Sources */,
+				A72856E10A15FF7A0082642D /* ArchiverExtensions.m in Sources */,
+				A72856F20A15FF880082642D /* ProVocWord.m in Sources */,
+				A72856F30A15FF880082642D /* ProVocPage.m in Sources */,
+				A72856F40A15FF880082642D /* ProVocChapter.m in Sources */,
+				A72856F50A15FF880082642D /* ProVocData.m in Sources */,
+				A72856F60A15FF880082642D /* ProVocData+Undo.m in Sources */,
+				A72856F70A15FF880082642D /* ProVocPreset.m in Sources */,
+				A72856F80A15FF880082642D /* ProVocHistory.m in Sources */,
+				A72856F90A15FF880082642D /* iPodManager.m in Sources */,
+				A728571A0A15FFA20082642D /* ProVocCardsView.m in Sources */,
+				A728571B0A15FFA20082642D /* ProVocPrintView.m in Sources */,
+				A728571C0A15FFA20082642D /* ProVocTableView.m in Sources */,
+				A728571D0A15FFA20082642D /* ProVocTableColumns.m in Sources */,
+				A728571E0A15FFA20082642D /* ExtendedCell.m in Sources */,
+				A728571F0A15FFA20082642D /* ProVocTextField.m in Sources */,
+				A72857200A15FFA20082642D /* ProVocMCQView.m in Sources */,
+				A72857210A15FFA20082642D /* ProVocFontNameField.m in Sources */,
+				A72857220A15FFA20082642D /* ProVocActionPopUpButton.m in Sources */,
+				A72857230A15FFA20082642D /* ProVocResultView.m in Sources */,
+				A72857240A15FFA20082642D /* ProVocHistoryView.m in Sources */,
+				A72857250A15FFA20082642D /* ProVocColoredWindowView.m in Sources */,
+				A72857260A15FFA20082642D /* ParameterBox.m in Sources */,
+				A72857270A15FFA20082642D /* ProVocImageView.m in Sources */,
+				A72857280A15FFA20082642D /* ProVocMovieView.m in Sources */,
+				A72857570A15FFB50082642D /* ProVocDocument.m in Sources */,
+				A72857580A15FFB50082642D /* ProVocDocument+Lists.m in Sources */,
+				A72857590A15FFB50082642D /* ProVocDocument+Export.m in Sources */,
+				A728575A0A15FFB50082642D /* ProVocDocument+Presets.m in Sources */,
+				A728575B0A15FFB50082642D /* ProVocDocument+Slideshow.m in Sources */,
+				A728575C0A15FFB50082642D /* ARInspector.m in Sources */,
+				A728575D0A15FFB50082642D /* ProVocInspector.m in Sources */,
+				A728575E0A15FFB50082642D /* ProVocApplication.m in Sources */,
+				A728575F0A15FFB50082642D /* ProVocAppDelegate.m in Sources */,
+				A72857600A15FFB50082642D /* ProVocTester.m in Sources */,
+				A72857610A15FFB50082642D /* ProVocMCQTester.m in Sources */,
+				A72857620A15FFB50082642D /* ProVocSilentTester.m in Sources */,
+				A72857630A15FFB50082642D /* iPodController.m in Sources */,
+				A72857640A15FFB50082642D /* ProVocPreferences.m in Sources */,
+				A72857650A15FFB50082642D /* ProVocActionController.m in Sources */,
+				A72857660A15FFB50082642D /* ARAboutDialog.m in Sources */,
+				A72857670A15FFB50082642D /* ProVocBackground.m in Sources */,
+				A72857680A15FFB50082642D /* ProVocStartingPoint.m in Sources */,
+				A72857690A15FFB50082642D /* FTPUploader.m in Sources */,
+				A728576A0A15FFB50082642D /* ZIPCompresser.m in Sources */,
+				A728576B0A15FFB50082642D /* ProVocSubmitter.m in Sources */,
+				A728576C0A15FFB50082642D /* ProVocCardController.m in Sources */,
+				A728576D0A15FFB50082642D /* ProVocServiceProvider.m in Sources */,
+				A7572B1A0A187FCB00E4912F /* ProVocSpotlighter.m in Sources */,
+				A7572E6D0A18CB5100E4912F /* ProVocTimerView.m in Sources */,
+				A7572EB80A18CD7D00E4912F /* ProVocTimer.m in Sources */,
+				A75756B80A1D30CE00F8F569 /* ProVocAppleScriptSupport.m in Sources */,
+				A711DEB50A1E12D700EE7423 /* SpeechSynthesizerExtensions.m in Sources */,
+				A760EFBD0A279D1D00C6128B /* ProVocDocument+Columns.m in Sources */,
+				A78A62AC0A895A220091CE4C /* ProVocDocument+WidgetLog.m in Sources */,
+				A737D5FB0ADDA1760008C421 /* ProVocSlideshowControlView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7B1292F0A1D6A0F003B68B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D15AC270486D014006FF6A4 /* ProVoc */;
+			targetProxy = A7B1292E0A1D6A0F003B68B0 /* PBXContainerItemProxy */;
+		};
+		A7B129310A1D6A12003B68B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7B125A60A1D50BD003B68B0 /* Add Files to Vocabulary */;
+			targetProxy = A7B129300A1D6A12003B68B0 /* PBXContainerItemProxy */;
+		};
+		A7B129330A1D6A13003B68B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7B126640A1D5700003B68B0 /* Add Text to Vocabulary */;
+			targetProxy = A7B129320A1D6A13003B68B0 /* PBXContainerItemProxy */;
+		};
+		A7B129350A1D6A15003B68B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7B128520A1D6366003B68B0 /* Get Contents of ProVoc Document */;
+			targetProxy = A7B129340A1D6A15003B68B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1660FE840EACC02AAC07 /* English */,
+				A76348CD0A16047700054021 /* French */,
+				A76348F20A16047C00054021 /* German */,
+				A7227FB20AD5E6B800DF738C /* Italian */,
+				A75502020ADD061E00978910 /* Danish */,
+				A7A266860ADEF1A50087DF7E /* Spanish */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A72857DC0A1600670082642D /* ARAbout.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857DD0A1600670082642D /* English */,
+				A71D65E40A2104C00072B2CA /* French */,
+				A71D67440A21CCA80072B2CA /* German */,
+				A7227FAE0AD5E6B800DF738C /* Italian */,
+				A75501FE0ADD061E00978910 /* Danish */,
+				A7A266820ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ARAbout.nib;
+			sourceTree = "<group>";
+		};
+		A72857DE0A1600670082642D /* ARLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857DF0A1600670082642D /* English */,
+				A76348CB0A16047700054021 /* French */,
+				A76348F00A16047C00054021 /* German */,
+				A7227FAF0AD5E6B800DF738C /* Italian */,
+				A75501FF0ADD061E00978910 /* Danish */,
+				A7A266830ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ARLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		A72857E00A1600670082642D /* iPodController.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857E10A1600670082642D /* English */,
+				A76348CE0A16047700054021 /* French */,
+				A76348F30A16047C00054021 /* German */,
+				A7227FB30AD5E6B800DF738C /* Italian */,
+				A75502030ADD061E00978910 /* Danish */,
+				A7A266870ADEF1A50087DF7E /* Spanish */,
+			);
+			name = iPodController.nib;
+			sourceTree = "<group>";
+		};
+		A72857E20A1600670082642D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857E30A1600670082642D /* English */,
+				A76348CF0A16047700054021 /* French */,
+				A76348F40A16047C00054021 /* German */,
+				A7227FB40AD5E6B800DF738C /* Italian */,
+				A75502040ADD061E00978910 /* Danish */,
+				A7A266880ADEF1A50087DF7E /* Spanish */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A72857E40A1600670082642D /* Preferences.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857E50A1600670082642D /* English */,
+				A76348D10A16047700054021 /* French */,
+				A76348F60A16047C00054021 /* German */,
+				A7227FB60AD5E6B800DF738C /* Italian */,
+				A75502060ADD061E00978910 /* Danish */,
+				A7A2668A0ADEF1A50087DF7E /* Spanish */,
+			);
+			name = Preferences.nib;
+			sourceTree = "<group>";
+		};
+		A72857E60A1600670082642D /* ProVocAction.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857E70A1600670082642D /* English */,
+				A76348D20A16047700054021 /* French */,
+				A76348F70A16047C00054021 /* German */,
+				A7227FB80AD5E6B800DF738C /* Italian */,
+				A75502070ADD061E00978910 /* Danish */,
+				A7A2668B0ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocAction.nib;
+			sourceTree = "<group>";
+		};
+		A72857EA0A1600670082642D /* ProVocBackground.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857EB0A1600670082642D /* English */,
+				A71D65E50A2104C00072B2CA /* French */,
+				A71D67450A21CCA80072B2CA /* German */,
+				A7227FB90AD5E6B800DF738C /* Italian */,
+				A75502080ADD061E00978910 /* Danish */,
+				A7A2668C0ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocBackground.nib;
+			sourceTree = "<group>";
+		};
+		A72857F80A1600670082642D /* ServicesMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72857F90A1600670082642D /* English */,
+				A76348D70A16047700054021 /* French */,
+				A71D674B0A21CCA80072B2CA /* German */,
+				A7227FC30AD5E6B800DF738C /* Italian */,
+				A75502120ADD061E00978910 /* Danish */,
+				A7A266960ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ServicesMenu.strings;
+			sourceTree = "<group>";
+		};
+		A72859870A1600E30082642D /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72859880A1600E30082642D /* English */,
+				A76348CC0A16047700054021 /* French */,
+				A76348F10A16047C00054021 /* German */,
+				A7227FB00AD5E6B800DF738C /* Italian */,
+				A75502000ADD061E00978910 /* Danish */,
+				A7A266840ADEF1A50087DF7E /* Spanish */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		A72859890A1600E30082642D /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A728598A0A1600E30082642D /* English */,
+				A76348D00A16047700054021 /* French */,
+				A76348F50A16047C00054021 /* German */,
+				A7227FB50AD5E6B800DF738C /* Italian */,
+				A75502050ADD061E00978910 /* Danish */,
+				A7A266890ADEF1A50087DF7E /* Spanish */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		A728598B0A1600E30082642D /* ProVocCardController.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A728598C0A1600E30082642D /* English */,
+				A71D65E60A2104C00072B2CA /* French */,
+				A71D67460A21CCA80072B2CA /* German */,
+				A7227FBA0AD5E6B800DF738C /* Italian */,
+				A75502090ADD061E00978910 /* Danish */,
+				A7A2668D0ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocCardController.nib;
+			sourceTree = "<group>";
+		};
+		A728598D0A1600E30082642D /* ProVocDocument.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A728598E0A1600E30082642D /* English */,
+				A76348D40A16047700054021 /* French */,
+				A76348F80A16047C00054021 /* German */,
+				A7227FBB0AD5E6B800DF738C /* Italian */,
+				A755020A0ADD061E00978910 /* Danish */,
+				A7A2668E0ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocDocument.nib;
+			sourceTree = "<group>";
+		};
+		A728598F0A1600E30082642D /* ProVocInspector.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72859900A1600E30082642D /* English */,
+				A76348D50A16047700054021 /* French */,
+				A76348F90A16047C00054021 /* German */,
+				A7227FBC0AD5E6B800DF738C /* Italian */,
+				A755020B0ADD061E00978910 /* Danish */,
+				A7A2668F0ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocInspector.nib;
+			sourceTree = "<group>";
+		};
+		A72859910A1600E30082642D /* ProVocStartingPoint.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72859920A1600E30082642D /* English */,
+				A71D65E80A2104C00072B2CA /* French */,
+				A71D67480A21CCA80072B2CA /* German */,
+				A7227FBE0AD5E6B800DF738C /* Italian */,
+				A755020D0ADD061E00978910 /* Danish */,
+				A7A266910ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocStartingPoint.nib;
+			sourceTree = "<group>";
+		};
+		A72859930A1600E30082642D /* ProVocSubmitter.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72859940A1600E30082642D /* English */,
+				A71D65E90A2104C00072B2CA /* French */,
+				A71D67490A21CCA80072B2CA /* German */,
+				A7227FBF0AD5E6B800DF738C /* Italian */,
+				A755020E0ADD061E00978910 /* Danish */,
+				A7A266920ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocSubmitter.nib;
+			sourceTree = "<group>";
+		};
+		A72859950A1600E30082642D /* ProVocTester.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72859960A1600E30082642D /* English */,
+				A76348D60A16047700054021 /* French */,
+				A76348FA0A16047C00054021 /* German */,
+				A7227FC00AD5E6B800DF738C /* Italian */,
+				A755020F0ADD061E00978910 /* Danish */,
+				A7A266930ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocTester.nib;
+			sourceTree = "<group>";
+		};
+		A72859A30A16010A0082642D /* ProVoc Help */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A72859A40A16010A0082642D /* English */,
+				A7227FC40AD5E6F200DF738C /* Italian */,
+			);
+			name = "ProVoc Help";
+			sourceTree = "<group>";
+		};
+		A7572B210A1880AC00E4912F /* ProVocSpotlighter.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7572B220A1880AC00E4912F /* English */,
+				A71D65E70A2104C00072B2CA /* French */,
+				A71D67470A21CCA80072B2CA /* German */,
+				A7227FBD0AD5E6B800DF738C /* Italian */,
+				A755020C0ADD061E00978910 /* Danish */,
+				A7A266900ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocSpotlighter.nib;
+			sourceTree = "<group>";
+		};
+		A7572EBF0A18CE2700E4912F /* ProVocTimer.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7572EC00A18CE2700E4912F /* English */,
+				A71D65EA0A2104C00072B2CA /* French */,
+				A71D674A0A21CCA80072B2CA /* German */,
+				A7227FC10AD5E6B800DF738C /* Italian */,
+				A75502100ADD061E00978910 /* Danish */,
+				A7A266940ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocTimer.nib;
+			sourceTree = "<group>";
+		};
+		A757569B0A1D2D4700F8F569 /* ProVoc.scriptTerminology */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A757569C0A1D2D4700F8F569 /* English */,
+			);
+			name = ProVoc.scriptTerminology;
+			sourceTree = "<group>";
+		};
+		A760E69B0A24B4BA00C6128B /* DefaultPresets.xml */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A760E5BF0A24ABD700C6128B /* English */,
+				A760E69D0A24B4C100C6128B /* French */,
+				A760E6B20A24B51400C6128B /* German */,
+				A7227FB10AD5E6B800DF738C /* Italian */,
+				A75502010ADD061E00978910 /* Danish */,
+				A7A266850ADEF1A50087DF7E /* Spanish */,
+			);
+			name = DefaultPresets.xml;
+			sourceTree = "<group>";
+		};
+		A760F1C40A288B9B00C6128B /* ProVocViewOptions.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A760F1C50A288B9B00C6128B /* English */,
+				A760FBC80A2A4F2200C6128B /* French */,
+				A760FBEE0A2A4F2B00C6128B /* German */,
+				A7227FC20AD5E6B800DF738C /* Italian */,
+				A75502110ADD061E00978910 /* Danish */,
+				A7A266950ADEF1A50087DF7E /* Spanish */,
+			);
+			name = ProVocViewOptions.nib;
+			sourceTree = "<group>";
+		};
+		A7B126CD0A1D5A0F003B68B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B126CE0A1D5A0F003B68B0 /* English */,
+				A7B126D30A1D5A4A003B68B0 /* French */,
+				A7227F710AD5E52700DF738C /* Italian */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A7B1270F0A1D5B9A003B68B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B127100A1D5B9A003B68B0 /* English */,
+				A7B127110A1D5B9A003B68B0 /* French */,
+				A7227F730AD5E55100DF738C /* Italian */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A7B1286D0A1D6430003B68B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B1286F0A1D6430003B68B0 /* English */,
+				A7B1286E0A1D6430003B68B0 /* French */,
+				A7227F750AD5E57E00DF738C /* Italian */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A7B129A80A1D6DF6003B68B0 /* main.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B129AA0A1D6DF6003B68B0 /* English */,
+				A7B129A90A1D6DF6003B68B0 /* French */,
+				A7227F760AD5E57E00DF738C /* Italian */,
+			);
+			name = main.nib;
+			sourceTree = "<group>";
+		};
+		A7B129AC0A1D6E4D003B68B0 /* main.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B129AE0A1D6E4D003B68B0 /* English */,
+				A7B129AD0A1D6E4D003B68B0 /* French */,
+				A7227F720AD5E52700DF738C /* Italian */,
+			);
+			name = main.nib;
+			sourceTree = "<group>";
+		};
+		A7B129B00A1D6E69003B68B0 /* main.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B129B10A1D6E69003B68B0 /* English */,
+				A7B129B20A1D6E69003B68B0 /* French */,
+				A7227F740AD5E55100DF738C /* Italian */,
+			);
+			name = main.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7B125AA0A1D50BE003B68B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = Actions/Resources/ImportFileAction/Info.plist;
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Automator";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Add Files to Vocabulary";
+				WRAPPER_EXTENSION = action;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		A7B125AB0A1D50BE003B68B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = Actions/Resources/ImportFileAction/Info.plist;
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Automator";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Add Files to Vocabulary";
+				WRAPPER_EXTENSION = action;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		A7B126680A1D5701003B68B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = Actions/Resources/ImportTextAction/Info.plist;
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Automator";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Add Text to Vocabulary";
+				WRAPPER_EXTENSION = action;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		A7B126690A1D5701003B68B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = Actions/Resources/ImportTextAction/Info.plist;
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Automator";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Add Text to Vocabulary";
+				WRAPPER_EXTENSION = action;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		A7B128560A1D6367003B68B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = Actions/Resources/GetVocabularyAction/Info.plist;
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Automator";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Get Contents of ProVoc Document";
+				WRAPPER_EXTENSION = action;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		A7B128570A1D6367003B68B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = Actions/Resources/GetVocabularyAction/Info.plist;
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Automator";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Get Contents of ProVoc Document";
+				WRAPPER_EXTENSION = action;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		A7B1294E0A1D6A42003B68B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Aggregate;
+			};
+			name = Debug;
+		};
+		A7B1294F0A1D6A42003B68B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = Aggregate;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C05733C808A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/Frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = Sources/ProVoc_Prefix.pch;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					Quartz,
+				);
+				PRODUCT_NAME = ProVoc;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C05733C908A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/Frameworks\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PREFIX_HEADER = Sources/ProVoc_Prefix.pch;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					Quartz,
+				);
+				PRODUCT_NAME = ProVoc;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C05733CC08A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+			};
+			name = Debug;
+		};
+		C05733CD08A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7B125A90A1D50BE003B68B0 /* Build configuration list for PBXNativeTarget "Add Files to Vocabulary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B125AA0A1D50BE003B68B0 /* Debug */,
+				A7B125AB0A1D50BE003B68B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7B126670A1D5701003B68B0 /* Build configuration list for PBXNativeTarget "Add Text to Vocabulary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B126680A1D5701003B68B0 /* Debug */,
+				A7B126690A1D5701003B68B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7B128550A1D6367003B68B0 /* Build configuration list for PBXNativeTarget "Get Contents of ProVoc Document" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B128560A1D6367003B68B0 /* Debug */,
+				A7B128570A1D6367003B68B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7B1294D0A1D6A42003B68B0 /* Build configuration list for PBXAggregateTarget "Aggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B1294E0A1D6A42003B68B0 /* Debug */,
+				A7B1294F0A1D6A42003B68B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "ProVoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733C808A9546B00998B17 /* Debug */,
+				C05733C908A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "ProVoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733CC08A9546B00998B17 /* Debug */,
+				C05733CD08A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}

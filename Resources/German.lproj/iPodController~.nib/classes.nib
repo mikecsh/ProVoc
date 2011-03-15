@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {cancel = id; confirm = id; eject = id; startSending = id; }; 
+            CLASS = iPodController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mTabView = NSTabView; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

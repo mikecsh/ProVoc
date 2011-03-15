@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = ProVocTimer; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mTimerView = ProVocTimerView; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = ProVocTimerView; LANGUAGE = ObjC; SUPERCLASS = NSView; }
+    ); 
+    IBVersion = 1; 
+}

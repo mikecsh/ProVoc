@@ -1,0 +1,48 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {"" = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {userSetFont = id; }; 
+            CLASS = ProVocFontNameField; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTextField; 
+        }, 
+        {
+            ACTIONS = {
+                deleteSelectediPodContent = id; 
+                deleteiPodNotes = id; 
+                newLanguage = id; 
+                removeUnusedAudio = id; 
+                restoreDefaultLabels = id; 
+                updateDifficulty = id; 
+                updateiPodIndex = id; 
+            }; 
+            CLASS = ProVocPreferences; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                mFontView = NSView; 
+                mGeneralView = NSView; 
+                mLabelView = NSView; 
+                mLanguageTableView = NSTableView; 
+                mLanguageView = NSView; 
+                mTrainingView = NSView; 
+                mUpdateView = NSView; 
+                miPodContentsOutlineView = NSOutlineView; 
+                miPodView = NSView; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {delete = id; }; 
+            CLASS = ProVocTableView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTableView; 
+        }
+    ); 
+    IBVersion = 1; 
+}

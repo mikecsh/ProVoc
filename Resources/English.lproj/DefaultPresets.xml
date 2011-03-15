@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>First Contact</string>
+		<key>Parameters</key>
+		<dict>
+			<key>numberOfRetries</key>
+			<integer>1</integer>
+			<key>testDirection</key>
+			<integer>0</integer>
+			<key>testMCQ</key>
+			<true/>
+			<key>showBacktranslation</key>
+			<false/>
+			<key>initialSlideshow</key>
+			<true/>
+		</dict>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Written Test</string>
+		<key>Parameters</key>
+		<dict>
+			<key>numberOfRetries</key>
+			<integer>2</integer>
+			<key>testDirection</key>
+			<integer>1</integer>
+			<key>testMCQ</key>
+			<false/>
+			<key>showBacktranslation</key>
+			<true/>
+			<key>initialSlideshow</key>
+			<false/>
+		</dict>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Quick Test</string>
+		<key>Parameters</key>
+		<dict>
+			<key>numberOfRetries</key>
+			<integer>1</integer>
+			<key>testKind</key>
+			<integer>1</integer>
+			<key>testDirection</key>
+			<integer>2</integer>
+			<key>testMCQ</key>
+			<true/>
+			<key>testMCQNumber</key>
+			<integer>3</integer>
+			<key>showBacktranslation</key>
+			<false/>
+			<key>initialSlideshow</key>
+			<false/>
+			<key>lateComments</key>
+			<integer>1</integer>
+			<key>timer</key>
+			<integer>2</integer>
+			<key>timerDuration</key>
+			<integer>120</integer>
+		</dict>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Review</string>
+		<key>Parameters</key>
+		<dict>
+			<key>numberOfRetries</key>
+			<integer>2</integer>
+			<key>testDirection</key>
+			<integer>3</integer>
+			<key>testMCQ</key>
+			<true/>
+			<key>testMCQNumber</key>
+			<integer>3</integer>
+			<key>showBacktranslation</key>
+			<false/>
+			<key>initialSlideshow</key>
+			<false/>
+			<key>testWordsToReview</key>
+			<true/>
+		</dict>
+	</dict>
+</array>
+</plist>

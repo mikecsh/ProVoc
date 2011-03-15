@@ -1,0 +1,30 @@
+"Check For Updates" = "Vérifier les mises à jour";
+
+"Connection Error Title" = "Une erreur est survenue lors de la recherche de mises à jour";
+"Connection Error Message" = "Serveur de mise à jour introuvable. Assurez-vous que votre réseau est correctement configuré, puis réessayez.";
+"No Update Title" =  "Cette version est à jour";
+"No Update Message" = "Veuillez réessayer plus tard.";
+
+"Updates detected" = "Mises à jour détectées";
+"Next check scheduled on: %@" = "Prochaine vérification: %@";
+"Successful. %@." = "Réussie. %@.";
+"Failed. %@." = "Échouée. %@.";
+"None." = "Aucune.";
+"Total Size: %@" = "Taille totale: %@";
+"Opening %@..." = "Ouverture de %@...";
+"Downloading %@..." = "Téléchargement de %@...";
+"Copying %@..." = "Copie de %@...";
+"Failed to download all updates" = "Toutes les mises à jours n'ont pas pu être téléchargées";
+"The download of %@ was interrupted for the following reason: %@" = "Le téléchargement de %@ a été interrompu pour la raison suivante: %@";
+"Current Localization" = "French";
+
+"Install Title %@" = "%@ est prêt pour la mise à jour";
+"Install Message %@" = "Désirez-vous mettre à jour %@ et redémarrrer l'application tout de suite, ou préférez-vous enregistrer la version téléchargée sur votre bureau?";
+"Install Button %@" = "Mettre à jour et redémarrer %@";
+"Install Save %@" = "Enregistrer sur le bureau";
+"Install Cancel" = "Annuler";
+
+"Install Error Title %@" = "Impossible de mettre à jour %@";
+"Install Error Message" = "Une erreur inopinée est survenue lors du processus de mise à jour. Pour télécharger la dernière version de ce logiciel, veuillez visiter notre site web.";
+"Install Error Button" = "Visiter le site web Arizona";
+"Install Error URL" = "http://www.arizona-software.ch";
