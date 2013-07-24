@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Add Files to Vocabulary.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Add Text to Vocabulary.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Aggregate.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Get Contents of ProVoc Document.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>ProVoc.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8D15AC270486D014006FF6A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7B125A60A1D50BD003B68B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7B126640A1D5700003B68B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7B128520A1D6366003B68B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7B1292D0A1D6A0C003B68B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

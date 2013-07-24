@@ -61,9 +61,6 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		A711DEB50A1E12D700EE7423 /* SpeechSynthesizerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A711DEB30A1E12D600EE7423 /* SpeechSynthesizerExtensions.m */; };
-		A719F74C0A1DD7880039859E /* Add Files to Vocabulary.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7B125A70A1D50BD003B68B0 /* Add Files to Vocabulary.action */; };
-		A719F74D0A1DD7880039859E /* Add Text to Vocabulary.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7B126650A1D5700003B68B0 /* Add Text to Vocabulary.action */; };
-		A719F74E0A1DD7880039859E /* Get Contents of ProVoc Document.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7B128530A1D6366003B68B0 /* Get Contents of ProVoc Document.action */; };
 		A7227D460AD56E8F00DF738C /* TrainingPreferences.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7227D450AD56E8F00DF738C /* TrainingPreferences.tif */; };
 		A7227D4C0AD56F9700DF738C /* LabelPreferences.tif in Resources */ = {isa = PBXBuildFile; fileRef = A7227D4B0AD56F9700DF738C /* LabelPreferences.tif */; };
 		A72856D40A15FF7A0082642D /* StringExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856B90A15FF7A0082642D /* StringExtensions.m */; };
@@ -311,9 +308,6 @@
 			dstPath = Contents/Library/Automator;
 			dstSubfolderSpec = 1;
 			files = (
-				A719F74C0A1DD7880039859E /* Add Files to Vocabulary.action in CopyFiles */,
-				A719F74D0A1DD7880039859E /* Add Text to Vocabulary.action in CopyFiles */,
-				A719F74E0A1DD7880039859E /* Get Contents of ProVoc Document.action in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1218,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "ProVoc" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,

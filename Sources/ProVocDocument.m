@@ -1369,7 +1369,20 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(IBAction)selectView:(id)inSender
 {
-	[self setMainTab:[inSender tag]];
+    if (inSender == mEditViewToolbarItem)
+    {
+        [self setMainTab:1];
+    }
+    else if (inSender == mTrainingViewToolbarItem)
+    {
+        [self setMainTab:0];
+    }
+    else if (inSender == mHistoryViewToolbarItem)
+    {
+        [self setMainTab:2];
+    }
+    else
+        [self setMainTab:[inSender tag]];
 }
 
 -(IBAction)startSlideshow:(id)inSender
@@ -1491,7 +1504,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
     [[ProVocPreferences sharedPreferences] openGeneralView:nil];
 }
 
--(void)toggleInspector:(id)inSender
+-(IBAction)toggleInspector:(id)inSender
 {
 	[[ProVocInspector sharedInspector] toggle];
 }

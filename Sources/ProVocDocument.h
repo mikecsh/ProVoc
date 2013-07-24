@@ -66,6 +66,10 @@
 	BOOL mHasVisibleSourceAudio;
 	BOOL mHasVisibleTargetAudio;
 	
+    IBOutlet NSToolbarItem *mEditViewToolbarItem;
+    IBOutlet NSToolbarItem *mTrainingViewToolbarItem;
+    IBOutlet NSToolbarItem *mHistoryViewToolbarItem;
+    
 	IBOutlet NSTableView *mLabelTableView;
     IBOutlet NSTableView *mWordTableView;
 	IBOutlet NSOutlineView *mPageOutlineView;
@@ -190,6 +194,7 @@
 -(NSArray *)wordsToBeTested;
 
 -(IBAction)selectView:(id)inSender;
+-(IBAction)toggleInspector:(id)inSender;
 
 @end
 
