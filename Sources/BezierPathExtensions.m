@@ -63,7 +63,7 @@ static float sRanges[8] = {0, 1, 0, 1, 0, 1, 0, 1};
 
 -(void)fillWithAngleInDegrees:(float)inDegrees info:(void *)inInfo callback:(CGFunctionEvaluateCallback)inCallback
 {
-    float alpha = inDegrees / 180.0 * pi;
+    float alpha = inDegrees / 180.0 * M_PI;
     float dx = cos(alpha);
     float dy = sin(alpha);
     int i, n = [self elementCount];

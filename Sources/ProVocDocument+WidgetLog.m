@@ -78,7 +78,7 @@
 			[mLastWidgetLogModificationDate release];
 			mLastWidgetLogModificationDate = [modificationDate retain];
 			
-			NSScanner *scanner = [NSScanner scannerWithString:[NSString stringWithContentsOfFile:logFile]];
+			NSScanner *scanner = [NSScanner scannerWithString:[NSString stringWithContentsOfFile:logFile encoding:NSUTF8StringEncoding error:nil]];
 			[scanner setCharactersToBeSkipped:[NSCharacterSet whitespaceCharacterSet]];
 			if (![scanner scanString:@"WidgetLog v" intoString:nil])
 				NSLog(@"*** Invalid Widget Log File ***");

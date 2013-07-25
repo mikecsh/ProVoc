@@ -24,7 +24,7 @@
 
 -(float)positionToRadian:(float)inPosition
 {
-	return pi / 2 - inPosition / mTotal * 2 * pi;
+	return M_PI / 2 - inPosition / mTotal * 2 * M_PI;
 }
 
 -(float)positionToDegrees:(int)inPosition

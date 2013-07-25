@@ -222,7 +222,7 @@
 
 -(BOOL)checkInternetConnection
 {
-	NSString *acknowledge = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.arizona-software.ch/~provoc/submission/check.php?action=check"]];
+	NSString *acknowledge = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.arizona-software.ch/~provoc/submission/check.php?action=check"] encoding:NSUTF8StringEncoding error:nil];
 	return [acknowledge isEqual:@"OK"];
 }
 

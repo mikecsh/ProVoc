@@ -51,7 +51,7 @@
 	float badgeMaxRadius = size.height / 2;
 	float badgeMinRadius = badgeMaxRadius - 2;
 	int starNumber = 28;
-	float horizontalEpsilon = badgeMaxRadius * 2 * pi / starNumber;
+	float horizontalEpsilon = badgeMaxRadius * 2 * M_PI / starNumber;
 	
 	NSSize badgeSize = size;
 	int horizontalPoints = MAX(0, ceil((badgeSize.width - badgeSize.height) / horizontalEpsilon));
@@ -67,9 +67,9 @@
 	NSPoint center = NSMakePoint(badgeSize.width - badgeMaxRadius, badgeSize.height / 2);
 	[bezierPath moveToPoint:NSMakePoint(center.x, center.y + badgeMaxRadius)];
 	for (i = 0; i < starNumber / 2; i++) {
-		float a = pi * (0.5 - (i * 2.0 + 1) / starNumber);
+		float a = M_PI * (0.5 - (i * 2.0 + 1) / starNumber);
 		[bezierPath lineToPoint:NSMakePoint(center.x + badgeMinRadius * cos(a), center.y + badgeMinRadius * sin(a))];
-		a -= pi / starNumber;
+		a -= M_PI / starNumber;
 		[bezierPath lineToPoint:NSMakePoint(center.x + badgeMaxRadius * cos(a), center.y + badgeMaxRadius * sin(a))];
 	}
 
@@ -80,9 +80,9 @@
 	
 	center = NSMakePoint(badgeMaxRadius, badgeSize.height / 2);
 	for (i = starNumber / 2; i < starNumber; i++) {
-		float a = pi * (0.5 - (i * 2.0 + 1) / starNumber);
+		float a = M_PI * (0.5 - (i * 2.0 + 1) / starNumber);
 		[bezierPath lineToPoint:NSMakePoint(center.x + badgeMinRadius * cos(a), center.y + badgeMinRadius * sin(a))];
-		a -= pi / starNumber;
+		a -= M_PI / starNumber;
 		[bezierPath lineToPoint:NSMakePoint(center.x + badgeMaxRadius * cos(a), center.y + badgeMaxRadius * sin(a))];
 	}
 	

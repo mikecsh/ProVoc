@@ -130,44 +130,39 @@ enum {
 
 +(void)initialize
 {
-	NSArray *progressKeys = [NSArray arrayWithObject:@"progress"];
-	[self setKeys:progressKeys triggerChangeNotificationsForDependentKey:@"progressMin"];
-	[self setKeys:progressKeys triggerChangeNotificationsForDependentKey:@"progressMax"];
-	[self setKeys:progressKeys triggerChangeNotificationsForDependentKey:@"progressValue"];
-	[self setKeys:progressKeys triggerChangeNotificationsForDependentKey:@"progressTitle"];
-
-	[self setKeys:[NSArray arrayWithObjects:@"hideComment", @"displayCorrectAnswer", @"hideQuestion", nil] triggerChangeNotificationsForDependentKey:@"canGiveAnswer"];
-	[self setKeys:[NSArray arrayWithObjects:@"hideComment", @"canGiveAnswer", @"displayCorrectAnswer", @"hideQuestion", nil] triggerChangeNotificationsForDependentKey:@"verifyTitle"];
-	[self setKeys:[NSArray arrayWithObjects:@"displayCorrectAnswer", nil] triggerChangeNotificationsForDependentKey:@"correctAnswer"];
-	[self setKeys:[NSArray arrayWithObjects:@"displayCorrectAnswer", nil] triggerChangeNotificationsForDependentKey:@"hideComment"];
-	[self setKeys:[NSArray arrayWithObjects:@"displayCorrectAnswer", @"hideComment", nil] triggerChangeNotificationsForDependentKey:@"hideLabel"];
-
-	[self setKeys:[NSArray arrayWithObject:@"flagged"] triggerChangeNotificationsForDependentKey:@"labelIndex"];
-
-	[self setKeys:[NSArray arrayWithObject:@"noteWords"] triggerChangeNotificationsForDependentKey:@"maxNoteIndex"];
-	[self setKeys:[NSArray arrayWithObject:@"noteWords"] triggerChangeNotificationsForDependentKey:@"multipleNote"];
-
-	[self setKeys:[NSArray arrayWithObject:@"hideQuestion"] triggerChangeNotificationsForDependentKey:@"question"];
-
-	[self setKeys:[NSArray arrayWithObject:@"audio"] triggerChangeNotificationsForDependentKey:@"canPlayQuestionAudio"];
-	[self setKeys:[NSArray arrayWithObject:@"audio"] triggerChangeNotificationsForDependentKey:@"canPlayAnswerAudio"];
-	[self setKeys:[NSArray arrayWithObject:@"audio"] triggerChangeNotificationsForDependentKey:@"questionAudioImage"];
-	[self setKeys:[NSArray arrayWithObject:@"audio"] triggerChangeNotificationsForDependentKey:@"answerAudioImage"];
-	[self setKeys:[NSArray arrayWithObject:@"movie"] triggerChangeNotificationsForDependentKey:@"nonNilMovie"];
-
-	NSArray *fontKeys = [NSArray arrayWithObject:@"font"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"questionFontSize"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"answerFontSize"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"questionWritingDirection"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"answerWritingDirection"];
-	fontKeys = [NSArray arrayWithObject:@"commentFont"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"sourceFontSize"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"targetFontSize"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"commentFontSize"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"sourceWritingDirection"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"targetWritingDirection"];
-	[self setKeys:fontKeys triggerChangeNotificationsForDependentKey:@"commentWritingDirection"];
 }
+
++(NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSMutableSet *affectedValuesKeyPaths = [NSMutableSet set];
+    
+    if ([key isEqualToString:@"progress"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"progressMin",@"progressMax",@"progressValue",@"progressTitle"]];
+    else if ([key isEqualToString:@"displayCorrectAnswer"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"canGiveAnswer",@"verifyTitle",@"correctAnswer",@"hideComment", @"hideLabel"]];
+    else if ([key isEqualToString:@"audio"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"canPlayQuestionAudio",@"canPlayAnswerAudio",@"questionAudioImage",@"answerAudioImage"]];
+    else if ([key isEqualToString:@"noteWords"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"maxNoteIndex",@"multipleNote"]];
+    else if ([key isEqualToString:@"font"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"questionFontSize",@"answerFontSize",@"questionWritingDirection",@"answerWritingDirection"]];
+    else if ([key isEqualToString:@"commentFont"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"sourceFontSize",@"targetFontSize",@"commentFontSize",@"sourceWritingDirection",@"targetWritingDirection",@"commentWritingDirection"]];
+    else if ([key isEqualToString:@"movie"])
+        [affectedValuesKeyPaths addObject:@"nonNilMovie"];
+    else if ([key isEqualToString:@"hideQuestion"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"question", @"canGiveAnswer", @"verifyTitle"]];
+    else if ([key isEqualToString:@"flagged"])
+        [affectedValuesKeyPaths addObject:@"labelIndex"];
+    else if ([key isEqualToString:@"canGiveAnswer"])
+        [affectedValuesKeyPaths addObject:@"verifyTitle"];
+    else if ([key isEqualToString:@"hideComment"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"hideLabel", @"canGiveAnswer", @"verifyTitle"]];
+
+    return affectedValuesKeyPaths;
+}
+
+
 
 static NSMutableArray *sCurrentTesters = nil;
 
