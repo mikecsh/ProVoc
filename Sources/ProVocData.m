@@ -24,8 +24,8 @@
 		[page release];
 		
 		NSDictionary *dictionary = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-		mSourceLanguage = [[dictionary objectForKey:@"DefaultSource"] retain];
-		mTargetLanguage = [[dictionary objectForKey:@"DefaultTarget"] retain];
+		mSourceLanguage = [dictionary[@"DefaultSource"] retain];
+		mTargetLanguage = [dictionary[@"DefaultTarget"] retain];
     }
     return self;
 }

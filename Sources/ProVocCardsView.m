@@ -164,7 +164,7 @@
 		}
 		NSColor *color = [NSUnarchiver unarchiveObjectWithData:[defaults objectForKey:ProVocCardTextColor]];
 		color = [color colorWithAlphaComponent:[defaults floatForKey:ProVocCardTagFraction]];
-		[attributes setObject:color forKey:NSForegroundColorAttributeName];
+		attributes[NSForegroundColorAttributeName] = color;
 		[tag drawInRect:NSInsetRect(rect, 6, 4) withAttributes:attributes];
 		topMargin = [NSFont labelFontSize];
 		r.size.height -= topMargin;
@@ -181,8 +181,8 @@
 			[paragraphStyle release];
 		}
 		NSFont *font = [NSFont fontWithName:[defaults objectForKey:@"commentFontFamilyName"] size:[NSFont labelFontSize] * [defaults floatForKey:ProVocCardCommentSize]];
-		[attributes setObject:font forKey:NSFontAttributeName];
-		[attributes setObject:[NSUnarchiver unarchiveObjectWithData:[defaults objectForKey:ProVocCardTextColor]] forKey:NSForegroundColorAttributeName];
+		attributes[NSFontAttributeName] = font;
+		attributes[NSForegroundColorAttributeName] = [NSUnarchiver unarchiveObjectWithData:[defaults objectForKey:ProVocCardTextColor]];
 		
 		NSAttributedString *string = [[NSAttributedString alloc] initWithString:comment attributes:attributes];
 		NSRect bounds = NSInsetRect(rect, 6, 4);
@@ -217,21 +217,21 @@
 	[NSBezierPath setDefaultLineWidth:0.2];
 	NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[attributes setObject:[NSUnarchiver unarchiveObjectWithData:[defaults objectForKey:ProVocCardTextColor]] forKey:NSForegroundColorAttributeName];
+	attributes[NSForegroundColorAttributeName] = [NSUnarchiver unarchiveObjectWithData:[defaults objectForKey:ProVocCardTextColor]];
 	NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
 	[paragraphStyle setAlignment:NSCenterTextAlignment];
-	[attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+	attributes[NSParagraphStyleAttributeName] = paragraphStyle;
 	float sourceFontSize = mFontSizeFactor * [defaults floatForKey:@"sourceFontSize"];
 	NSFont *font = [NSFont systemFontOfSize:sourceFontSize];
 	NSString *sourceFontFamilyName = [defaults objectForKey:@"sourceFontFamilyName"];
 	font = [[NSFontManager sharedFontManager] convertFont:font toFamily:sourceFontFamilyName];
-	[attributes setObject:font forKey:NSFontAttributeName];
+	attributes[NSFontAttributeName] = font;
 	NSMutableAttributedString *sourceString = [[[NSMutableAttributedString alloc] initWithString:@"dummy" attributes:attributes] autorelease];
 	float targetFontSize = mFontSizeFactor * [defaults floatForKey:@"targetFontSize"];
 	font = [NSFont systemFontOfSize:targetFontSize];
 	NSString *targetFontFamilyName = [defaults objectForKey:@"targetFontFamilyName"];
 	font = [[NSFontManager sharedFontManager] convertFont:font toFamily:targetFontFamilyName];
-	[attributes setObject:font forKey:NSFontAttributeName];
+	attributes[NSFontAttributeName] = font;
 	NSMutableAttributedString *targetString = [[[NSMutableAttributedString alloc] initWithString:@"dummy" attributes:attributes] autorelease];
 	
 	NSColor *backGroundColor = [NSUnarchiver unarchiveObjectWithData:[defaults objectForKey:ProVocCardBackgroundColor]];
@@ -273,7 +273,7 @@
 							[[NSColor blackColor] set];
 							[NSBezierPath strokeRect:cardRect];
 						}
-						ProVocWord *word = [mWords objectAtIndex:card];
+						ProVocWord *word = mWords[card];
 						if (mPaperSides == 2) {
 							NSMutableAttributedString *string = recto ? sourceString : targetString;
 							NSString *fontFamilyName = recto ? sourceFontFamilyName : targetFontFamilyName;

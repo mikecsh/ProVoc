@@ -212,11 +212,11 @@ static NSMutableArray *sCurrentTesters = nil;
 	if ([self displayCorrectAnswer]) {
 		NSString *c = [inEvent charactersIgnoringModifiers];
 		if ([c isCaseInsensitiveLike:@"y"]) {
-			[self verifyTestPanel:[NSNumber numberWithBool:YES]];
+			[self verifyTestPanel:@YES];
 			return YES;
 		}
 		if ([c isCaseInsensitiveLike:@"n"]) {
-			[self verifyTestPanel:[NSNumber numberWithBool:NO]];
+			[self verifyTestPanel:@NO];
 			return YES;
 		}
 	}
@@ -302,11 +302,11 @@ static NSMutableArray *sCurrentTesters = nil;
 	[mDeterminents[inDirection] release];
 	mDeterminents[inDirection] = nil;
 	if (inSettings) {
-		mAnswersCaseSensitive[inDirection] = [[inSettings objectForKey:PVCaseSensitive] boolValue];
-		mAnswersAccentSensitive[inDirection] = [[inSettings objectForKey:PVAccentSensitive] boolValue];
-		mAnswersPunctuationSensitive[inDirection] = [[inSettings objectForKey:PVPunctuationSensitive] boolValue];
-		mAnswersSpaceSensitive[inDirection] = [[inSettings objectForKey:PVSpaceSensitive] boolValue];
-		NSEnumerator *enumerator = [[[inSettings objectForKey:@"FacultativeDeterminents"] componentsSeparatedByString:@","] objectEnumerator];
+		mAnswersCaseSensitive[inDirection] = [inSettings[PVCaseSensitive] boolValue];
+		mAnswersAccentSensitive[inDirection] = [inSettings[PVAccentSensitive] boolValue];
+		mAnswersPunctuationSensitive[inDirection] = [inSettings[PVPunctuationSensitive] boolValue];
+		mAnswersSpaceSensitive[inDirection] = [inSettings[PVSpaceSensitive] boolValue];
+		NSEnumerator *enumerator = [[inSettings[@"FacultativeDeterminents"] componentsSeparatedByString:@","] objectEnumerator];
 		NSString *determinent;
 		while (determinent = [enumerator nextObject]) {
 			if (!mDeterminents[inDirection])
@@ -319,10 +319,10 @@ static NSMutableArray *sCurrentTesters = nil;
 -(void)setLanguage:(NSString *)inLanguage forDirection:(int)inDirection
 {
 	NSDictionary *languages = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-    NSEnumerator *enumerator = [[languages objectForKey:@"Languages"] objectEnumerator];
+    NSEnumerator *enumerator = [languages[@"Languages"] objectEnumerator];
     NSDictionary *description;
     while (description = [enumerator nextObject])
-		if ([inLanguage isEqual:[description objectForKey:@"Name"]])
+		if ([inLanguage isEqual:description[@"Name"]])
 			break;
 	[self setLanguageSettings:description forDirection:inDirection];
 }
@@ -356,13 +356,13 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 	int i, n = [mWordsArray count];
 	for (i = 0; i < n; i++) {
 		previous = word;
-		word = [[mWordsArray objectAtIndex:i] word];
+		word = [mWordsArray[i] word];
 		if ([previous isEqual:word]) {
 			if (i < n - 1)
 				[mWordsArray exchangeObjectAtIndex:i withObjectAtIndex:i + 1];
 			else
 				[mWordsArray exchangeObjectAtIndex:i - 1 withObjectAtIndex:0];
-			word = [[mWordsArray objectAtIndex:i] word];
+			word = [mWordsArray[i] word];
 		}
 	}
 }
@@ -472,8 +472,8 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 -(void)updateSpeechParameters:(id)inParameters
 {
 	[self willChangeValueForKey:@"audio"];
-	mUseSpeechSynthesizer = [[inParameters objectForKey:@"useSpeechSynthesizer"] boolValue];
-	NSString *voiceIdentifier = [inParameters objectForKey:@"voiceIdentifier"];
+	mUseSpeechSynthesizer = [inParameters[@"useSpeechSynthesizer"] boolValue];
+	NSString *voiceIdentifier = inParameters[@"voiceIdentifier"];
 	if (![mVoiceIdentifier isEqual:voiceIdentifier]) {
 		[mVoiceIdentifier release];
 		mVoiceIdentifier = [voiceIdentifier retain];
@@ -486,7 +486,7 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 
 -(void)beginTestWithWords:(NSArray*)words parameters:(id)inParameters sourceLanguage:(NSString *)inSourceLanguage targetLanguage:(NSString *)inTargetLanguage
 {
-	if ([[inParameters objectForKey:@"initialSlideshow"] boolValue]) {
+	if ([inParameters[@"initialSlideshow"] boolValue]) {
 		NSMutableArray *newWords = [NSMutableArray array];
 		NSEnumerator *enumerator = [words objectEnumerator];
 		ProVocWord *word;
@@ -502,15 +502,15 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 	
 	[self historyStart];
 	mIndexOfLastWord = -1;
-    mRequestedDirection = [[inParameters objectForKey:@"testDirection"] intValue];
-	mDirectionProbability = [[inParameters objectForKey:@"testDirectionProbability"] floatValue];
-    mDontShuffleWords = [[inParameters objectForKey:@"dontShuffleWords"] intValue];
-	mAutoPlayMedia = [[inParameters objectForKey:@"autoPlayMedia"] boolValue];
-	mImageMCQ = [[inParameters objectForKey:@"imageMCQ"] boolValue] && [[inParameters objectForKey:@"testMCQ"] boolValue];
-	mMediaHideQuestion = [[inParameters objectForKey:@"mediaHideQuestion"] intValue];
+    mRequestedDirection = [inParameters[@"testDirection"] intValue];
+	mDirectionProbability = [inParameters[@"testDirectionProbability"] floatValue];
+    mDontShuffleWords = [inParameters[@"dontShuffleWords"] intValue];
+	mAutoPlayMedia = [inParameters[@"autoPlayMedia"] boolValue];
+	mImageMCQ = [inParameters[@"imageMCQ"] boolValue] && [inParameters[@"testMCQ"] boolValue];
+	mMediaHideQuestion = [inParameters[@"mediaHideQuestion"] intValue];
 	[self willChangeValueForKey:@"mode"];
 	[self willChangeValueForKey:@"hideComment"];
-    mMode = [[inParameters objectForKey:@"testKind"] intValue];
+    mMode = [inParameters[@"testKind"] intValue];
 	if (mMode == 1 && mRequestedDirection == 3) {
 		mRequestedDirection = 2;
 		mDirectionProbability = 0.5;
@@ -526,10 +526,10 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 	[self setLanguage:inSourceLanguage forDirection:1];
 	[self setLanguage:inTargetLanguage forDirection:0];
 	
-	if ([[inParameters objectForKey:@"timer"] intValue] > 0) {
+	if ([inParameters[@"timer"] intValue] > 0) {
 		mTimer = [[ProVocTimer alloc] init];
-		if ([[inParameters objectForKey:@"timer"] intValue] == 2)
-			[mTimer setRemainingTime:[[inParameters objectForKey:@"timerDuration"] floatValue]];
+		if ([inParameters[@"timer"] intValue] == 2)
+			[mTimer setRemainingTime:[inParameters[@"timerDuration"] floatValue]];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timerDidElapse:) name:ProVocTimerRemainingTimeDidElapseNotification object:mTimer];
 	}
 	
@@ -562,7 +562,7 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 
 -(void)resumeTestWithParameters:(id)inParameters
 {
-	float width = [[inParameters objectForKey:@"displayLabelText"] boolValue] ? 150 : 30;
+	float width = [inParameters[@"displayLabelText"] boolValue] ? 150 : 30;
 	[self setPopUp:mLabelPopUp1 width:width];
 	[self setPopUp:mLabelPopUp3 width:width];
 	
@@ -571,15 +571,15 @@ int SORT_BY_NUMBER(id left, id right, void *info)
 	[self updateSpeechParameters:inParameters];
 
 	[self willChangeValueForKey:@"hideComment"];
-	mLateComments = [[inParameters objectForKey:@"lateComments"] intValue];
-	mDisplayLabels = [[inParameters objectForKey:@"displayLabels"] intValue];
-	mColorWindowWithLabel = [[inParameters objectForKey:@"colorWindowWithLabel"] boolValue];
+	mLateComments = [inParameters[@"lateComments"] intValue];
+	mDisplayLabels = [inParameters[@"displayLabels"] intValue];
+	mColorWindowWithLabel = [inParameters[@"colorWindowWithLabel"] boolValue];
 	[self didChangeValueForKey:@"hideComment"];
 	[self updateWindowBackgroundColor];
-	mShowBacktranslation = [[inParameters objectForKey:@"showBacktranslation"] boolValue];
-	mAutoPlayMedia = [[inParameters objectForKey:@"autoPlayMedia"] boolValue];
-	mImageMCQ = [[inParameters objectForKey:@"imageMCQ"] boolValue] && [[inParameters objectForKey:@"testMCQ"] boolValue];
-	mMediaHideQuestion = [[inParameters objectForKey:@"mediaHideQuestion"] intValue];
+	mShowBacktranslation = [inParameters[@"showBacktranslation"] boolValue];
+	mAutoPlayMedia = [inParameters[@"autoPlayMedia"] boolValue];
+	mImageMCQ = [inParameters[@"imageMCQ"] boolValue] && [inParameters[@"testMCQ"] boolValue];
+	mMediaHideQuestion = [inParameters[@"mediaHideQuestion"] intValue];
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:PVDimTestBackground]) {
 		[NSScreen dimScreensHidingMenuBar:![[NSUserDefaults standardUserDefaults] boolForKey:PVFullScreenWithMenuBar]];
 		[[ProVocBackground sharedBackground] display];
@@ -697,7 +697,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 
 -(float)testProbabilyForWordAtIndex:(int)inIndex
 {
-	float difficulty = [[mWordsArray objectAtIndex:inIndex] difficulty];
+	float difficulty = [mWordsArray[inIndex] difficulty];
 	return exp(sDifficultyTemperature * (difficulty - sMinDifficulty) * sDifficultyFactor);
 }
 
@@ -787,7 +787,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 		mIndexOfLastWord = randomIndex = i;
 	}
 	
-	id word = [mWordsArray objectAtIndex:randomIndex];
+	id word = mWordsArray[randomIndex];
 	if ([word respondsToSelector:@selector(direction)])
 		mDirection = [(ProVocDirectedWord *)word direction];
 	return word;
@@ -811,7 +811,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	if (mMediaHideQuestion != 4 && ([self canPlayQuestionAudio] || [self image] || [self movie])) {
 		mHidingQuestionText = mMediaHideQuestion == 1;
 		if (mAutoPlayMedia) {
-			NSArray *modes = [NSArray arrayWithObjects:NSDefaultRunLoopMode, NSModalPanelRunLoopMode, nil];
+			NSArray *modes = @[NSDefaultRunLoopMode, NSModalPanelRunLoopMode];
 			[self performSelector:@selector(playQuestionAudio:) withObject:nil afterDelay:0.0 inModes:modes];
 			if ([NSApp hasQTKit]) {
 				QTMovieView *movieView = (QTMovieView *)[[[self testPanel] contentView] subviewOfClass:[QTMovieView class]];
@@ -939,7 +939,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	float deltaHeight = 0;
 	int i;
 	for (i = 0; i < 2; i++) {
-		NSView *subview = [[mSplitView subviews] objectAtIndex:i];
+		NSView *subview = [mSplitView subviews][i];
 		float desiredHeight = [[NSUserDefaults standardUserDefaults] floatForKey:[NSString stringWithFormat:@"Split Subview %i", i]];
 		if (desiredHeight > 0)
 			deltaHeight += desiredHeight - [subview frame].size.height;
@@ -951,7 +951,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	[panel setFrame:frame display:YES];
 
 	for (i = 0; i < 2; i++) {
-		NSView *subview = [[mSplitView subviews] objectAtIndex:i];
+		NSView *subview = [mSplitView subviews][i];
 		float desiredHeight = [[NSUserDefaults standardUserDefaults] floatForKey:[NSString stringWithFormat:@"Split Subview %i", i]];
 		if (desiredHeight > 0)
 			[subview setFrameSize:NSMakeSize([subview frame].size.width, desiredHeight)];
@@ -963,7 +963,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 {
 	int i;
 	for (i = 0; i < 2; i++) {
-		NSView *subview = [[mSplitView subviews] objectAtIndex:i];
+		NSView *subview = [mSplitView subviews][i];
 		[[NSUserDefaults standardUserDefaults] setFloat:[subview bounds].size.height forKey:[NSString stringWithFormat:@"Split Subview %i", i]];
 	}
 }
@@ -1024,7 +1024,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 - (IBAction)pauseTestPanel:(id)sender
 {
 	if (mCurrentWord && ([[NSApp currentEvent] modifierFlags] & NSAlternateKeyMask) != 0)
-		[mProVocDocument revealWordsInPages:[NSArray arrayWithObject:[mCurrentWord word]]];
+		[mProVocDocument revealWordsInPages:@[[mCurrentWord word]]];
 	[self closePanelWithCode:PAUSE];
 }
 
@@ -1295,7 +1295,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 {
 	int index = [mLearnedWords indexOfObject:inWord];
 	if (index != NSNotFound)
-		return [mLearnedWordsInfo objectAtIndex:index];
+		return mLearnedWordsInfo[index];
 	else
 		return nil;
 }
@@ -1310,7 +1310,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	int index = [mLearnedWords indexOfObject:inWord];
 	NSMutableDictionary *info;
 	if (index != NSNotFound)
-		info = [mLearnedWordsInfo objectAtIndex:index];
+		info = mLearnedWordsInfo[index];
 	else {
 		info = [NSMutableDictionary dictionary];
 		[mLearnedWords addObject:inWord];
@@ -1321,7 +1321,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 
 -(int)repetitionOffsetOfLearnedWord:(id)inWord
 {
-	return [[[self peekInfoForLearnedWord:inWord] objectForKey:@"RepetitionOffset"] intValue];
+	return [[self peekInfoForLearnedWord:inWord][@"RepetitionOffset"] intValue];
 }
 
 -(int)peekRepetitionOfWord:(id)inWord
@@ -1359,7 +1359,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	if (!mRepetitions)
 		mRepetitions = [[NSMutableArray alloc] initWithCapacity:0];
 	if (repetition < [mRepetitions count])
-		set = [mRepetitions objectAtIndex:repetition];
+		set = mRepetitions[repetition];
 	else {
 		set = [NSMutableSet set];
 		[mRepetitions addObject:set];
@@ -1377,9 +1377,9 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	if (inWhat & kBackgroundResults) {
 		[background setValue:nil forInputKey:@"Question"];
 		[background setValue:nil forInputKey:@"Answer"];
-		[background setValue:[NSNumber numberWithBool:YES] forInputKey:@"Results"];
+		[background setValue:@YES forInputKey:@"Results"];
 	} else {
-		[background setValue:[NSNumber numberWithBool:NO] forInputKey:@"Results"];
+		[background setValue:@NO forInputKey:@"Results"];
 		if (inWhat & kBackgroundQuestion)
 			[background setValue:[self question] forInputKey:@"Question"];
 		if (inWhat & kBackgroundAnswer)
@@ -1401,9 +1401,9 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 		int consecutiveRepetitions = [[NSUserDefaults standardUserDefaults] integerForKey:PVLearnedConsecutiveRepetitions];
 		if (consecutiveRepetitions > 1) {
 			NSMutableDictionary *info = [self infoForLearnedWord:inWord];
-			[info setObject:[NSNumber numberWithInt:[self peekRepetitionOfWord:inWord]] forKey:@"RepetitionOffset"];
-			int consecutiveCorrectAnswers = [[info objectForKey:@"ConsecutiveCorrectAnswers"] intValue] + 1;
-			[info setObject:[NSNumber numberWithInt:consecutiveCorrectAnswers] forKey:@"ConsecutiveCorrectAnswers"];
+			info[@"RepetitionOffset"] = @([self peekRepetitionOfWord:inWord]);
+			int consecutiveCorrectAnswers = [info[@"ConsecutiveCorrectAnswers"] intValue] + 1;
+			info[@"ConsecutiveCorrectAnswers"] = @(consecutiveCorrectAnswers);
 			if (consecutiveCorrectAnswers < consecutiveRepetitions && [mWordsArray count] > 0) {
 				int index = MIN([self indexForRepetitionCount:1] + rand() % 5, [mWordsArray count]);
 				[mWordsArray insertObject:inWord atIndex:index];
@@ -1491,7 +1491,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	} else if (![self canGiveAnswer]) {
 		[self hideAnswer];
 		NSWindow *window = [self testPanel];
-		[window performSelector:@selector(makeFirstResponder:) withObject:[window initialFirstResponder] afterDelay:0.0 inModes:[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSModalPanelRunLoopMode, nil]];
+		[window performSelector:@selector(makeFirstResponder:) withObject:[window initialFirstResponder] afterDelay:0.0 inModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode]];
 		if (![self applyRandomWord])
 			[self testEnded];
     } else if ([self isAnswerCorrect]) {
@@ -1586,7 +1586,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 
 -(IBAction)acceptAnswer:(id)sender
 {
-	[self verifyTestPanel:[NSNumber numberWithBool:YES]];
+	[self verifyTestPanel:@YES];
 }
 
 -(BOOL)hideComment
@@ -1902,7 +1902,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	if ([mNoteWords count] > 0) {
 		[mNotePanel setWorksWhenModal:YES];
 		[mNotePanel setLevel:NSModalPanelWindowLevel];
-		[mNotePanel performSelector:@selector(orderFront:) withObject:nil afterDelay:0.0 inModes:[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSModalPanelRunLoopMode, nil]]; 
+		[mNotePanel performSelector:@selector(orderFront:) withObject:nil afterDelay:0.0 inModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode]]; 
 	}
 	
 	[NSApp discardEventsMatchingMask:NSKeyDownMask beforeEvent:nil];
@@ -2076,11 +2076,11 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 -(NSArray *)synonyms
 {
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:PVPrefsUseSynonymSeparator])
-		return [NSArray arrayWithObject:self];
+		return @[self];
 		
 	NSString *separator = [[NSUserDefaults standardUserDefaults] stringForKey:PVPrefSynonymSeparator];
 	if ([self rangeOfString:separator].location == NSNotFound)
-		return [NSArray arrayWithObject:self];
+		return @[self];
 	else if ([self rangeOfCharacterFromSet:[NSCharacterSet openBracketCharacterSet]].location == NSNotFound)
 		return [self componentsSeparatedByString:separator];
 	else {
@@ -2133,7 +2133,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 		static NSDictionary *unbrackets = nil;
 		if (!unbrackets)
 			unbrackets = [[NSDictionary alloc] initWithObjectsAndKeys:@")", @"(", @"}", @"{", @"]", @"[", nil];
-		if ([self scanString:[unbrackets objectForKey:bracket] intoString:&string])
+		if ([self scanString:unbrackets[bracket] intoString:&string])
 			[buffer appendString:string];
 	}
 	if (outString)
@@ -2202,7 +2202,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	repetition = MIN(MAX_HISTORY_REPETITION, repetition);
 	int i;
 	for (i = 0; i <= MAX_HISTORY_REPETITION; i++) {
-		NSMutableSet *set = [mHistory objectAtIndex:i];
+		NSMutableSet *set = mHistory[i];
 		if (i == repetition)
 			[set addObject:inWord];
 		else
@@ -2217,7 +2217,7 @@ static float sMinDifficulty, sDifficultyFactor, sDifficultyTemperature;
 	[history setMode:mMode];
 	int i;
 	for (i = 0; i <= MAX_HISTORY_REPETITION; i++) {
-		int count = [[mHistory objectAtIndex:i] count];
+		int count = [mHistory[i] count];
 		[history setNumber:count ofRepetition:i];
 	}
 	if ([history total] > 0) {

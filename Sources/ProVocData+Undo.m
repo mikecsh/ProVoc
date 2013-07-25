@@ -47,9 +47,9 @@
 {
 	if (mParent) {
 		int index = [[mParent children] indexOfObjectIdenticalTo:self];
-		return [[mParent indexIdentifier] arrayByAddingObject:[NSNumber numberWithInt:index]];
+		return [[mParent indexIdentifier] arrayByAddingObject:@(index)];
 	} else
-		return [NSArray array];
+		return @[];
 }
 
 -(NSArray *)indexedChildren
@@ -60,8 +60,8 @@
 
 -(id)childWithIndexes:(NSArray *)inIndexes
 {
-	int index = [[inIndexes objectAtIndex:0] intValue];
-	id child = [[self indexedChildren] objectAtIndex:index];
+	int index = [inIndexes[0] intValue];
+	id child = [self indexedChildren][index];
 	if ([inIndexes count] == 1)
 		return child;
 	else
@@ -93,7 +93,7 @@
 -(id)indexIdentifier
 {
 	int index = [[mPage words] indexOfObjectIdenticalTo:self];
-	return [[mPage indexIdentifier] arrayByAddingObject:[NSNumber numberWithInt:index]];
+	return [[mPage indexIdentifier] arrayByAddingObject:@(index)];
 }
 
 @end

@@ -34,7 +34,7 @@ static NSImage *sRankPatternImage = nil;
 	float value = inValue;
 	if (value > 1.0) value = 1.0;
 	if (value < 0.0) value = 0.0;
-	[self setObjectValue:[NSNumber numberWithFloat:value]];
+	[self setObjectValue:@(value)];
 }
 
 /*"	Draw the cell's contents.
@@ -101,7 +101,7 @@ static NSImage *sRankPatternImage = nil;
 	NSImage *image;
 	NSString *icon;
 	
-	int direction = [[parameters objectForKey:@"testDirection"] intValue];
+	int direction = [parameters[@"testDirection"] intValue];
 	switch (direction) {
 		case 0:		icon = @"Version"; break;
 		case 1: 	icon = @"Theme"; break;
@@ -115,23 +115,23 @@ static NSImage *sRankPatternImage = nil;
 	
 	NSMutableString *message = [NSMutableString string];
 	[[NSImage imageNamed:@"Question"] dissolveToPoint:origin fraction:1.0];
-	if ([[parameters objectForKey:@"testMCQ"] boolValue]) {
+	if ([parameters[@"testMCQ"] boolValue]) {
 		[[NSImage imageNamed:@"MCQ"] dissolveToPoint:origin fraction:1.0];
-		int choices = [[parameters objectForKey:@"testMCQNumber"] intValue];
-		if ([[parameters objectForKey:@"imageMCQ"] boolValue]) {
-			if ([[parameters objectForKey:@"delayedMCQ"] boolValue])
+		int choices = [parameters[@"testMCQNumber"] intValue];
+		if ([parameters[@"imageMCQ"] boolValue]) {
+			if ([parameters[@"delayedMCQ"] boolValue])
 				[message appendFormat:NSLocalizedString(@"%i delayed choices with images. ", @""), choices];
 			else
 				[message appendFormat:NSLocalizedString(@"%i choices with images. ", @""), choices];
 		} else {
-			if ([[parameters objectForKey:@"delayedMCQ"] boolValue])
+			if ([parameters[@"delayedMCQ"] boolValue])
 				[message appendFormat:NSLocalizedString(@"%i delayed choices. ", @""), choices];
 			else
 				[message appendFormat:NSLocalizedString(@"%i choices. ", @""), choices];
 		}
 	}
 
-	switch ([[parameters objectForKey:@"testKind"] intValue]) {
+	switch ([parameters[@"testKind"] intValue]) {
 		case 0:
 			[message appendString:NSLocalizedString(@"Normal mode. ", @"")];
 			break;
@@ -144,13 +144,13 @@ static NSImage *sRankPatternImage = nil;
 			break;
 	}
 
-	int attempts = [[parameters objectForKey:@"numberOfRetries"] intValue];
+	int attempts = [parameters[@"numberOfRetries"] intValue];
 	if (attempts > 1)
 		[message appendFormat:NSLocalizedString(@"%i attempts. ", @""), attempts];
 	else
 		[message appendFormat:NSLocalizedString(@"%i attempt. ", @""), attempts];
 
-	switch ([[parameters objectForKey:@"lateComments"] intValue]) {
+	switch ([parameters[@"lateComments"] intValue]) {
 		case 0:
 			[message appendString:NSLocalizedString(@"Comments displayed with question. ", @"")];
 			break;
@@ -168,9 +168,9 @@ static NSImage *sRankPatternImage = nil;
 			break;
 	}
 	
-	if ([[parameters objectForKey:@"timer"] intValue] == 2) {
+	if ([parameters[@"timer"] intValue] == 2) {
 		TimerDurationTransformer *transformer = [[[TimerDurationTransformer alloc] init] autorelease];
-		[message appendFormat:NSLocalizedString(@"Timer duration: %@. ", @""), [transformer transformedValue:[parameters objectForKey:@"timerDuration"]]];
+		[message appendFormat:NSLocalizedString(@"Timer duration: %@. ", @""), [transformer transformedValue:parameters[@"timerDuration"]]];
 	}
 			
 	NSString *name = [preset name];
@@ -178,10 +178,10 @@ static NSImage *sRankPatternImage = nil;
 	messageFrame.size.height = 28;
 	[message drawInRect:messageFrame withAttributes:messageAttributes];
 	
-	BOOL reviewOnly = [[parameters objectForKey:@"testWordsToReview"] boolValue];
-	BOOL markedOnly = [[parameters objectForKey:@"testMarked"] boolValue];
-	BOOL oldOnly = [[parameters objectForKey:@"testOldWords"] boolValue];
-	BOOL limitOnly = [[parameters objectForKey:@"testLimit"] boolValue];
+	BOOL reviewOnly = [parameters[@"testWordsToReview"] boolValue];
+	BOOL markedOnly = [parameters[@"testMarked"] boolValue];
+	BOOL oldOnly = [parameters[@"testOldWords"] boolValue];
+	BOOL limitOnly = [parameters[@"testLimit"] boolValue];
 	if (reviewOnly || markedOnly | oldOnly | limitOnly) {
 		NSString *message = NSLocalizedString(@"Test only:", @"");
 		[message drawInRect:onlyFrame withAttributes:messageAttributes];
@@ -189,7 +189,7 @@ static NSImage *sRankPatternImage = nil;
 		NSPoint origin = onlyFrame.origin;
 		origin.x += 4 + [message widthWithAttributes:messageAttributes];
 		if (markedOnly) {
-			NSIndexSet *labelsToTest = [parameters objectForKey:@"labelsToTest"];		
+			NSIndexSet *labelsToTest = parameters[@"labelsToTest"];		
 			origin.y = NSMaxY(onlyFrame) - 3;
 			int label;
 			for (label = 0; label <= 9; label++)
@@ -214,8 +214,8 @@ static NSImage *sRankPatternImage = nil;
 			}
 
 			if (limitOnly) {
-				int number = [[parameters objectForKey:@"testLimitNumber"] intValue];
-				switch ([[parameters objectForKey:@"testLimitWhat"] intValue]) {
+				int number = [parameters[@"testLimitNumber"] intValue];
+				switch ([parameters[@"testLimitWhat"] intValue]) {
 					case 0:
 						subMessage = NSLocalizedString(@"%i random words", @"");
 						break;
@@ -231,8 +231,8 @@ static NSImage *sRankPatternImage = nil;
 			}
 
 			if (oldOnly) {
-				int number = [[parameters objectForKey:@"testOldNumber"] intValue];
-				switch ([[parameters objectForKey:@"testOldUnit"] intValue]) {
+				int number = [parameters[@"testOldNumber"] intValue];
+				switch ([parameters[@"testOldUnit"] intValue]) {
 					case 0:
 						if (number > 1)
 							subMessage = NSLocalizedString(@"%i Days", @"");

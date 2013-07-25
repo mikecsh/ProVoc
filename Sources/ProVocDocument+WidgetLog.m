@@ -61,7 +61,7 @@
 		int rep = MIN([repetition intValue], MAX_HISTORY_REPETITION);
 		[mCurrentWidgetLogHistory addNumber:1 ofRepetition:rep];
 	}
-	[mCurrentWidgetRepetitions setObject:inDate forKey:@"lastDate"];
+	mCurrentWidgetRepetitions[@"lastDate"] = inDate;
 	[mCurrentWidgetLogHistory setDate:inDate];
 	[mHistoryView reloadData];
 }
@@ -69,11 +69,11 @@
 -(void)checkWidgetLog
 {
 	BOOL anythingLogged = NO;
-	NSDate *lastDate = [mCurrentWidgetRepetitions objectForKey:@"lastDate"];
+	NSDate *lastDate = mCurrentWidgetRepetitions[@"lastDate"];
 	NSString *logFile = [[self fileName] stringByAppendingPathComponent:@"Widget.log"];
 	if ([[NSFileManager defaultManager] fileExistsAtPath:logFile]) {
 		NSDictionary *fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:logFile traverseLink:NO];
-		NSDate *modificationDate = [fileAttributes objectForKey:NSFileModificationDate];
+		NSDate *modificationDate = fileAttributes[NSFileModificationDate];
 		if (modificationDate && (!mLastWidgetLogModificationDate || [modificationDate compare:mLastWidgetLogModificationDate] == NSOrderedDescending)) {
 			[mLastWidgetLogModificationDate release];
 			mLastWidgetLogModificationDate = [modificationDate retain];
@@ -118,11 +118,11 @@
 									lastDate = date;
 									if (!mCurrentWidgetRepetitions)
 										mCurrentWidgetRepetitions = [[NSMutableDictionary alloc] initWithCapacity:0];
-									id repetitionKey = [NSNumber numberWithInt:index];
-									int repetition = [[mCurrentWidgetRepetitions objectForKey:repetitionKey] intValue];
+									id repetitionKey = @(index);
+									int repetition = [mCurrentWidgetRepetitions[repetitionKey] intValue];
 									if (!success)
 										repetition++;
-									[mCurrentWidgetRepetitions setObject:[NSNumber numberWithInt:repetition] forKey:repetitionKey];
+									mCurrentWidgetRepetitions[repetitionKey] = @(repetition);
 								}
 							}
 						}

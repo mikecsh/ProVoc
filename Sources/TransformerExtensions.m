@@ -23,7 +23,7 @@
 -(id)transformedValue:(id)inValue
 {
 	if ([inValue respondsToSelector:@selector(floatValue)])
-		return [NSNumber numberWithFloat:[inValue floatValue] * 100];
+		return @([inValue floatValue] * 100);
 	else
 		return nil;
 }
@@ -31,7 +31,7 @@
 -(id)reverseTransformedValue:(id)inValue
 {
 	if ([inValue respondsToSelector:@selector(floatValue)])
-		return [NSNumber numberWithFloat:[inValue floatValue] / 100];
+		return @([inValue floatValue] / 100);
 	else
 		return nil;
 }
@@ -87,7 +87,7 @@
 -(id)reverseTransformedValue:(id)inValue
 {
 	if ([inValue respondsToSelector:@selector(floatValue)])
-		return [NSNumber numberWithFloat:[inValue floatValue] / [self scale]];
+		return @([inValue floatValue] / [self scale]);
 	else
 		return nil;
 }
@@ -109,7 +109,7 @@
 -(id)transformedValue:(id)inValue
 {
 	if ([inValue respondsToSelector:@selector(floatValue)])
-		return [NSNumber numberWithFloat:MIN(13, [inValue floatValue])];
+		return @(MIN(13, [inValue floatValue]));
 	else
 		return inValue;
 }
@@ -136,7 +136,7 @@
 -(id)transformedValue:(id)inValue
 {
 	if ([inValue respondsToSelector:@selector(floatValue)])
-		return [NSNumber numberWithFloat:MIN([[self class] maxSize], [inValue floatValue])];
+		return @(MIN([[self class] maxSize], [inValue floatValue]));
 	else
 		return inValue;
 }
@@ -161,7 +161,7 @@
 		int alignment = NSLeftTextAlignment;
 		if ([inValue intValue] == NSWritingDirectionRightToLeft)
 			alignment = NSRightTextAlignment;
-		return [NSNumber numberWithInt:alignment];
+		return @(alignment);
 	} else
 		return inValue;
 }

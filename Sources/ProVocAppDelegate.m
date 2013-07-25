@@ -42,131 +42,129 @@
 
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     
-    [defaultValues setObject:@"" forKey:@"translationCaption"];
-    [defaultValues setObject:[NSNumber numberWithFloat:150] forKey:@"Image MCQ Line Height"];
+    defaultValues[@"translationCaption"] = @"";
+    defaultValues[@"Image MCQ Line Height"] = @150.0f;
 	
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVPrefsUseSynonymSeparator];
-    [defaultValues setObject:@"/" forKey:PVPrefSynonymSeparator];
-	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVPrefTestSynonymsSeparately];
-    [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:PVPrefsUseCommentsSeparator];
-    [defaultValues setObject:@";" forKey:PVPrefCommentsSeparator];
-    [defaultValues setObject:[NSNumber numberWithFloat:2.0] forKey:PVPrefsRightRatio];
+    defaultValues[PVPrefsUseSynonymSeparator] = @YES;
+    defaultValues[PVPrefSynonymSeparator] = @"/";
+	defaultValues[PVPrefTestSynonymsSeparately] = @YES;
+    defaultValues[PVPrefsUseCommentsSeparator] = @NO;
+    defaultValues[PVPrefCommentsSeparator] = @";";
+    defaultValues[PVPrefsRightRatio] = @2.0f;
 
-    [defaultValues setObject:[NSNumber numberWithInt:2] forKey:PVLearnedConsecutiveRepetitions];
-    [defaultValues setObject:[NSNumber numberWithInt:2] forKey:PVLearnedDistractInterval];
+    defaultValues[PVLearnedConsecutiveRepetitions] = @2;
+    defaultValues[PVLearnedDistractInterval] = @2;
 	
-    [defaultValues setObject:[NSNumber numberWithFloat:50] forKey:PVReviewLearningFactor];
-    [defaultValues setObject:[NSNumber numberWithFloat:50] forKey:PVReviewTrainingFactor];
+    defaultValues[PVReviewLearningFactor] = @50.0f;
+    defaultValues[PVReviewTrainingFactor] = @50.0f;
 	
 	id value;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:ProVocCardDisplayFrames];
-	[defaultValues setObject:[NSNumber numberWithInt:2] forKey:ProVocCardPaperSides];
-	[defaultValues setObject:[NSNumber numberWithFloat:1.0] forKey:ProVocCardTextSize];
-	[defaultValues setObject:[NSNumber numberWithInt:0] forKey:ProVocCardDisplayComments];
-	[defaultValues setObject:[NSNumber numberWithFloat:1.0] forKey:ProVocCardCommentSize];
-	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:ProVocCardDisplayImages];
-	[defaultValues setObject:[NSNumber numberWithFloat:0.5] forKey:ProVocCardImageFraction];
+	defaultValues[ProVocCardDisplayFrames] = @YES;
+	defaultValues[ProVocCardPaperSides] = @2;
+	defaultValues[ProVocCardTextSize] = @1.0f;
+	defaultValues[ProVocCardDisplayComments] = @0;
+	defaultValues[ProVocCardCommentSize] = @1.0f;
+	defaultValues[ProVocCardDisplayImages] = @1;
+	defaultValues[ProVocCardImageFraction] = @0.5f;
 	value = [defaults objectForKey:@"PVCardWidth"];
 	if (!value)
-		value = [NSNumber numberWithFloat:241];
-	[defaultValues setObject:value forKey:ProVocCardWidth];
-	[defaultValues setObject:value forKey:ProVocCardCustomWidth];
+		value = @241.0f;
+	defaultValues[ProVocCardWidth] = value;
+	defaultValues[ProVocCardCustomWidth] = value;
 	value = [defaults objectForKey:@"PVCardHeight"];
 	if (!value)
-		value = [NSNumber numberWithFloat:153];
-	[defaultValues setObject:value forKey:ProVocCardHeight];
-	[defaultValues setObject:value forKey:ProVocCardCustomHeight];
+		value = @153.0f;
+	defaultValues[ProVocCardHeight] = value;
+	defaultValues[ProVocCardCustomHeight] = value;
 	value = [defaults objectForKey:@"PVFlipCardVertically"];
-	[defaultValues setObject:value ? value : [NSNumber numberWithInt:0] forKey:ProVocCardFlipDirection];
+	defaultValues[ProVocCardFlipDirection] = value ? value : @0;
 	value = [defaults objectForKey:@"printFontColor"];
-	[defaultValues setObject:value ? value : [NSArchiver archivedDataWithRootObject:[NSColor blackColor]] forKey:ProVocCardTextColor];
+	defaultValues[ProVocCardTextColor] = value ? value : [NSArchiver archivedDataWithRootObject:[NSColor blackColor]];
 	value = [defaults objectForKey:@"printBackgroundColor"];
-	[defaultValues setObject:value ? value : [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]] forKey:ProVocCardBackgroundColor];
-	[defaultValues setObject:[NSNumber numberWithFloat:0.0] forKey:@"cardLeftMargin"];
-	[defaultValues setObject:[NSNumber numberWithFloat:0.0] forKey:@"cardTopMargin"];
-	[defaultValues setObject:[NSNumber numberWithFloat:0.0] forKey:@"cardRightMargin"];
-	[defaultValues setObject:[NSNumber numberWithFloat:0.0] forKey:@"cardBottomMargin"];
+	defaultValues[ProVocCardBackgroundColor] = value ? value : [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]];
+	defaultValues[@"cardLeftMargin"] = @0.0f;
+	defaultValues[@"cardTopMargin"] = @0.0f;
+	defaultValues[@"cardRightMargin"] = @0.0f;
+	defaultValues[@"cardBottomMargin"] = @0.0f;
 
-    [defaultValues setObject:[NSNumber numberWithInt:0] forKey:PVSizeUnit];
-    [defaultValues setObject:[NSNumber numberWithInt:0] forKey:ProVocCardFormat];
-    [defaultValues setObject:[NSNumber numberWithInt:0] forKey:ProVocCardTagDisplay];
-	[defaultValues setObject:[NSNumber numberWithFloat:0.5] forKey:ProVocCardTagFraction];
-    [defaultValues setObject:[NSNumber numberWithFloat:[NSFont systemFontSize]] forKey:PVPrintListFontSize];
+    defaultValues[PVSizeUnit] = @0;
+    defaultValues[ProVocCardFormat] = @0;
+    defaultValues[ProVocCardTagDisplay] = @0;
+	defaultValues[ProVocCardTagFraction] = @0.5f;
+    defaultValues[PVPrintListFontSize] = [NSNumber numberWithFloat:[NSFont systemFontSize]];
 	
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVDimTestBackground];
-    [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:PVFullScreenWithMenuBar];
-    [defaultValues setObject:[NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedWhite:0.2 alpha:1.0]] forKey:PVTestBackgroundColor];
+    defaultValues[PVDimTestBackground] = @YES;
+    defaultValues[PVFullScreenWithMenuBar] = @NO;
+    defaultValues[PVTestBackgroundColor] = [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedWhite:0.2 alpha:1.0]];
 
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVSearchSources];
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVSearchTargets];
-    [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:PVSearchComments];
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"autoCheckForUpdates"];
+    defaultValues[PVSearchSources] = @YES;
+    defaultValues[PVSearchTargets] = @YES;
+    defaultValues[PVSearchComments] = @NO;
+    defaultValues[@"autoCheckForUpdates"] = @YES;
         
-    [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:ProVocPrintComments];
-    [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:ProVocPrintPageNumbers];
+    defaultValues[ProVocPrintComments] = @NO;
+    defaultValues[ProVocPrintPageNumbers] = @NO;
 
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVSlideshowAutoAdvance];
-    [defaultValues setObject:[NSNumber numberWithFloat:0.5] forKey:PVSlideshowSpeed];
-    [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:PVSlideshowRandom];
+    defaultValues[PVSlideshowAutoAdvance] = @YES;
+    defaultValues[PVSlideshowSpeed] = @0.5f;
+    defaultValues[PVSlideshowRandom] = @NO;
 	
-    [defaultValues setObject:[[NSFont systemFontOfSize:0] familyName] forKey:@"sourceFontFamilyName"];
-    [defaultValues setObject:[[NSFont systemFontOfSize:0] familyName] forKey:@"targetFontFamilyName"];
-    [defaultValues setObject:[[NSFont systemFontOfSize:0] familyName] forKey:@"commentFontFamilyName"];
-    [defaultValues setObject:[NSNumber numberWithFloat:[NSFont systemFontSize]] forKey:@"sourceFontSize"];
-    [defaultValues setObject:[NSNumber numberWithFloat:[NSFont systemFontSize]] forKey:@"targetFontSize"];
-    [defaultValues setObject:[NSNumber numberWithFloat:[NSFont systemFontSize]] forKey:@"commentFontSize"];
-    [defaultValues setObject:[NSNumber numberWithInt:24] forKey:@"sourceTestFontSize"];
-    [defaultValues setObject:[NSNumber numberWithInt:24] forKey:@"targetTestFontSize"];
-    [defaultValues setObject:[NSNumber numberWithInt:18] forKey:@"commentTestFontSize"];
-    [defaultValues setObject:[NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]] forKey:@"commentTextColor"];
+    defaultValues[@"sourceFontFamilyName"] = [[NSFont systemFontOfSize:0] familyName];
+    defaultValues[@"targetFontFamilyName"] = [[NSFont systemFontOfSize:0] familyName];
+    defaultValues[@"commentFontFamilyName"] = [[NSFont systemFontOfSize:0] familyName];
+    defaultValues[@"sourceFontSize"] = [NSNumber numberWithFloat:[NSFont systemFontSize]];
+    defaultValues[@"targetFontSize"] = [NSNumber numberWithFloat:[NSFont systemFontSize]];
+    defaultValues[@"commentFontSize"] = [NSNumber numberWithFloat:[NSFont systemFontSize]];
+    defaultValues[@"sourceTestFontSize"] = @24;
+    defaultValues[@"targetTestFontSize"] = @24;
+    defaultValues[@"commentTestFontSize"] = @18;
+    defaultValues[@"commentTextColor"] = [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]];
 
-    [defaultValues setObject:[NSNumber numberWithInt:NSWritingDirectionLeftToRight] forKey:@"sourceWritingDirection"];
-    [defaultValues setObject:[NSNumber numberWithInt:NSWritingDirectionLeftToRight] forKey:@"targetWritingDirection"];
-    [defaultValues setObject:[NSNumber numberWithInt:NSWritingDirectionLeftToRight] forKey:@"commentWritingDirection"];
+    defaultValues[@"sourceWritingDirection"] = @(NSWritingDirectionLeftToRight);
+    defaultValues[@"targetWritingDirection"] = @(NSWritingDirectionLeftToRight);
+    defaultValues[@"commentWritingDirection"] = @(NSWritingDirectionLeftToRight);
 
-    [defaultValues setObject:[NSNumber numberWithInt:0] forKey:PVExportFormat];
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVExportComments];
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVExportPageNames];
+    defaultValues[PVExportFormat] = @0;
+    defaultValues[PVExportComments] = @YES;
+    defaultValues[PVExportPageNames] = @YES;
 	
-	NSArray *labels = [NSArray arrayWithObjects:
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 1 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor redColor]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 2 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor orangeColor]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 3 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor yellowColor]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 4 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor greenColor]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 5 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.0 green:0.5 blue:0.0 alpha:1.0]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 6 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.5 green:0.75 blue:1.0 alpha:1.0]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 7 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor blueColor]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 8 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], PVLabelColorData, nil],
-						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 9 Default Title", @""), PVLabelTitle,
-												[NSArchiver archivedDataWithRootObject:[NSColor grayColor]], PVLabelColorData, nil],
-						nil];
+	NSArray *labels = @[@{PVLabelTitle: NSLocalizedString(@"Label 1 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor redColor]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 2 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor orangeColor]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 3 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor yellowColor]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 4 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor greenColor]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 5 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.0 green:0.5 blue:0.0 alpha:1.0]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 6 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.5 green:0.75 blue:1.0 alpha:1.0]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 7 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor blueColor]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 8 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]]},
+						@{PVLabelTitle: NSLocalizedString(@"Label 9 Default Title", @""),
+												PVLabelColorData: [NSArchiver archivedDataWithRootObject:[NSColor grayColor]]}];
 	
-	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:PVMarkWrongWords];
-	[defaultValues setObject:[NSNumber numberWithInt:0] forKey:PVLabelForWrongWords];
-	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVSlideShowWithWrongWords];
+	defaultValues[PVMarkWrongWords] = @NO;
+	defaultValues[PVLabelForWrongWords] = @0;
+	defaultValues[PVSlideShowWithWrongWords] = @YES;
 
-	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:PVBackTranslationWithAllWords]; // Hidden pref
+	defaultValues[PVBackTranslationWithAllWords] = @YES; // Hidden pref
 
-	[defaultValues setObject:[NSNumber numberWithBool:[ProVocBackground isAvailable]] forKey:PVEnableBackground];
-    [defaultValues setObject:[NSNumber numberWithFloat:60] forKey:@"AutosavingDelay"];
+	defaultValues[PVEnableBackground] = @([ProVocBackground isAvailable]);
+    defaultValues[@"AutosavingDelay"] = @60.0f;
 	
-	[defaultValues setObject:labels forKey:PVLabels];
+	defaultValues[PVLabels] = labels;
 
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Languages" ofType:@"xml" inDirectory:@""];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
-    [defaultValues setObject:dictionary forKey:PVPrefsLanguages];
+    defaultValues[PVPrefsLanguages] = dictionary;
 	
-	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:ProVocShowStartingPoint];
+	defaultValues[ProVocShowStartingPoint] = @YES;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 
@@ -248,7 +246,7 @@
 			case 1: { // Open Last Document 
 				NSArray *recentURLs = [self recentDocumentURLs];
 				if ([recentURLs count] > 0) {
-					NSString *path = [[recentURLs objectAtIndex:0] path];
+					NSString *path = [recentURLs[0] path];
 					if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
 						if ([self openDocumentWithContentsOfFile:path display:YES])
 							return NO;
@@ -276,7 +274,7 @@
 
 -(IBAction)discoverProvoc:(id)inSender
 {
-	NSString *address = [NSString stringWithFormat:NSLocalizedString(@"Discover Features URL (v=%@)", @""), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+	NSString *address = [NSString stringWithFormat:NSLocalizedString(@"Discover Features URL (v=%@)", @""), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"]];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:address]];
 }
 
@@ -292,7 +290,7 @@
 
 -(IBAction)downloadDocuments:(id)inSender
 {
-	NSString *address = [NSString stringWithFormat:NSLocalizedString(@"Download Vocabulary URL (v=%@)", @""), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+	NSString *address = [NSString stringWithFormat:NSLocalizedString(@"Download Vocabulary URL (v=%@)", @""), [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"]];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:address]];
 }
 

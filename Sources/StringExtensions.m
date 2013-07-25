@@ -90,12 +90,12 @@
 		NSEnumerator *enumerator = [accentDictionary keyEnumerator];
 		NSString *key;
 		while (key = [enumerator nextObject]) {
-			NSNumber *c = [NSNumber numberWithUnsignedShort:[key characterAtIndex:0]];
-			NSString *accents = [accentDictionary objectForKey:key];
+			NSNumber *c = @([key characterAtIndex:0]);
+			NSString *accents = accentDictionary[key];
 			[stringOfAccentedCharacters appendString:accents];
 			int i;
 			for (i = 0; i < [accents length]; i++)
-				[map setObject:c forKey:[NSNumber numberWithUnsignedShort:[accents characterAtIndex:i]]];
+				map[@([accents characterAtIndex:i])] = c;
 		}
 		nonAccentedDictionary = [map copy];
 		accentedCharacters = [[NSCharacterSet characterSetWithCharactersInString:stringOfAccentedCharacters] retain];
@@ -106,7 +106,7 @@
 	for (i = 0; i < [self length]; i++)
 		if ([accentedCharacters characterIsMember:c = [self characterAtIndex:i]]) {
 			NSNumber *acc = [[NSNumber alloc] initWithUnsignedShort:c];
-			NSNumber *nonAcc = [nonAccentedDictionary objectForKey:acc];
+			NSNumber *nonAcc = nonAccentedDictionary[acc];
 			[acc release];
 			if (nonAcc) {
 				unichar nonAccChar = [nonAcc unsignedShortValue];

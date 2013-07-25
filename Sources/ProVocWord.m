@@ -382,13 +382,13 @@
     else if ([inIdentifier isEqualTo:@"Comment"])
         return [self comment];
     else if ([inIdentifier isEqualTo:@"Difficulty"])
-        return [NSNumber numberWithFloat:[self difficulty]];
+        return @([self difficulty]);
     else if ([inIdentifier isEqualTo:@"Number"])
-        return [NSNumber numberWithInt:[self number]];
+        return @([self number]);
     else if ([inIdentifier isEqualTo:@"Mark"])
         return [self mark] == 0 ? nil : [NSImage imageNamed:@"flagged"];
     else if ([inIdentifier isEqualTo:@"MarkAndLabel"])
-		return [NSNumber numberWithInt:mLabel + mMark * 512];
+		return @(mLabel + mMark * 512);
     else if ([inIdentifier isEqualTo:@"LastAnswered"])
 		return [self lastAnsweredDate];
     else if ([inIdentifier isEqualTo:@"NextReview"])
@@ -427,7 +427,7 @@
 -(id)valueForIdentifier:(id)inIdentifier
 {
     if ([inIdentifier isEqualTo:@"Mark"])
-        return [NSNumber numberWithInt:[self mark]];
+        return @([self mark]);
 	else if ([inIdentifier isEqualTo:@"LastAnswered"])
         return mLastAnswered ? mLastAnswered : [NSDate distantPast];
 	else if ([inIdentifier isEqualTo:@"NextReview"])

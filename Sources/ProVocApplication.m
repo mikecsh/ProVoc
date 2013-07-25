@@ -64,7 +64,7 @@
 {
 	if ([inEvent type] == NSKeyDown) {
 		ProVocResponder *responder = [[[ProVocResponder alloc] init] autorelease];
-		[responder interpretKeyEvents:[NSArray arrayWithObject:inEvent]];
+		[responder interpretKeyEvents:@[inEvent]];
 		if ([responder firstResponderChange] != 0) {
 			id firstResponder = [[NSApp keyWindow] firstResponder];
 			if ([firstResponder respondsToSelector:@selector(delegate)])

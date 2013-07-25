@@ -96,10 +96,10 @@
 	while ([scanner scanLineOfTabSeparatedWords:&words])
 		if ([words count] >= 2) {
 			ProVocWord *word = [[ProVocWord alloc] init];
-			[word setSourceWord:[words objectAtIndex:0]];
-			[word setTargetWord:[words objectAtIndex:1]];
+			[word setSourceWord:words[0]];
+			[word setTargetWord:words[1]];
 			if ([words count] >= 3)
-				[word setComment:[words objectAtIndex:2]];
+				[word setComment:words[2]];
 			
 			if (!proVocWords)
 				proVocWords = [NSMutableArray array];
@@ -120,7 +120,7 @@
 		if (data) {
 			id provocData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 			if ([provocData isKindOfClass:[NSDictionary class]])
-				pages = [[[provocData objectForKey:@"Data"] rootChapter] children];
+				pages = [[provocData[@"Data"] rootChapter] children];
 			else
 				pages = [provocData allPages];
 		}
@@ -133,7 +133,7 @@
 			[words addObjectsFromArray:[page words]];
 		[words makeObjectsPerformSelector:@selector(resetIndexInFile)];
 		if (![mediaPath isEqual:[self mediaPathInBundle]] && mediaPath != [self mediaPathInBundle]) {
-			NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:self, @"Document", mediaPath, @"MediaPath", nil];
+			NSDictionary *info = @{@"Document": self, @"MediaPath": mediaPath};
 			[words makeObjectsPerformSelector:@selector(reimportMediaFrom:) withObject:info];
 		}
 	NS_HANDLER
@@ -149,7 +149,7 @@
 	while (key = [enumerator nextObject]) {
 		ProVocPage *page = [[ProVocPage alloc] init];
 		[page setTitle:key];
-		[page addWords:[inPages objectForKey:key]];
+		[page addWords:inPages[key]];
 		[proVocPages addObject:page];
 		[page release];
 	}
@@ -185,22 +185,22 @@
 		if (!currentPage)
 			currentPageName = defaultName;
 		if ([words count] >= 4)
-			currentPageName = [words objectAtIndex:2];
+			currentPageName = words[2];
 		if (![pageNames containsObject:currentPageName]) {
 			[pageNames addObject:currentPageName];
-			[pages setObject:[NSMutableArray array] forKey:currentPageName];
+			pages[currentPageName] = [NSMutableArray array];
 		}
-		currentPage = [pages objectForKey:currentPageName];
+		currentPage = pages[currentPageName];
 		
         ProVocWord *word = [[ProVocWord alloc] init];
         [currentPage addObject:word];
 		[word release];
-        [word setSourceWord:[words objectAtIndex:0]];
-        [word setTargetWord:[words objectAtIndex:1]];
+        [word setSourceWord:words[0]];
+        [word setTargetWord:words[1]];
 		if ([words count] >= 4)
-	        [word setComment:[words objectAtIndex:3]];
+	        [word setComment:words[3]];
 		else if ([words count] >= 3)
-	        [word setComment:[words objectAtIndex:2]];
+	        [word setComment:words[2]];
 	}
 	if (!currentPage)
 		return nil;
@@ -230,23 +230,23 @@
 		if (newPage) {
 			if (![pageNames containsObject:currentPageName]) {
 				[pageNames addObject:currentPageName];
-				[pages setObject:[NSMutableArray array] forKey:currentPageName];
+				pages[currentPageName] = [NSMutableArray array];
 			}
-			currentPage = [pages objectForKey:currentPageName];
+			currentPage = pages[currentPageName];
 		}
 
 		NSArray *words;
 		if (![scanner scanLineOfTabSeparatedWords:&words])
 			break;
-		if ([words count] >= 1 && [[words objectAtIndex:0] length] > 0) {
+		if ([words count] >= 1 && [words[0] length] > 0) {
 			ProVocWord *word = [[ProVocWord alloc] init];
 	        [currentPage addObject:word];
 			[word release];
-			[word setSourceWord:[words objectAtIndex:0]];
+			[word setSourceWord:words[0]];
 			if ([words count] >= 2)
-				[word setTargetWord:[words objectAtIndex:1]];
+				[word setTargetWord:words[1]];
 			if ([words count] >= 3)
-				[word setComment:[words objectAtIndex:2]];
+				[word setComment:words[2]];
 		}
 	}
 	return [self proVocPagesWithNames:pageNames pages:pages];
@@ -308,7 +308,7 @@
 	NSArray *sources = [[mProVocData rootChapter] children];
 	if ([sources count] <= 1)
 		return;
-	[[mProVocData rootChapter] removeChild:[sources objectAtIndex:0]];
+	[[mProVocData rootChapter] removeChild:sources[0]];
 	[[NSDocumentController sharedDocumentController] addDocument:self];
 	[self makeWindowControllers];
 	[self showWindows];
@@ -357,13 +357,11 @@
 		[submitter submitFile:[self fileName]
 			sourceLanguage:[self sourceLanguage]
 			targetLanguage:[self targetLanguage]
-			info:[NSDictionary dictionaryWithObjectsAndKeys:
-							[NSNumber numberWithInt:words], @"Words",
-							[NSNumber numberWithInt:audio], @"Audio",
-							[NSNumber numberWithInt:images], @"Images",
-							[NSNumber numberWithInt:movies], @"Movies",
-							mSubmissionInfo, @"Submission Info", // may be nil
-							nil]
+			info:@{@"Words": @(words),
+							@"Audio": @(audio),
+							@"Images": @(images),
+							@"Movies": @(movies),
+							@"Submission Info": mSubmissionInfo}
 			modalForWindow:mMainWindow];
 	}
 }

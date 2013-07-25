@@ -52,7 +52,7 @@
 
 -(void)addWord:(ProVocWord *)inWord
 {
-	[self addWords:[NSArray arrayWithObject:inWord]];
+	[self addWords:@[inWord]];
 }
 
 -(void)addWords:(NSArray *)inWords
@@ -62,7 +62,7 @@
 
 -(void)insertWord:(ProVocWord *)inWord atIndex:(int)inIndex
 {
-	[self insertWords:[NSArray arrayWithObject:inWord] atIndex:inIndex];
+	[self insertWords:@[inWord] atIndex:inIndex];
 }
 
 -(void)insertWords:(NSArray *)inWords atIndex:(int)inIndex

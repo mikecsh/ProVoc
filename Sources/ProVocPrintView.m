@@ -69,7 +69,7 @@
 		key = @"commentFontFamilyName";
 	NSFont *font = [NSFont systemFontOfSize:[[NSUserDefaults standardUserDefaults] floatForKey:PVPrintListFontSize]];
 	font = [[NSFontManager sharedFontManager] convertFont:font toFamily:[[NSUserDefaults standardUserDefaults] objectForKey:key]];
-	return [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+	return @{NSFontAttributeName: font};
 }
 
 -(float)heightForString:(NSString *)inString inColumn:(int)inColumn
@@ -92,7 +92,7 @@
 {
 	float height = mCurrentY - mCurrentPageTop;
 	mCurrentY += mPaperSize.height - height;
-	[mCurrentPage setObject:[NSNumber numberWithFloat:mCurrentY] forKey:@"Bottom"];
+	mCurrentPage[@"Bottom"] = @(mCurrentY);
 }
 
 -(void)newPage
@@ -101,7 +101,7 @@
 	mCurrentPageTop = mCurrentY;
 	mCurrentWords = [[NSMutableArray alloc] init];
 	mCurrentPage = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mPageTitle, @"Title",
-												[NSNumber numberWithFloat:mCurrentPageTop], @"Top",
+												@(mCurrentPageTop), @"Top",
 												mCurrentWords, @"Words",
 												nil];
 	[mCurrentWords release];
@@ -125,7 +125,7 @@
 	[mDocument sortWords:words];
 	if ([words count] == 0)
 		return;
-	ProVocWord *word = [words objectAtIndex:0];
+	ProVocWord *word = words[0];
 	float nextWordHeight = [self heightForWord:word];
 
 	NSAttributedString *string = [[NSAttributedString alloc] initWithString:mPageTitle attributes:[self stringAttributesForColumn:1]];
@@ -136,10 +136,9 @@
 		[self newPage];
 		return;
 	}
-	[mCurrentWords addObject:[NSDictionary dictionaryWithObjectsAndKeys:mPageTitle, @"Page Seperator",
-															[NSNumber numberWithFloat:mCurrentY + [self titleTopMargin]], @"Top",
-															[NSNumber numberWithFloat:textHeight], @"Height",
-															nil]];
+	[mCurrentWords addObject:@{@"Page Seperator": mPageTitle,
+															@"Top": @(mCurrentY + [self titleTopMargin]),
+															@"Height": @(textHeight)}];
 	mCurrentY += height + [self interWordMargin];
 }
 
@@ -148,10 +147,9 @@
 	float height = [self heightForWord:inWord];
 	if (mCurrentY != mCurrentPageTop && mCurrentY + height - mCurrentPageTop > mPaperSize.height)
 		[self newPage];
-	[mCurrentWords addObject:[NSDictionary dictionaryWithObjectsAndKeys:inWord, @"Word",
-															[NSNumber numberWithFloat:mCurrentY], @"Top",
-															[NSNumber numberWithFloat:height], @"Height",
-															nil]];
+	[mCurrentWords addObject:@{@"Word": inWord,
+															@"Top": @(mCurrentY),
+															@"Height": @(height)}];
 	mCurrentY += height + [self interWordMargin];
 }
 
@@ -203,10 +201,10 @@
 -(NSRect)rectForPage:(int)inPage
 {
 	NSRect rect = NSZeroRect;
-	mCurrentPage = [mPages objectAtIndex:inPage - 1];
-	rect.origin.y = [[mCurrentPage objectForKey:@"Top"] floatValue];
+	mCurrentPage = mPages[inPage - 1];
+	rect.origin.y = [mCurrentPage[@"Top"] floatValue];
 	rect.size.width = mPaperSize.width;
-	rect.size.height = [[mCurrentPage objectForKey:@"Bottom"] floatValue] - rect.origin.y;
+	rect.size.height = [mCurrentPage[@"Bottom"] floatValue] - rect.origin.y;
 	return rect;
 }
 
@@ -215,15 +213,15 @@
 	NSEnumerator *pageEnumerator = [mPages objectEnumerator];
 	NSDictionary *page;
 	while (page = [pageEnumerator nextObject]) {
-		NSEnumerator *wordEnumerator = [[page objectForKey:@"Words"] objectEnumerator];
+		NSEnumerator *wordEnumerator = [page[@"Words"] objectEnumerator];
 		NSDictionary *word;
 		while (word = [wordEnumerator nextObject]) {
-			float top = [[word objectForKey:@"Top"] floatValue];
-			float height = [[word objectForKey:@"Height"] floatValue];
+			float top = [word[@"Top"] floatValue];
+			float height = [word[@"Height"] floatValue];
 			if (top + height >= NSMinY(inRect) || top <= NSMaxY(inRect))
-				if ([word objectForKey:@"Page Seperator"]) {
+				if (word[@"Page Seperator"]) {
 					NSRect r = NSMakeRect(0, top, mPaperSize.width, height + [self interWordMargin]);
-					NSAttributedString *string = [[NSAttributedString alloc] initWithString:[word objectForKey:@"Page Seperator"] attributes:[self stringAttributesForColumn:1]];
+					NSAttributedString *string = [[NSAttributedString alloc] initWithString:word[@"Page Seperator"] attributes:[self stringAttributesForColumn:1]];
 					[string drawInRect:r];
 					[string release];
 					NSBezierPath *line = [NSBezierPath bezierPath];
@@ -232,7 +230,7 @@
 					[line setLineWidth:0.5];
 					[line stroke];
 				} else {
-					ProVocWord *proVocWord = [word objectForKey:@"Word"];
+					ProVocWord *proVocWord = word[@"Word"];
 					NSRect r = NSMakeRect(0, top, [self wordWidth], height + [self interWordMargin]);
 					NSAttributedString *string = [[NSAttributedString alloc] initWithString:[proVocWord sourceWord] attributes:[self stringAttributesForColumn:0]];
 					[string drawInRect:r];
@@ -268,7 +266,7 @@
 	rect.size.width -= [info leftMargin] + [info rightMargin];
 	rect.size.height -= [info bottomMargin] + [info topMargin];
 
-	[[mCurrentPage objectForKey:@"Title"] drawAtPoint:NSMakePoint(NSMinX(rect), NSMaxY(rect) + [self titleBottomMargin]) withAttributes:[self stringAttributesForColumn:1]];
+	[mCurrentPage[@"Title"] drawAtPoint:NSMakePoint(NSMinX(rect), NSMaxY(rect) + [self titleBottomMargin]) withAttributes:[self stringAttributesForColumn:1]];
 	NSBezierPath *line = [NSBezierPath bezierPath];
 	[line moveToPoint:NSMakePoint(NSMinX(rect), NSMaxY(rect) + [self titleBottomMargin] - 4)];
 	[line relativeLineToPoint:NSMakePoint(rect.size.width, 0)];
@@ -279,7 +277,7 @@
 		NSMutableDictionary *attributes = [[NSMutableDictionary alloc] initWithDictionary:[self stringAttributesForColumn:1]];
 		NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[paragraphStyle setAlignment:NSCenterTextAlignment];
-		[attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+		attributes[NSParagraphStyleAttributeName] = paragraphStyle;
 		[paragraphStyle release];
 		NSAttributedString *string = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@"Print Page Format %i of %i", @""), [mPages indexOfObjectIdenticalTo:mCurrentPage] + 1, [mPages count]] attributes:attributes];
 		[attributes release];

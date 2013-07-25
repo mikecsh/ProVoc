@@ -28,7 +28,7 @@
 
 -(NSArray *)searchFiles
 {
-	[self performSelector:@selector(startQuery:) withObject:nil afterDelay:0.0 inModes:[NSArray arrayWithObject:NSModalPanelRunLoopMode]];
+	[self performSelector:@selector(startQuery:) withObject:nil afterDelay:0.0 inModes:@[NSModalPanelRunLoopMode]];
 	int returnCode = [NSApp runModalForWindow:[self window]];
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	[mQuery stopQuery];
@@ -72,8 +72,8 @@
 		[search release];
 	}
 	[mQuery setPredicate:predicate];
-	[mQuery setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:(id)kMDItemLastUsedDate ascending:NO] autorelease]]];
-	[mQuery setValueListAttributes:[NSArray arrayWithObject:(id)kMDItemPath]];
+	[mQuery setSortDescriptors:@[[[[NSSortDescriptor alloc] initWithKey:(id)kMDItemLastUsedDate ascending:NO] autorelease]]];
+	[mQuery setValueListAttributes:@[(id)kMDItemPath]];
 	[mQuery startQuery];
 }
 

@@ -22,7 +22,7 @@
 -(BOOL)boolForArgument:(id)inKey defaultValue:(BOOL)inDefaultValue
 {
 	BOOL value = inDefaultValue;
-	id arg = [[self evaluatedArguments] objectForKey:inKey];
+	id arg = [self evaluatedArguments][inKey];
 	if ([arg respondsToSelector:@selector(objCType)] && strcmp([arg objCType], @encode(BOOL)) == 0)
 		value = [arg boolValue];
 	else if ([arg respondsToSelector:@selector(intValue)])
@@ -38,10 +38,10 @@
 {
 	id args = [self evaluatedArguments];
 	NSMutableArray *files = [NSMutableArray array];
-	id elements = [args objectForKey:@""];
+	id elements = args[@""];
 
 	if ([elements isKindOfClass:[NSString class]])
-		elements = [NSArray arrayWithObject:elements];
+		elements = @[elements];
 	if ([elements isKindOfClass:[NSArray class]] && [elements count] > 0) {
 		NSEnumerator *enumerator = [elements objectEnumerator];
 		NSString *path;
@@ -64,8 +64,8 @@
 -(id)performDefaultImplementation
 {
 	id args = [self evaluatedArguments];
-	ProVocText *text = [[[ProVocText alloc] initWithContents:[args objectForKey:@""]] autorelease];
-	[NSApp importWordsFromFiles:[NSArray arrayWithObject:text] inNewDocument:[self boolForArgument:@"NewDocument" defaultValue:NO]];
+	ProVocText *text = [[[ProVocText alloc] initWithContents:args[@""]] autorelease];
+	[NSApp importWordsFromFiles:@[text] inNewDocument:[self boolForArgument:@"NewDocument" defaultValue:NO]];
 	return nil;
 }
 
@@ -105,7 +105,7 @@
 	[defaults setBool:prevIncludePageNames forKey:PVExportPageNames];
 
 	id thing = string;
-	NSString *file = [args objectForKey:@""];
+	NSString *file = args[@""];
 	if ([file isKindOfClass:[NSString class]] && [file length] > 0) {
 		if ([document useCustomEncoding]) {
 			NSData *data = [string dataUsingEncoding:[document stringEncoding]];

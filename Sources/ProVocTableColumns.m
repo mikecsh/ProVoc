@@ -133,13 +133,13 @@
 -(void)autoSizeColumn:(id)inSender
 {
 	if (mCurrentColumnIndex >= 0)
-		[mDelegate tableView:[self tableView] autoSizeTableColumn:[[[self tableView] tableColumns] objectAtIndex:mCurrentColumnIndex]];
+		[mDelegate tableView:[self tableView] autoSizeTableColumn:[[self tableView] tableColumns][mCurrentColumnIndex]];
 }
 
 -(void)deleteColumnContents:(id)inSender
 {
 	if (mCurrentColumnIndex >= 0)
-		[mDelegate tableView:[self tableView] deleteContentsOfTableColumn:[[[self tableView] tableColumns] objectAtIndex:mCurrentColumnIndex]];
+		[mDelegate tableView:[self tableView] deleteContentsOfTableColumn:[[self tableView] tableColumns][mCurrentColumnIndex]];
 }
 
 -(void)autoSizeAllColumns:(id)inSender

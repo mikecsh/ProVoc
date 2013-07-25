@@ -89,7 +89,7 @@ static QTMovieView *sMovieView = nil;
 		[sMovieView setMovie:inMovie];
 		[sMovieView setFrame:inFrame];
 		[self addSubview:sMovieView];
-		[self performSelector:@selector(playMovie:) withObject:nil afterDelay:0.0 inModes:[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode, nil]];
+		[self performSelector:@selector(playMovie:) withObject:nil afterDelay:0.0 inModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]];
 	} else
 		[self stopMovie];
 }
@@ -136,13 +136,13 @@ static QTMovieView *sMovieView = nil;
 
 -(void)drawString:(NSString *)inString atIndex:(int)inIndex
 {
-	NSSound *sound = [mSounds objectForKey:[NSNumber numberWithInt:inIndex]];
+	NSSound *sound = mSounds[@(inIndex)];
 	if (sound)
 		[self drawSpeakerIconAtIndex:inIndex playing:inIndex == mCurrentSoundIndex];
 		
 	NSRect inRect = [self contentRectForChoiceAtIndex:inIndex];
 	
-	NSImage *image = [mImages objectForKey:[NSNumber numberWithInt:inIndex]];
+	NSImage *image = mImages[@(inIndex)];
 	if (image) {
 		NSRect src = NSZeroRect;
 		src.size = [image size];
@@ -167,8 +167,8 @@ static QTMovieView *sMovieView = nil;
 		font = [[NSFontManager sharedFontManager] convertFont:font toFamily:[self fontFamilyName]];
 		NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
 		[paragraphStyle setAlignment:[self textAlignment]];
-		NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName,
-																	paragraphStyle, NSParagraphStyleAttributeName, nil];
+		NSDictionary *attributes = @{NSFontAttributeName: font,
+																	NSParagraphStyleAttributeName: paragraphStyle};
 		NSAttributedString *attributedString = [[[NSAttributedString alloc] initWithString:inString attributes:attributes] autorelease];
 		NSRect rect = NSInsetRect(inRect, 15, 0);
 		rect.size.height = round([attributedString heightForWidth:rect.size.width]);
@@ -201,7 +201,7 @@ static QTMovieView *sMovieView = nil;
 
 -(void)startMovieAtIndex:(int)inIndex
 {
-	[self startMovie:[mMovies objectForKey:[NSNumber numberWithInt:inIndex]] inFrame:NSInsetRect([self contentRectForChoiceAtIndex:inIndex], 8, 8)];
+	[self startMovie:mMovies[@(inIndex)] inFrame:NSInsetRect([self contentRectForChoiceAtIndex:inIndex], 8, 8)];
 }
 
 -(void)soundStopped
@@ -222,7 +222,7 @@ static QTMovieView *sMovieView = nil;
 {
 	[mDelegate stopSound];
 	[self stopSound];
-	mCurrentSound = [[mSounds objectForKey:[NSNumber numberWithInt:mCurrentSoundIndex = inIndex]] retain];
+	mCurrentSound = [mSounds[@(mCurrentSoundIndex = inIndex)] retain];
 	[mCurrentSound setDelegate:self];
 	[mCurrentSound play];
 	[self setNeedsDisplayInRect:[self rectForSpeakerIconAtIndex:mCurrentSoundIndex]];
@@ -290,7 +290,7 @@ static QTMovieView *sMovieView = nil;
 	if (!mDelegate)
 		return YES;
 	else
-		return [mDelegate MCQView:self shouldSelectAnswer:[mAnswers objectAtIndex:inIndex]];
+		return [mDelegate MCQView:self shouldSelectAnswer:mAnswers[inIndex]];
 }
 
 -(void)selectIndex:(int)inIndex playSound:(BOOL)inPlaySound
@@ -417,7 +417,7 @@ static QTMovieView *sMovieView = nil;
 
 -(void)keyDown:(NSEvent *)inEvent
 {
-	[self interpretKeyEvents:[NSArray arrayWithObject:inEvent]];
+	[self interpretKeyEvents:@[inEvent]];
 }
 
 -(void)mouseDown:(NSEvent *)inEvent
@@ -487,18 +487,18 @@ static QTMovieView *sMovieView = nil;
 	NSEnumerator *enumerator = [mAnswers objectEnumerator];
 	id answer;
 	while (answer = [enumerator nextObject]) {
-		id key = [NSNumber numberWithInt:index];
+		id key = @(index);
 		NSSound *sound = [mDelegate soundForAnswer:answer];
 		if (sound)
-			[mSounds setObject:sound forKey:key];
+			mSounds[key] = sound;
 		id movie = [mDelegate movieForAnswer:answer];
 		if (movie)
-			[mMovies setObject:movie forKey:key];
+			mMovies[key] = movie;
 		NSImage *image = [movie posterImage];
 		if (!image)
 			image = [mDelegate imageForAnswer:answer];
 		if (image)
-			[mImages setObject:image forKey:key];
+			mImages[key] = image;
 		index++;
 	}
 		
@@ -527,7 +527,7 @@ static QTMovieView *sMovieView = nil;
 -(NSString *)selectedAnswer
 {
 	if (mSelectedIndex >= 0 && mSelectedIndex < [mAnswers count])
-		return [mAnswers objectAtIndex:mSelectedIndex];
+		return mAnswers[mSelectedIndex];
 	else
 		return nil;
 }
@@ -570,7 +570,7 @@ static int sIndexToSpeak = -1;
 	sIndexToSpeak = -1;
 	NSString *string;
 	if (index >= 0)
-		string = [mAnswers objectAtIndex:index];
+		string = mAnswers[index];
 	else
 		string = [mAnswers componentsJoinedByString:@", "];
 	[[self speechSynthesizer] stopSpeaking]; // ++++ v4.2.2 ++++

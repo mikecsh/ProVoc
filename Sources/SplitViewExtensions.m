@@ -23,14 +23,14 @@
 		else
 			[subviewSizes addObject:[NSNumber numberWithFloat:size.height]];
 	}
-	return [NSDictionary dictionaryWithObject:subviewSizes forKey:@"SubviewSizes"];
+	return @{@"SubviewSizes": subviewSizes};
 }
 
 -(void)setSplitViewState:(id)inState
 {
 	NSEnumerator *viewEnumerator = [[self subviews] objectEnumerator];
 	NSView *subview;
-	NSEnumerator *sizeEnumerator = [[inState objectForKey:@"SubviewSizes"] objectEnumerator];
+	NSEnumerator *sizeEnumerator = [inState[@"SubviewSizes"] objectEnumerator];
 	NSNumber *size;
 	while ((subview = [viewEnumerator nextObject]) && (size = [sizeEnumerator nextObject]))
 		if ([self isVertical])

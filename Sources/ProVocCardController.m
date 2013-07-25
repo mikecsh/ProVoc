@@ -69,7 +69,7 @@
 
 -(void)setNilValueForKey:(id)inKey
 {
-	[self setValue:[NSNumber numberWithInt:0] forKey:inKey];
+	[self setValue:@0 forKey:inKey];
 }
 
 -(int)wordCount
@@ -85,7 +85,7 @@
 -(void)setWordIndex:(int)inIndex
 {
 	mWordIndex = inIndex;
-	[mPreview setWord:[mWords objectAtIndex:mWordIndex - 1]];
+	[mPreview setWord:mWords[mWordIndex - 1]];
 }
 
 -(BOOL)runModal
@@ -141,7 +141,7 @@
 	[self didChangeValueForKey:@"cardWidth"];
 	[self didChangeValueForKey:@"cardHeight"];
 	
-	NSArray *margins = [NSArray arrayWithObjects:@"Left", @"Top", @"Right", @"Bottom", nil];
+	NSArray *margins = @[@"Left", @"Top", @"Right", @"Bottom"];
 	NSEnumerator *enumerator = [margins objectEnumerator];
 	NSString *margin;
 	while (margin = [enumerator nextObject]) {
@@ -246,13 +246,13 @@
 	[NSGraphicsContext saveGraphicsState];
 	
 	NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-	[attributes setObject:[NSUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:ProVocCardTextColor]] forKey:NSForegroundColorAttributeName];
+	attributes[NSForegroundColorAttributeName] = [NSUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:ProVocCardTextColor]];
 	NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
 	[paragraphStyle setAlignment:NSCenterTextAlignment];
-	[attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+	attributes[NSParagraphStyleAttributeName] = paragraphStyle;
 	NSFont *font = [NSFont systemFontOfSize:fontSize];
 	font = [[NSFontManager sharedFontManager] convertFont:font toFamily:fontFamilyName];
-	[attributes setObject:font forKey:NSFontAttributeName];
+	attributes[NSFontAttributeName] = font;
 	NSMutableAttributedString *string = [[[NSMutableAttributedString alloc] initWithString:text attributes:attributes] autorelease];
 	
 	NSAffineTransform *transform = [NSAffineTransform transform];

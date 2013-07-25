@@ -44,7 +44,7 @@
 static void sGetShadingComponents(void *info, const float *inData, float *outData)
 {
 	NSArray *array = (NSArray *)info;
-	NSColor *color = [[array objectAtIndex:0] blendedColorWithFraction:*inData ofColor:[array objectAtIndex:1]];
+	NSColor *color = [array[0] blendedColorWithFraction:*inData ofColor:array[1]];
     [color getRed:&outData[0] green:&outData[1] blue:&outData[2] alpha:&outData[3]];
 }
 

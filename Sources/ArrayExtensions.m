@@ -33,7 +33,7 @@
 	
 	while ([indices count] > 0) {
 		unsigned index = rand() % [indices count];
-		[shuffled addObject:[indices objectAtIndex:index]];
+		[shuffled addObject:indices[index]];
 		[indices removeObjectAtIndex:index];
 	}
 	
@@ -47,7 +47,7 @@
 	NSEnumerator *enumerator = [[self arrayWithShuffledIndices] objectEnumerator];
 	id index;
 	while (index = [enumerator nextObject])
-		[array addObject:[self objectAtIndex:[index unsignedIntValue]]];
+		[array addObject:self[[index unsignedIntValue]]];
 	return array;
 }
 
@@ -56,7 +56,7 @@
 	if ([self count] == 0)
 		return nil;
 	else
-		return [self objectAtIndex:rand() % [self count]];
+		return self[rand() % [self count]];
 }
 
 @end

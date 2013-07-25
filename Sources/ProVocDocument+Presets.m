@@ -62,7 +62,7 @@
 	while (preset = [enumerator nextObject])
 		[names addObject:[preset name]];
 		
-	ProVocPreset *copy = [[[mPresets objectAtIndex:mIndexOfCurrentPresets] copy] autorelease];
+	ProVocPreset *copy = [[mPresets[mIndexOfCurrentPresets] copy] autorelease];
 	[copy setName:[[copy name] nameOfCopyWithExistingNames:names]];
 	[mPresets insertObject:copy atIndex:++mIndexOfCurrentPresets];
 	[self presetsDidChange:nil];
@@ -97,13 +97,13 @@
 		NSDictionary *defaultPreset;
 		while (defaultPreset = [enumerator nextObject]) {
 			ProVocPreset *preset = [[[ProVocPreset alloc] init] autorelease];
-			[preset setName:[defaultPreset objectForKey:@"Name"]];
+			[preset setName:defaultPreset[@"Name"]];
 			NSMutableDictionary *parameters = [[[self parameters] mutableCopy] autorelease];
-			[parameters setValuesForKeysWithDictionary:[defaultPreset objectForKey:@"Parameters"]];
+			[parameters setValuesForKeysWithDictionary:defaultPreset[@"Parameters"]];
 			[preset setParameters:parameters];
 			[mPresets addObject:preset];
 		}
-		[self setParameters:[[mPresets objectAtIndex:mIndexOfCurrentPresets = 0] parameters]];
+		[self setParameters:[mPresets[mIndexOfCurrentPresets = 0] parameters]];
 	}
 }
 
@@ -127,7 +127,7 @@
 
 -(void)currentPresetValuesDidChange:(id)inSender
 {
-	[[mPresets objectAtIndex:mIndexOfCurrentPresets] setParameters:[self parameters]];
+	[mPresets[mIndexOfCurrentPresets] setParameters:[self parameters]];
 	[self currentPresetDidChange:inSender];
 }
 
@@ -142,29 +142,29 @@
 	[mPresetTableView reloadData];
 	[mPresetTableView selectRow:mIndexOfCurrentPresets byExtendingSelection:NO];
 	[self didChangeValueForKey:@"presetName"];
-	[self setParameters:[[mPresets objectAtIndex:mIndexOfCurrentPresets] parameters]];
+	[self setParameters:[mPresets[mIndexOfCurrentPresets] parameters]];
 }
 
 -(id)presetSettings
 {
-	return [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedInt:mIndexOfCurrentPresets], @"IndexOfCurrentPresets",
-									[self presets], @"Presets", nil];
+	return @{@"IndexOfCurrentPresets": @(mIndexOfCurrentPresets),
+									@"Presets": [self presets]};
 }
 
 -(void)setPresetSettings:(id)inPresetSettings
 {
-	mIndexOfCurrentPresets = [[inPresetSettings objectForKey:@"IndexOfCurrentPresets"] unsignedIntValue];
-	[self setPresets:[inPresetSettings objectForKey:@"Presets"]];
+	mIndexOfCurrentPresets = [inPresetSettings[@"IndexOfCurrentPresets"] unsignedIntValue];
+	[self setPresets:inPresetSettings[@"Presets"]];
 }
 
 -(NSString *)presetName
 {
-	return [[mPresets objectAtIndex:mIndexOfCurrentPresets] name];
+	return [mPresets[mIndexOfCurrentPresets] name];
 }
 
 -(void)setPresetName:(NSString *)inName
 {
-	[(ProVocPreset *)[mPresets objectAtIndex:mIndexOfCurrentPresets] setName:inName];
+	[(ProVocPreset *)mPresets[mIndexOfCurrentPresets] setName:inName];
 	[self currentPresetDidChange:nil];
 }
 
@@ -191,7 +191,7 @@
 {
 	NSSplitView *splitView = [inNotification object];
 	float minWidth = [mPresetEditView frame].size.width + 150;
-	NSView *subview = [[splitView subviews] objectAtIndex:1];
+	NSView *subview = [splitView subviews][1];
 	if ([subview frame].size.width < minWidth) {
 		[subview setFrameSize:NSMakeSize(minWidth, [subview frame].size.height)];
 		[splitView adjustSubviews];

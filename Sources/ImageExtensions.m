@@ -35,11 +35,9 @@
 		NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
 		[paragraphStyle setAlignment:NSCenterTextAlignment];
 		NSFont *font = [[NSFontManager sharedFontManager] convertFont:[NSFont fontWithName:@"Arial" size:14] toHaveTrait:NSBoldFontMask];
-		NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-					font, NSFontAttributeName,
-					[NSColor whiteColor], NSForegroundColorAttributeName,
-					paragraphStyle, NSParagraphStyleAttributeName,
-					nil];
+		NSDictionary *attributes = @{NSFontAttributeName: font,
+					NSForegroundColorAttributeName: [NSColor whiteColor],
+					NSParagraphStyleAttributeName: paragraphStyle};
 		string = [[NSMutableAttributedString alloc] initWithString:@"?" attributes:attributes];
 	}
 	[string replaceCharactersInRange:NSMakeRange(0, [string length]) withString:[NSString stringWithFormat:@"%i", inNumber]];

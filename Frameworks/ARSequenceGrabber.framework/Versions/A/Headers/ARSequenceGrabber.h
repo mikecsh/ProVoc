@@ -21,7 +21,7 @@
 	NSWindow *mFlashWindow;
 	
 	IBOutlet NSWindow *mMovieCaptureWindow;
-	IBOutlet NSQuickDrawView *mMovieCaptureQuickDrawView;
+	IBOutlet id *mMovieCaptureQuickDrawView; //NSQuickDrawView
 	CSequenceGrabber *mSequenceGrabber;
 	BOOL mCapturingMovie;
 	BOOL mPreviewing;

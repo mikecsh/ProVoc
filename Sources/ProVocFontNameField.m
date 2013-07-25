@@ -14,13 +14,13 @@ static ProVocFontNameField *sCurrentField = nil;
 
 -(float)currentFontSize
 {
-	id value = [[mObservedObjects objectForKey:@"fontSize"] valueForKeyPath:[mObservedKeyPaths objectForKey:@"fontSize"]];
+	id value = [mObservedObjects[@"fontSize"] valueForKeyPath:mObservedKeyPaths[@"fontSize"]];
 	return value ? [value floatValue] : 0.0;
 }
 
 -(NSString *)currentFontFamilyName
 {
-	return [[mObservedObjects objectForKey:@"fontFamilyName"] valueForKeyPath:[mObservedKeyPaths objectForKey:@"fontFamilyName"]];
+	return [mObservedObjects[@"fontFamilyName"] valueForKeyPath:mObservedKeyPaths[@"fontFamilyName"]];
 }
 
 -(NSFont *)currentFont
@@ -33,8 +33,8 @@ static ProVocFontNameField *sCurrentField = nil;
 -(IBAction)userSetFont:(id)inSender
 {
 	if (([[NSApp currentEvent] modifierFlags] & NSAlternateKeyMask) != 0) {
-		[[mObservedObjects objectForKey:@"fontFamilyName"] setValue:[[NSFont systemFontOfSize:0] familyName] forKeyPath:[mObservedKeyPaths objectForKey:@"fontFamilyName"]];
-		[[mObservedObjects objectForKey:@"fontSize"] setValue:[NSNumber numberWithFloat:[NSFont systemFontSize]] forKeyPath:[mObservedKeyPaths objectForKey:@"fontSize"]];
+		[mObservedObjects[@"fontFamilyName"] setValue:[[NSFont systemFontOfSize:0] familyName] forKeyPath:mObservedKeyPaths[@"fontFamilyName"]];
+		[mObservedObjects[@"fontSize"] setValue:[NSNumber numberWithFloat:[NSFont systemFontSize]] forKeyPath:mObservedKeyPaths[@"fontSize"]];
 		return;
 	}
 	
@@ -77,8 +77,8 @@ static ProVocFontNameField *sCurrentField = nil;
 		mObservedObjects = [[NSMutableDictionary alloc] initWithCapacity:0];
 		mObservedKeyPaths = [[NSMutableDictionary alloc] initWithCapacity:0];
 	}
-	[mObservedObjects setObject:inObservable forKey:inBinding];
-	[mObservedKeyPaths setObject:inKeyPath forKey:inBinding];
+	mObservedObjects[inBinding] = inObservable;
+	mObservedKeyPaths[inBinding] = inKeyPath;
 	[super bind:inBinding toObject:inObservable withKeyPath:inKeyPath options:inOptions];
 }
 
@@ -89,9 +89,9 @@ static ProVocFontNameField *sCurrentField = nil;
 	NSString *familyName = [font familyName];
 	if (familyName) {
 		[self setStringValue:familyName];
-		[[mObservedObjects objectForKey:@"fontFamilyName"] setValue:familyName forKeyPath:[mObservedKeyPaths objectForKey:@"fontFamilyName"]];
+		[mObservedObjects[@"fontFamilyName"] setValue:familyName forKeyPath:mObservedKeyPaths[@"fontFamilyName"]];
 	}
-	[[mObservedObjects objectForKey:@"fontSize"] setValue:[NSNumber numberWithFloat:[font pointSize]] forKeyPath:[mObservedKeyPaths objectForKey:@"fontSize"]];
+	[mObservedObjects[@"fontSize"] setValue:[NSNumber numberWithFloat:[font pointSize]] forKeyPath:mObservedKeyPaths[@"fontSize"]];
 }
 
 +(BOOL)changeFont:(id)inSender

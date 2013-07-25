@@ -131,16 +131,16 @@
 	static NSMutableArray *languages = nil;
 	if (!languages) {
 		NSMutableDictionary *prefs = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-		languages = [prefs objectForKey:@"Languages"];
+		languages = prefs[@"Languages"];
 		NSEnumerator *enumerator = [languages objectEnumerator];
 		languages = [NSMutableArray array];
 		NSDictionary *description;
 		while (description = [enumerator nextObject]) {
 			NSMutableDictionary *mutableDescription = [[description mutableCopy] autorelease];
-			if (![mutableDescription objectForKey:PVPunctuationSensitive])
-				[mutableDescription setObject:[NSNumber numberWithBool:YES] forKey:PVPunctuationSensitive];
-			if (![mutableDescription objectForKey:PVSpaceSensitive])
-				[mutableDescription setObject:[NSNumber numberWithBool:YES] forKey:PVSpaceSensitive];
+			if (!mutableDescription[PVPunctuationSensitive])
+				mutableDescription[PVPunctuationSensitive] = @YES;
+			if (!mutableDescription[PVSpaceSensitive])
+				mutableDescription[PVSpaceSensitive] = @YES;
 			[languages addObject:mutableDescription];
 		}
 		[languages retain];
@@ -152,7 +152,7 @@
 {
 	id prefs = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
 	prefs = [[prefs mutableCopy] autorelease];
-	[prefs setObject:[self languages] forKey:@"Languages"];
+	prefs[@"Languages"] = [self languages];
 	[[NSUserDefaults standardUserDefaults] setObject:prefs forKey:PVPrefsLanguages];
 }
 
@@ -167,11 +167,11 @@
 - (IBAction)newLanguage:(id)sender
 {
     NSMutableDictionary *description = [NSMutableDictionary dictionary];
-    [description setObject:NSLocalizedString(@"New Language", @"") forKey:@"Name"];
-    [description setObject:[NSNumber numberWithBool:YES] forKey:PVCaseSensitive];
-    [description setObject:[NSNumber numberWithBool:YES] forKey:PVAccentSensitive];
-    [description setObject:[NSNumber numberWithBool:YES] forKey:PVPunctuationSensitive];
-    [description setObject:[NSNumber numberWithBool:YES] forKey:PVSpaceSensitive];
+    description[@"Name"] = NSLocalizedString(@"New Language", @"");
+    description[PVCaseSensitive] = @YES;
+    description[PVAccentSensitive] = @YES;
+    description[PVPunctuationSensitive] = @YES;
+    description[PVSpaceSensitive] = @YES;
 	[self addLanguage:description];
 	int row = [mLanguageTableView numberOfRows] - 1;
     [mLanguageTableView selectRow:row byExtendingSelection:NO];
@@ -201,14 +201,14 @@
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
 {
     if(aTableView == mLanguageTableView)
-        return [[[self languages] objectAtIndex:rowIndex] objectForKey:[aTableColumn identifier]];
+        return [self languages][rowIndex][[aTableColumn identifier]];
     return nil;
 }
 
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
 {
     if(aTableView == mLanguageTableView) {
-        [[[self languages] objectAtIndex:rowIndex] setObject:anObject forKey:[aTableColumn identifier]];
+        [self languages][rowIndex][[aTableColumn identifier]] = anObject;
         [self saveLanguagePrefs];
         if ([[aTableColumn identifier] isEqual:@"Name"])
             [[NSNotificationCenter defaultCenter] postNotificationName:PVLanguageNamesDidChangeNotification object:nil];
@@ -222,7 +222,7 @@
         NSEnumerator *enumerator = [mLanguageTableView selectedRowEnumerator];
         NSNumber *row;
         while (row = [enumerator nextObject])
-            [languagesToDelete addObject:[[self languages] objectAtIndex:[row intValue]]];
+            [languagesToDelete addObject:[self languages][[row intValue]]];
         [[self languages] removeObjectsInArray:languagesToDelete];
         [mLanguageTableView reloadData];
         [self saveLanguagePrefs];
@@ -263,12 +263,12 @@
 -(void)selectPaneAtIndex:(unsigned)inIndex
 {
 	NSWindow *window = [self window];
-	[[window toolbar] setSelectedItemIdentifier:[mPaneLabels objectAtIndex:inIndex]];
+	[[window toolbar] setSelectedItemIdentifier:mPaneLabels[inIndex]];
 
 	float factor = 1.0;
 	if ([NSApp systemVersion] >= 0x1040)
 		factor = [window userSpaceScaleFactor];
-	NSView *paneView = [mPaneViews objectAtIndex:inIndex];
+	NSView *paneView = mPaneViews[inIndex];
 	NSView *view = [window contentView];
 	float deltaHeight = [paneView frame].size.height - [view frame].size.height;
 	NSRect frameRect = [window frame];
@@ -315,7 +315,7 @@
     
 	[toolbarItem setLabel:inItemIdentifier];
 	int index = [mPaneLabels indexOfObject:inItemIdentifier];
-	[toolbarItem setImage:[NSImage imageNamed:[mPaneImageNames objectAtIndex:index]]];
+	[toolbarItem setImage:[NSImage imageNamed:mPaneImageNames[index]]];
 	[toolbarItem setTarget:self];
 	[toolbarItem setAction:@selector(selectPreferences:)];
 	
@@ -343,10 +343,10 @@
 		labels = [[labels mutableCopy] autorelease];
 	int i;
 	for (i = 0; i < [labels count]; i++) {
-		id label = [labels objectAtIndex:i];
+		id label = labels[i];
 		if (YES || ![label isKindOfClass:[NSMutableDictionary class]]) {
 			label = [[label mutableCopy] autorelease];
-			[labels replaceObjectAtIndex:i withObject:label];
+			labels[i] = label;
 		}
 	}
 	return labels;
@@ -360,9 +360,9 @@
 		[labels addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"?", PVLabelTitle, [NSArchiver archivedDataWithRootObject:[NSColor grayColor]], PVLabelColorData, nil]];
 		
 	if ([inKey hasPrefix:@"labelTitle"])
-		[[labels objectAtIndex:index] setObject:inValue forKey:PVLabelTitle];
+		labels[index][PVLabelTitle] = inValue;
 	if ([inKey hasPrefix:@"labelColorData"])
-		[[labels objectAtIndex:index] setObject:inValue forKey:PVLabelColorData];
+		labels[index][PVLabelColorData] = inValue;
 	[[NSUserDefaults standardUserDefaults] setObject:labels forKey:PVLabels];
 	if ([inKey hasPrefix:@"labelTitle"])
 		[ProVocDocument labelTitlesDidChange];
@@ -376,9 +376,9 @@
 	NSArray *labels = [[NSUserDefaults standardUserDefaults] objectForKey:PVLabels];
 	index = MIN([labels count] - 1, index);
 	if ([inKey hasPrefix:@"labelTitle"])
-		return [[labels objectAtIndex:index] objectForKey:PVLabelTitle];
+		return labels[index][PVLabelTitle];
 	if ([inKey hasPrefix:@"labelColorData"])
-		return [[labels objectAtIndex:index] objectForKey:PVLabelColorData];
+		return labels[index][PVLabelColorData];
 	
 	return nil;//[super valueForUndefinedKey:inKey];
 }
@@ -491,7 +491,7 @@
 	[openPanel setMessage:NSLocalizedString(@"Custom Background Open Panel Message", @"")];
 	[openPanel setPrompt:NSLocalizedString(@"Custom Background Open Panel Prompt", @"")];
 	[openPanel setAllowsMultipleSelection:NO];
-	if ([openPanel runModalForTypes:[NSArray arrayWithObject:@"qtz"]] == NSOKButton)
+	if ([openPanel runModalForTypes:@[@"qtz"]] == NSOKButton)
 		[ProVocBackgroundStyle setCustomBackgroundCompositionPath:[openPanel filename]];
 	[self didChangeValueForKey:@"backgroundStyleNames"];
 	[self didChangeValueForKey:@"indexOfSelectedBackgroundStyle"];

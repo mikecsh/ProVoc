@@ -78,7 +78,7 @@ static BOOL sPlayPause;
 -(void)playNextSound
 {
 	if ([mSoundsToPlay count] > 0) {
-		mCurrentSound = [[mSoundsToPlay objectAtIndex:0] retain];
+		mCurrentSound = [mSoundsToPlay[0] retain];
 		[mSoundsToPlay removeObjectAtIndex:0];
 		[mCurrentSound setDelegate:self];
 		[mCurrentSound play];
@@ -221,11 +221,10 @@ static BOOL sPlayPause;
 {
 	NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
 	[paragraphStyle setAlignment:NSCenterTextAlignment];
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:inColor, NSForegroundColorAttributeName,
-													[self fontOfSize:inFontSize forIndex:inIndex], NSFontAttributeName,
-													paragraphStyle, NSParagraphStyleAttributeName,
-													[self shadow], NSShadowAttributeName,
-													nil];
+	NSDictionary *attributes = @{NSForegroundColorAttributeName: inColor,
+													NSFontAttributeName: [self fontOfSize:inFontSize forIndex:inIndex],
+													NSParagraphStyleAttributeName: paragraphStyle,
+													NSShadowAttributeName: [self shadow]};
 	NSMutableAttributedString *attributedString = [[[NSMutableAttributedString alloc] initWithString:inString attributes:attributes] autorelease];
 	while ([attributedString heightForWidth:inSize.width] > inSize.height) {
 		if (inFontSize > 20)
@@ -292,7 +291,7 @@ static QTMovieView *sMovieView = nil;
 			}
 			[sMovieView setFrame:[self rectForMovie]];
 			[sMovieView setMovie:mMovie];
-			[sMovieView performSelector:@selector(play:) withObject:nil afterDelay:0.0 inModes:[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode, nil]];
+			[sMovieView performSelector:@selector(play:) withObject:nil afterDelay:0.0 inModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]];
 			[self addSubview:sMovieView];
 		}
 	}
@@ -451,7 +450,7 @@ static SlideView *sSecondSlideView = nil;
 		frame.size.width *= factor;
 		sSecondSlide = [[NSWindow alloc] initWithContentRect:frame styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
 		frame.origin = NSZeroPoint;
-		sSecondSlideView = [[SlideView alloc] initWithFrame:frame strings:[NSArray arrayWithObjects:target, delayComment ? [inWord comment] : nil, nil] swapFonts:swapped
+		sSecondSlideView = [[SlideView alloc] initWithFrame:frame strings:@[target, delayComment ? [inWord comment] : nil] swapFonts:swapped
 									image:nil movie:nil
 									sourceSound:nil targetSound:delayTarget ? targetSound : nil
 									firstIndex:1];
@@ -538,7 +537,7 @@ static SlideView *sSecondSlideView = nil;
 	while (sSlideNumber >= -1) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		if (sSlideNumber >= 0)
-			[self displaySlideWithWord:[words objectAtIndex:sSlideNumber]];
+			[self displaySlideWithWord:words[sSlideNumber]];
 		int currentSlide = sSlideNumber;
 		do {
 			BOOL firstSlide = sSecondSlide && [sSecondSlide alphaValue] == 0.0;
@@ -559,7 +558,7 @@ waitAgain:
 				goto waitAgain;
 			}
 			if ([event type] == NSKeyDown)
-				[sSlideView interpretKeyEvents:[NSArray arrayWithObject:event]];
+				[sSlideView interpretKeyEvents:@[event]];
 			if (sPlayPause) {
 				[[NSUserDefaults standardUserDefaults] setBool:![[NSUserDefaults standardUserDefaults] boolForKey:PVSlideshowAutoAdvance] forKey:PVSlideshowAutoAdvance];
 				[slideShowControlView highlightControl:[[NSUserDefaults standardUserDefaults] boolForKey:PVSlideshowAutoAdvance] ? @"Play" : @"Pause"];

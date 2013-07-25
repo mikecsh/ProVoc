@@ -239,22 +239,22 @@
 	if (!mLoadedParameters) // new document
 		[self setMainTab:1];
 	else
-		if ([mLoadedParameters objectForKey:@"MainTab"])
-			[self setMainTab:[[mLoadedParameters objectForKey:@"MainTab"] intValue]];
+		if (mLoadedParameters[@"MainTab"])
+			[self setMainTab:[mLoadedParameters[@"MainTab"] intValue]];
 		else
 			[self setMainTab:0];
 
 	[self performSelector:@selector(updateTestOnlyPopUpMenu) withObject:nil afterDelay:0];
 	
-	if ([mLoadedParameters objectForKey:@"WindowWidth"] && [mLoadedParameters objectForKey:@"WindowHeight"]) {
+	if (mLoadedParameters[@"WindowWidth"] && mLoadedParameters[@"WindowHeight"]) {
 		NSSize size;
-		size.width = [[mLoadedParameters objectForKey:@"WindowWidth"] floatValue];
-		size.height = [[mLoadedParameters objectForKey:@"WindowHeight"] floatValue];
+		size.width = [mLoadedParameters[@"WindowWidth"] floatValue];
+		size.height = [mLoadedParameters[@"WindowHeight"] floatValue];
 		[[self window] setContentSize:size keepTopLeftCorner:YES];
-		if ([mLoadedParameters objectForKey:@"WindowLeft"] && [mLoadedParameters objectForKey:@"WindowTop"]) {
+		if (mLoadedParameters[@"WindowLeft"] && mLoadedParameters[@"WindowTop"]) {
 			NSPoint topLeftCorner;
-			topLeftCorner.x = [[mLoadedParameters objectForKey:@"WindowLeft"] floatValue];
-			topLeftCorner.y = [[mLoadedParameters objectForKey:@"WindowTop"] floatValue];
+			topLeftCorner.x = [mLoadedParameters[@"WindowLeft"] floatValue];
+			topLeftCorner.y = [mLoadedParameters[@"WindowTop"] floatValue];
 			[inController setShouldCascadeWindows:NO];
 			[[self window] setFrameTopLeftPoint:topLeftCorner];
 		}
@@ -266,10 +266,10 @@
 	
     [self updateLanguagePopUps];
 	[self pagesDidChange];
-	id state = [mLoadedParameters objectForKey:@"PageExpandedState"];
+	id state = mLoadedParameters[@"PageExpandedState"];
 	if (state)
 		[mPageOutlineView setExpandedState:state];
-	id selectedIndexes = [mLoadedParameters objectForKey:@"PageSelectedRowIndexes"];
+	id selectedIndexes = mLoadedParameters[@"PageSelectedRowIndexes"];
 	if (selectedIndexes) {
 		[mPageOutlineView selectRowIndexes:selectedIndexes byExtendingSelection:NO];
 		[mPageOutlineView scrollRowToVisible:[selectedIndexes lastIndex]];
@@ -278,23 +278,23 @@
 			
     ImageAndTextCell *imageAndTextCell = [[[ImageAndTextCell alloc] init] autorelease];
     [imageAndTextCell setEditable:YES];
-    [[[mPageOutlineView tableColumns] objectAtIndex:0] setDataCell:imageAndTextCell];
+    [[mPageOutlineView tableColumns][0] setDataCell:imageAndTextCell];
 
 	[self initializeColumns];
 	
-	[mWordTableView registerForDraggedTypes:[NSArray arrayWithObjects:ProVocSelfWordsType, ProVocWordsType, NSFilenamesPboardType, nil]];
-	[mPageOutlineView registerForDraggedTypes:[NSArray arrayWithObjects:ProVocSelfSourcesType, ProVocSourcesType,
-																	ProVocSelfWordsType, ProVocWordsType, nil]];
-	[mPresetTableView registerForDraggedTypes:[NSArray arrayWithObject:PRESET_PBOARD_TYPE]];
+	[mWordTableView registerForDraggedTypes:@[ProVocSelfWordsType, ProVocWordsType, NSFilenamesPboardType]];
+	[mPageOutlineView registerForDraggedTypes:@[ProVocSelfSourcesType, ProVocSourcesType,
+																	ProVocSelfWordsType, ProVocWordsType]];
+	[mPresetTableView registerForDraggedTypes:@[PRESET_PBOARD_TYPE]];
 
     [self performSelector:@selector(sortWordsByColumn:) withObject:[mWordTableView tableColumnWithIdentifier:@"Number"] afterDelay:0.0];
 	
 	if ([NSApp systemVersion] < 0x1040)
         [mWordTableView setColumnAutoresizingStyle:NSTableViewUniformColumnAutoresizingStyle];
     
-	state = [mLoadedParameters objectForKey:@"WordTableColumnStatesV2"];
+	state = mLoadedParameters[@"WordTableColumnStatesV2"];
 	if (!state)
-		state = [mLoadedParameters objectForKey:@"WordTableColumnStates"];
+		state = mLoadedParameters[@"WordTableColumnStates"];
 	if (state)
 		[mWordTableView setTableColumnStates:state];
 	else {
@@ -304,7 +304,7 @@
 		[mWordTableView sizeToFit];
 	}
 	[mLabelTableView setDelegate:self];
-	state = [mLoadedParameters objectForKey:@"MainSplitViewState"];
+	state = mLoadedParameters[@"MainSplitViewState"];
 	if (state)
 		[mMainSplitView setSplitViewState:state];
 
@@ -312,20 +312,20 @@
 	[presetBoxView setFrameSize:[mPresetSettingsView frame].size];
 	[[presetBoxView contentView] addSubview:mPresetSettingsView];
 
-	[self setPresetSettings:[mLoadedParameters objectForKey:@"PresetSettings"]];
-	[self setEditingPreset:[[mLoadedParameters objectForKey:@"EditingPreset"] boolValue]];
+	[self setPresetSettings:mLoadedParameters[@"PresetSettings"]];
+	[self setEditingPreset:[mLoadedParameters[@"EditingPreset"] boolValue]];
 	
 	[self willChangeValueForKey:@"canClearHistory"];
-	id histories = [mLoadedParameters objectForKey:@"Histories"];
+	id histories = mLoadedParameters[@"Histories"];
 	if (histories) {
 		[mHistories release];
 		mHistories = [histories mutableCopy];
 	}
 		
-	mSubmissionInfo = [[mLoadedParameters objectForKey:@"SubmissionInfo"] retain];
+	mSubmissionInfo = [mLoadedParameters[@"SubmissionInfo"] retain];
 	
 	[self didChangeValueForKey:@"canClearHistory"];
-	state = [mLoadedParameters objectForKey:@"HistoryDisplay"];
+	state = mLoadedParameters[@"HistoryDisplay"];
 	if (state)
 		[mHistoryView setDisplay:[state intValue]];
 	[mHistoryView reloadData];
@@ -350,21 +350,19 @@
 		[self getGlobalPreferencesFromDefaults];
 //    [self setDirty:NO];
 	NSSize windowSize = [[self window] frame].size;
-	id rootObject = [NSDictionary dictionaryWithObjectsAndKeys:
-						mProVocData, @"Data",
-						[self parameters], @"Parameters",
-						mGlobalPreferences, @"Preferences",
-						[NSNumber numberWithFloat:windowSize.width], @"WindowWidth",
-						[NSNumber numberWithFloat:windowSize.height], @"WindowHeight",
-						[mMainSplitView splitViewState], @"MainSplitViewState",
-						[NSNumber numberWithBool:mEditingPreset], @"EditingPreset",
-						[[mWordTableView tableColumnStates] objectForKey:@"States"], @"WordTableColumnStates",
-						[mPageOutlineView expandedState], @"PageExpandedState",
-						[mPageOutlineView selectedRowIndexes], @"PageSelectedRowIndexes",
-						[self presetSettings], @"PresetSettings",
-						mHistories, @"Histories",
-						[NSNumber numberWithInt:[mHistoryView display]], @"HistoryDisplay",
-						nil];
+	id rootObject = @{@"Data": mProVocData,
+						@"Parameters": [self parameters],
+						@"Preferences": mGlobalPreferences,
+						@"WindowWidth": [NSNumber numberWithFloat:windowSize.width],
+						@"WindowHeight": [NSNumber numberWithFloat:windowSize.height],
+						@"MainSplitViewState": [mMainSplitView splitViewState],
+						@"EditingPreset": @(mEditingPreset),
+						@"WordTableColumnStates": [mWordTableView tableColumnStates][@"States"],
+						@"PageExpandedState": [mPageOutlineView expandedState],
+						@"PageSelectedRowIndexes": [mPageOutlineView selectedRowIndexes],
+						@"PresetSettings": [self presetSettings],
+						@"Histories": mHistories,
+						@"HistoryDisplay": @([mHistoryView display])};
     return [NSKeyedArchiver archivedDataWithRootObject:rootObject];
 }
 
@@ -374,31 +372,31 @@
 	if ([loadedObject isKindOfClass:[ProVocData class]])
 	    mProVocData = [loadedObject retain];
 	else {
-		mProVocData = [[loadedObject objectForKey:@"Data"] retain];
-		[self setParameters:[loadedObject objectForKey:@"Parameters"]];
-		NSMutableDictionary *loadedPrefs = [[[loadedObject objectForKey:@"Preferences"] mutableCopy] autorelease];
-		id familyName = [loadedPrefs objectForKey:@"fontFamilyName"];
+		mProVocData = [loadedObject[@"Data"] retain];
+		[self setParameters:loadedObject[@"Parameters"]];
+		NSMutableDictionary *loadedPrefs = [[loadedObject[@"Preferences"] mutableCopy] autorelease];
+		id familyName = loadedPrefs[@"fontFamilyName"];
 		if (familyName) {
-			[loadedPrefs setObject:familyName forKey:@"sourceFontFamilyName"];
-			[loadedPrefs setObject:familyName forKey:@"targetFontFamilyName"];
-			[loadedPrefs setObject:familyName forKey:@"commentFontFamilyName"];
+			loadedPrefs[@"sourceFontFamilyName"] = familyName;
+			loadedPrefs[@"targetFontFamilyName"] = familyName;
+			loadedPrefs[@"commentFontFamilyName"] = familyName;
 		}
 
-		id fontSize = [loadedPrefs objectForKey:@"fontSize"];
+		id fontSize = loadedPrefs[@"fontSize"];
 		if (fontSize) {
-			[loadedPrefs setObject:fontSize forKey:@"sourceFontSize"];
-			[loadedPrefs setObject:fontSize forKey:@"targetFontSize"];
+			loadedPrefs[@"sourceFontSize"] = fontSize;
+			loadedPrefs[@"targetFontSize"] = fontSize;
 		}
 
-		fontSize = [loadedPrefs objectForKey:@"questionFontSize"];
+		fontSize = loadedPrefs[@"questionFontSize"];
 		if (fontSize) {
-			[loadedPrefs setObject:fontSize forKey:@"sourceTestFontSize"];
-			[loadedPrefs setObject:fontSize forKey:@"targetTestFontSize"];
+			loadedPrefs[@"sourceTestFontSize"] = fontSize;
+			loadedPrefs[@"targetTestFontSize"] = fontSize;
 		}
 
-		fontSize = [loadedPrefs objectForKey:@"commentFontSize"];
+		fontSize = loadedPrefs[@"commentFontSize"];
 		if (fontSize) {
-			[loadedPrefs setObject:fontSize forKey:@"commentTestFontSize"];
+			loadedPrefs[@"commentTestFontSize"] = fontSize;
 			[loadedPrefs removeObjectForKey:@"commentFontSize"];
 		}
 
@@ -450,12 +448,12 @@
 -(NSArray *)usedLanguageSettings
 {
 	NSMutableArray *usedSettings = [NSMutableArray array];
-	NSArray *usedLanguageNames = [NSArray arrayWithObjects:[self sourceLanguage], [self targetLanguage], nil];
+	NSArray *usedLanguageNames = @[[self sourceLanguage], [self targetLanguage]];
 	NSDictionary *languages = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-    NSEnumerator *enumerator = [[languages objectForKey:@"Languages"] objectEnumerator];
+    NSEnumerator *enumerator = [languages[@"Languages"] objectEnumerator];
     NSDictionary *description;
     while (description = [enumerator nextObject])
-		if ([usedLanguageNames containsObject:[description objectForKey:@"Name"]])
+		if ([usedLanguageNames containsObject:description[@"Name"]])
 			[usedSettings addObject:description];
 	return usedSettings;
 }
@@ -475,39 +473,35 @@
 		NSSize windowSize = windowFrame.size;
 		NSPoint windowTopLeftCorner = NSMakePoint(NSMinX(windowFrame), NSMaxY(windowFrame));
 		id wordColumnStates = [mWordTableView tableColumnStates];
-		id settings = [NSDictionary dictionaryWithObjectsAndKeys:
-							[self parameters], @"Parameters",
-							mGlobalPreferences, @"Preferences",
-							[NSNumber numberWithFloat:windowSize.width], @"WindowWidth",
-							[NSNumber numberWithFloat:windowSize.height], @"WindowHeight",
-							[NSNumber numberWithFloat:windowTopLeftCorner.x], @"WindowLeft",
-							[NSNumber numberWithFloat:windowTopLeftCorner.y], @"WindowTop",
-							[NSNumber numberWithInt:mMainTab], @"MainTab",
-							[mMainSplitView splitViewState], @"MainSplitViewState",
-							[NSNumber numberWithBool:mEditingPreset], @"EditingPreset",
-							wordColumnStates, @"WordTableColumnStatesV2",
-							[wordColumnStates objectForKey:@"States"], @"WordTableColumnStates",
-							[mPageOutlineView expandedState], @"PageExpandedState",
-							[mPageOutlineView selectedRowIndexes], @"PageSelectedRowIndexes",
-							[self presetSettings], @"PresetSettings",
-							mHistories, @"Histories",
-							[NSNumber numberWithInt:[mHistoryView display]], @"HistoryDisplay",
-							[self usedLanguageSettings], @"UsedLanguageSettings",
-							mSubmissionInfo, @"SubmissionInfo", // may be nil
-							nil];
+		id settings = @{@"Parameters": [self parameters],
+							@"Preferences": mGlobalPreferences,
+							@"WindowWidth": [NSNumber numberWithFloat:windowSize.width],
+							@"WindowHeight": [NSNumber numberWithFloat:windowSize.height],
+							@"WindowLeft": [NSNumber numberWithFloat:windowTopLeftCorner.x],
+							@"WindowTop": [NSNumber numberWithFloat:windowTopLeftCorner.y],
+							@"MainTab": @(mMainTab),
+							@"MainSplitViewState": [mMainSplitView splitViewState],
+							@"EditingPreset": @(mEditingPreset),
+							@"WordTableColumnStatesV2": wordColumnStates,
+							@"WordTableColumnStates": wordColumnStates[@"States"],
+							@"PageExpandedState": [mPageOutlineView expandedState],
+							@"PageSelectedRowIndexes": [mPageOutlineView selectedRowIndexes],
+							@"PresetSettings": [self presetSettings],
+							@"Histories": mHistories,
+							@"HistoryDisplay": @([mHistoryView display]),
+							@"UsedLanguageSettings": [self usedLanguageSettings],
+							@"SubmissionInfo": mSubmissionInfo};
 		NSData *settingsData = [NSKeyedArchiver archivedDataWithRootObject:settings];
-		id publicSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-									[self parameters], @"Parameters",
-									mGlobalPreferences, @"Preferences",
-									[self usedLanguageSettings], @"Languages",
-									mSubmissionInfo, @"SubmissionInfo", // may be nil
-									nil];
+		id publicSettings = @{@"Parameters": [self parameters],
+									@"Preferences": mGlobalPreferences,
+									@"Languages": [self usedLanguageSettings],
+									@"SubmissionInfo": mSubmissionInfo};
 		NSData *publicSettingsData = [NSKeyedArchiver archivedDataWithRootObject:publicSettings];
 
 		NSMutableDictionary *fileWrappers = [NSMutableDictionary dictionary];
-		[fileWrappers setObject:[[[NSFileWrapper alloc] initRegularFileWithContents:data] autorelease] forKey:@"Data"];
-		[fileWrappers setObject:[[[NSFileWrapper alloc] initRegularFileWithContents:settingsData] autorelease] forKey:@"Settings"];
-		[fileWrappers setObject:[[[NSFileWrapper alloc] initRegularFileWithContents:publicSettingsData] autorelease] forKey:@"PublicSettings"];
+		fileWrappers[@"Data"] = [[[NSFileWrapper alloc] initRegularFileWithContents:data] autorelease];
+		fileWrappers[@"Settings"] = [[[NSFileWrapper alloc] initRegularFileWithContents:settingsData] autorelease];
+		fileWrappers[@"PublicSettings"] = [[[NSFileWrapper alloc] initRegularFileWithContents:publicSettingsData] autorelease];
 		fileWrapper = [[[NSFileWrapper alloc] initDirectoryWithFileWrappers:fileWrappers] autorelease];
 	NS_HANDLER
 	NS_ENDHANDLER
@@ -521,14 +515,14 @@
 {
 	NSMutableArray *existingLanguageNames = [NSMutableArray array];
 	NSDictionary *languages = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-    NSEnumerator *enumerator = [[languages objectForKey:@"Languages"] objectEnumerator];
+    NSEnumerator *enumerator = [languages[@"Languages"] objectEnumerator];
     NSDictionary *description;
     while (description = [enumerator nextObject])
-		[existingLanguageNames addObject:[description objectForKey:@"Name"]];
+		[existingLanguageNames addObject:description[@"Name"]];
 
 	enumerator = [inSettings objectEnumerator];
 	while (description = [enumerator nextObject])
-		if (![existingLanguageNames containsObject:[description objectForKey:@"Name"]])
+		if (![existingLanguageNames containsObject:description[@"Name"]])
 			[[ProVocPreferences sharedPreferences] addLanguage:description];
 }
 
@@ -543,15 +537,15 @@
 	NS_DURING
 		if ([inFileWrapper isDirectory]) {
 			NSDictionary *wrappers = [inFileWrapper fileWrappers];
-			NSData *data = [[wrappers objectForKey:@"Data"] regularFileContents];
-			NSData *settingsData = [[wrappers objectForKey:@"Settings"] regularFileContents];
+			NSData *data = [wrappers[@"Data"] regularFileContents];
+			NSData *settingsData = [wrappers[@"Settings"] regularFileContents];
 			
 			mProVocData = [[NSKeyedUnarchiver unarchiveObjectWithData:data] retain];
 			id settings = [NSKeyedUnarchiver unarchiveObjectWithData:settingsData];
-			[self setUsedLanguageSettings:[settings objectForKey:@"UsedLanguageSettings"]];
-			[self setParameters:[settings objectForKey:@"Parameters"]];
+			[self setUsedLanguageSettings:settings[@"UsedLanguageSettings"]];
+			[self setParameters:settings[@"Parameters"]];
 			[self getDefaultGlobalPreferencesFromDefaults];
-			[mGlobalPreferences setValuesForKeysWithDictionary:[settings objectForKey:@"Preferences"]];
+			[mGlobalPreferences setValuesForKeysWithDictionary:settings[@"Preferences"]];
 			mLoadedParameters = [settings retain];
 		} else
 			ok = [super loadFileWrapperRepresentation:inFileWrapper ofType:inType];
@@ -781,9 +775,9 @@
 	static NSDictionary *dictionary = nil;
 	if (!dictionary)
 		dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
-												[NSNumber numberWithInt:NSWritingDirectionLeftToRight], @"sourceWritingDirection",
-												[NSNumber numberWithInt:NSWritingDirectionLeftToRight], @"targetWritingDirection",
-												[NSNumber numberWithInt:NSWritingDirectionLeftToRight], @"commentWritingDirection",
+												@(NSWritingDirectionLeftToRight), @"sourceWritingDirection",
+												@(NSWritingDirectionLeftToRight), @"targetWritingDirection",
+												@(NSWritingDirectionLeftToRight), @"commentWritingDirection",
 												nil];
 	return dictionary;
 }
@@ -797,8 +791,8 @@
 	id key;
 	while (key = [enumerator nextObject]) {
 		id value = [defaults objectForKey:key];
-		if (value && (inAll || ![[self globalDefaults] objectForKey:key]))
-			[mGlobalPreferences setObject:value forKey:key];
+		if (value && (inAll || ![self globalDefaults][key]))
+			mGlobalPreferences[key] = value;
 	}
 }
 
@@ -819,12 +813,12 @@
 	NSEnumerator *enumerator = [globalDefaults keyEnumerator];
 	id key;
 	while (key = [enumerator nextObject])
-		if (![mGlobalPreferences objectForKey:key])
-			[defaults setObject:[globalDefaults objectForKey:key] forKey:key];
+		if (!mGlobalPreferences[key])
+			[defaults setObject:globalDefaults[key] forKey:key];
 	
 	enumerator = [mGlobalPreferences keyEnumerator];
 	while (key = [enumerator nextObject])
-		[defaults setObject:[mGlobalPreferences objectForKey:key] forKey:key];
+		[defaults setObject:mGlobalPreferences[key] forKey:key];
 	[[NSUserDefaults standardUserDefaults] upgrade];
 }
 
@@ -852,20 +846,20 @@
 	while (key = [enumerator nextObject]) {
 		id value = [self valueForKey:key];
 		if (value)
-			[parameters setObject:value forKey:key];
+			parameters[key] = value;
 	}
 	return parameters;
 }
 
 -(void)setParameters:(NSDictionary *)inParameters
 {
-	NSArray *keysWithZeroDefault = [NSArray arrayWithObjects:@"displayLabels", @"colorWindowWithLabel", @"displayLabelText", @"testOldWords", @"testLimit", @"testWordsToReview", @"dontShuffleWords", nil];
+	NSArray *keysWithZeroDefault = @[@"displayLabels", @"colorWindowWithLabel", @"displayLabelText", @"testOldWords", @"testLimit", @"testWordsToReview", @"dontShuffleWords"];
 	NSEnumerator *enumerator = [[self parameterKeys] objectEnumerator];
 	id key;
 	while (key = [enumerator nextObject]) {
-		id value = [inParameters objectForKey:key];
+		id value = inParameters[key];
 		if (!value && [keysWithZeroDefault containsObject:key])
-			value = [NSNumber numberWithBool:NO];
+			value = @NO;
 		if (value)
 			[self setValue:value forKey:key];
 	}
@@ -1230,8 +1224,8 @@ static int sNewWordLabel = 0;
 	if ([inDoubles count] == 0)
 		NSRunAlertPanel(NSLocalizedString(@"No Doubles Found Title", @""), NSLocalizedString(@"No Doubles Found Message", @""), nil, nil, nil);
 	else {
-		[mWords makeObjectsPerformSelector:@selector(setDouble:) withObject:[NSNumber numberWithBool:NO]];
-		[inDoubles makeObjectsPerformSelector:@selector(setDouble:) withObject:[NSNumber numberWithBool:YES]];
+		[mWords makeObjectsPerformSelector:@selector(setDouble:) withObject:@NO];
+		[inDoubles makeObjectsPerformSelector:@selector(setDouble:) withObject:@YES];
 		mShowDoubles = YES;
 		[self sortedWordsDidChange];
 /*		NSEnumerator *enumerator = [inDoubles objectEnumerator];
@@ -1451,7 +1445,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
         
     [mTester release];
 	Class tester = [ProVocTester class];
-	if ([[parameters objectForKey:@"testMCQ"] boolValue])
+	if ([parameters[@"testMCQ"] boolValue])
 		tester = [ProVocMCQTester class];
     mTester = [[tester alloc] initWithDocument:self];
 	if ([mTester respondsToSelector:@selector(setAnswerWords:withParameters:)])
@@ -1767,12 +1761,12 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 {
 	static NSArray *identifiers = nil;
 	if (!identifiers) {
-		NSArray *allowedGenders = [NSArray arrayWithObjects:NSVoiceGenderMale, NSVoiceGenderFemale, nil];
+		NSArray *allowedGenders = @[NSVoiceGenderMale, NSVoiceGenderFemale];
 		NSMutableArray *array = [NSMutableArray array];
 		NSEnumerator *enumerator = [[NSSpeechSynthesizer availableVoices] objectEnumerator];
 		NSString *voice;
 		while (voice = [enumerator nextObject])
-			if ([allowedGenders containsObject:[[NSSpeechSynthesizer attributesForVoice:voice] objectForKey:NSVoiceGender]])
+			if ([allowedGenders containsObject:[NSSpeechSynthesizer attributesForVoice:voice][NSVoiceGender]])
 				[array addObject:voice];
 		identifiers = [array copy];
 	}
@@ -1786,7 +1780,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 	NSEnumerator *enumerator = [[self availableVoiceIdentifiers] objectEnumerator];
 	NSString *voiceIdentifier;
 	while (voiceIdentifier = [enumerator nextObject])
-		[voices addObject:[[NSSpeechSynthesizer attributesForVoice:voiceIdentifier] objectForKey:NSVoiceName]];
+		[voices addObject:[NSSpeechSynthesizer attributesForVoice:voiceIdentifier][NSVoiceName]];
 	return voices;
 }
 
@@ -1803,7 +1797,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 {
 	NSString *identifier = nil;
 	if (inVoice > 0)
-		identifier = [[self availableVoiceIdentifiers] objectAtIndex:inVoice - 1];
+		identifier = [self availableVoiceIdentifiers][inVoice - 1];
 	[self setVoiceIdentifier:identifier];
 }
 
@@ -2224,7 +2218,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)inputFontSizeIsChanging
 {
 	NSNotification *notification = [NSNotification notificationWithName:ProVocInputFontSizeDidChangeNotification object:nil];
-	[[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostWhenIdle coalesceMask:NSNotificationCoalescingOnName forModes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+	[[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostWhenIdle coalesceMask:NSNotificationCoalescingOnName forModes:@[NSDefaultRunLoopMode]];
 }
 
 -(NSString *)fontFamilyName
@@ -2239,7 +2233,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(NSString *)sourceFontFamilyName
 {
-	NSString *name = [mGlobalPreferences objectForKey:@"sourceFontFamilyName"];
+	NSString *name = mGlobalPreferences[@"sourceFontFamilyName"];
 	if (name)
 		return name;
 	else
@@ -2250,14 +2244,14 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 {
 	[self willChangeValueForKey:@"sourceFontFamilyName"];
 	if (inName)
-		[mGlobalPreferences setObject:inName forKey:@"sourceFontFamilyName"];
+		mGlobalPreferences[@"sourceFontFamilyName"] = inName;
 	[self didChangeValueForKey:@"sourceFontFamilyName"];
 	[self documentParameterDidChange:nil];
 }
 
 -(float)sourceFontSize
 {
-	id value = [mGlobalPreferences objectForKey:@"sourceFontSize"];
+	id value = mGlobalPreferences[@"sourceFontSize"];
 	if (value)
 		return [value floatValue];
 	else
@@ -2267,7 +2261,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)setSourceFontSize:(float)inSize
 {
 	[self willChangeValueForKey:@"sourceFontSize"];
-	[mGlobalPreferences setObject:[NSNumber numberWithFloat:inSize] forKey:@"sourceFontSize"];
+	mGlobalPreferences[@"sourceFontSize"] = @(inSize);
 	[self didChangeValueForKey:@"sourceFontSize"];
 	[self documentParameterDidChange:nil];
 	[self inputFontSizeIsChanging];
@@ -2275,7 +2269,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(float)sourceTestFontSize
 {
-	id value = [mGlobalPreferences objectForKey:@"sourceTestFontSize"];
+	id value = mGlobalPreferences[@"sourceTestFontSize"];
 	if (value)
 		return [value floatValue];
 	else
@@ -2285,20 +2279,20 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)setSourceTestFontSize:(float)inSize
 {
 	[self willChangeValueForKey:@"sourceTestFontSize"];
-	[mGlobalPreferences setObject:[NSNumber numberWithFloat:inSize] forKey:@"sourceTestFontSize"];
+	mGlobalPreferences[@"sourceTestFontSize"] = @(inSize);
 	[self didChangeValueForKey:@"sourceTestFontSize"];
 	[self documentParameterDidChange:nil];
 }
 
 -(NSWritingDirection)sourceWritingDirection
 {
-	return [[mGlobalPreferences objectForKey:@"sourceWritingDirection"] intValue];
+	return [mGlobalPreferences[@"sourceWritingDirection"] intValue];
 }
 
 -(void)setSourceWritingDirection:(NSWritingDirection)inDirection
 {
 	[self willChangeValueForKey:@"sourceWritingDirection"];
-	[mGlobalPreferences setObject:[NSNumber numberWithInt:inDirection] forKey:@"sourceWritingDirection"];
+	mGlobalPreferences[@"sourceWritingDirection"] = [NSNumber numberWithInt:inDirection];
 	[self didChangeValueForKey:@"sourceWritingDirection"];
 	[self documentParameterDidChange:nil];
 	[self writingDirectionDidChange];
@@ -2306,7 +2300,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(NSString *)targetFontFamilyName
 {
-	NSString *name = [mGlobalPreferences objectForKey:@"targetFontFamilyName"];
+	NSString *name = mGlobalPreferences[@"targetFontFamilyName"];
 	if (name)
 		return name;
 	else
@@ -2317,14 +2311,14 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 {
 	[self willChangeValueForKey:@"targetFontFamilyName"];
 	if (inName)
-		[mGlobalPreferences setObject:inName forKey:@"targetFontFamilyName"];
+		mGlobalPreferences[@"targetFontFamilyName"] = inName;
 	[self didChangeValueForKey:@"targetFontFamilyName"];
 	[self documentParameterDidChange:nil];
 }
 
 -(float)targetFontSize
 {
-	id value = [mGlobalPreferences objectForKey:@"targetFontSize"];
+	id value = mGlobalPreferences[@"targetFontSize"];
 	if (value)
 		return [value floatValue];
 	else
@@ -2334,7 +2328,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)setTargetFontSize:(float)inSize
 {
 	[self willChangeValueForKey:@"targetFontSize"];
-	[mGlobalPreferences setObject:[NSNumber numberWithFloat:inSize] forKey:@"targetFontSize"];
+	mGlobalPreferences[@"targetFontSize"] = @(inSize);
 	[self didChangeValueForKey:@"targetFontSize"];
 	[self documentParameterDidChange:nil];
 	[self inputFontSizeIsChanging];
@@ -2342,7 +2336,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(float)targetTestFontSize
 {
-	id value = [mGlobalPreferences objectForKey:@"targetTestFontSize"];
+	id value = mGlobalPreferences[@"targetTestFontSize"];
 	if (value)
 		return [value floatValue];
 	else
@@ -2352,20 +2346,20 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)setTargetTestFontSize:(float)inSize
 {
 	[self willChangeValueForKey:@"targetTestFontSize"];
-	[mGlobalPreferences setObject:[NSNumber numberWithFloat:inSize] forKey:@"targetTestFontSize"];
+	mGlobalPreferences[@"targetTestFontSize"] = @(inSize);
 	[self didChangeValueForKey:@"targetTestFontSize"];
 	[self documentParameterDidChange:nil];
 }
 
 -(NSWritingDirection)targetWritingDirection
 {
-	return [[mGlobalPreferences objectForKey:@"targetWritingDirection"] intValue];
+	return [mGlobalPreferences[@"targetWritingDirection"] intValue];
 }
 
 -(void)setTargetWritingDirection:(NSWritingDirection)inDirection
 {
 	[self willChangeValueForKey:@"targetWritingDirection"];
-	[mGlobalPreferences setObject:[NSNumber numberWithInt:inDirection] forKey:@"targetWritingDirection"];
+	mGlobalPreferences[@"targetWritingDirection"] = [NSNumber numberWithInt:inDirection];
 	[self didChangeValueForKey:@"targetWritingDirection"];
 	[self documentParameterDidChange:nil];
 	[self writingDirectionDidChange];
@@ -2373,7 +2367,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(NSString *)commentFontFamilyName
 {
-	NSString *name = [mGlobalPreferences objectForKey:@"commentFontFamilyName"];
+	NSString *name = mGlobalPreferences[@"commentFontFamilyName"];
 	if (name)
 		return name;
 	else
@@ -2384,14 +2378,14 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 {
 	[self willChangeValueForKey:@"commentFontFamilyName"];
 	if (inName)
-		[mGlobalPreferences setObject:inName forKey:@"commentFontFamilyName"];
+		mGlobalPreferences[@"commentFontFamilyName"] = inName;
 	[self didChangeValueForKey:@"commentFontFamilyName"];
 	[self documentParameterDidChange:nil];
 }
 
 -(float)commentFontSize
 {
-	id value = [mGlobalPreferences objectForKey:@"commentFontSize"];
+	id value = mGlobalPreferences[@"commentFontSize"];
 	if (value)
 		return [value floatValue];
 	else
@@ -2401,7 +2395,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)setCommentFontSize:(float)inSize
 {
 	[self willChangeValueForKey:@"commentFontSize"];
-	[mGlobalPreferences setObject:[NSNumber numberWithFloat:inSize] forKey:@"commentFontSize"];
+	mGlobalPreferences[@"commentFontSize"] = @(inSize);
 	[self didChangeValueForKey:@"commentFontSize"];
 	[self documentParameterDidChange:nil];
 	[self inputFontSizeIsChanging];
@@ -2409,7 +2403,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(float)commentTestFontSize
 {
-	id value = [mGlobalPreferences objectForKey:@"commentTestFontSize"];
+	id value = mGlobalPreferences[@"commentTestFontSize"];
 	if (value)
 		return [value floatValue];
 	else
@@ -2419,20 +2413,20 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)setCommentTestFontSize:(float)inSize
 {
 	[self willChangeValueForKey:@"commentTestFontSize"];
-	[mGlobalPreferences setObject:[NSNumber numberWithFloat:inSize] forKey:@"commentTestFontSize"];
+	mGlobalPreferences[@"commentTestFontSize"] = @(inSize);
 	[self didChangeValueForKey:@"commentTestFontSize"];
 	[self documentParameterDidChange:nil];
 }
 
 -(NSWritingDirection)commentWritingDirection
 {
-	return [[mGlobalPreferences objectForKey:@"commentWritingDirection"] intValue];
+	return [mGlobalPreferences[@"commentWritingDirection"] intValue];
 }
 
 -(void)setCommentWritingDirection:(NSWritingDirection)inDirection
 {
 	[self willChangeValueForKey:@"commentWritingDirection"];
-	[mGlobalPreferences setObject:[NSNumber numberWithInt:inDirection] forKey:@"commentWritingDirection"];
+	mGlobalPreferences[@"commentWritingDirection"] = [NSNumber numberWithInt:inDirection];
 	[self didChangeValueForKey:@"commentWritingDirection"];
 	[self documentParameterDidChange:nil];
 	[self writingDirectionDidChange];
@@ -2477,11 +2471,11 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 -(void)inputFontSizeDidChange:(id)inSender
 {
 	float height = [self fieldHeightForFontFamilyName:[self sourceFontFamilyName] size:[self sourceFontSize]];
-	[self setInputFieldHeight:height field:mSourceTextField container:mSourceInputView aboveViews:[NSArray arrayWithObjects:mAboveInputView, nil]];
+	[self setInputFieldHeight:height field:mSourceTextField container:mSourceInputView aboveViews:@[mAboveInputView]];
 	height = [self fieldHeightForFontFamilyName:[self targetFontFamilyName] size:[self targetFontSize]];
-	[self setInputFieldHeight:height field:mTargetTextField container:mTargetInputView aboveViews:[NSArray arrayWithObjects:mAboveInputView, mSourceInputView, nil]];
+	[self setInputFieldHeight:height field:mTargetTextField container:mTargetInputView aboveViews:@[mAboveInputView, mSourceInputView]];
 	height = [self fieldHeightForFontFamilyName:[self commentFontFamilyName] size:[self commentFontSize]];
-	[self setInputFieldHeight:height field:mCommentTextField container:mCommentInputView aboveViews:[NSArray arrayWithObjects:mAboveInputView, mSourceInputView, mTargetInputView, nil]];
+	[self setInputFieldHeight:height field:mCommentTextField container:mCommentInputView aboveViews:@[mAboveInputView, mSourceInputView, mTargetInputView]];
 }
 
 -(void)setWritingDirection:(NSWritingDirection)inDirection forTextField:(NSTextField *)inTextField columnWithIdentifier:(NSString *)inColumnIdentifier
@@ -2578,7 +2572,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(ProVocHistory *)historyAtIndex:(int)inIndex
 {
-	return [mHistories objectAtIndex:inIndex];
+	return mHistories[inIndex];
 }
 
 @end
@@ -2610,7 +2604,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 	[self willChangeWord:oldWord];
 	ProVocPage *page = [oldWord page];
 	NSMutableArray *words = (NSMutableArray *)[page words];
-	[words replaceObjectAtIndex:[words indexOfObjectIdenticalTo:oldWord] withObject:newWord];
+	words[[words indexOfObjectIdenticalTo:oldWord]] = newWord;
 	[newWord setPage:page];
 	[self didChangeWord:oldWord];
 	
@@ -2635,7 +2629,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 	[self willChangeSource:oldSource];
 	ProVocChapter *chapter = [oldSource parent];
 	NSMutableArray *sources = (NSMutableArray *)[chapter children];
-	[sources replaceObjectAtIndex:[sources indexOfObjectIdenticalTo:oldSource] withObject:newSource];
+	sources[[sources indexOfObjectIdenticalTo:oldSource]] = newSource;
 	[newSource setParent:chapter];
 	[self didChangeSource:oldSource];
 	
@@ -2654,10 +2648,9 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(NSData *)data
 {
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:mProVocData, @"Data",
-											[mPageOutlineView expandedState], @"PageExpandedState",
-											[mPageOutlineView selectedRowIndexes], @"SelectedPages",
-											nil];
+	NSDictionary *info = @{@"Data": mProVocData,
+											@"PageExpandedState": [mPageOutlineView expandedState],
+											@"SelectedPages": [mPageOutlineView selectedRowIndexes]};
 	return [PseudoKeyedArchiver archivedDataWithRootObject:info];
 }
 
@@ -2666,12 +2659,12 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 	[self willChangeData];
 	NSDictionary *info = [PseudoKeyedUnarchiver unarchiveObjectWithData:inData];
 	[mProVocData release];
-	mProVocData = [[info objectForKey:@"Data"] retain];
+	mProVocData = [info[@"Data"] retain];
 	[self didChangeData];
 	
 	[self pagesDidChange];
-	[mPageOutlineView setExpandedState:[info objectForKey:@"PageExpandedState"]];
-	id selectedIndexes = [info objectForKey:@"SelectedPages"];
+	[mPageOutlineView setExpandedState:info[@"PageExpandedState"]];
+	id selectedIndexes = info[@"SelectedPages"];
 	[mPageOutlineView selectRowIndexes:selectedIndexes byExtendingSelection:NO];
 	[mPageOutlineView scrollRowToVisible:[selectedIndexes lastIndex]];
 	[mPageOutlineView scrollRowToVisible:[selectedIndexes firstIndex]];
@@ -2715,9 +2708,8 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(NSData *)presetData
 {
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[self presets], @"Presets",
-											[mPresetTableView selectedRowIndexes], @"SelectedPreset",
-											nil];
+	NSDictionary *info = @{@"Presets": [self presets],
+											@"SelectedPreset": [mPresetTableView selectedRowIndexes]};
 	return [PseudoKeyedArchiver archivedDataWithRootObject:info];
 }
 
@@ -2726,9 +2718,9 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 	[self willChangePresets];
 	NSDictionary *info = [PseudoKeyedUnarchiver unarchiveObjectWithData:inData];
 	[mPresets release];
-	mPresets = [[info objectForKey:@"Presets"] retain];
+	mPresets = [info[@"Presets"] retain];
 	[self presetsDidChange:nil];
-	id selectedIndexes = [info objectForKey:@"SelectedPreset"];
+	id selectedIndexes = info[@"SelectedPreset"];
 	[mPresetTableView selectRowIndexes:selectedIndexes byExtendingSelection:NO];
 	[mPresetTableView scrollRowToVisible:[selectedIndexes lastIndex]];
 	[mPresetTableView scrollRowToVisible:[selectedIndexes firstIndex]];
@@ -2746,9 +2738,8 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 
 -(NSData *)languageData
 {
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[mProVocData sourceLanguage], @"SourceLanguage",
-											[mProVocData targetLanguage], @"TargetLanguage",
-											nil];
+	NSDictionary *info = @{@"SourceLanguage": [mProVocData sourceLanguage],
+											@"TargetLanguage": [mProVocData targetLanguage]};
 	return [PseudoKeyedArchiver archivedDataWithRootObject:info];
 }
 
@@ -2756,8 +2747,8 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 {
 	[self willChangeLanguages];
 	NSDictionary *info = [PseudoKeyedUnarchiver unarchiveObjectWithData:inData];
-	[mProVocData setSourceLanguage:[info objectForKey:@"SourceLanguage"]];
-	[mProVocData setTargetLanguage:[info objectForKey:@"TargetLanguage"]];
+	[mProVocData setSourceLanguage:info[@"SourceLanguage"]];
+	[mProVocData setTargetLanguage:info[@"TargetLanguage"]];
 	[self languagesDidChange];
 	[self didChangeLanguages];
 }

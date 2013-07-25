@@ -45,10 +45,10 @@
 
 -(id)settingsFrom:(NSDictionary *)inPublicSettings forLanguageName:(NSString *)inName
 {
-	NSEnumerator *enumerator = [[inPublicSettings objectForKey:@"Languages"] objectEnumerator];
+	NSEnumerator *enumerator = [inPublicSettings[@"Languages"] objectEnumerator];
 	NSDictionary *description;
 	while (description = [enumerator nextObject])
-		if ([inName isEqual:[description objectForKey:@"Name"]])
+		if ([inName isEqual:description[@"Name"]])
 			break;
 	return description;
 }
@@ -166,7 +166,7 @@
 		*outError = NSLocalizedString(@"Translation Service No Translation Error", @"");
         return;
     }
-    [inPasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
+    [inPasteboard declareTypes:@[NSStringPboardType] owner:nil];
     [inPasteboard setString:newString forType:NSStringPboardType];
 }
 

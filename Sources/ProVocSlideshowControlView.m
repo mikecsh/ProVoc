@@ -44,8 +44,8 @@
 {
     if (self = [super initWithFrame:inFrame]) {
 		NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-		[dictionary setObject:[self pathForPlay] forKey:@"Play"];
-		[dictionary setObject:[self pathForPause] forKey:@"Pause"];
+		dictionary[@"Play"] = [self pathForPlay];
+		dictionary[@"Pause"] = [self pathForPause];
 		mControlPaths = [dictionary copy];
 		mControls = [[NSMutableArray alloc] initWithObjects:@"Play", nil];
     }
@@ -83,7 +83,7 @@
 			[shadow set];
 		} else
 			[[NSColor colorWithCalibratedWhite:1.0 alpha:0.3] set];
-		[[mControlPaths objectForKey:control] fill];
+		[mControlPaths[control] fill];
 		[NSGraphicsContext restoreGraphicsState];
 		x++;
 	}
@@ -100,7 +100,7 @@
 		[mHighlight release];
 		mHighlight = [inControl retain];
 		if (![mControls containsObject:mHighlight])
-			[mControls replaceObjectAtIndex:0 withObject:mHighlight];
+			mControls[0] = mHighlight;
 		[self display];
 	}
 	[[self window] setAlphaValue:1.0];
@@ -111,7 +111,7 @@
 -(void)setControl:(id)inControl
 {
 	if (![mControls containsObject:inControl]) {
-		[mControls replaceObjectAtIndex:1 withObject:inControl];
+		mControls[1] = inControl;
 		[self setNeedsDisplay:YES];
 	}
 }

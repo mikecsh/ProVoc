@@ -31,7 +31,7 @@
 		mRepetitions = [[NSMutableArray alloc] initWithCapacity:MAX_HISTORY_REPETITION + 1];
 		int i;
 		for (i = 0; i <= MAX_HISTORY_REPETITION; i++)
-			[mRepetitions addObject:[NSNumber numberWithInt:0]];
+			[mRepetitions addObject:@0];
 	}
 	return self;
 }
@@ -75,7 +75,7 @@
 
 -(void)setNumber:(int)inNumber ofRepetition:(int)inRepetition
 {
-	[mRepetitions replaceObjectAtIndex:inRepetition withObject:[NSNumber numberWithInt:inNumber]];
+	mRepetitions[inRepetition] = @(inNumber);
 }
 
 -(void)addNumber:(int)inNumber ofRepetition:(int)inRepetition
@@ -107,7 +107,7 @@
 
 -(int)numberOfRepetition:(int)inRepetition
 {
-	return [[mRepetitions objectAtIndex:inRepetition] intValue];
+	return [mRepetitions[inRepetition] intValue];
 }
 
 @end

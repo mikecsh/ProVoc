@@ -15,7 +15,7 @@
 
 +(void)initialize
 {
-	[self setKeys:[NSArray arrayWithObjects:@"title", nil] triggerChangeNotificationsForDependentKey:@"canSubmit"];
+	[self setKeys:@[@"title"] triggerChangeNotificationsForDependentKey:@"canSubmit"];
 }
 
 -(id)init
@@ -54,18 +54,18 @@
 	modalForWindow:(NSWindow *)inWindow
 {
 	mInfo = [[NSMutableDictionary dictionary] retain];
-	[mInfo setObject:inSourceLanguage forKey:@"Source"];
-	[mInfo setObject:inTargetLanguage forKey:@"Target"];
+	mInfo[@"Source"] = inSourceLanguage;
+	mInfo[@"Target"] = inTargetLanguage;
 	if (inInfo)
 		[mInfo addEntriesFromDictionary:inInfo];
 	mFile = [inFile retain];
 
-	NSDictionary *submissionInfo = [inInfo objectForKey:@"Submission Info"];
-	NSString *title = [submissionInfo objectForKey:@"Title"];
+	NSDictionary *submissionInfo = inInfo[@"Submission Info"];
+	NSString *title = submissionInfo[@"Title"];
 	if ([title length] == 0)
 		title = [[inFile lastPathComponent] stringByDeletingPathExtension];
 	[self setValue:title forKey:@"title"];
-	NSString *author = [submissionInfo objectForKey:@"Author"];
+	NSString *author = submissionInfo[@"Author"];
 	if ([author length] == 0) {
 		ABPerson *me = [[ABAddressBook sharedAddressBook] me];
 		NSString *firstName = [me valueForProperty:kABFirstNameProperty];
@@ -81,7 +81,7 @@
 			author = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 	}
 	[self setValue:author forKey:@"author"];
-	NSString *comments = [submissionInfo objectForKey:@"Comments"];
+	NSString *comments = submissionInfo[@"Comments"];
 	if (!comments)
 		comments = @"";
 	[self setValue:comments forKey:@"comments"];
@@ -205,7 +205,7 @@
 		NSEnumerator *enumerator = [mInfo keyEnumerator];
 		NSString *key;
 		while (key = [enumerator nextObject])
-			[confirmation appendFormat:@"%@:%@\n", key, [mInfo objectForKey:key]];
+			[confirmation appendFormat:@"%@:%@\n", key, mInfo[key]];
 		mConfirmationString = [confirmation copy];
 	}
 	return mConfirmationString;
@@ -236,15 +236,15 @@
 	}
 	
 	[self setValue:NSLocalizedString(@"Compressing", @"") forKey:@"progressLabel"];
-	[self setValue:[NSNumber numberWithBool:YES] forKey:@"indeterminateProgress"];
+	[self setValue:@YES forKey:@"indeterminateProgress"];
 	[self selectTabViewItemAtIndex:1];
 	[[self window] display];
 
 	NSString *author = [self author];
 	NSArray *components = [author componentsSeparatedByString:@"/"];
 	if ([components count] > 1)
-		author = [components objectAtIndex:0];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[self title], @"Title", author, @"Author", [self comments], @"Comments", nil];
+		author = components[0];
+	NSDictionary *info = @{@"Title": [self title], @"Author": author, @"Comments": [self comments]};
 	[mDelegate submitter:self updateSubmissionInfo:info];
 
 	NSString *destination = [self compressedDestination];
@@ -268,12 +268,12 @@
 	}
 
 	NSDictionary *fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:[self compressedDestination] traverseLink:YES];
-	NSNumber *fileSize = [fileAttributes objectForKey:NSFileSize];
+	NSNumber *fileSize = fileAttributes[NSFileSize];
 	if (fileSize)
-		[mInfo setObject:fileSize forKey:@"FileSize"];
+		mInfo[@"FileSize"] = fileSize;
 
-	[self setValue:[NSNumber numberWithFloat:0.0] forKey:@"progress"];
-	[self setValue:[NSNumber numberWithBool:NO] forKey:@"indeterminateProgress"];
+	[self setValue:@0.0f forKey:@"progress"];
+	[self setValue:@NO forKey:@"indeterminateProgress"];
 	[self setValue:NSLocalizedString(@"Uploading", @"") forKey:@"progressLabel"];
 	mUploader = [[FTPUploader alloc] initWithUser:@"pvpublic" password:@"ZwaSb0uuB565" host:@"www.arizona-software.ch" path:@"/web/vocabulary" file:[self compressedDestination]];
 	if (!mUploader) {
@@ -286,7 +286,7 @@
 
 -(void)uploader:(FTPUploader *)inUploader progress:(float)inProgress
 {
-	[self setValue:[NSNumber numberWithFloat:inProgress] forKey:@"progress"];
+	[self setValue:@(inProgress) forKey:@"progress"];
 }
 
 -(void)uploader:(FTPUploader *)inUploader didFinishWithCode:(int)inCode

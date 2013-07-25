@@ -104,9 +104,9 @@
 - (void)beginTestWithWords:(NSArray*)words parameters:(id)inParameters sourceLanguage:(NSString *)inSourceLanguage targetLanguage:(NSString *)inTargetLanguage
 {
 	[self willChangeValueForKey:@"canGiveAnswer"];
-	mNumberOfChoices = [[inParameters objectForKey:@"testMCQNumber"] intValue];
+	mNumberOfChoices = [inParameters[@"testMCQNumber"] intValue];
 	int columns = 1;
-	mImageMCQ = [[inParameters objectForKey:@"imageMCQ"] boolValue];
+	mImageMCQ = [inParameters[@"imageMCQ"] boolValue];
 	if (mImageMCQ) {
 		int n = [self maxNumberOfChoices];
 		if (n <= 4)
@@ -117,7 +117,7 @@
 			columns = 4;
 	}
 	[mMCQView setColumns:columns];
-	mDelayedChoices = [[inParameters objectForKey:@"delayedMCQ"] boolValue];
+	mDelayedChoices = [inParameters[@"delayedMCQ"] boolValue];
 	mDelayingChoices = mDelayedChoices;
 	[mMCQView setDisplayAnswers:!mDelayingChoices];
 	[[mMCQView window] makeFirstResponder:mMCQView];
@@ -128,8 +128,8 @@
 -(void)resumeTestWithParameters:(id)inParameters
 {
 	[self willChangeValueForKey:@"canGiveAnswer"];
-	mNumberOfChoices = [[inParameters objectForKey:@"testMCQNumber"] intValue];
-	mDelayedChoices = [[inParameters objectForKey:@"delayedMCQ"] boolValue];
+	mNumberOfChoices = [inParameters[@"testMCQNumber"] intValue];
+	mDelayedChoices = [inParameters[@"delayedMCQ"] boolValue];
 	[self didChangeValueForKey:@"canGiveAnswer"];
 	[super resumeTestWithParameters:inParameters];
 }
@@ -174,7 +174,7 @@
 
 -(void)setAnswerWords:(NSArray *)inWords withParameters:(id)inParameters
 {
-	mImageMCQ = [[inParameters objectForKey:@"imageMCQ"] boolValue];
+	mImageMCQ = [inParameters[@"imageMCQ"] boolValue];
 	[mAnswerWords release];
 	mAnswerWords = [inWords retain];
 	NSMutableSet *sources = [NSMutableSet set];
@@ -188,17 +188,17 @@
 		[sources addObject:sourceAnswer];
 		[targets addObject:targetAnswer];
 		
-		NSNumber *label = [NSNumber numberWithInt:[word label]];
-		NSMutableSet *labeledSources = [mLabeledSources objectForKey:label];
+		NSNumber *label = @([word label]);
+		NSMutableSet *labeledSources = mLabeledSources[label];
 		if (!labeledSources) {
 			labeledSources = [NSMutableSet set];
-			[mLabeledSources setObject:labeledSources forKey:label];
+			mLabeledSources[label] = labeledSources;
 		}
 		[labeledSources addObject:sourceAnswer];
-		NSMutableSet *labeledTargets = [mLabeledTargets objectForKey:label];
+		NSMutableSet *labeledTargets = mLabeledTargets[label];
 		if (!labeledTargets) {
 			labeledTargets = [NSMutableSet set];
-			[mLabeledTargets setObject:labeledTargets forKey:label];
+			mLabeledTargets[label] = labeledTargets;
 		}
 		[labeledTargets addObject:targetAnswer];
 	}
@@ -251,11 +251,11 @@
 		answer = @"";
 	[answers addObject:answer];
 	
-	NSSet *preferredAnswerSet = [(mDirection ? mLabeledSources : mLabeledTargets) objectForKey:[NSNumber numberWithInt:[mCurrentWord label]]];
+	NSSet *preferredAnswerSet = (mDirection ? mLabeledSources : mLabeledTargets)[@([mCurrentWord label])];
 	NSArray *preferredAnswers = [[preferredAnswerSet allObjects] shuffledArray];
 	int i, n = [preferredAnswers count];
 	for (i = 0; i < n && [answers count] < [self numberOfChoices]; i++) {
-		NSString *answer = [preferredAnswers objectAtIndex:i];
+		NSString *answer = preferredAnswers[i];
 		if (![answers containsObject:answer])
 			[answers addObject:answer];
 	}
@@ -265,7 +265,7 @@
 		if (![answers containsObject:answer])
 			[answers addObject:answer];
 	}
-	id solution = [answers objectAtIndex:0];
+	id solution = answers[0];
 	answers = (id)[answers shuffledArray];
 	[mcqView setAnswers:answers solution:solution];
 	if (mDelayedChoices) {
@@ -319,8 +319,8 @@
 
 -(void)restorePanelLayout
 {
-	NSView *mcqSplitView = [[mMCQSplitView subviews] objectAtIndex:1];
-	NSView *otherSplitView = [[mMCQSplitView subviews] objectAtIndex:0];
+	NSView *mcqSplitView = [mMCQSplitView subviews][1];
+	NSView *otherSplitView = [mMCQSplitView subviews][0];
 	NSSize preferredSize = [mcqSplitView frame].size;
 	float otherDeltaHeight = 0;
 	float otherPreferredHeight = [[NSUserDefaults standardUserDefaults] floatForKey:@"MCQ Other View Height"];
@@ -343,7 +343,7 @@
 
 -(void)savePanelLayout
 {
-	NSView *otherSplitView = [[mMCQSplitView subviews] objectAtIndex:0];
+	NSView *otherSplitView = [mMCQSplitView subviews][0];
 	[[NSUserDefaults standardUserDefaults] setFloat:[otherSplitView bounds].size.height forKey:@"MCQ Other View Height"];
 	[[NSUserDefaults standardUserDefaults] setFloat:[mMCQView frame].size.height / [self rows] forKey:[self lineHeightKey]];
 }

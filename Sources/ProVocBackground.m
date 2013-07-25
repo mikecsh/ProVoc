@@ -67,7 +67,7 @@
 			[mView setValue:nil forInputKey:key];
 	NSColor *color = [NSUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:PVTestBackgroundColor]];
 	[self setValue:color forInputKey:@"Color"];
-	[self setValue:[NSNumber numberWithFloat:((float)(rand() % 30000)) / 30000] forInputKey:@"Random"];
+	[self setValue:@(((float)(rand() % 30000)) / 30000) forInputKey:@"Random"];
 	[mView startRendering];
 	NSSize maxSize = NSMakeSize(2000, 2000);
 	NSRect frame = [[NSScreen mainScreen] frame];
@@ -125,16 +125,16 @@
 -(void)triggerInputKeys:(NSArray *)inKeys
 {
 	if ([mView isRendering]) {
-		[self setValue:[NSNumber numberWithBool:YES] forInputKeys:inKeys];
+		[self setValue:@YES forInputKeys:inKeys];
 		[mView display];
-		[self setValue:[NSNumber numberWithBool:NO] forInputKeys:inKeys];
+		[self setValue:@NO forInputKeys:inKeys];
 	} else
 		[mInputsToTrigger addObjectsFromArray:inKeys];
 }
 
 -(void)triggerInputKey:(NSString *)inKey
 {
-	[self triggerInputKeys:[NSArray arrayWithObject:inKey]];
+	[self triggerInputKeys:@[inKey]];
 }
 
 @end
@@ -248,7 +248,7 @@
 
 +(void)setIndexOfCurrentBackgroundStyle:(int)inIndex
 {
-	[self setCurrentBackgroundStyle:[[self availableBackgroundStyles] objectAtIndex:inIndex]];
+	[self setCurrentBackgroundStyle:[self availableBackgroundStyles][inIndex]];
 }
 
 #define PVCurrentBackgroundIdentifier @"currentBackgroundIdentifier"
@@ -275,7 +275,7 @@
 				break;
 	}
 	if (!style)
-		style = [[self availableBackgroundStyles] objectAtIndex:0];
+		style = [self availableBackgroundStyles][0];
 	return style;
 }
 

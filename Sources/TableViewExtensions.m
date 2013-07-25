@@ -48,10 +48,10 @@
 	while (column = [enumerator nextObject]) {
 		id identifier = [column identifier];
 		id width = [NSNumber numberWithFloat:[column width]];
-		NSDictionary *state = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"Identifier", width, @"Width", nil];
+		NSDictionary *state = @{@"Identifier": identifier, @"Width": width};
 		[states addObject:state];
 	}
-	return [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1], @"Version", states, @"States", nil];
+	return @{@"Version": @1, @"States": states};
 }
 
 -(void)setTableColumnStates:(id)inStates
@@ -59,15 +59,15 @@
 	int version = 0;
 	NSArray *states = inStates;
 	if ([inStates isKindOfClass:[NSDictionary class]]) {
-		version = [[inStates objectForKey:@"Version"] intValue];
-		states = [inStates objectForKey:@"States"];
+		version = [inStates[@"Version"] intValue];
+		states = inStates[@"States"];
 	}
 	
 	NSEnumerator *enumerator = [states objectEnumerator];
 	NSDictionary *state;
 	NSMutableArray *identifiers = [NSMutableArray array];
 	while (state = [enumerator nextObject])
-		[identifiers addObject:[state objectForKey:@"Identifier"]];
+		[identifiers addObject:state[@"Identifier"]];
 	
 	if (version >= 1) {
 		enumerator = [[self tableColumns] reverseObjectEnumerator];
@@ -80,10 +80,10 @@
 	enumerator = [states objectEnumerator];
 	int index = 0;
 	while (state = [enumerator nextObject]) {
-		NSTableColumn *column = [self tableColumnWithIdentifier:[state objectForKey:@"Identifier"]];
+		NSTableColumn *column = [self tableColumnWithIdentifier:state[@"Identifier"]];
 		if (column) {
 			[self moveColumn:[[self tableColumns] indexOfObjectIdenticalTo:column] toColumn:index];
-			[column setWidth:[[state objectForKey:@"Width"] floatValue]];
+			[column setWidth:[state[@"Width"] floatValue]];
 		}
 		index++;
 	}
@@ -101,7 +101,7 @@
     for (i = 0; i < n; i++) {
         id item = [dataSource outlineView:self child:i ofItem:inItem];
         BOOL expanded = [self isItemExpanded:item];
-        [array addObject:[NSNumber numberWithBool:expanded]];
+        [array addObject:@(expanded)];
         if (!expanded)
             [self expandItem:item];
         [array addObject:[self expandedStateOfItem:item]];

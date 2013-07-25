@@ -143,7 +143,7 @@
 	while (identifier = [enumerator nextObject]) {
 		NSTableColumn *column = [mWordTableView tableColumnWithIdentifier:identifier];
 		BOOL visible = [self isColumnVisible:column];
-		[visibility setObject:[NSNumber numberWithBool:visible] forKey:identifier];
+		visibility[identifier] = @(visible);
 	}
 	return visibility;
 }
@@ -155,7 +155,7 @@
 	NSString *identifier;
 	while (identifier = [enumerator nextObject]) {
 		NSTableColumn *column = [self columnWithIdentifier:identifier];
-		if ([self isColumnVisible:column] != [[inVisibility objectForKey:identifier] boolValue]) {
+		if ([self isColumnVisible:column] != [inVisibility[identifier] boolValue]) {
 			[self toggleTableColumn:column sizeToFit:NO];
 			changed = YES;
 		}
@@ -211,7 +211,7 @@
 
 -(id)valueForKey:(NSString *)inKey
 {
-	id value = [mColumnVisibility objectForKey:inKey];
+	id value = mColumnVisibility[inKey];
 	if (value)
 		return value;
 	else
@@ -220,8 +220,8 @@
 
 -(void)setValue:(id)inValue forKey:(NSString *)inKey
 {
-	if ([mColumnVisibility objectForKey:inKey])
-		[mColumnVisibility setObject:inValue forKey:inKey];
+	if (mColumnVisibility[inKey])
+		mColumnVisibility[inKey] = inValue;
 	else
 		[super setValue:inValue forKey:inKey];
 }

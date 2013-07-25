@@ -75,9 +75,9 @@
 
     CFBundleRef localInfoBundle = CFBundleGetMainBundle();
     NSDictionary *localInfoDict = (NSDictionary *)CFBundleGetLocalInfoDictionary(localInfoBundle);
-    [mAppName setStringValue:[localInfoDict objectForKey:@"CFBundleName"]];
+    [mAppName setStringValue:localInfoDict[@"CFBundleName"]];
     [mAppVersion setStringValue:[NSString stringWithFormat:ARLocalizedString(@"VERSION_%@", @""),
-                            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]];
+                            [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]]];
 }
 
 -(void)displayAboutWindow:(BOOL)inAnimateAlpha

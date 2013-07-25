@@ -84,8 +84,8 @@
 		NSEnumerator *enumerator = [mViews objectEnumerator];
 		NSDictionary *info;
 		while (info = [enumerator nextObject])
-			if ([[info objectForKey:kOpenState] boolValue])
-				[self viewWithIdentifierWillBecomeVisible:[info objectForKey:kIdentifier]];
+			if ([info[kOpenState] boolValue])
+				[self viewWithIdentifierWillBecomeVisible:info[kIdentifier]];
 		mOrderingFront = NO;
 		[window orderFront:nil];
 	}
@@ -97,7 +97,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSString *key = [NSString stringWithFormat:@"%@ %@ Open", [self windowNibName], inIdentifier];
 	if (![defaults objectForKey:key])
-		[defaults setObject:[NSNumber numberWithBool:inOpen] forKey:key];
+		[defaults setObject:@(inOpen) forKey:key];
 }
 
 -(float)maxWidth
@@ -173,9 +173,9 @@
 	NSMutableDictionary *info;
 	BOOL first = YES;
 	while (info = [enumerator nextObject]) {
-		NSView *view = [info objectForKey:kView];
+		NSView *view = info[kView];
 		[view setFrameOrigin:NSZeroPoint];
-		[info setObject:[NSNumber numberWithFloat:[view frame].size.height * [self scaleFactor]] forKey:kHeight];
+		info[kHeight] = [NSNumber numberWithFloat:[view frame].size.height * [self scaleFactor]];
 		
 		NSRect topFrame = NSMakeRect(0, NSMaxY([view frame]), size.width, buttonHeight + inset);
 		
@@ -185,14 +185,14 @@
 		[button setImagePosition:NSImageLeft];
 		[button setAlignment:NSLeftTextAlignment];
 		[button setImage:[self openImage]];
-		[button setTitle:[info objectForKey:kName]];
+		[button setTitle:info[kName]];
 		[button setTag:[mViews indexOfObjectIdenticalTo:info]];
 		[button setTarget:self];
 		[button setAction:@selector(toggleView:)];
 		[button setBordered:NO];
 		[button setFocusRingType:NSFocusRingTypeNone];
 		[button setAutoresizingMask:NSViewWidthSizable];
-		[info setObject:button forKey:kButton];
+		info[kButton] = button;
 
 		NSView *topView = [[[NSView alloc] initWithFrame:topFrame] autorelease];
 		[topView setAutoresizingMask:NSViewWidthSizable | NSViewMinYMargin];
@@ -215,11 +215,11 @@
 		[container setAutoresizingMask:NSViewWidthSizable];
 		[container addSubview:topView];
 		[container addSubview:bottomView];
-		[info setObject:container forKey:kContainerView];
+		info[kContainerView] = container;
 		
 		[contentView addSubview:container];
-		[info setObject:[view superview] forKey:kSuperview];
-		[info setObject:[NSNumber numberWithBool:YES] forKey:kOpenState];
+		info[kSuperview] = [view superview];
+		info[kOpenState] = @YES;
 		first = NO;
 	}
 	
@@ -234,7 +234,7 @@
 		[window setFrameTopLeftPoint:NSPointFromString(topLeftCoordinates)];
 	enumerator = [mViews objectEnumerator];
 	while (info = [enumerator nextObject]) {
-		NSString *key = [NSString stringWithFormat:@"%@ %@ Open", [self windowNibName], [info objectForKey:kIdentifier]];
+		NSString *key = [NSString stringWithFormat:@"%@ %@ Open", [self windowNibName], info[kIdentifier]];
 		NSNumber *openState = [defaults objectForKey:key];
 		if (openState && ![openState boolValue])
 			[self toggleViewAtIndex:[mViews indexOfObjectIdenticalTo:info]];
@@ -255,33 +255,33 @@
 	float deltaHeight = 0;
 	int i, n = [mViews count];
 	for (i = 0; i < n; i++) {
-		NSMutableDictionary *info = [mViews objectAtIndex:i];
+		NSMutableDictionary *info = mViews[i];
 		unsigned int mask;
 		if (i < inIndex)
 			mask = NSViewMinYMargin;
 		else if (i == inIndex) {
 			mask = NSViewHeightSizable;
-			BOOL openState = ![[info objectForKey:kOpenState] boolValue];
-			deltaHeight = [[info objectForKey:kHeight] floatValue];
-			NSView *view = [info objectForKey:kView];
+			BOOL openState = ![info[kOpenState] boolValue];
+			deltaHeight = [info[kHeight] floatValue];
+			NSView *view = info[kView];
 			if (openState) {
-				NSView *superview = [info objectForKey:kSuperview];
+				NSView *superview = info[kSuperview];
 				NSSize size = [view frame].size;
 				size.width = [superview bounds].size.width;
 				[view setFrameSize:size];
 				[superview addSubview:view];
 			} else
 				obsoleteView = view;
-			[info setObject:[NSNumber numberWithBool:openState] forKey:kOpenState];
+			info[kOpenState] = @(openState);
 			if (openState)
-				[self viewWithIdentifierWillBecomeVisible:[info objectForKey:kIdentifier]];
-			NSButton *button = [info objectForKey:kButton];
+				[self viewWithIdentifierWillBecomeVisible:info[kIdentifier]];
+			NSButton *button = info[kButton];
 			[button setImage:openState ? [self openImage] : [self closedImage]];
 			if (!openState)
 				deltaHeight *= -1;
 		} else
 			mask = NSViewMaxYMargin;
-		[[info objectForKey:kContainerView] setAutoresizingMask:mask | NSViewWidthSizable];
+		[info[kContainerView] setAutoresizingMask:mask | NSViewWidthSizable];
 	}
 
 	[self increaseHeightBy:deltaHeight animate:YES];
@@ -300,13 +300,13 @@
 	NSString *topLeftCoordinates = NSStringFromPoint(NSMakePoint(NSMinX(windowFrame), NSMaxY(windowFrame)));
 	[defaults setObject:topLeftCoordinates forKey:[NSString stringWithFormat:@"%@ TopLeft", [self windowNibName]]];
 	[defaults setObject:[NSNumber numberWithFloat:[[self window] frame].size.width] forKey:[NSString stringWithFormat:@"%@ Width", [self windowNibName]]];
-	[defaults setObject:[NSNumber numberWithBool:[self isVisible]] forKey:[NSString stringWithFormat:@"%@ Visible", [self windowNibName]]];
+	[defaults setObject:@([self isVisible]) forKey:[NSString stringWithFormat:@"%@ Visible", [self windowNibName]]];
 	
 	NSEnumerator *enumerator = [mViews objectEnumerator];
 	NSDictionary *info;
 	while (info = [enumerator nextObject]) {
-		NSString *key = [NSString stringWithFormat:@"%@ %@ Open", [self windowNibName], [info objectForKey:kIdentifier]];
-		[defaults setObject:[info objectForKey:kOpenState] forKey:key];
+		NSString *key = [NSString stringWithFormat:@"%@ %@ Open", [self windowNibName], info[kIdentifier]];
+		[defaults setObject:info[kOpenState] forKey:key];
 	}
 }
 
@@ -317,8 +317,8 @@
 	NSEnumerator *enumerator = [mViews objectEnumerator];
 	NSDictionary *info;
 	while (info = [enumerator nextObject])
-		if ([[info objectForKey:kIdentifier] isEqualToString:inIdentifier])
-			return [[info objectForKey:kOpenState] boolValue];
+		if ([info[kIdentifier] isEqualToString:inIdentifier])
+			return [info[kOpenState] boolValue];
 	return NO;
 }
 

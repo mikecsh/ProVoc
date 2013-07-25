@@ -26,11 +26,11 @@
 +(void)initialize
 {
 	NSArray *keys;
-	keys = [NSArray arrayWithObject:@"language"];
+	keys = @[@"language"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"sourceLanguageCaption"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"targetLanguageCaption"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"sourceFontFamilyName"];
-	keys = [NSArray arrayWithObject:@"word"];
+	keys = @[@"word"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"hasSelection"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"sourceText"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"targetText"];
@@ -40,13 +40,13 @@
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"canModifyText"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"canModifyImage"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"canModifyMovie"];
-	keys = [NSArray arrayWithObjects:@"word", @"playing", nil];
+	keys = @[@"word", @"playing"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"canRecordAudio"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"canPlaySourceAudio"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"canPlayTargetAudio"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"playSourceAudioIcon"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"playTargetAudioIcon"];
-	keys = [NSArray arrayWithObject:@"sourceFontFamilyName"];
+	keys = @[@"sourceFontFamilyName"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"sourceFontSize"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"sourceWritingDirection"];
 	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"targetFontFamilyName"];
@@ -182,7 +182,7 @@
 -(ProVocWord *)selectedWord
 {
 	if ([mSelectedWords count] == 1)
-		return [mSelectedWords objectAtIndex:0];
+		return mSelectedWords[0];
 	else
 		return nil;
 }
@@ -383,7 +383,7 @@
 	if ([openPanel runModalForTypes:nil] == NSOKButton) {
 		NSString *nameSelectorName = [inKey isEqual:@"Source"] ? @"sourceWord" : @"targetWord";
 		NSString *otherNameSelectorName = [inKey isEqual:@"Source"] ? @"targetWord" : @"sourceWord";
-		NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[openPanel filename], @"Directory", inKey, @"Key", nameSelectorName, @"NameSelectorName", otherNameSelectorName, @"OtherNameSelectorName", mDocument, @"Document", nil];
+		NSDictionary *info = @{@"Directory": [openPanel filename], @"Key": inKey, @"NameSelectorName": nameSelectorName, @"OtherNameSelectorName": otherNameSelectorName, @"Document": mDocument};
 		[mSelectedWords makeObjectsPerformSelector:@selector(exportAudio:) withObject:info];
 	}
 }
@@ -476,7 +476,7 @@
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setCanChooseFiles:NO];
 	if ([openPanel runModalForTypes:nil] == NSOKButton) {
-		NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[openPanel filename], @"Directory", mDocument, @"Document", nil];
+		NSDictionary *info = @{@"Directory": [openPanel filename], @"Document": mDocument};
 		[mSelectedWords makeObjectsPerformSelector:@selector(exportImage:) withObject:info];
 	}
 }
@@ -527,7 +527,7 @@ static BOOL sRecording = NO;
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setCanChooseFiles:NO];
 	if ([openPanel runModalForTypes:nil] == NSOKButton) {
-		NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[openPanel filename], @"Directory", mDocument, @"Document", nil];
+		NSDictionary *info = @{@"Directory": [openPanel filename], @"Document": mDocument};
 		[mSelectedWords makeObjectsPerformSelector:@selector(exportMovie:) withObject:info];
 	}
 }
@@ -770,7 +770,7 @@ error:
 -(BOOL)playNextSound
 {
 	while ([mWordsToPlaySound count] > 0) {
-		ProVocWord *word = [[[mWordsToPlaySound objectAtIndex:0] retain] autorelease];
+		ProVocWord *word = [[mWordsToPlaySound[0] retain] autorelease];
 		[mWordsToPlaySound removeObjectAtIndex:0];
 		if ([word canPlayAudio:mSoundToPlay]) {
 			[mDocument playAudio:mSoundToPlay ofWord:word];
@@ -1144,12 +1144,12 @@ error:
 
 -(void)reimportMediaFrom:(NSDictionary *)inSource
 {
-	NSString *temporaryDirectory = [[inSource objectForKey:@"Document"] temporaryDirectory];
-	NSString *path = [inSource objectForKey:@"MediaPath"];
+	NSString *temporaryDirectory = [inSource[@"Document"] temporaryDirectory];
+	NSString *path = inSource[@"MediaPath"];
 	NSEnumerator *enumerator = [mMedia keyEnumerator];
 	NSString *key;
 	while (key = [enumerator nextObject]) {
-		NSString *media = [mMedia objectForKey:key];
+		NSString *media = mMedia[key];
 		NSString *newMedia = nil;
 		NSString *source;
 		source = [path stringByAppendingPathComponent:media];
@@ -1165,7 +1165,7 @@ error:
 				newMedia = nil;
 		}
 		if (newMedia)
-			[mMedia setObject:newMedia forKey:key];
+			mMedia[key] = newMedia;
 		else
 			[mMedia removeObjectForKey:key];
 	}
@@ -1173,13 +1173,13 @@ error:
 
 -(void)swapMedia:(NSString *)inMediaA with:(NSString *)inMediaB
 {
-	id swap = [[mMedia objectForKey:inMediaA] retain];
-	if ([mMedia objectForKey:inMediaB])
-		[mMedia setObject:[mMedia objectForKey:inMediaB] forKey:inMediaA];
+	id swap = [mMedia[inMediaA] retain];
+	if (mMedia[inMediaB])
+		mMedia[inMediaA] = mMedia[inMediaB];
 	else
 		[mMedia removeObjectForKey:inMediaA];
 	if (swap)
-		[mMedia setObject:swap forKey:inMediaB];
+		mMedia[inMediaB] = swap;
 	else
 		[mMedia removeObjectForKey:inMediaB];
 	[swap release];
@@ -1213,20 +1213,20 @@ error:
 
 -(NSString *)movieMedia
 {
-	return [[self mediaDictionary] objectForKey:@"Movie"];
+	return [self mediaDictionary][@"Movie"];
 }
 
 -(void)setMovieMedia:(NSString *)inName
 {
-	[[self mediaDictionary] setObject:inName forKey:@"Movie"];
+	[self mediaDictionary][@"Movie"] = inName;
 }
 
 -(void)exportMovie:(NSDictionary *)inInfo
 {
-	NSString *media = [mMedia objectForKey:@"Movie"];
+	NSString *media = mMedia[@"Movie"];
 	if (media) {
-		NSString *destination = [[[inInfo objectForKey:@"Directory"] stringByAppendingPathComponent:[self mediaFileName]] stringByAppendingPathExtension:[media pathExtension]];
-		[[inInfo objectForKey:@"Document"] exportMedia:media toFile:destination];
+		NSString *destination = [[inInfo[@"Directory"] stringByAppendingPathComponent:[self mediaFileName]] stringByAppendingPathExtension:[media pathExtension]];
+		[inInfo[@"Document"] exportMedia:media toFile:destination];
 	}
 }
 
@@ -1241,20 +1241,20 @@ error:
 
 -(NSString *)imageMedia
 {
-	return [[self mediaDictionary] objectForKey:@"Image"];
+	return [self mediaDictionary][@"Image"];
 }
 
 -(void)setImageMedia:(NSString *)inName
 {
-	[[self mediaDictionary] setObject:inName forKey:@"Image"];
+	[self mediaDictionary][@"Image"] = inName;
 }
 
 -(void)exportImage:(NSDictionary *)inInfo
 {
-	NSString *media = [mMedia objectForKey:@"Image"];
+	NSString *media = mMedia[@"Image"];
 	if (media) {
-		NSString *destination = [[[inInfo objectForKey:@"Directory"] stringByAppendingPathComponent:[self mediaFileName]] stringByAppendingPathExtension:[media pathExtension]];
-		[[inInfo objectForKey:@"Document"] exportMedia:media toFile:destination];
+		NSString *destination = [[inInfo[@"Directory"] stringByAppendingPathComponent:[self mediaFileName]] stringByAppendingPathExtension:[media pathExtension]];
+		[inInfo[@"Document"] exportMedia:media toFile:destination];
 	}
 }
 
@@ -1274,12 +1274,12 @@ error:
 
 -(NSString *)mediaForAudio:(NSString *)inKey
 {
-	return [[self mediaDictionary] objectForKey:[self audioMediaKey:inKey]];
+	return [self mediaDictionary][[self audioMediaKey:inKey]];
 }
 
 -(void)setMedia:(NSString *)inName forAudio:(NSString *)inKey
 {
-	[[self mediaDictionary] setObject:inName forKey:[self audioMediaKey:inKey]];
+	[self mediaDictionary][[self audioMediaKey:inKey]] = inName;
 }
 
 -(BOOL)canPlayAudio:(NSString *)inKey
@@ -1294,15 +1294,15 @@ error:
 
 -(void)exportAudio:(NSDictionary *)inInfo
 {
-	NSString *media = [mMedia objectForKey:[self audioMediaKey:[inInfo objectForKey:@"Key"]]];
+	NSString *media = mMedia[[self audioMediaKey:inInfo[@"Key"]]];
 	if (media) {
-		NSString *name = [self performSelector:NSSelectorFromString([inInfo objectForKey:@"NameSelectorName"])];
+		NSString *name = [self performSelector:NSSelectorFromString(inInfo[@"NameSelectorName"])];
 		if ([name length] == 0)
-			name = [self performSelector:NSSelectorFromString([inInfo objectForKey:@"OtherNameSelectorName"])];
+			name = [self performSelector:NSSelectorFromString(inInfo[@"OtherNameSelectorName"])];
 		if ([name length] == 0)
 			name = NSLocalizedString(@"No Name Media Placeholder", @"");
-		NSString *destination = [[[inInfo objectForKey:@"Directory"] stringByAppendingPathComponent:name] stringByAppendingPathExtension:[media pathExtension]];
-		[[inInfo objectForKey:@"Document"] exportMedia:media toFile:destination];
+		NSString *destination = [[inInfo[@"Directory"] stringByAppendingPathComponent:name] stringByAppendingPathExtension:[media pathExtension]];
+		[inInfo[@"Document"] exportMedia:media toFile:destination];
 	}
 }
 
@@ -1346,7 +1346,7 @@ error:
 -(id)initWithFrame:(NSRect)inFrame
 {
 	if (self = [super initWithFrame:inFrame]) {
-		[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+		[self registerForDraggedTypes:@[NSFilenamesPboardType]];
 	}
 	return self;
 }
@@ -1587,7 +1587,7 @@ error:
 
 -(void)awakeFromNib
 {
-	[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+	[self registerForDraggedTypes:@[NSFilenamesPboardType]];
 }
 
 -(BOOL)canDropFile:(NSString *)inFileName

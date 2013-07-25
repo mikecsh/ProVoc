@@ -91,7 +91,7 @@ static BOOL sRunningFullscreen = NO;
 -(NSSize)imageSize
 {
 	NSSize size = NSZeroSize;
-	NSValue *sizeValue = [[self movieAttributes] objectForKey:QTMovieNaturalSizeAttribute];
+	NSValue *sizeValue = [self movieAttributes][QTMovieNaturalSizeAttribute];
 	[sizeValue getValue:&size];
 	return size;
 }
@@ -132,7 +132,7 @@ static BOOL sRunningFullscreen = NO;
 	QTTimeRange range = QTMakeTimeRange(QTZeroTime, [self duration]);
 	QTMovie *copy = [[[QTMovie alloc] initWithMovie:self timeRange:range error:nil] autorelease];
 	[movieView setMovie:copy];
-	[movieView performSelector:@selector(play:) withObject:nil afterDelay:0.0 inModes:[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSModalPanelRunLoopMode, nil]];
+	[movieView performSelector:@selector(play:) withObject:nil afterDelay:0.0 inModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode]];
 	
 	[window setLevel:NSModalPanelWindowLevel];
 	[window center];

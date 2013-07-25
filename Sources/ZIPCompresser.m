@@ -23,11 +23,9 @@
 		[center addObserver:self selector:@selector(taskCompleted:) name:NSTaskDidTerminateNotification object:mTask];
 		[mTask setLaunchPath:@"/usr/bin/zip"];
 		[mTask setCurrentDirectoryPath:[inFile stringByDeletingLastPathComponent]];
-		[mTask setArguments:[NSArray arrayWithObjects:
-								@"-r",
+		[mTask setArguments:@[@"-r",
 								inDestination,
-								[inFile lastPathComponent],
-                                nil]];
+								[inFile lastPathComponent]]];
 
 		NSPipe *outputPipe = [NSPipe pipe];
 		NSFileHandle *taskOutput = [outputPipe fileHandleForReading];
@@ -65,7 +63,7 @@
 
 -(void)taskDataAvailable:(NSNotification *)inNotification
 {
-    NSData *incomingData = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    NSData *incomingData = [inNotification userInfo][NSFileHandleNotificationDataItem];
     if (incomingData && [incomingData length] > 0) {
         // NSString *incomingText = [[[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding] autorelease];
 		// NSLog(@"%@", incomingText);
@@ -75,7 +73,7 @@
 
 -(void)taskErrorDataAvailable:(NSNotification *)inNotification
 {
-    NSData *incomingData = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    NSData *incomingData = [inNotification userInfo][NSFileHandleNotificationDataItem];
     if (incomingData && [incomingData length] > 0) {
         NSString *incomingText = [[[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding] autorelease];
 		NSLog(@"*** ZIPCompresser Error: %@", incomingText);

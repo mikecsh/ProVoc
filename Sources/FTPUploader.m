@@ -19,7 +19,7 @@
 		mFile = [inFile retain];
 		NSDictionary *fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:mFile traverseLink:YES];
 	    NSNumber *fileSize;
-	    if (fileSize = [fileAttributes objectForKey:NSFileSize])
+	    if (fileSize = fileAttributes[NSFileSize])
 			mFileSize = [fileSize longLongValue];
 		else {
 			NSLog(@"*** FTPUploader Error: %@ doesn't exist", mFile);
@@ -35,11 +35,9 @@
 		[center addObserver:self selector:@selector(taskCompleted:) name:NSTaskDidTerminateNotification object:mTask];
 		[mTask setLaunchPath:@"/usr/bin/ftp"];
 		[mTask setCurrentDirectoryPath:[inFile stringByDeletingLastPathComponent]];
-		[mTask setArguments:[NSArray arrayWithObjects:
-								@"-v",
+		[mTask setArguments:@[@"-v",
                                 [NSString stringWithFormat:@"ftp://%@:%@@%@/", inUser, inPassword,
-                                                            [inHost stringByAppendingPathComponent:inPath]],
-                                nil]];
+                                                            [inHost stringByAppendingPathComponent:inPath]]]];
 
 		NSPipe *inputPipe = [NSPipe pipe];
 		NSFileHandle *taskInput = [inputPipe fileHandleForWriting];
@@ -109,7 +107,7 @@
 {
     mTaskInput = [[inNotification object] retain];
 	while ([mCommandBuffer count] > 0) {
-		[self sendCommand:[mCommandBuffer objectAtIndex:0]];
+		[self sendCommand:mCommandBuffer[0]];
 		[mCommandBuffer removeObjectAtIndex:0];
 	}
 }
@@ -125,7 +123,7 @@
 
 -(void)taskDataAvailable:(NSNotification *)inNotification
 {
-    NSData *incomingData = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    NSData *incomingData = [inNotification userInfo][NSFileHandleNotificationDataItem];
     if (incomingData && [incomingData length] > 0) {
         NSString *incomingText = [[[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding] autorelease];
 		[self countHashIn:incomingText];
@@ -135,7 +133,7 @@
 
 -(void)taskErrorDataAvailable:(NSNotification *)inNotification
 {
-    NSData *incomingData = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    NSData *incomingData = [inNotification userInfo][NSFileHandleNotificationDataItem];
     if (incomingData && [incomingData length] > 0) {
         NSString *incomingText = [[[NSString alloc] initWithData:incomingData encoding:NSASCIIStringEncoding] autorelease];
 		NSLog(@"*** FTPUploader Error: %@", incomingText);

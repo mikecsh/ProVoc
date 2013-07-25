@@ -55,7 +55,7 @@
 					startAngle:[self positionToDegrees:inFrom] endAngle:[self positionToDegrees:inTo] clockwise:YES];
 			[bezierPath closePath];
 		}
-		NSArray *colors = [NSArray arrayWithObjects:inColor, [inColor blendedColorWithFraction:0.25 ofColor:[NSColor blackColor]], nil];
+		NSArray *colors = @[inColor, [inColor blendedColorWithFraction:0.25 ofColor:[NSColor blackColor]]];
 		[bezierPath fillWithColors:colors angleInDegrees:-90];
 		[[NSColor blackColor] set];
 		[bezierPath setLineWidth:2.0];
@@ -105,8 +105,8 @@
 		NSDictionary *result;
 		int from = 0;
 		while (result = [enumerator nextObject]) {
-			int n = [[result objectForKey:VALUE_KEY] intValue];
-			[self drawPieFrom:from to:from + n title:layer == 1 ? [result objectForKey:TITLE_KEY] : nil number:n color:[result objectForKey:COLOR_KEY]];
+			int n = [result[VALUE_KEY] intValue];
+			[self drawPieFrom:from to:from + n title:layer == 1 ? result[TITLE_KEY] : nil number:n color:result[COLOR_KEY]];
 			from += n;
 		}
 	}
@@ -123,7 +123,7 @@
 {
 	if (!mResults)
 		mResults = [[NSMutableArray alloc] initWithCapacity:0];
-	[mResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:inTitle, TITLE_KEY, [NSNumber numberWithInt:inValue], VALUE_KEY, inColor, COLOR_KEY, nil]];
+	[mResults addObject:@{TITLE_KEY: inTitle, VALUE_KEY: @(inValue), COLOR_KEY: inColor}];
 	mTotal += inValue;
 	[self setNeedsDisplay:YES];
 }

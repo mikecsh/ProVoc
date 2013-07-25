@@ -169,7 +169,7 @@
 	for (i = 0; i < n; i++) {
 		binFrame.origin.x = round(frame.origin.x + i * frame.size.width / n);
 		NSRect binRect = NSInsetRect(binFrame, 10, 0);
-		ProVocHistory *bin = [mBins objectAtIndex:i];
+		ProVocHistory *bin = mBins[i];
 		if (NSIntersectsRect(binRect, inRect))
 			[bin drawInRect:binRect total:mTotal];
 		
@@ -354,7 +354,7 @@
 	rect.size.height = 0;
 	int i, n = [mRepetitions count];
 	for (i = 0; i < n; i++) {
-		int count = [[mRepetitions objectAtIndex:i] intValue];
+		int count = [mRepetitions[i] intValue];
 		if (count > 0) {
 			from += count;
 			rect.origin.y = NSMaxY(rect);

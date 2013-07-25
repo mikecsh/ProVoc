@@ -64,7 +64,7 @@
 
 -(void)keyDown:(NSEvent *)inEvent
 {
-	[self interpretKeyEvents:[NSArray arrayWithObject:inEvent]];
+	[self interpretKeyEvents:@[inEvent]];
 }
 
 -(void)concludeDragOperation:(id <NSDraggingInfo>)inSender

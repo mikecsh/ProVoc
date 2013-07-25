@@ -64,7 +64,7 @@ static NSArray *sDraggedItems = nil;
 {
 	id item = [self itemForOutlineView:inOutlineView item:inItem];
 	if ([item respondsToSelector:@selector(children)])
-		return [[item children] objectAtIndex:inIndex];
+		return [item children][inIndex];
 	else
 		return nil;
 }
@@ -91,10 +91,10 @@ static NSArray *sDraggedItems = nil;
 -(void)setWords:(NSArray *)inWords inPasteboard:(NSPasteboard *)inPasteboard
 {
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-	[dictionary setObject:inWords forKey:@"Words"];
+	dictionary[@"Words"] = inWords;
 	NSString *mediaPath = [self mediaPathInBundle];
 	if (mediaPath)
-		[dictionary setObject:mediaPath forKey:@"MediaPath"];
+		dictionary[@"MediaPath"] = mediaPath;
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
 	[inPasteboard setData:data forType:ProVocWordsType];
 }
@@ -106,11 +106,11 @@ static NSArray *sDraggedItems = nil;
 		return nil;
 	
 	NSDictionary *dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	NSString *mediaPath = [dictionary objectForKey:@"MediaPath"];
-	NSArray *words = [dictionary objectForKey:@"Words"];
+	NSString *mediaPath = dictionary[@"MediaPath"];
+	NSArray *words = dictionary[@"Words"];
 	[words makeObjectsPerformSelector:@selector(resetIndexInFile)];
 	if (![mediaPath isEqual:[self mediaPathInBundle]] && mediaPath != [self mediaPathInBundle]) {
-		NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:self, @"Document", mediaPath, @"MediaPath", nil];
+		NSDictionary *info = @{@"Document": self, @"MediaPath": mediaPath};
 		[words makeObjectsPerformSelector:@selector(reimportMediaFrom:) withObject:info];
 	}
 	return words;
@@ -119,10 +119,10 @@ static NSArray *sDraggedItems = nil;
 -(void)setSources:(NSArray *)inSources inPasteboard:(NSPasteboard *)inPasteboard
 {
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-	[dictionary setObject:inSources forKey:@"Sources"];
+	dictionary[@"Sources"] = inSources;
 	NSString *mediaPath = [self mediaPathInBundle];
 	if (mediaPath)
-		[dictionary setObject:mediaPath forKey:@"MediaPath"];
+		dictionary[@"MediaPath"] = mediaPath;
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
 	[inPasteboard setData:data forType:ProVocSourcesType];
 }
@@ -134,10 +134,10 @@ static NSArray *sDraggedItems = nil;
 		return nil;
 	
 	NSDictionary *dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	NSString *mediaPath = [dictionary objectForKey:@"MediaPath"];
-	NSArray *sources = [dictionary objectForKey:@"Sources"];
+	NSString *mediaPath = dictionary[@"MediaPath"];
+	NSArray *sources = dictionary[@"Sources"];
 	if (![mediaPath isEqual:[self mediaPathInBundle]] && mediaPath != [self mediaPathInBundle]) {
-		NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:self, @"Document", mediaPath, @"MediaPath", nil];
+		NSDictionary *info = @{@"Document": self, @"MediaPath": mediaPath};
 		[sources makeObjectsPerformSelector:@selector(reimportMediaFrom:) withObject:info];
 	}
 	return sources;
@@ -155,7 +155,7 @@ static NSArray *sDraggedItems = nil;
 	[sDraggedItems release];
 	sDraggedItems = [items retain];
 		
-	[inPasteboard declareTypes:[NSArray arrayWithObjects:ProVocSelfSourcesType, ProVocSourcesType, NSStringPboardType, nil] owner:self];
+	[inPasteboard declareTypes:@[ProVocSelfSourcesType, ProVocSourcesType, NSStringPboardType] owner:self];
 	[self setSources:items inPasteboard:inPasteboard];
 	return YES;
 }
@@ -165,20 +165,20 @@ static NSArray *sDraggedItems = nil;
     NSDragOperation operation = [inInfo draggingSourceOperationMask];
 	operation = operation == NSDragOperationCopy ? NSDragOperationCopy : NSDragOperationMove;
 	
-    if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocSelfSourcesType]]) {
+    if ([[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSelfSourcesType]]) {
 		if (operation != NSDragOperationCopy && [sDraggedItems containsDescendant:inItem])
 			return NSDragOperationNone;
 		if (inIndex < 0 && ![inItem isKindOfClass:[ProVocChapter class]])
 			return NSDragOperationNone;
 		return operation;
 	}
-    if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocSourcesType]]) {
+    if ([[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSourcesType]]) {
 		if (inIndex < 0 && ![inItem isKindOfClass:[ProVocChapter class]])
 			return NSDragOperationNone;
 		return NSDragOperationCopy;
 	}
 	
-    if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:ProVocSelfWordsType, ProVocWordsType, nil]]) {
+    if ([[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSelfWordsType, ProVocWordsType]]) {
 		if (inIndex < 0 && !inItem)
 			return operation;
 		if (inIndex >= 0 || ![inItem isKindOfClass:[ProVocPage class]])
@@ -191,10 +191,10 @@ static NSArray *sDraggedItems = nil;
 
 -(BOOL)outlineView:(NSOutlineView *)inOutlineView canPasteFromPasteboard:(NSPasteboard *)inPasteboard
 {
-    if ([inPasteboard availableTypeFromArray:[NSArray arrayWithObject:ProVocWordsType]] && [mSelectedPages count] == 1)
+    if ([inPasteboard availableTypeFromArray:@[ProVocWordsType]] && [mSelectedPages count] == 1)
 		return YES;
 	
-    if ([inPasteboard availableTypeFromArray:[NSArray arrayWithObject:ProVocSourcesType]])
+    if ([inPasteboard availableTypeFromArray:@[ProVocSourcesType]])
 		return YES;
 		
 	return NO;
@@ -226,11 +226,11 @@ static NSArray *sDraggedItems = nil;
 	BOOL ok = NO;
 	BOOL removeFromParents = NO;
 
-	if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:ProVocSourcesType, ProVocSelfSourcesType, nil]]) {
+	if ([[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSourcesType, ProVocSelfSourcesType]]) {
 		id item = inItem ? inItem : [mProVocData rootChapter];
 		int index = inIndex >= 0 ? inIndex : [[item children] count];
 		
-		if (!copy && [[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocSelfSourcesType]]) {
+		if (!copy && [[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSelfSourcesType]]) {
 			NSEnumerator *enumerator = [draggedItems reverseObjectEnumerator];
 			ProVocSource *draggedItem;
 			while (draggedItem = [enumerator nextObject])
@@ -253,7 +253,7 @@ static NSArray *sDraggedItems = nil;
 		}
 	} else {
 		ProVocPage *page = (ProVocPage *)inItem;
-		if (!copy && [[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocSelfWordsType]]) {
+		if (!copy && [[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSelfWordsType]]) {
 			NSMutableArray *draggedWords = [NSMutableArray array];
 			NSEnumerator *enumerator = [draggedItems objectEnumerator];
 			ProVocWord *word;
@@ -275,7 +275,7 @@ static NSArray *sDraggedItems = nil;
 				[draggedItems makeObjectsPerformSelector:@selector(removeFromParent)];
 			if (!page) {
 				page = [[[ProVocPage alloc] init] autorelease];
-				NSString *title = [[draggedItems objectAtIndex:0] sourceWord];
+				NSString *title = [draggedItems[0] sourceWord];
 				[page setTitle:[NSString stringWithFormat:@"%@...", title]];
 
 				ProVocChapter *chapter = [mProVocData rootChapter];
@@ -296,7 +296,7 @@ static NSArray *sDraggedItems = nil;
 
 -(void)outlineView:(NSOutlineView *)inOutlineView pasteFromPasteboard:(NSPasteboard *)inPasteboard
 {
-    if ([inPasteboard availableTypeFromArray:[NSArray arrayWithObject:ProVocWordsType]]) {
+    if ([inPasteboard availableTypeFromArray:@[ProVocWordsType]]) {
 		NSArray *words = [self wordsFromPasteboard:inPasteboard];
 		if (words) {
 			ProVocPage *page = [self currentPage];
@@ -308,7 +308,7 @@ static NSArray *sDraggedItems = nil;
 		}
 	}
 	
-    if ([inPasteboard availableTypeFromArray:[NSArray arrayWithObject:ProVocSourcesType]]) {
+    if ([inPasteboard availableTypeFromArray:@[ProVocSourcesType]]) {
 		id item = [inOutlineView itemAtRow:[inOutlineView selectedRow]];
 		if (!item)
 			item = [mProVocData rootChapter];
@@ -354,12 +354,12 @@ static NSArray *sDraggedItems = nil;
 -(id)tableView:(NSTableView *)inTableView objectValueForTableColumn:(NSTableColumn *)inTableColumn row:(int)inRowIndex
 {
 	if (inTableView == mPresetTableView)
-		return [[self presets] objectAtIndex:inRowIndex];
+		return [self presets][inRowIndex];
 	if (inRowIndex >= [mVisibleWords count])
 		return nil;
-	ProVocWord *word = [mVisibleWords objectAtIndex:inRowIndex];
+	ProVocWord *word = mVisibleWords[inRowIndex];
 	if ([[inTableColumn identifier] isEqual:@"Difficulty"])
-		return [NSNumber numberWithFloat:([word difficulty] - mMinDifficulty) / (mMaxDifficulty - mMinDifficulty)];
+		return @(([word difficulty] - mMinDifficulty) / (mMaxDifficulty - mMinDifficulty));
 	else
 		return [word objectForIdentifier:[inTableColumn identifier]];
 }
@@ -369,7 +369,7 @@ static NSArray *sDraggedItems = nil;
 	if (inTableView == mPresetTableView)
 		return;
 	if (inRowIndex < [mVisibleWords count]) {
-		ProVocWord *word = [mVisibleWords objectAtIndex:inRowIndex];
+		ProVocWord *word = mVisibleWords[inRowIndex];
 		id object = inObject;
 		if ([inObject isKindOfClass:[NSAttributedString class]])
 			object = [inObject string];
@@ -402,7 +402,7 @@ static NSArray *sDraggedItems = nil;
     if (inTableView == mWordTableView && [[inTableColumn identifier] isEqualTo:@"Mark"]) {
 		NSEvent *event = [NSApp currentEvent];
         if ([event type] == NSLeftMouseDown && [event clickCount] > 1 && inRowIndex < [mVisibleWords count]) {
-			ProVocWord *word = [mVisibleWords objectAtIndex:inRowIndex];
+			ProVocWord *word = mVisibleWords[inRowIndex];
 			[self willChangeWord:word];
 			[word setMark:1 - [word mark]];
 			[inTableView reloadData];
@@ -413,7 +413,7 @@ static NSArray *sDraggedItems = nil;
 	if ([[NSApp currentEvent] type] == NSLeftMouseDown && inTableView == mWordTableView && inRowIndex < [mVisibleWords count]) {
 		NSRect rect = [mWordTableView frameOfCellAtColumn:[[mWordTableView tableColumns] indexOfObject:inTableColumn] row:inRowIndex];
 		NSPoint pt = [mWordTableView convertPoint:[[NSApp currentEvent] locationInWindow] fromView:nil];
-		ProVocWord *word = [mVisibleWords objectAtIndex:inRowIndex];
+		ProVocWord *word = mVisibleWords[inRowIndex];
 		if ([[inTableColumn identifier] isEqual:@"Number"]) {
 			[self displayMediaOfWord:word];
 			return NO;
@@ -444,7 +444,7 @@ static NSArray *sDraggedItems = nil;
 -(BOOL)tableView:(NSTableView *)inTableView writeRows:(NSArray *)inRows toPasteboard:(NSPasteboard *)inPasteboard
 {
 	if (inTableView == mPresetTableView) {
-		[inPasteboard declareTypes:[NSArray arrayWithObject:PRESET_PBOARD_TYPE] owner:self];
+		[inPasteboard declareTypes:@[PRESET_PBOARD_TYPE] owner:self];
 		[inPasteboard setData:[NSKeyedArchiver archivedDataWithRootObject:inRows] forType:PRESET_PBOARD_TYPE];
 		return YES;
 	} else if (inTableView == mWordTableView) {
@@ -454,12 +454,12 @@ static NSArray *sDraggedItems = nil;
 		while (row = [enumerator nextObject]) {
 			int index = [row intValue];
 			if (index < [mVisibleWords count])
-				[words addObject:[mVisibleWords objectAtIndex:index]];
+				[words addObject:mVisibleWords[index]];
 		}
 		[sDraggedItems release];
 		sDraggedItems = [words retain];
 		
-		[inPasteboard declareTypes:[NSArray arrayWithObjects:ProVocSelfWordsType, ProVocWordsType, NSStringPboardType, nil] owner:self];
+		[inPasteboard declareTypes:@[ProVocSelfWordsType, ProVocWordsType, NSStringPboardType] owner:self];
 		[self setWords:words inPasteboard:inPasteboard];
 		[inPasteboard setString:[self stringFromWords:words] forType:NSStringPboardType];
 
@@ -474,22 +474,22 @@ static NSArray *sDraggedItems = nil;
 		if (inOperation == NSTableViewDropOn)
 			return NSDragOperationNone;
 			
-		if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:PRESET_PBOARD_TYPE]])
+		if ([[inInfo draggingPasteboard] availableTypeFromArray:@[PRESET_PBOARD_TYPE]])
 			return NSDragOperationMove;
 	} else if (inTableView == mWordTableView) {
 		if (inOperation == NSTableViewDropOn && inRow == [mVisibleWords count])
 			inOperation = NSTableViewDropAbove;
 		if (inOperation != NSTableViewDropOn && inRow <= [mVisibleWords count]) {
-			if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocSelfWordsType]])
+			if ([[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSelfWordsType]])
 				return [inInfo draggingSourceOperationMask] == NSDragOperationCopy ? NSDragOperationCopy : NSDragOperationMove;
-			if ([[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocWordsType]])
+			if ([[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocWordsType]])
 				return NSDragOperationCopy;
 		}
 			
 		NSArray *fileNames;
 		if (inOperation == NSTableViewDropOn && inRow < [mVisibleWords count] && (fileNames = [[inInfo draggingPasteboard] propertyListForType:NSFilenamesPboardType])) {
 			if ([fileNames count] == 1) {
-				NSString *fileType = [[fileNames objectAtIndex:0] pathExtension];
+				NSString *fileType = [fileNames[0] pathExtension];
 				if ([[NSSound soundUnfilteredFileTypes] containsObject:fileType] || [[NSImage imageUnfilteredFileTypes] containsObject:fileType] || [NSApp hasQTKit] && [[QTMovie movieUnfilteredFileTypes] containsObject:fileType])
 					return NSDragOperationCopy;
 			}
@@ -501,7 +501,7 @@ static NSArray *sDraggedItems = nil;
 -(BOOL)tableView:(NSTableView *)inTableView canPasteFromPasteboard:(NSPasteboard *)inPasteboard
 {
 	if (inTableView == mWordTableView)
-	    return [inPasteboard availableTypeFromArray:[NSArray arrayWithObjects:ProVocWordsType, NSStringPboardType, nil]] != nil;
+	    return [inPasteboard availableTypeFromArray:@[ProVocWordsType, NSStringPboardType]] != nil;
 	else
 		return NO;
 }
@@ -520,7 +520,7 @@ static NSArray *sDraggedItems = nil;
 			row--;
 			above = NO;
 		}
-		ProVocWord *word = [mVisibleWords objectAtIndex:row];
+		ProVocWord *word = mVisibleWords[row];
 		page = [word page];
 		index = [[page words] indexOfObjectIdenticalTo:word];
 		if (!above)
@@ -550,11 +550,11 @@ static NSArray *sDraggedItems = nil;
 		if (data) {
 			[self willChangePresets];
 			NSArray *rows = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-			int from = [[rows objectAtIndex:0] intValue];
+			int from = [rows[0] intValue];
 			int to = inRow;
 			if (to > from)
 				to--;
-			id preset = [[[mPresets objectAtIndex:from] retain] autorelease];
+			id preset = [[mPresets[from] retain] autorelease];
 			[mPresets removeObjectAtIndex:from];
 			[mPresets insertObject:preset atIndex:to];
 			mIndexOfCurrentPresets = to;
@@ -570,7 +570,7 @@ static NSArray *sDraggedItems = nil;
 		BOOL ok = NO;
 		BOOL removeFromParents = NO;
 
-		if (!copy && [[inInfo draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject:ProVocSelfWordsType]]) {
+		if (!copy && [[inInfo draggingPasteboard] availableTypeFromArray:@[ProVocSelfWordsType]]) {
 			removeFromParents = YES;
 			ok = YES;
 		} else {
@@ -580,20 +580,20 @@ static NSArray *sDraggedItems = nil;
 			else {
 				NSData *data = [[inInfo draggingPasteboard] dataForType:NSFilenamesPboardType];
 				if (data) {
-					NSString *fileName = [[[inInfo draggingPasteboard] propertyListForType:NSFilenamesPboardType] objectAtIndex:0];
+					NSString *fileName = [[inInfo draggingPasteboard] propertyListForType:NSFilenamesPboardType][0];
 					NSString *fileType = [fileName pathExtension];
 					if ([NSApp hasQTKit] && [[QTMovie movieUnfilteredFileTypes] containsObject:fileType]) {
-						[self setMovieFile:fileName ofWord:[mVisibleWords objectAtIndex:inRow]];
+						[self setMovieFile:fileName ofWord:mVisibleWords[inRow]];
 						return YES;
 					} else if ([[NSImage imageUnfilteredFileTypes] containsObject:fileType]) {
-						[self setImageFile:fileName ofWord:[mVisibleWords objectAtIndex:inRow]];
+						[self setImageFile:fileName ofWord:mVisibleWords[inRow]];
 						return YES;
 					} else if ([[NSSound soundUnfilteredFileTypes] containsObject:fileType]) {
 						int column = [mWordTableView columnAtPoint:[mWordTableView convertPoint:[inInfo draggingLocation] fromView:nil]];
 						if (column >= 0) {
-							NSString *columnIdentifier = [[[mWordTableView tableColumns] objectAtIndex:column] identifier];
+							NSString *columnIdentifier = [[mWordTableView tableColumns][column] identifier];
 							if ([columnIdentifier isEqual:@"Source"] || [columnIdentifier isEqual:@"Target"]) {
-								[self setAudioFile:fileName forKey:columnIdentifier ofWord:[mVisibleWords objectAtIndex:inRow]];
+								[self setAudioFile:fileName forKey:columnIdentifier ofWord:mVisibleWords[inRow]];
 								return YES;
 							}
 						}
@@ -637,11 +637,11 @@ static NSArray *sDraggedItems = nil;
 {
 	ProVocWord *word;
 	int label;
-	if ([inTableColumn isKindOfClass:[ProVocFlaggedTableColumn class]] && inRowIndex < [mVisibleWords count] && (label = [(word = [mVisibleWords objectAtIndex:inRowIndex]) label])) {
+	if ([inTableColumn isKindOfClass:[ProVocFlaggedTableColumn class]] && inRowIndex < [mVisibleWords count] && (label = [(word = mVisibleWords[inRowIndex]) label])) {
 		[inCell setImage:[self imageForLabel:label flagged:[word mark] != 0]];
 	}
 	if ([inTableColumn isKindOfClass:[ProVocWordTableColumn class]]) {
-		word = inRowIndex < [mVisibleWords count] ? [mVisibleWords objectAtIndex:inRowIndex] : nil;
+		word = inRowIndex < [mVisibleWords count] ? mVisibleWords[inRowIndex] : nil;
 		if ([[inTableColumn identifier] isEqual:@"Number"]) {
 			BOOL hasImage = [word imageMedia] != nil;
 			BOOL hasMovie = [word movieMedia] != nil;
@@ -796,7 +796,7 @@ static NSArray *sSelectedWords = nil;
 	while (row = [enumerator nextObject]) {
 		int index = [row intValue];
 		if (index < [mVisibleWords count])
-			[words addObject:[mVisibleWords objectAtIndex:index]];
+			[words addObject:mVisibleWords[index]];
 	}
 	return [[words copy] autorelease];
 }
@@ -904,11 +904,11 @@ static BOOL sKeepOnDoubleWordSearch = YES;
 	for (pass = 0; pass < 2 && sKeepOnDoubleWordSearch; pass++) {
 		[tester setLanguage:pass == 0 ? [self sourceLanguage] : [self targetLanguage]];
 		for (i = 0; i < n && sKeepOnDoubleWordSearch; i++) {
-			ProVocWord *word = [inWords objectAtIndex:i];
+			ProVocWord *word = inWords[i];
 			NSString *s1 = pass == 0 ? [word sourceWord] : [word targetWord];
 			s1 = [tester fullGenericAnswerString:s1];
 			for (j = i + 1; j < n && sKeepOnDoubleWordSearch; j++) {
-				ProVocWord *otherWord = [inWords objectAtIndex:j];
+				ProVocWord *otherWord = inWords[j];
 				NSString *s2 = pass == 0 ? [otherWord sourceWord] : [otherWord targetWord];
 				
 				if ([tester isGenericString:s1 equalToString:s2]) {
@@ -917,7 +917,7 @@ static BOOL sKeepOnDoubleWordSearch = YES;
 				}
 				
 				if (count++ % 20 == 0)
-					[inDelegate performSelector:@selector(doubleWordSearchProgress:) withObject:[NSNumber numberWithFloat:(float)(count) / total]];
+					[inDelegate performSelector:@selector(doubleWordSearchProgress:) withObject:@((float)(count) / total)];
 			}
 		}
 	}
@@ -1051,16 +1051,16 @@ int ORDER_BY_CONTEXT (id left, id right, void *ctxt)
 	else if ([inIdentifier isEqual:@"Target"])
 		language = [mProVocData targetLanguage];
 	NSDictionary *languages = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-    NSEnumerator *enumerator = [[languages objectForKey:@"Languages"] objectEnumerator];
+    NSEnumerator *enumerator = [languages[@"Languages"] objectEnumerator];
     NSDictionary *description;
     while (description = [enumerator nextObject])
-		if ([language isEqual:[description objectForKey:@"Name"]]) {
+		if ([language isEqual:description[@"Name"]]) {
 			if (outIgnoreCase)
-				*outIgnoreCase = ![[description objectForKey:PVCaseSensitive] boolValue];
+				*outIgnoreCase = ![description[PVCaseSensitive] boolValue];
 			if (outIgnoreAccents)
-				*outIgnoreAccents = ![[description objectForKey:PVAccentSensitive] boolValue];
+				*outIgnoreAccents = ![description[PVAccentSensitive] boolValue];
 		
-			NSEnumerator *enumerator = [[[description objectForKey:@"FacultativeDeterminents"] componentsSeparatedByString:@","] objectEnumerator];
+			NSEnumerator *enumerator = [[description[@"FacultativeDeterminents"] componentsSeparatedByString:@","] objectEnumerator];
 			NSString *determinent;
 			while (determinent = [enumerator nextObject]) {
 				if (!determinents)
@@ -1128,7 +1128,7 @@ static NSTimeInterval waitTime = 0;
 			point.x -= 10;
 			point.y = 0;
 			int columnIndex = [inTableView columnAtPoint:point];
-			NSTableColumn *column = columnIndex >= 0 ? [[inTableView tableColumns] objectAtIndex:columnIndex] : inTableColumn;
+			NSTableColumn *column = columnIndex >= 0 ? [inTableView tableColumns][columnIndex] : inTableColumn;
 			[self tableView:inTableView autoSizeTableColumn:column];
 			waitTime = [NSDate timeIntervalSinceReferenceDate] + 0.1;
 		} else
@@ -1270,10 +1270,10 @@ static NSTimeInterval waitTime = 0;
 {
     NSMutableArray *names = [NSMutableArray array];
     NSDictionary *languages = [[NSUserDefaults standardUserDefaults] objectForKey:PVPrefsLanguages];
-    NSEnumerator *enumerator = [[languages objectForKey:@"Languages"] objectEnumerator];
+    NSEnumerator *enumerator = [languages[@"Languages"] objectEnumerator];
     NSDictionary *description;
     while (description = [enumerator nextObject])
-        [names addObject:[description objectForKey:@"Name"]];
+        [names addObject:description[@"Name"]];
     return names;
 }
 
@@ -1347,7 +1347,7 @@ static NSTimeInterval waitTime = 0;
 		[[ProVocPreferences sharedPreferences] openLanguageView:nil];
 	} else {
 		[self willChangeLanguages];
-	    [mProVocData setSourceLanguage:[languages objectAtIndex:index]];
+	    [mProVocData setSourceLanguage:languages[index]];
 		[self didChangeLanguages];
 		[self languagesDidChange];
 	}
@@ -1364,7 +1364,7 @@ static NSTimeInterval waitTime = 0;
 		[[ProVocPreferences sharedPreferences] openLanguageView:nil];
 	} else {
 		[self willChangeLanguages];
-		[mProVocData setTargetLanguage:[languages objectAtIndex:index]];
+		[mProVocData setTargetLanguage:languages[index]];
 		[self languagesDidChange];
 		[self didChangeLanguages];
 	}
@@ -1451,7 +1451,7 @@ static NSTimeInterval waitTime = 0;
 	else {
 		NSArray *labels = [[NSUserDefaults standardUserDefaults] objectForKey:PVLabels];
 		int index = MIN([labels count] - 1, inLabel - 1);
-		return [NSUnarchiver unarchiveObjectWithData:[[labels objectAtIndex:index] objectForKey:PVLabelColorData]];
+		return [NSUnarchiver unarchiveObjectWithData:labels[index][PVLabelColorData]];
 	}
 }
 
@@ -1465,7 +1465,7 @@ static NSMutableDictionary *sCachedImages = nil;
 +(NSImage *)imageForLabel:(int)inLabel
 {
 	NSColor *color = [self colorForLabel:inLabel];
-	NSImage *image = [sCachedImages objectForKey:color];
+	NSImage *image = sCachedImages[color];
 	if (image)
 		return image;
 		
@@ -1473,7 +1473,7 @@ static NSMutableDictionary *sCachedImages = nil;
 		sCachedImages = [[NSMutableDictionary alloc] initWithCapacity:0];
 	NSSize size = NSMakeSize(16, 12);
 	image = [[[NSImage alloc] initWithSize:size] autorelease];
-	[sCachedImages setObject:image forKey:color];
+	sCachedImages[color] = image;
 
 	static NSShadow *shadow = nil;
 	if (!shadow) {
@@ -1486,7 +1486,7 @@ static NSMutableDictionary *sCachedImages = nil;
 	NSRect rect = NSInsetRect(NSMakeRect(0, 0, size.width, size.height), 4, 2);
 //	NSBezierPath *bezierPath = [NSBezierPath bezierPathWithOvalInRect:rect];
 	NSBezierPath *bezierPath = [NSBezierPath bezierPathWithRoundRectInRect:rect radius:2];
-	NSArray *colors = [NSArray arrayWithObjects:color, [color blendedColorWithFraction:0.5 ofColor:[NSColor whiteColor]], nil];
+	NSArray *colors = @[color, [color blendedColorWithFraction:0.5 ofColor:[NSColor whiteColor]]];
 	
 	[image lockFocus];
 	[NSGraphicsContext saveGraphicsState];
@@ -1515,7 +1515,7 @@ static NSMutableDictionary *sCachedFlaggedImages[2] = {nil, nil};
 -(NSImage *)imageForLabel:(int)inLabel flagged:(BOOL)inFlagged
 {
 	NSColor *color = [self colorForLabel:inLabel];
-	NSImage *image = [sCachedFlaggedImages[inFlagged] objectForKey:color];
+	NSImage *image = sCachedFlaggedImages[inFlagged][color];
 	if (image)
 		return image;
 		
@@ -1523,7 +1523,7 @@ static NSMutableDictionary *sCachedFlaggedImages[2] = {nil, nil};
 		sCachedFlaggedImages[inFlagged] = [[NSMutableDictionary alloc] initWithCapacity:0];
 	NSSize size = NSMakeSize(16, 16);
 	image = [[[NSImage alloc] initWithSize:size] autorelease];
-	[sCachedFlaggedImages[inFlagged] setObject:image forKey:color];
+	sCachedFlaggedImages[inFlagged][color] = image;
 
 	static NSShadow *shadow = nil;
 	if (!shadow) {
@@ -1566,7 +1566,7 @@ static NSMutableDictionary *sCachedFlaggedImages[2] = {nil, nil};
 	else {
 		NSArray *labels = [[NSUserDefaults standardUserDefaults] objectForKey:PVLabels];
 		int index = MIN([labels count] - 1, inLabel - 1);
-		return [[labels objectAtIndex:index] objectForKey:PVLabelTitle];
+		return labels[index][PVLabelTitle];
 	}
 }
 

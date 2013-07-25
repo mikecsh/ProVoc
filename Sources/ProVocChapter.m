@@ -51,7 +51,7 @@
 
 -(void)insertChild:(id)inChild atIndex:(int)inIndex
 {
-	[self insertChildren:[NSArray arrayWithObject:inChild] atIndex:inIndex];
+	[self insertChildren:@[inChild] atIndex:inIndex];
 }
 
 -(void)insertChildren:(NSArray *)inChildren atIndex:(int)inIndex
