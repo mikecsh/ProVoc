@@ -351,7 +351,9 @@ static QTMovieView *sMovieView = nil;
 			sSlideNumber--;
 			[sMovieView gotoBeginning:nil];
 			[sMovieView play:nil];
-		} else {
+		}
+        else
+        {
 			sSlideNumber--;
 			sPlayPause = YES;
 		}

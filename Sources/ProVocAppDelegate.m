@@ -23,7 +23,6 @@
 #import "ProVocServiceProvider.h"
 
 #import "ARAboutDialog.h"
-#import <ARCheckForUpdates/ARCheckForUpdates.h>
 
 @implementation ProVocAppDelegate
 
@@ -167,19 +166,6 @@
 	defaultValues[ProVocShowStartingPoint] = @YES;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
-
-    ARUpdateManager *updater = [ARUpdateManager sharedManager];
-	[updater setIsSoftwareUpdate:YES];
-	[updater setServerName:@"www.arizona-software.ch"];
-	[updater setServerPath:@"/updates/"];
-//    [updater setLocalPath:[[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist" inDirectory:@"Updates"] stringByDeletingLastPathComponent]];
-    [updater setName:@"provoc"];
-	[updater setUpdateBlacklist:YES];
-	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"Updated To 2.7"]) {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Updated To 2.7"];
-		[updater setAutoCheck:YES];
-	}
-	[updater insertPreferencesIntoView:[[ProVocPreferences sharedPreferences] updateView]];
 }
 
 -(void)awakeFromNib
@@ -231,7 +217,8 @@
 
 -(IBAction)checkForUpdates:(id)inSender
 {
-    [[ARUpdateManager sharedManager] checkForUpdates:inSender];
+    NSBeep();
+    NSLog(@"%s - this should be removed, depend on App Store update mechanism instead", __func__);
 }
 
 -(BOOL)applicationShouldOpenUntitledFile:(NSApplication *)inSender

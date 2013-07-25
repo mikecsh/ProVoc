@@ -240,7 +240,7 @@
 	if (!lastAnswered)
 		return [[NSDate date] beginningOfDay];
 	else
-		return [lastAnswered addTimeInterval:[self reviewInterval]];
+		return [lastAnswered dateByAddingTimeInterval:[self reviewInterval]];
 }
 
 -(NSTimeInterval)reviewInterval

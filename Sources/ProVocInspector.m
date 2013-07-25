@@ -17,8 +17,7 @@
 #import "WindowExtensions.h"
 #import "BezierPathExtensions.h"
 #import "AppleScriptExtensions.h"
-#import <ARLeopardSoundRecorder/ARLeopardSoundRecorderController.h>
-#import <ARSequenceGrabber/ARSequenceGrabber.h>
+#import "SoundRecorderController.h"
 #import <QTKit/QTKit.h>
 
 @implementation ProVocInspector
@@ -123,14 +122,24 @@
 -(void)setPreferredDisplayState:(BOOL)inDisplay
 {
 	if (mPreferredDisplayState != inDisplay)
-		if (inDisplay) {
+    {
+		if (inDisplay)
+        {
 			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"InspectorPreferredVisible"] && ![self isVisible])
-				[self toggle];
-		} else {
+            {
+                [self toggle];
+            }
+		}
+        else
+        {
 			[[NSUserDefaults standardUserDefaults] setBool:[self isVisible] forKey:@"InspectorPreferredVisible"];
 			if ([self isVisible])
-				[self toggle];
+            {
+                [self toggle];
+            }
 		}
+    }
+    
 	mPreferredDisplayState = inDisplay;
 }
 
@@ -355,11 +364,17 @@
 -(void)importAudio:(NSString *)inKey
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	if ([openPanel runModalForTypes:[NSSound soundUnfilteredFileTypes]] == NSOKButton) {
+    [openPanel setAllowedFileTypes:[NSSound soundUnfilteredTypes]];
+    
+	if ([openPanel runModal] == NSOKButton)
+    {
 		NSEnumerator *enumerator = [mSelectedWords objectEnumerator];
 		ProVocWord *word;
+        
 		while (word = [enumerator nextObject])
+        {
 			[mDocument setAudioFile:[openPanel filename] forKey:inKey ofWord:word];
+        }
 	}
 }
 
@@ -380,7 +395,9 @@
 	[openPanel setPrompt:NSLocalizedString(@"Export Audio Panel Prompt", @"")];
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setCanChooseFiles:NO];
-	if ([openPanel runModalForTypes:nil] == NSOKButton) {
+    
+	if ([openPanel runModal] == NSOKButton)
+    {
 		NSString *nameSelectorName = [inKey isEqual:@"Source"] ? @"sourceWord" : @"targetWord";
 		NSString *otherNameSelectorName = [inKey isEqual:@"Source"] ? @"targetWord" : @"sourceWord";
 		NSDictionary *info = @{@"Directory": [openPanel filename], @"Key": inKey, @"NameSelectorName": nameSelectorName, @"OtherNameSelectorName": otherNameSelectorName, @"Document": mDocument};
@@ -418,23 +435,28 @@
 	[self removeAudio:@"Target" language:[mDocument targetLanguage]];
 }
 
--(ARLeopardSoundRecorderController *)sharedSoundRecorderController
+-(SoundRecorderController *)sharedSoundRecorderController
 {
-	if ([NSApp systemVersion] < 0x1050) {
+	if ([NSApp systemVersion] < 0x1050)
+    {
 		int result = NSRunAlertPanel(NSLocalizedString(@"Leopard Only Feature Title", @""), NSLocalizedString(@"Leopard Only Feature Message", @""), NSLocalizedString(@"OK", @""), NSLocalizedString(@"Leopard Only Feature Download Button", @""), nil);
 		if (result == NSAlertAlternateReturn) {
 			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:NSLocalizedString(@"Leopard Only Feature Download URL", @"")]];
 		}
 		return nil;
-	} else
-		return [ARLeopardSoundRecorderController sharedController];
+	}
+    
+    return [SoundRecorderController sharedController];
 }
 
 -(void)recordAudio:(NSString *)inKey
 {
 	if (([[NSApp currentEvent] modifierFlags] & NSAlternateKeyMask) == 0)
+    {
 		[self recordAudioImmediately:inKey];
-	else if ([[self sharedSoundRecorderController] runModal]) {
+    }
+	else if ([[self sharedSoundRecorderController] runModal])
+    {
 		ProVocWord *word = [self selectedWord];
 		[mDocument willChangeWord:word];
 		[mDocument setAudioFile:[[self sharedSoundRecorderController] recordedFile] forKey:inKey ofWord:word];
@@ -460,7 +482,10 @@
 -(IBAction)importImage:(id)inSender
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	if ([openPanel runModalForTypes:[NSImage imageUnfilteredFileTypes]] == NSOKButton) {
+    [openPanel setAllowedFileTypes:[NSImage imageUnfilteredFileTypes]];
+    
+	if ([openPanel runModal] == NSOKButton)
+    {
 		NSEnumerator *enumerator = [mSelectedWords objectEnumerator];
 		ProVocWord *word;
 		while (word = [enumerator nextObject])
@@ -475,7 +500,9 @@
 	[openPanel setPrompt:NSLocalizedString(@"Export Image Panel Prompt", @"")];
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setCanChooseFiles:NO];
-	if ([openPanel runModalForTypes:nil] == NSOKButton) {
+    
+	if ([openPanel runModal] == NSOKButton)
+    {
 		NSDictionary *info = @{@"Directory": [openPanel filename], @"Document": mDocument};
 		[mSelectedWords makeObjectsPerformSelector:@selector(exportImage:) withObject:info];
 	}
@@ -497,7 +524,7 @@ static BOOL sRecording = NO;
 {
 	if (!sRecording) {
 		sRecording = YES;
-		NSImage *image = [[ARSequenceGrabber sharedGrabber] captureImage];
+		NSImage *image = [[SoundRecorderController sharedGrabber] captureImage];
 		sRecording = NO;
 		if (image) {
 			NSEnumerator *enumerator = [mSelectedWords objectEnumerator];
@@ -546,7 +573,7 @@ static BOOL sRecording = NO;
 {
 	if (!sRecording) {
 		sRecording = YES;
-		NSString *file = [[ARSequenceGrabber sharedGrabber] captureMovie];
+		NSString *file = [[SoundRecorderController sharedGrabber] captureMovie];
 		sRecording = NO;
 		if (file) {
 			NSEnumerator *enumerator = [mSelectedWords objectEnumerator];
@@ -629,7 +656,7 @@ static BOOL sRecording = NO;
 
 -(NSImage *)playSourceAudioIcon
 {
-	if ([mSoundToPlay isEqual:@"Source"] || [self selectedWord] == mPlayingSoundWord && [mPlayingSoundKey isEqual:@"Source"])
+	if ([mSoundToPlay isEqual:@"Source"] || ([self selectedWord] == mPlayingSoundWord && [mPlayingSoundKey isEqual:@"Source"]))
 		return [NSImage imageNamed:@"SpeakerOn"];
 	else
 		return [NSImage imageNamed:@"SpeakerOff"];
@@ -637,7 +664,7 @@ static BOOL sRecording = NO;
 
 -(NSImage *)playTargetAudioIcon
 {
-	if ([mSoundToPlay isEqual:@"Target"] || [self selectedWord] == mPlayingSoundWord && [mPlayingSoundKey isEqual:@"Target"])
+	if ([mSoundToPlay isEqual:@"Target"] || ([self selectedWord] == mPlayingSoundWord && [mPlayingSoundKey isEqual:@"Target"]))
 		return [NSImage imageNamed:@"SpeakerOn"];
 	else
 		return [NSImage imageNamed:@"SpeakerOff"];

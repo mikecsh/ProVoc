@@ -9,15 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 #import "ARInspector.h"
-#import "ProVocDocument.h";
-#import "ProVocWord.h";
+#import "ProVocDocument.h"
+#import "ProVocWord.h"
 
 #define ProVocSoundDidStartPlayingNotification @"ProVocSoundDidStartPlayingNotification"
 #define ProVocSoundDidStopPlayingNotification @"ProVocSoundDidStopPlayingNotification"
 
 @class ProVocImageView, ProVocMovieView;
 
-@interface ProVocInspector : ARInspector {
+@interface ProVocInspector : ARInspector<NSWindowDelegate> {
 	IBOutlet NSView *mTextView;
 	IBOutlet NSView *mAudioView;
 	IBOutlet NSView *mImageView;

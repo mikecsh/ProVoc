@@ -29,15 +29,14 @@
     if (self = [self initWithWindowNibName:@"Preferences"]) {
 		[self loadWindow];
 
-		mPaneViews = [[NSArray alloc] initWithObjects:mGeneralView, mTrainingView, mLanguageView, mFontView, mLabelView, mUpdateView, nil];
-		mPaneImageNames = [[NSArray alloc] initWithObjects:@"Preferences", @"TrainingPreferences", @"LanguagePreferences", @"FontPreferences", @"LabelPreferences", @"UpdatePreferences", nil];
+		mPaneViews = [[NSArray alloc] initWithObjects:mGeneralView, mTrainingView, mLanguageView, mFontView, mLabelView, nil];
+		mPaneImageNames = [[NSArray alloc] initWithObjects:@"Preferences", @"TrainingPreferences", @"LanguagePreferences", @"FontPreferences", @"LabelPreferences", nil];
 		mPaneLabels = [[NSArray alloc] initWithObjects:
 							NSLocalizedString(@"General Preference Pane Label", @""),
 							NSLocalizedString(@"Training Preference Pane Label", @""),
 							NSLocalizedString(@"Language Preference Pane Label", @""),
 							NSLocalizedString(@"Font Preference Pane Label", @""),
 							NSLocalizedString(@"Label Preference Pane Label", @""),
-							NSLocalizedString(@"Update Preference Pane Label", @""),
 						nil];
 
 		[self setupToolbar];
@@ -325,11 +324,6 @@
 -(void)selectPreferences:(id)inSender
 {
 	[self selectPaneAtIndex:[mPaneLabels indexOfObject:[inSender itemIdentifier]]];
-}
-
--(NSView *)updateView
-{
-	return mUpdateView;
 }
 
 @end

@@ -27,12 +27,12 @@
 
 -(NSDate *)previousDay
 {
-	return [self addTimeInterval:-24 * 60 * 60];
+	return [self dateByAddingTimeInterval:-24 * 60 * 60];
 }
 
 -(NSDate *)nextDay
 {
-	return [self addTimeInterval:24 * 60 * 60];
+	return [self dateByAddingTimeInterval:24 * 60 * 60];
 }
 
 -(NSDate *)beginningOfWeek
@@ -47,12 +47,12 @@
 
 -(NSDate *)previousWeek
 {
-	return [self addTimeInterval:-7 * 24 * 60 * 60];
+	return [self dateByAddingTimeInterval:-7 * 24 * 60 * 60];
 }
 
 -(NSDate *)nextWeek
 {
-	return [self addTimeInterval:7 * 24 * 60 * 60];
+	return [self dateByAddingTimeInterval:7 * 24 * 60 * 60];
 }
 
 -(NSDate *)beginningOfMonth

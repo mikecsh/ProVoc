@@ -120,7 +120,9 @@
 			float swap = topMargin;
 			topMargin = bottomMargin;
 			bottomMargin = swap;
-		} else {
+		}
+        else
+        {
 			float swap = leftMargin;
 			leftMargin = rightMargin;
 			rightMargin = swap;

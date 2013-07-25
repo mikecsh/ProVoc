@@ -1131,8 +1131,11 @@ static NSTimeInterval waitTime = 0;
 			NSTableColumn *column = columnIndex >= 0 ? [inTableView tableColumns][columnIndex] : inTableColumn;
 			[self tableView:inTableView autoSizeTableColumn:column];
 			waitTime = [NSDate timeIntervalSinceReferenceDate] + 0.1;
-		} else
-			lastColumnClick = YES;
+		}
+        else
+		{
+            lastColumnClick = YES;
+        }
 }
 
 @end

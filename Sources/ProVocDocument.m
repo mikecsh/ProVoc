@@ -1354,7 +1354,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 		id labelsToTest = [self labelsToTest];
 		ProVocWord *word;
 		while (word = [enumerator nextObject])
-			if ((![self testMarked] || ([word mark] && [labelsToTest containsIndex:0] || [labelsToTest containsIndex:[word label] + 1]))
+			if ((![self testMarked] || (([word mark] && [labelsToTest containsIndex:0]) || [labelsToTest containsIndex:[word label] + 1]))
 				&& (!mTestOldWords || [latestDate compare:[word lastAnswered]] != NSOrderedAscending))
 				[wordsToTest addObject:word];
 	}

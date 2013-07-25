@@ -229,7 +229,9 @@
 					[line relativeLineToPoint:NSMakePoint(r.size.width, 0)];
 					[line setLineWidth:0.5];
 					[line stroke];
-				} else {
+				}
+                else
+                {
 					ProVocWord *proVocWord = word[@"Word"];
 					NSRect r = NSMakeRect(0, top, [self wordWidth], height + [self interWordMargin]);
 					NSAttributedString *string = [[NSAttributedString alloc] initWithString:[proVocWord sourceWord] attributes:[self stringAttributesForColumn:0]];

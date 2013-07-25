@@ -35,8 +35,7 @@
 	IBOutlet NSView *mGeneralView;
 	IBOutlet NSView *mLanguageView;
 	IBOutlet NSView *mFontView;
-	IBOutlet NSView *mLabelView; 
-	IBOutlet NSView *mUpdateView;
+	IBOutlet NSView *mLabelView;
 	IBOutlet NSView *mTrainingView;
 	
     IBOutlet NSTableView *mLanguageTableView;

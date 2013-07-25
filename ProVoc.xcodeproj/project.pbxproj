@@ -141,8 +141,6 @@
 		A728599D0A1600E30082642D /* ProVocSubmitter.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72859930A1600E30082642D /* ProVocSubmitter.nib */; };
 		A728599E0A1600E30082642D /* ProVocTester.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72859950A1600E30082642D /* ProVocTester.nib */; };
 		A72859E40A16010A0082642D /* ProVoc Help in Resources */ = {isa = PBXBuildFile; fileRef = A72859A30A16010A0082642D /* ProVoc Help */; };
-		A7285B7C0A1601510082642D /* ARCheckForUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */; };
-		A7285B800A16017B0082642D /* ARSequenceGrabber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */; };
 		A7285B920A1601AB0082642D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B8D0A1601AB0082642D /* AddressBook.framework */; };
 		A7285B930A1601AB0082642D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B8E0A1601AB0082642D /* Carbon.framework */; };
 		A7285B940A1601AB0082642D /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7285B8F0A1601AB0082642D /* QTKit.framework */; };
@@ -217,8 +215,6 @@
 		A760F1C60A288B9B00C6128B /* ProVocViewOptions.nib in Resources */ = {isa = PBXBuildFile; fileRef = A760F1C40A288B9B00C6128B /* ProVocViewOptions.nib */; };
 		A76349B50A16054E00054021 /* ProVoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = A76349B30A16054E00054021 /* ProVoc.icns */; };
 		A76349B60A16054E00054021 /* ProVocFile.icns in Resources */ = {isa = PBXBuildFile; fileRef = A76349B40A16054E00054021 /* ProVocFile.icns */; };
-		A76349D30A1605DA00054021 /* ARCheckForUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */; };
-		A76349D50A1605DA00054021 /* ARSequenceGrabber.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */; };
 		A76349DC0A1605ED00054021 /* PlugIns in CopyFiles */ = {isa = PBXBuildFile; fileRef = A72859E60A1601170082642D /* PlugIns */; };
 		A78A62AC0A895A220091CE4C /* ProVocDocument+WidgetLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A78A62AA0A895A220091CE4C /* ProVocDocument+WidgetLog.m */; };
 		A7B126CF0A1D5A0F003B68B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7B126CD0A1D5A0F003B68B0 /* InfoPlist.strings */; };
@@ -231,8 +227,7 @@
 		A7B129AB0A1D6DF6003B68B0 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B129A80A1D6DF6003B68B0 /* main.nib */; };
 		A7B129AF0A1D6E4D003B68B0 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B129AC0A1D6E4D003B68B0 /* main.nib */; };
 		A7B129B30A1D6E69003B68B0 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B129B00A1D6E69003B68B0 /* main.nib */; };
-		A7F2CCED0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */; };
-		A7F2CD0D0CDDF4A6003892A7 /* ARLeopardSoundRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */; };
+		E2187E6117A1BCC500D75E78 /* SoundRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2187E6017A1BB1B00D75E78 /* SoundRecorderController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,9 +278,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A76349D30A1605DA00054021 /* ARCheckForUpdates.framework in CopyFiles */,
-				A7F2CCED0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework in CopyFiles */,
-				A76349D50A1605DA00054021 /* ARSequenceGrabber.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,8 +495,6 @@
 		A72859960A1600E30082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocTester.nib; sourceTree = "<group>"; };
 		A72859A40A16010A0082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/ProVoc Help"; sourceTree = "<group>"; };
 		A72859E60A1601170082642D /* PlugIns */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PlugIns; sourceTree = SOURCE_ROOT; };
-		A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARCheckForUpdates.framework; sourceTree = "<group>"; };
-		A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARSequenceGrabber.framework; sourceTree = "<group>"; };
 		A7285B8D0A1601AB0082642D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = /System/Library/Frameworks/AddressBook.framework; sourceTree = "<absolute>"; };
 		A7285B8E0A1601AB0082642D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		A7285B8F0A1601AB0082642D /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
@@ -669,7 +659,8 @@
 		A7B129AE0A1D6E4D003B68B0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/main.nib; sourceTree = "<group>"; };
 		A7B129B10A1D6E69003B68B0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/main.nib; sourceTree = "<group>"; };
 		A7B129B20A1D6E69003B68B0 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/main.nib; sourceTree = "<group>"; };
-		A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARLeopardSoundRecorder.framework; sourceTree = "<group>"; };
+		E2187E5F17A1BB1B00D75E78 /* SoundRecorderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundRecorderController.h; sourceTree = "<group>"; };
+		E2187E6017A1BB1B00D75E78 /* SoundRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundRecorderController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -678,9 +669,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
-				A7285B7C0A1601510082642D /* ARCheckForUpdates.framework in Frameworks */,
-				A7F2CD0D0CDDF4A6003892A7 /* ARLeopardSoundRecorder.framework in Frameworks */,
-				A7285B800A16017B0082642D /* ARSequenceGrabber.framework in Frameworks */,
 				A7285B920A1601AB0082642D /* AddressBook.framework in Frameworks */,
 				A7285B930A1601AB0082642D /* Carbon.framework in Frameworks */,
 				A7285B940A1601AB0082642D /* QTKit.framework in Frameworks */,
@@ -722,9 +710,6 @@
 		1058C7A6FEA54F5311CA2CBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A7285B7B0A1601510082642D /* ARCheckForUpdates.framework */,
-				A7F2CCEC0CDDF32B003892A7 /* ARLeopardSoundRecorder.framework */,
-				A7285B7F0A16017B0082642D /* ARSequenceGrabber.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -900,6 +885,8 @@
 				A7572EB60A18CD7D00E4912F /* ProVocTimer.m */,
 				A75756B50A1D30CE00F8F569 /* ProVocAppleScriptSupport.h */,
 				A75756B60A1D30CE00F8F569 /* ProVocAppleScriptSupport.m */,
+				E2187E5F17A1BB1B00D75E78 /* SoundRecorderController.h */,
+				E2187E6017A1BB1B00D75E78 /* SoundRecorderController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1444,6 +1431,7 @@
 				A72856E00A15FF7A0082642D /* DateExtensions.m in Sources */,
 				A72856E10A15FF7A0082642D /* ArchiverExtensions.m in Sources */,
 				A72856F20A15FF880082642D /* ProVocWord.m in Sources */,
+				E2187E6117A1BCC500D75E78 /* SoundRecorderController.m in Sources */,
 				A72856F30A15FF880082642D /* ProVocPage.m in Sources */,
 				A72856F40A15FF880082642D /* ProVocChapter.m in Sources */,
 				A72856F50A15FF880082642D /* ProVocData.m in Sources */,
