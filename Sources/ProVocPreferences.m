@@ -8,8 +8,6 @@
 
 #import "ProVocPreferences.h"
 #import "ProVocDocument+Lists.h"
-#import "iPodManager.h"
-#import "iPodController.h"
 #import "ProVocInspector.h"
 #import "ProVocBackground.h"
 #import "ProVocStartingPoint.h"
@@ -31,15 +29,14 @@
     if (self = [self initWithWindowNibName:@"Preferences"]) {
 		[self loadWindow];
 
-		mPaneViews = [[NSArray alloc] initWithObjects:mGeneralView, mTrainingView, mLanguageView, mFontView, mLabelView, miPodView, mUpdateView, nil];
-		mPaneImageNames = [[NSArray alloc] initWithObjects:@"Preferences", @"TrainingPreferences", @"LanguagePreferences", @"FontPreferences", @"LabelPreferences", @"iPodPreferences", @"UpdatePreferences", nil];
+		mPaneViews = [[NSArray alloc] initWithObjects:mGeneralView, mTrainingView, mLanguageView, mFontView, mLabelView, mUpdateView, nil];
+		mPaneImageNames = [[NSArray alloc] initWithObjects:@"Preferences", @"TrainingPreferences", @"LanguagePreferences", @"FontPreferences", @"LabelPreferences", @"UpdatePreferences", nil];
 		mPaneLabels = [[NSArray alloc] initWithObjects:
 							NSLocalizedString(@"General Preference Pane Label", @""),
 							NSLocalizedString(@"Training Preference Pane Label", @""),
 							NSLocalizedString(@"Language Preference Pane Label", @""),
 							NSLocalizedString(@"Font Preference Pane Label", @""),
 							NSLocalizedString(@"Label Preference Pane Label", @""),
-							NSLocalizedString(@"iPod Preference Pane Label", @""),
 							NSLocalizedString(@"Update Preference Pane Label", @""),
 						nil];
 
@@ -72,15 +69,12 @@
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.StartingPoint" options:NSKeyValueObservingOptionNew context:nil];
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.reviewLearningFactor" options:NSKeyValueObservingOptionNew context:nil];
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.reviewTrainingFactor" options:NSKeyValueObservingOptionNew context:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iPodDidChange:) name:iPodDidChangeNotification object:nil];
-		[self iPodDidChange:nil];
     }
     return self;
 }
 
 -(void)dealloc
 {
-	[miPodContent release];
 	[super dealloc];
 }
 
@@ -385,7 +379,8 @@
 		return [[labels objectAtIndex:index] objectForKey:PVLabelTitle];
 	if ([inKey hasPrefix:@"labelColorData"])
 		return [[labels objectAtIndex:index] objectForKey:PVLabelColorData];
-	return [super valueForUndefinedKey:inKey];
+	
+	return nil;//[super valueForUndefinedKey:inKey];
 }
 
 -(NSString *)sourceFontCaption
@@ -438,136 +433,6 @@
 
 @end
 
-@implementation ProVocPreferences (iPod)
-
--(void)openiPodView:(id)inSender
-{
-	[self selectPaneAtIndex:5];
-	[self showWindow:nil];
-}
-
--(BOOL)tooManyiPodNotes
-{
-	return [miPodContent numberOfNotes] > 1000;
-}
-
--(void)iPodDidChange:(NSNotification *)inNotification
-{
-	[self willChangeValueForKey:@"tooManyiPodNotes"];
-	[self willChangeValueForKey:@"iPodTotal"];
-	[miPodContent release];
-	miPodContent = [[iPodContent currentiPodContent] retain];
-	[self didChangeValueForKey:@"tooManyiPodNotes"];
-	[self didChangeValueForKey:@"iPodTotal"];
-	[miPodContentsOutlineView reloadData];
-	[self willChangeValueForKey:@"iPodConnected"];
-	[self didChangeValueForKey:@"iPodConnected"];
-}
-
--(int)iPodContentCount
-{
-	return [[NSUserDefaults standardUserDefaults] integerForKey:@"iPodContentCount"];
-}
-
--(void)setIPodContentCount:(int)inCount
-{
-	[self willChangeValueForKey:@"iPodTotal"];
-	[[NSUserDefaults standardUserDefaults] setInteger:inCount forKey:@"iPodContentCount"];
-	[miPodContentsOutlineView reloadData];
-	[self didChangeValueForKey:@"iPodTotal"];
-}
-
--(int)iPodTotal
-{
-	return [self iPodContentCount] == 0 ? [miPodContent numberOfWords] : [miPodContent numberOfNotes];
-}
-
--(BOOL)iPodConnected
-{
-	return [[iPodManager sharedManager] iPodPath] != nil;
-}
-
--(BOOL)canDeleteSelectediPodContent
-{
-	return [[miPodContentsOutlineView selectedRowIndexes] count] > 0;
-}
-
--(IBAction)deleteSelectediPodContent:(id)inSender
-{
-	if (NSRunCriticalAlertPanel(NSLocalizedString(@"Delete Selected iPod Content Title", @""), NSLocalizedString(@"Delete Selected iPod Content Message", @""), NSLocalizedString(@"Delete Selected iPod Content Delete Button", @""), NSLocalizedString(@"Delete Selected iPod Content Cancel Button", @""), nil) == NSAlertAlternateReturn)
-		return;
-	NSEnumerator *enumerator = [miPodContentsOutlineView selectedRowEnumerator];
-	id row;
-	while (row = [enumerator nextObject]) {
-		NSString *path = [[miPodContentsOutlineView itemAtRow:[row intValue]] path];
-		[[NSFileManager defaultManager] removeFileAtPath:path handler:nil];
-	}
-	[iPodController updateiPodIndex];
-	[self iPodDidChange:nil];
-}
-
--(IBAction)deleteiPodNotes:(id)inSender
-{
-	if (NSRunCriticalAlertPanel(NSLocalizedString(@"Delete All iPod Notes Title", @""), NSLocalizedString(@"Delete All iPod Notes Message", @""), NSLocalizedString(@"Delete All iPod Notes Delete Button", @""), NSLocalizedString(@"Delete All iPod Notes Cancel Button", @""), nil) == NSAlertAlternateReturn)
-		return;
-	NSString *path = [iPodController iPodNotePath];
-	NSEnumerator *enumerator = [[[NSFileManager defaultManager] directoryContentsAtPath:path] objectEnumerator];
-	NSString *item;
-	while (item = [enumerator nextObject])
-		[[NSFileManager defaultManager] removeFileAtPath:[path stringByAppendingPathComponent:item] handler:nil];
-
-	[self iPodDidChange:nil];
-}
-
--(IBAction)removeUnusedAudio:(id)inSender
-{
-	[[ProVocInspector sharedInspector] removeMediaOtherThan:[iPodController usedMedia]];
-}
-
--(IBAction)updateiPodIndex:(id)inSender
-{
-	[iPodController updateiPodIndex];
-}
-
--(id)itemForItem:(id)inItem
-{
-	if (!inItem)
-		inItem = miPodContent;
-	return inItem;
-}
-
--(int)outlineView:(NSOutlineView *)inOutlineView numberOfChildrenOfItem:(id)inItem
-{
-	return [[[self itemForItem:inItem] children] count];
-}
-
--(id)outlineView:(NSOutlineView *)inOutlineView child:(int)inIndex ofItem:(id)inItem
-{
-	return [[[self itemForItem:inItem] children] objectAtIndex:inIndex];
-}
-
--(BOOL)outlineView:(NSOutlineView *)inOutlineView isItemExpandable:(id)inItem
-{
-	return [inItem isExpandable];
-}
-
--(id)outlineView:(NSOutlineView *)inOutlineView objectValueForTableColumn:(NSTableColumn *)inTableColumn byItem:(id)inItem
-{
-	return [inItem nameWithCountOf:[self iPodContentCount]];
-}
-
--(void)outlineViewSelectionDidChange:(NSNotification *)inNotification
-{
-	[self willChangeValueForKey:@"canDeleteSelectediPodContent"];
-	[self didChangeValueForKey:@"canDeleteSelectediPodContent"];
-}
-
--(BOOL)outlineView:(NSOutlineView *)inOutlineView shouldEditTableColumn:(NSTableColumn *)inTableColumn item:(id)inItem
-{
-	return NO;
-}
-
-@end
 
 @implementation ProVocPreferences (Background)
 

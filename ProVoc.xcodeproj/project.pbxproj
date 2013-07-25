@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -84,7 +84,6 @@
 		A72856F60A15FF880082642D /* ProVocData+Undo.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856EB0A15FF880082642D /* ProVocData+Undo.m */; };
 		A72856F70A15FF880082642D /* ProVocPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856ED0A15FF880082642D /* ProVocPreset.m */; };
 		A72856F80A15FF880082642D /* ProVocHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856EF0A15FF880082642D /* ProVocHistory.m */; };
-		A72856F90A15FF880082642D /* iPodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856F10A15FF880082642D /* iPodManager.m */; };
 		A728571A0A15FFA20082642D /* ProVocCardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856FD0A15FFA20082642D /* ProVocCardsView.m */; };
 		A728571B0A15FFA20082642D /* ProVocPrintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72856FF0A15FFA20082642D /* ProVocPrintView.m */; };
 		A728571C0A15FFA20082642D /* ProVocTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857010A15FFA20082642D /* ProVocTableView.m */; };
@@ -112,7 +111,6 @@
 		A72857600A15FFB50082642D /* ProVocTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A728573C0A15FFB50082642D /* ProVocTester.m */; };
 		A72857610A15FFB50082642D /* ProVocMCQTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A728573E0A15FFB50082642D /* ProVocMCQTester.m */; };
 		A72857620A15FFB50082642D /* ProVocSilentTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857400A15FFB50082642D /* ProVocSilentTester.m */; };
-		A72857630A15FFB50082642D /* iPodController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857420A15FFB50082642D /* iPodController.m */; };
 		A72857640A15FFB50082642D /* ProVocPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857440A15FFB50082642D /* ProVocPreferences.m */; };
 		A72857650A15FFB50082642D /* ProVocActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857460A15FFB50082642D /* ProVocActionController.m */; };
 		A72857660A15FFB50082642D /* ARAboutDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A72857480A15FFB50082642D /* ARAboutDialog.m */; };
@@ -129,7 +127,6 @@
 		A72857D80A15FFF40082642D /* iPodNoteCharacters.xml in Resources */ = {isa = PBXBuildFile; fileRef = A72857D40A15FFF40082642D /* iPodNoteCharacters.xml */; };
 		A72857FA0A1600670082642D /* ARAbout.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857DC0A1600670082642D /* ARAbout.nib */; };
 		A72857FB0A1600670082642D /* ARLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A72857DE0A1600670082642D /* ARLocalizable.strings */; };
-		A72857FC0A1600670082642D /* iPodController.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857E00A1600670082642D /* iPodController.nib */; };
 		A72857FD0A1600670082642D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A72857E20A1600670082642D /* Localizable.strings */; };
 		A72857FE0A1600670082642D /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857E40A1600670082642D /* Preferences.nib */; };
 		A72857FF0A1600670082642D /* ProVocAction.nib in Resources */ = {isa = PBXBuildFile; fileRef = A72857E60A1600670082642D /* ProVocAction.nib */; };
@@ -352,7 +349,6 @@
 		A7227FB00AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Italian; path = Italian.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A7227FB10AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Italian; path = Italian.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
 		A7227FB20AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A7227FB30AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/iPodController.nib; sourceTree = "<group>"; };
 		A7227FB40AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A7227FB50AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		A7227FB60AD5E6B800DF738C /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/Preferences.nib; sourceTree = "<group>"; };
@@ -411,8 +407,6 @@
 		A72856ED0A15FF880082642D /* ProVocPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocPreset.m; sourceTree = "<group>"; };
 		A72856EE0A15FF880082642D /* ProVocHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocHistory.h; sourceTree = "<group>"; };
 		A72856EF0A15FF880082642D /* ProVocHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocHistory.m; sourceTree = "<group>"; };
-		A72856F00A15FF880082642D /* iPodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPodManager.h; sourceTree = "<group>"; };
-		A72856F10A15FF880082642D /* iPodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPodManager.m; sourceTree = "<group>"; };
 		A72856FC0A15FFA20082642D /* ProVocCardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocCardsView.h; sourceTree = "<group>"; };
 		A72856FD0A15FFA20082642D /* ProVocCardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocCardsView.m; sourceTree = "<group>"; };
 		A72856FE0A15FFA20082642D /* ProVocPrintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocPrintView.h; sourceTree = "<group>"; };
@@ -467,8 +461,6 @@
 		A728573E0A15FFB50082642D /* ProVocMCQTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocMCQTester.m; sourceTree = "<group>"; };
 		A728573F0A15FFB50082642D /* ProVocSilentTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocSilentTester.h; sourceTree = "<group>"; };
 		A72857400A15FFB50082642D /* ProVocSilentTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocSilentTester.m; sourceTree = "<group>"; };
-		A72857410A15FFB50082642D /* iPodController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPodController.h; sourceTree = "<group>"; };
-		A72857420A15FFB50082642D /* iPodController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPodController.m; sourceTree = "<group>"; };
 		A72857430A15FFB50082642D /* ProVocPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocPreferences.h; sourceTree = "<group>"; };
 		A72857440A15FFB50082642D /* ProVocPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProVocPreferences.m; sourceTree = "<group>"; };
 		A72857450A15FFB50082642D /* ProVocActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProVocActionController.h; sourceTree = "<group>"; };
@@ -496,7 +488,6 @@
 		A72857D90A1600000082642D /* iPod.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = iPod.scpt; sourceTree = "<group>"; };
 		A72857DD0A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ARAbout.nib; sourceTree = "<group>"; };
 		A72857DF0A1600670082642D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
-		A72857E10A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/iPodController.nib; sourceTree = "<group>"; };
 		A72857E30A1600670082642D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A72857E50A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Preferences.nib; sourceTree = "<group>"; };
 		A72857E70A1600670082642D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ProVocAction.nib; sourceTree = "<group>"; };
@@ -575,7 +566,6 @@
 		A75502000ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Danish; path = Danish.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A75502010ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Danish; path = Danish.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
 		A75502020ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Danish; path = Danish.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A75502030ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/iPodController.nib; sourceTree = "<group>"; };
 		A75502040ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Danish; path = Danish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A75502050ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		A75502060ADD061E00978910 /* Danish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Danish; path = Danish.lproj/Preferences.nib; sourceTree = "<group>"; };
@@ -617,7 +607,6 @@
 		A76348CB0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
 		A76348CC0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = French; path = French.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A76348CD0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A76348CE0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/iPodController.nib; sourceTree = "<group>"; };
 		A76348CF0A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A76348D00A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		A76348D10A16047700054021 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/Preferences.nib; sourceTree = "<group>"; };
@@ -629,7 +618,6 @@
 		A76348F00A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/ARLocalizable.strings; sourceTree = "<group>"; };
 		A76348F10A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = German; path = German.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A76348F20A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A76348F30A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/iPodController.nib; sourceTree = "<group>"; };
 		A76348F40A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A76348F50A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		A76348F60A16047C00054021 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/Preferences.nib; sourceTree = "<group>"; };
@@ -647,7 +635,6 @@
 		A7A266840ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Spanish; path = Spanish.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A7A266850ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Spanish; path = Spanish.lproj/DefaultPresets.xml; sourceTree = "<group>"; };
 		A7A266860ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A7A266870ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/iPodController.nib; sourceTree = "<group>"; };
 		A7A266880ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A7A266890ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		A7A2668A0ADEF1A50087DF7E /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/Preferences.nib; sourceTree = "<group>"; };
@@ -815,7 +802,6 @@
 				A728598D0A1600E30082642D /* ProVocDocument.nib */,
 				A72859950A1600E30082642D /* ProVocTester.nib */,
 				A72857E40A1600670082642D /* Preferences.nib */,
-				A72857E00A1600670082642D /* iPodController.nib */,
 				A72857E60A1600670082642D /* ProVocAction.nib */,
 				A72857EA0A1600670082642D /* ProVocBackground.nib */,
 				A728598B0A1600E30082642D /* ProVocCardController.nib */,
@@ -888,8 +874,6 @@
 				A728573E0A15FFB50082642D /* ProVocMCQTester.m */,
 				A728573F0A15FFB50082642D /* ProVocSilentTester.h */,
 				A72857400A15FFB50082642D /* ProVocSilentTester.m */,
-				A72857410A15FFB50082642D /* iPodController.h */,
-				A72857420A15FFB50082642D /* iPodController.m */,
 				A72857430A15FFB50082642D /* ProVocPreferences.h */,
 				A72857440A15FFB50082642D /* ProVocPreferences.m */,
 				A72857450A15FFB50082642D /* ProVocActionController.h */,
@@ -978,8 +962,6 @@
 				A72856ED0A15FF880082642D /* ProVocPreset.m */,
 				A72856EE0A15FF880082642D /* ProVocHistory.h */,
 				A72856EF0A15FF880082642D /* ProVocHistory.m */,
-				A72856F00A15FF880082642D /* iPodManager.h */,
-				A72856F10A15FF880082642D /* iPodManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1216,8 +1198,11 @@
 /* Begin PBXProject section */
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "ProVoc" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1255,7 +1240,6 @@
 				A72857D80A15FFF40082642D /* iPodNoteCharacters.xml in Resources */,
 				A72857FA0A1600670082642D /* ARAbout.nib in Resources */,
 				A72857FB0A1600670082642D /* ARLocalizable.strings in Resources */,
-				A72857FC0A1600670082642D /* iPodController.nib in Resources */,
 				A72857FD0A1600670082642D /* Localizable.strings in Resources */,
 				A72857FE0A1600670082642D /* Preferences.nib in Resources */,
 				A72857FF0A1600670082642D /* ProVocAction.nib in Resources */,
@@ -1466,7 +1450,6 @@
 				A72856F60A15FF880082642D /* ProVocData+Undo.m in Sources */,
 				A72856F70A15FF880082642D /* ProVocPreset.m in Sources */,
 				A72856F80A15FF880082642D /* ProVocHistory.m in Sources */,
-				A72856F90A15FF880082642D /* iPodManager.m in Sources */,
 				A728571A0A15FFA20082642D /* ProVocCardsView.m in Sources */,
 				A728571B0A15FFA20082642D /* ProVocPrintView.m in Sources */,
 				A728571C0A15FFA20082642D /* ProVocTableView.m in Sources */,
@@ -1494,7 +1477,6 @@
 				A72857600A15FFB50082642D /* ProVocTester.m in Sources */,
 				A72857610A15FFB50082642D /* ProVocMCQTester.m in Sources */,
 				A72857620A15FFB50082642D /* ProVocSilentTester.m in Sources */,
-				A72857630A15FFB50082642D /* iPodController.m in Sources */,
 				A72857640A15FFB50082642D /* ProVocPreferences.m in Sources */,
 				A72857650A15FFB50082642D /* ProVocActionController.m in Sources */,
 				A72857660A15FFB50082642D /* ARAboutDialog.m in Sources */,
@@ -1579,19 +1561,6 @@
 				A7A266830ADEF1A50087DF7E /* Spanish */,
 			);
 			name = ARLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		A72857E00A1600670082642D /* iPodController.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A72857E10A1600670082642D /* English */,
-				A76348CE0A16047700054021 /* French */,
-				A76348F30A16047C00054021 /* German */,
-				A7227FB30AD5E6B800DF738C /* Italian */,
-				A75502030ADD061E00978910 /* Danish */,
-				A7A266870ADEF1A50087DF7E /* Spanish */,
-			);
-			name = iPodController.nib;
 			sourceTree = "<group>";
 		};
 		A72857E20A1600670082642D /* Localizable.strings */ = {
@@ -1898,9 +1867,9 @@
 		A7B125AA0A1D50BE003B68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1914,7 +1883,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Add Files to Vocabulary";
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = YES;
@@ -1928,8 +1896,8 @@
 					ppc,
 					i386,
 				);
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1942,7 +1910,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Add Files to Vocabulary";
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = NO;
@@ -1952,9 +1919,9 @@
 		A7B126680A1D5701003B68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1968,7 +1935,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Add Text to Vocabulary";
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = YES;
@@ -1982,8 +1948,8 @@
 					ppc,
 					i386,
 				);
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1996,7 +1962,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Add Text to Vocabulary";
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = NO;
@@ -2006,9 +1971,9 @@
 		A7B128560A1D6367003B68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2022,7 +1987,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Get Contents of ProVoc Document";
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = YES;
@@ -2036,8 +2000,8 @@
 					ppc,
 					i386,
 				);
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2050,7 +2014,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Get Contents of ProVoc Document";
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = NO;
@@ -2060,6 +2023,7 @@
 		A7B1294E0A1D6A42003B68B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -2071,8 +2035,8 @@
 		A7B1294F0A1D6A42003B68B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				PRODUCT_NAME = Aggregate;
 				ZERO_LINK = NO;
@@ -2082,10 +2046,10 @@
 		C05733C808A9546B00998B17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = Sources/ProVoc_Prefix.pch;
@@ -2108,6 +2072,7 @@
 					ppc,
 					i386,
 				);
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/Frameworks\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
@@ -2128,7 +2093,6 @@
 			buildSettings = {
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 			};
 			name = Debug;
 		};
@@ -2137,7 +2101,6 @@
 			buildSettings = {
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 			};
 			name = Release;
 		};

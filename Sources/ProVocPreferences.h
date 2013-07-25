@@ -30,20 +30,16 @@
 #define PVLabelTitle @"Title"
 #define PVLabelColorData @"ColorData"
 
-@class iPodContent;
-
 @interface ProVocPreferences : NSWindowController
 {
 	IBOutlet NSView *mGeneralView;
 	IBOutlet NSView *mLanguageView;
 	IBOutlet NSView *mFontView;
 	IBOutlet NSView *mLabelView; 
-	IBOutlet NSView *miPodView;
 	IBOutlet NSView *mUpdateView;
 	IBOutlet NSView *mTrainingView;
 	
     IBOutlet NSTableView *mLanguageTableView;
-	IBOutlet NSOutlineView *miPodContentsOutlineView;
 	
 	IBOutlet NSWindow *mLanguageOptionsWindow;
 
@@ -51,7 +47,6 @@
 	NSArray *mPaneImageNames;
 	NSArray *mPaneLabels;
 	
-	iPodContent *miPodContent;
 }
 + (ProVocPreferences*)sharedPreferences;
 - (IBAction)updateDifficulty:(id)sender;
@@ -81,16 +76,5 @@
 -(void)selectPaneAtIndex:(unsigned)inIndex;
 -(void)setupToolbar;
 -(NSView *)updateView;
-
-@end
-
-@interface ProVocPreferences (iPod)
-
--(void)openiPodView:(id)inSender;
--(void)iPodDidChange:(NSNotification *)inNotification;
--(IBAction)deleteSelectediPodContent:(id)inSender;
--(IBAction)deleteiPodNotes:(id)inSender;
--(IBAction)removeUnusedAudio:(id)inSender;
--(IBAction)updateiPodIndex:(id)inSender;
 
 @end

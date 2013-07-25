@@ -12,7 +12,6 @@
 #import "ProVocPage.h"
 #import "ProVocChapter.h"
 #import "ProVocApplication.h"
-#import "iPodController.h"
 #import "ProVocImageView.h"
 #import "StringExtensions.h"
 #import "WindowExtensions.h"
@@ -1205,7 +1204,7 @@ error:
 		else
 			name = [NSString stringWithFormat:@"%@ - %@", [self sourceWord], [self targetWord]];
 	}
-	return [name iPodLinkString];
+	return name;
 }
 
 @end
@@ -1297,9 +1296,9 @@ error:
 {
 	NSString *media = [mMedia objectForKey:[self audioMediaKey:[inInfo objectForKey:@"Key"]]];
 	if (media) {
-		NSString *name = [[self performSelector:NSSelectorFromString([inInfo objectForKey:@"NameSelectorName"])] iPodLinkString];
+		NSString *name = [self performSelector:NSSelectorFromString([inInfo objectForKey:@"NameSelectorName"])];
 		if ([name length] == 0)
-			name = [[self performSelector:NSSelectorFromString([inInfo objectForKey:@"OtherNameSelectorName"])] iPodLinkString];
+			name = [self performSelector:NSSelectorFromString([inInfo objectForKey:@"OtherNameSelectorName"])];
 		if ([name length] == 0)
 			name = NSLocalizedString(@"No Name Media Placeholder", @"");
 		NSString *destination = [[[inInfo objectForKey:@"Directory"] stringByAppendingPathComponent:name] stringByAppendingPathExtension:[media pathExtension]];

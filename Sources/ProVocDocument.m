@@ -24,7 +24,6 @@
 #import "ProVocAppDelegate.h"
 #import "ProVocActionController.h"
 #import "ProVocHistoryView.h"
-#import "iPodManager.h"
 #import "ProVocInspector.h"
 #import "ProVocStartingPoint.h"
 #import "ProVocCardController.h"
@@ -120,8 +119,6 @@
 				name:PVRightRatioDidChangeNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reviewFactorDidChange:)
 				name:PVReviewFactorDidChangeNotification object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iPodDidChange:)
-				name:iPodDidChangeNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputFontSizeDidChange:)
 				name:ProVocInputFontSizeDidChangeNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputTextFieldDidBecomeFirstResponder:)

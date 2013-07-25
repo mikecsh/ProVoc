@@ -16,8 +16,6 @@
 #import "ProVocPrintView.h"
 #import "ProVocCardsView.h"
 #import "TransformerExtensions.h"
-#import "iPodController.h"
-#import "iPodManager.h"
 #import "ProVocInspector.h"
 #import "ProVocBackground.h"
 #import "ProVocStartingPoint.h"
@@ -152,11 +150,6 @@
 						[NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Label 9 Default Title", @""), PVLabelTitle,
 												[NSArchiver archivedDataWithRootObject:[NSColor grayColor]], PVLabelColorData, nil],
 						nil];
-						
-	[defaultValues setObject:[NSNumber numberWithInt:0] forKey:iPodPagesToSend];
-	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:iPodContentToSend];
-	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:iPodSinglePageNotes];
-	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:iPodAllowOtherNotes];
 	
 	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:PVMarkWrongWords];
 	[defaultValues setObject:[NSNumber numberWithInt:0] forKey:PVLabelForWrongWords];
@@ -198,7 +191,6 @@
 	[[ARAboutDialog sharedAboutDialog] show:nil];
 	[[NSUserDefaults standardUserDefaults] upgrade];
 	[[ARAboutDialog sharedAboutDialog] performSelector:@selector(hide:) withObject:nil afterDelay:3.0];
-	[iPodManager sharedManager];
 }
 
 -(void)applicationDidFinishLaunching:(NSNotification *)inNotification
