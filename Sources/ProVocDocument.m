@@ -65,21 +65,46 @@
 
 +(void)initialize
 {
-	[self setKeys:[NSArray arrayWithObject:@"testDirection"] triggerChangeNotificationsForDependentKey:@"randomTestDirection"];
-	NSArray *keys = [NSArray arrayWithObjects:@"testDirection", @"testDirectionProbability", @"sourceLanguage", @"targetLanguage", nil];
-	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"testQuestionDescription"];
-	[self setKeys:keys triggerChangeNotificationsForDependentKey:@"testAnswerDescription"];
-	[self setKeys:[NSArray arrayWithObject:@"sourceLanguage"] triggerChangeNotificationsForDependentKey:@"sourceLanguageCaption"];
-	[self setKeys:[NSArray arrayWithObject:@"sourceLanguage"] triggerChangeNotificationsForDependentKey:@"displayWithSource"];
-	[self setKeys:[NSArray arrayWithObject:@"targetLanguage"] triggerChangeNotificationsForDependentKey:@"targetLanguageCaption"];
-	[self setKeys:[NSArray arrayWithObject:@"targetLanguage"] triggerChangeNotificationsForDependentKey:@"displayWithTarget"];
-	[self setKeys:[NSArray arrayWithObject:@"canResumeTest"] triggerChangeNotificationsForDependentKey:@"startTestButtonTitle"];
-	[self setKeys:[NSArray arrayWithObject:@"canResumeTest"] triggerChangeNotificationsForDependentKey:@"canModifyTestParameters"];
-	[self setKeys:[NSArray arrayWithObjects:@"labelsToTest", @"testMarked", @"testWordsToReview", nil] triggerChangeNotificationsForDependentKey:@"pageSelectionTitle"];
-	[self setKeys:[NSArray arrayWithObjects:@"sourceFontFamilyName", @"sourceFontSize", @"targetFontFamilyName", @"targetFontSize", @"commentFontFamilyName", @"commentFontSize", nil] triggerChangeNotificationsForDependentKey:@"rowHeight"];
-	[self setKeys:[NSArray arrayWithObject:@"timer"] triggerChangeNotificationsForDependentKey:@"hideTimerDuration"];
-	[self setKeys:[NSArray arrayWithObject:@"voiceIdentifier"] triggerChangeNotificationsForDependentKey:@"selectedVoice"];
-	[self setKeys:[NSArray arrayWithObject:@"displayLabels"] triggerChangeNotificationsForDependentKey:@"labelsDisplayed"];
+
+}
+
++(NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSMutableSet *affectedValuesKeyPaths = [NSMutableSet set];
+    
+    if ([key isEqualToString:@"testDirection"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"randomTestDirection",@"testQuestionDescription",@"testAnswerDescription"]];
+    else if ([key isEqualToString:@"testDirectionProbability"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"testQuestionDescription",@"testAnswerDescription"]];
+    else if ([key isEqualToString:@"sourceLanguage"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"testQuestionDescription",@"testAnswerDescription"]];
+    else if ([key isEqualToString:@"targetLanguage"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"testQuestionDescription",@"testAnswerDescription"]];
+    else if ([key isEqualToString:@"sourceLanguage"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"sourceLanguageCaption",@"displayWithSource"]];
+    else if ([key isEqualToString:@"targetLanguage"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"targetLanguageCaption",@"displayWithTarget"]];
+    else if ([key isEqualToString:@"canResumeTest"])
+        [affectedValuesKeyPaths addObjectsFromArray:@[@"startTestButtonTitle",@"canModifyTestParameters"]];
+    else if ([key isEqualToString:@"timer"])
+        [affectedValuesKeyPaths addObject:@"hideTimerDuration"];
+    else if ([key isEqualToString:@"voiceIdentifier"])
+        [affectedValuesKeyPaths addObject:@"selectedVoice"];
+    else if ([key isEqualToString:@"displayLabels"])
+        [affectedValuesKeyPaths addObject:@"labelsDisplayed"];
+    else if ([key isEqualToString:@"labelsToTest"]
+             || [key isEqualToString:@"testMarked"]
+             || [key isEqualToString:@"testWordsToReview"])
+        [affectedValuesKeyPaths addObject:@"pageSelectionTitle"];
+    else if ([key isEqualToString:@"sourceFontFamilyName"]
+             || [key isEqualToString:@"sourceFontSize"]
+             || [key isEqualToString:@"targetFontFamilyName"]
+             || [key isEqualToString:@"targetFontSize"]
+             || [key isEqualToString:@"commentFontFamilyName"]
+             || [key isEqualToString:@"commentFontSize"])
+        [affectedValuesKeyPaths addObject:@"rowHeight"];
+    
+    return affectedValuesKeyPaths;
 }
 
 -(id)init
@@ -140,6 +165,8 @@
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.commentFontSize" options:NSKeyValueObservingOptionNew context:nil];
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.commentTestFontSize" options:NSKeyValueObservingOptionNew context:nil];
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.commentWritingDirection" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [self setEditingPreset:YES];
     }
     return self;
 }
@@ -263,7 +290,8 @@
     [self performSelector:@selector(sortWordsByColumn:) withObject:[mWordTableView tableColumnWithIdentifier:@"Number"] afterDelay:0.0];
 	
 	if ([NSApp systemVersion] < 0x1040)
-		[mWordTableView setAutoresizesAllColumnsToFit:YES];
+        [mWordTableView setColumnAutoresizingStyle:NSTableViewUniformColumnAutoresizingStyle];
+    
 	state = [mLoadedParameters objectForKey:@"WordTableColumnStatesV2"];
 	if (!state)
 		state = [mLoadedParameters objectForKey:@"WordTableColumnStates"];
@@ -924,7 +952,7 @@ static ProVocDocument *sCurrentDocument = nil;
 	[self pagesDidChange];
 	[mPageOutlineView expandItem:inSource];
 	row = [mPageOutlineView rowForItem:inSource];
-	[mPageOutlineView selectRow:row byExtendingSelection:NO];
+	[mPageOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 	[mPageOutlineView scrollRowToVisible:row];
 	[self didChangeData];
 	[self setMainTab:1];
@@ -1320,7 +1348,7 @@ int SORT_BY_DIFFICULT(id left, id right, void *info)
 	if ([self testMarked] || mTestOldWords) {
 		NSDate *latestDate;
 		if (mTestOldUnit < 2)
-			latestDate = [[[NSDate date] beginningOfDay] addTimeInterval:(1 - mTestOldNumber * (mTestOldUnit == 0 ? 1 : 7)) * 24 * 60 * 60];
+			latestDate = [[[NSDate date] beginningOfDay] dateByAddingTimeInterval:(1 - mTestOldNumber * (mTestOldUnit == 0 ? 1 : 7)) * 24 * 60 * 60];
 		else {
 			latestDate = [[NSDate date] beginningOfMonth];
 			int i;
