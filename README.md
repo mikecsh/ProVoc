@@ -13,9 +13,18 @@ A vocabulary trainer for Mac OS X, originally written by Arizona Software (http:
 ##Current abilities:
 * As displayed on http://www.arizona-software.ch
 	
-##Working on:
+##WRoadmap:
 * Updating the interface
 * Modernizing the code
+* ARC Compatibility
+* QTKit or AVFoundation to replace Quickdraw
+* CoreData to replace custom file format (with converter??) to allow better performance and less code
+* First App Store deployment to renew user base
+* Re-introduce sharing of decks
+* More stats
+* iOS port?
+* iCloud syncing?
+
 
 ##Contributors:
 
